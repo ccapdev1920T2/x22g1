@@ -64,6 +64,10 @@
     margin: 0;
   }
   
+/* #option1{
+    background-image: url('img/logo.png');
+} */
+
 .dropdown-content {
     display: none;
     position: absolute;
