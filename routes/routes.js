@@ -12,6 +12,9 @@ app.get('/:Username', controller.getUserProfile);
 
 app.get('/', controller.getIndex);
 
+//call function getADMUTL 
+app.get('/ADMU', controller.getADMU);
+
 
 // enables to export app object when called in another .js file
 module.exports = app;

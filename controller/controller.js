@@ -26,6 +26,10 @@ const controller = {
     getIndex: function (req, res) {
 
         res.render('timeline');
+    },
+
+    getADMU: function (req,res){
+        res.render('timelineADMU');
     }
 
 }
