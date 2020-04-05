@@ -26,4 +26,6 @@ var user = {
 
 }
 
+
+
 db.insertOne(collection, user);
