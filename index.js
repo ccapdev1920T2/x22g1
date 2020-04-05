@@ -5,9 +5,15 @@ const handlebars = require('handlebars');
 // import routes module
 const routes = require('./routes/routes.js');
 
+// import hbs module
+const hbs = require('hbs');
+
 const path = require('path');
 const app = express();
 const port = 9090;
+
+// partials
+hbs.registerPartials(__dirname + '/views/partials');
 
 // define css,img, and views as static 
 app.use(express.static('css'));
