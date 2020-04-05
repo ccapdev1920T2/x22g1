@@ -23,20 +23,33 @@ const controller = {
         });
     },
 
-    getTimeline: function (req, res) {
+    getIndex: function (req,res) {
+        var post = {}
+        db.findOne('userPost',post,function(result){
+            res.render('timeline',result)
+        })
 
-        var post = db.userPost.find();
-
-        res.render('timeline',post);
     },
+
+    // getTimeline: function (req, res) {
+
+    //     var post = db.userPost.find();
+
+    //     res.render('timeline',post);
+    // },
 
     getADMU: function (req,res){
         res.render('timelineADMU');
     }
 
+    // getTimeline: function (req, res) {
+
+    //     var post = db.userPost.find();
+
+    //     res.render('timeline',post);
+    // },
+
 }
-
-
 
  // enables to export controller object when called in another .js file
  module.exports = controller;
