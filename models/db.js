@@ -70,7 +70,7 @@ const database = {
             var database = db.db(dbName);
             database.collection(collection).findOne(query, function(err, result) {
                 if(err) throw err;
-                console.log('1 document has been inserted!');
+                console.log('1 document retrieved!');
                 db.close();
                 return retrieve(result);
             });
@@ -85,7 +85,7 @@ const database = {
             var database = db.db(dbName);
             database.collection(collection).find(query,{projection: projection}).sort(sort).limit(limit).toArray(function (err,result){
                 if(err) throw err;
-                console.log('Documents inserted: ' + result.insertedCount);
+                console.log('Documents retrieved: ' + result.insertedCount);
                 db.close();
                 return retrieve(result);
             });

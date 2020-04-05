@@ -25,7 +25,9 @@ const controller = {
 
     getTimeline: function (req, res) {
 
-        res.render('timeline');
+        var post = db.userPost.find();
+
+        res.render('timeline',post);
     },
 
     getADMU: function (req,res){
