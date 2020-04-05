@@ -24,17 +24,14 @@ const controller = {
     },
 
     getIndex: function (req, res) {
-
         res.render('timeline');
     },
 
-    getADMU: function (req,res){
+    getADMU: function (req, res){
         res.render('timelineADMU');
     }
 
 }
-
-
 
  // enables to export controller object when called in another .js file
  module.exports = controller;
