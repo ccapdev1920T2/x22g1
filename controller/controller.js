@@ -23,7 +23,7 @@ const controller = {
         });
     },
 
-    getIndex: function (req, res) {
+    getTimeline: function (req, res) {
 
         res.render('timeline');
     },
