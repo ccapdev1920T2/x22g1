@@ -1,8 +1,10 @@
 // import module from db.js in models directory
 const db = require('./models/db.js')
 
-// name of collection
-const collection = 'userProfile';
+// name of collections
+const userProfile = 'userProfile';
+const userPost = 'userPost';
+
 
 // call function createDatabase 
 db.createDatabase();
@@ -26,6 +28,19 @@ var user = {
 
 }
 
+// insert object user to collection 'userProfile'
+db.insertOne(userProfile, user);
 
+var post = {
+    postNumber: '123',
+    postTitle: 'Cute guy sa henry grounds',
+    Username: 'luhzul101',
+    CreditScore: '60',
+    postBody: 'Shoutout nga pala dun sa cute guy na nakatambay sa henry grounds kanina mga 4 pm cute mo po',
+    postTags: '#lasalle',
+    Upvotes: '55'
+}
 
-db.insertOne(collection, user);
+// insert object user to collection 'userPost'
+db.insertOne(userPost, post);
+
