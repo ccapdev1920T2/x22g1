@@ -9,8 +9,7 @@ const path = require('path');
 const app = express();
 const port = 9090;
 
-const routes = require('./routes/routes.js');
-
+// define css,img, and views as static 
 app.use(express.static('css'));
 app.use(express.static('img'));
 app.use(express.static('views'));
@@ -25,4 +24,4 @@ app.listen(port, function(){
     console.log('App listening at port ' + port)
 })
 
-app.use('/', routes);
+
