@@ -29,6 +29,11 @@ body{
     padding-top: 30px;
 }
 
+#putborder{
+    border-left: 1px #ccc solid;
+    border-right: 1px #ccc solid;
+}
+
 .headertext{
     height: 40px;
     color: rgba(0, 0, 0, 0.637);
