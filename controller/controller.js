@@ -21,8 +21,16 @@ const controller = {
             // render 'profile.hbs' with the variables based on the result function filtered by the query object
             res.render('profile',result)
         });
+    },
+
+    getIndex: function (req, res) {
+
+        res.render('timeline');
     }
+
 }
+
+
 
  // enables to export controller object when called in another .js file
  module.exports = controller;
