@@ -19,7 +19,7 @@ const controller = {
         db.findOne('userProfile',query,function(result){
 
             // render 'profile.hbs' with the variables based on the result function filtered by the query object
-            res.render('profile',result)
+            res.render('nprofile',result)
         });
     }
 }

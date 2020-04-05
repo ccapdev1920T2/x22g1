@@ -15,8 +15,15 @@ var user = {
     DisplayPicture: 'human.jpg',
     CreditScore: '54',
     SavedPostID: '1',
-    University: 'Lasalle',
-    Bio: 'I love web development!'
+    University: 'DLSU',
+    Bio: 'I love web development!',
+    fName: 'Ira',
+    lName: 'Villanueva',
+    postNumber: '#8888',
+    postTitle: 'ZZZZ',
+    postBody: 'Hello There',
+    postTags: '#gumanaKa'
+
 }
 
 db.insertOne(collection, user);
