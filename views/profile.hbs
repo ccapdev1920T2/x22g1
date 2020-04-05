@@ -93,25 +93,28 @@
         {{>header}}
 
         <div id="container1">
-            <div id="profilecontainer"> {{!-- here --}}
-                <div class="headertext">
-                    <p>User Profile</p>
+            <div id="putborder">
+                <div id="profilecontainer"> 
+                    <div class="headertext">
+                        <p>User Profile</p>
+                    </div>
+                    <div class="profile-header-container">   
+                        <div class="profile-header-img">
+                            <img class="img-circle" src="human.jpg" />
+                            <div class="rank-label-container">
+                                <span class="label label-default rank-label" title="Credit Score">{{CreditScore}}</span>
+                            </div>
+                        </div>
+                        <div class="user-info-block">
+                            <div class="user-heading">
+                                <h2>{{Username}} <a href="editprofile.html"><i class="fas fa-user-edit fa-xs" title="Edit Profile"></i></a></h2>
+                            </div>
+                            <div class="textbio" title="User's Bio">{{Bio}}</div>
+                        </div>
+                    </div> 
                 </div>
-                <div class="profile-header-container">   
-                    <div class="profile-header-img">
-                        <img class="img-circle" src="human.jpg" />
-                        <div class="rank-label-container">
-                            <span class="label label-default rank-label" title="Credit Score">{{CreditScore}}</span>
-                        </div>
-                    </div>
-                    <div class="user-info-block">
-                        <div class="user-heading">
-                            <h2>{{Username}} <a href="editprofile.html"><i class="fas fa-user-edit fa-xs" title="Edit Profile"></i></a></h2>
-                        </div>
-                        <div class="textbio" title="User's Bio">{{Bio}}</div>
-                    </div>
-                </div> 
             </div>
+            
         </div>
 
         <div id="buttoncontainer">
