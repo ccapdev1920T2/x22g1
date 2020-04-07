@@ -113,6 +113,32 @@
     margin-left: 5px;
 }
 
+.post-area-tags{
+    width: 625px;
+    height: 25px;
+    resize: none;
+    padding-top: 0px;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: 18px;
+    padding-right: 48px;
+}
+
+
+.post-area-title{
+    width: 625px;
+    height: 25px;
+    resize: none;
+    padding-top: 0px;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: 18px;
+    padding-right: 48px;
+}
+
+
 .post-area{
     width: 625px;
     height: 50px;
@@ -206,9 +232,33 @@
     position: relative;
 }
 
+.box-title{
+    max-height: 100px;
+    min-height: 25px;
+    padding-top: 5px;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: 18px;
+    padding-right: 48px;
+    background: #fff;
+}
+
 .box{
     max-height: 100px;
-    min-height: 71px;
+    min-height: 25px;
+    padding-top: 5px;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: 18px;
+    padding-right: 48px;
+    background: #fff;
+}
+
+.box-tags{
+    max-height: 100px;
+    min-height: 45px;
     padding-top: 5px;
     font-size: 14px;
     font-weight: normal;
@@ -236,11 +286,11 @@
     margin: 0;
     padding: 0;
     display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
+    margin-block-start: 0.3em;
+    margin-block-end: 0.3em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-    padding-top: 10px;
+    padding-top: 0.1px;
     padding-inline-start: 0px;
 }
 
@@ -347,7 +397,7 @@ hr {
 }
 
 .media-button-timeline{
-    margin-left: 220px;
+    margin-left: 290px;
     display: inline-block;
     text-align: -webkit-match-parent;
 }
