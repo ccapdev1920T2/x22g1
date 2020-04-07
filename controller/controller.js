@@ -27,9 +27,7 @@ const controller = {
         res.render('timeline');
     },
 
-    getADMU: function (req, res){
-        res.render('timelineADMU');
-    }
+    
 
 }
 

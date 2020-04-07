@@ -1,12 +1,12 @@
 // import modules express and handlebars
 const express = require('express');
-const handlebars = require('handlebars');
+const hbs = require('hbs');
 
 // import routes module
 const routes = require('./routes/routes.js');
 
-// import hbs module
-const hbs = require('hbs');
+// import module `database` from `./model/db.js`
+const db = require('./models/db.js');
 
 const path = require('path');
 const app = express();
@@ -25,6 +25,9 @@ app.use('/', routes);
 
 // set hbs as view engine
 app.set('view engine', 'hbs');
+
+// connects to the database
+// db.connect();
 
 app.listen(port, function(){
     console.log('App listening at port ' + port)
