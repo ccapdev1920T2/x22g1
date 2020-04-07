@@ -23,11 +23,31 @@ const controller = {
         });
     },
 
-    getTimeline: function (req, res) {
-        res.render('timeline');
+    getIndex: function (req,res) {
+        var post = {}
+        db.findOne('userPost',post,function(result){
+            res.render('timeline',result)
+        })
+
     },
 
-    
+    // getTimeline: function (req, res) {
+
+    //     var post = db.userPost.find();
+
+    //     res.render('timeline',post);
+    // },
+
+    getADMU: function (req,res){
+        res.render('timelineADMU');
+    }
+
+    // getTimeline: function (req, res) {
+
+    //     var post = db.userPost.find();
+
+    //     res.render('timeline',post);
+    // },
 
 }
 
