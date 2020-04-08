@@ -12,7 +12,7 @@ const app = express();
 // call function getUserProfile when client requests a username (parameter) 
 app.get('/:Username', controller.getUserProfile);
 
-app.get('/', controller.getIndex);
+app.get('/', controller.getTimeline);
 
 //call function getADMUTL 
 app.get('/ADMU', ADMUController.getADMU);

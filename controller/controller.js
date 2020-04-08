@@ -23,32 +23,18 @@ const controller = {
         });
     },
 
-    getIndex: function (req,res) {
-        var post = {}
-        db.findOne('userPost',post,function(result){
-            res.render('timeline',result)
+    // retrieve all posts by finding all documents in collection userPost
+    getTimeline: function (req,res) {
+        var post = {};
+      
+        db.findMany('userPost',post,function(result){
+            res.render('timeline',result);
         })
-
     },
-
-    // getTimeline: function (req, res) {
-
-    //     var post = db.userPost.find();
-
-    //     res.render('timeline',post);
-    // },
 
     getADMU: function (req,res){
         res.render('timelineADMU');
     }
-
-    // getTimeline: function (req, res) {
-
-    //     var post = db.userPost.find();
-
-    //     res.render('timeline',post);
-    // },
-
 }
 
  // enables to export controller object when called in another .js file
