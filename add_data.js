@@ -46,6 +46,7 @@ db.insertOne(userProfile, user);
 
 var posts = [
     {
+        timelineBadge: 'timeline-badge lasalle',
         uniBadge: '&#127993',
         postNumber: '123',
         postTitle: 'Cute guy sa henry grounds',
@@ -57,6 +58,7 @@ var posts = [
     },
 
     {
+        timelineBadge: 'timeline-badge ust',
         uniBadge: '&#128047',
         postNumber: '150',
         postTitle: 'Dapitan Milktea',
@@ -68,6 +70,7 @@ var posts = [
     },
 
     {
+        timelineBadge: 'timeline-badge up',
         uniBadge: '&#9994',
         postNumber: '233',
         postTitle: 'Best Lib: Engg Lib',
@@ -79,6 +82,7 @@ var posts = [
     },
 
     {
+        timelineBadge: 'timeline-badge ateneo',
         uniBadge: '&#x1f985',
         postNumber: '543',
         postTitle: 'Weird Fetishes',
