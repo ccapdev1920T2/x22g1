@@ -4,6 +4,10 @@ const db = require('../models/db.js');
 // define objects for client request functions for a certain path in the server
 const controller = {
 
+    getFavicon: function (req, res) {
+        res.status(204);
+    },
+
     // retrieve user profile based on the username request of the client defined in routes.js
     getUserProfile: function(req,res){
         

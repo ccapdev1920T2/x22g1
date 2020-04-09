@@ -71,6 +71,7 @@
                         {{>createPost}}
                         
                         <hr>
+                        {{#each this}}
                         <ul class="timeline">
                             <li class="timeline-inverted">
                                 <div class="timeline-badge lasalle">{{uniBadge}}</div>
@@ -108,6 +109,9 @@
                                 </div>
                             </li>
                         </ul>
+                        {{else}}
+                        <p>hello</p>
+                        {{/each}}
                     </div>
                 </div>
                 {{>trending}}

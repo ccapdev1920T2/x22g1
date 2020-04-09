@@ -85,6 +85,7 @@ const database = {
             var database = db.db(dbName);
             database.collection(collection).find(query).toArray(function (err,result){
                 if(err) throw err;
+                console.log(result);
                 console.log('Documents retrieved: ' + result.insertedCount);
                 db.close();
                 return retrieve(result);
