@@ -36,8 +36,20 @@ const controller = {
         })
     },
 
+    getDLSU: function (req,res) {
+        var post = {};
+      
+        db.findMany('userPost',post,function(result){
+            res.render('timeline',result);
+        })
+    },
+
     getADMU: function (req,res){
-        res.render('timelineADMU');
+        var post = {};
+
+        db.findMany('userPost',post,function(result){
+            res.render('timeline',result);
+        })
     }
 }
 

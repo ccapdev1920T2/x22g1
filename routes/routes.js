@@ -16,6 +16,8 @@ app.get('/:Username', controller.getUserProfile);
 
 app.get('/', controller.getTimeline);
 
+app.get('/DLSU', controller.getDLSU);
+
 //call function getADMUTL 
 app.get('/ADMU', ADMUController.getADMU);
 
