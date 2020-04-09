@@ -9,10 +9,14 @@ const ADMUController = require('../controller/ADMUController.js')
 
 const app = express();
 
+app.get('/favicon.ico', controller.getFavicon);
+
 // call function getUserProfile when client requests a username (parameter) 
 app.get('/:Username', controller.getUserProfile);
 
-app.get('/', controller.getIndex);
+app.get('/', controller.getTimeline);
+
+app.get('/DLSU', controller.getDLSU);
 
 //call function getADMUTL 
 app.get('/ADMU', ADMUController.getADMU);

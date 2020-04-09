@@ -4,6 +4,10 @@ const db = require('../models/db.js');
 // define objects for client request functions for a certain path in the server
 const controller = {
 
+    getFavicon: function (req, res) {
+        res.status(204);
+    },
+
     // retrieve user profile based on the username request of the client defined in routes.js
     getUserProfile: function(req,res){
         
@@ -23,32 +27,30 @@ const controller = {
         });
     },
 
-    getIndex: function (req,res) {
-        var post = {}
-        db.findOne('userPost',post,function(result){
-            res.render('timeline',result)
+    // retrieve all posts by finding all documents in collection userPost
+    getTimeline: function (req,res) {
+        var post = {};
+      
+        db.findMany('userPost',post,function(result){
+            res.render('timeline',result);
         })
-
     },
 
-    // getTimeline: function (req, res) {
-
-    //     var post = db.userPost.find();
-
-    //     res.render('timeline',post);
-    // },
+    getDLSU: function (req,res) {
+        var post = {};
+      
+        db.findMany('userPost',post,function(result){
+            res.render('timeline',result);
+        })
+    },
 
     getADMU: function (req,res){
-        res.render('timelineADMU');
+        var post = {};
+
+        db.findMany('userPost',post,function(result){
+            res.render('timeline',result);
+        })
     }
-
-    // getTimeline: function (req, res) {
-
-    //     var post = db.userPost.find();
-
-    //     res.render('timeline',post);
-    // },
-
 }
 
  // enables to export controller object when called in another .js file
