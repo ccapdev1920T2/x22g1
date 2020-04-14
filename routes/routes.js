@@ -12,12 +12,12 @@ const app = express();
 app.get('/favicon.ico', controller.getFavicon);
 
 // call function getIndex when client sends a request for '/' defined in routes.js
-app.get('/', controller.getIndex);
+// app.get('/', controller.getIndex);
 
 // call function getUserProfile when client requests a username (parameter) 
-app.get('/:Username', controller.getUserProfile);
+// app.get('/:Username', controller.getUserProfile);
 
-//app.get('/', controller.getTimeline);
+app.get('/', controller.getTimeline);
 
 app.get('/DLSU', controller.getDLSU);
 
