@@ -14,7 +14,7 @@ app.get('/favicon.ico', controller.getFavicon);
 // call function getIndex when client sends a request for '/' defined in routes.js
 app.get('/', controller.getIndex);
 
-app.get('/home', controller.getTimeline);
+app.get('/HOME', controller.getTimeline);
 
 //call function getADMUTL 
 app.get('/ADMU', controller.getADMU);

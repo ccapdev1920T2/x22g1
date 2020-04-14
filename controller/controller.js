@@ -42,42 +42,36 @@ const controller = {
     },
 
     getDLSU: function (req,res) {
-        var post = {id: 0, CreditScore: 1};
+        var post = {uniBadge: "&#127993"};
       
-        db.findMany('userPost',post,function(result){
+        db.findMany('userPost', post, function(result){
             res.render('timeline',result);
         })
         
     },
 
     getADMU: function (req,res){
-        // var post = {};
-
-        // db.findMany('userPost',post,function(result){
-        //     res.render('timelineADMU',result);
-        // })
-
-        res.render('timeline');
+        var post = {};
+      
+        db.findMany('userPost', {uniBadge: "&#x1f985"}, function(result){
+            res.render('timeline',result);
+        })
     },
 
     getUP: function (req,res){
-        // var post = {};
-
-        // db.findMany('userPost',post,function(result){
-        //     res.render('timelineADMU',result);
-        // })
-
-        res.render('timeline');
+        var post = {uniBadge: "&#9994"};
+      
+        db.findMany('userPost', post, function(result){
+            res.render('timeline',result);
+        })
     },
 
     getUST: function (req,res){
-        // var post = {};
-
-        // db.findMany('userPost',post,function(result){
-        //     res.render('timelineADMU',result);
-        // })
-
-        res.render('timeline');
+        var post = {uniBadge: "&#128047"};
+      
+        db.findMany('userPost', post, function(result){
+            res.render('timeline',result);
+        })
     }
 }
 
