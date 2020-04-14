@@ -26,11 +26,29 @@ const controller = {
     //     })
     // },
 
+    // executes when client request for HTTP GET '/checkUsername' defined in routes.js
     checkUsername: function(req,res){
-        
+
+        // retrieve value of Username stored in req.query object
+        var username = req.query.Username;
+
+        // call the function findOne() from the module in db.js and use the object query to filter the collection 'userProfile' in the database
+        // sends an empty string if no result was found. otherwise, send an object containing 'Username'
+        db.findOne('userProfile', {Username : username}, function(result){
+            res.send(result);
+        })
     },
 
     checkPassword: function(req,res){
+
+        // retrieve value of Username stored in req.query object
+        var pass = req.query.Password;
+
+        // call the function findOne() from the module in db.js and use the object query to filter the collection 'userProfile' in the database
+        // sends an empty string if no result was found. otherwise, send an object containing 'Username'
+        db.findOne('userProfile', {Password : pass}, function(result){
+            res.send(result);
+        })
 
     },
 
@@ -45,7 +63,7 @@ const controller = {
             Username: u
         };
 
-        // call the function findOne() from the module in models directory and use the object query to filter the collection 'userProfile' in the database
+        // call the function findOne() from the module in db.js and use the object query to filter the collection 'userProfile' in the database
         db.findOne('userProfile',query,function(result){
 
             // render 'profile.hbs' with the variables based on the result function filtered by the query object
