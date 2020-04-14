@@ -47,6 +47,7 @@ var posts = [
     {
         timelineBadge: 'timeline-badge lasalle',
         uniBadge: '&#127993',
+        navbar: 'navbar-dlsu',
         postNumber: '123',
         postTitle: 'Cute guy sa henry grounds',
         Username: 'luhzul101',
@@ -59,6 +60,7 @@ var posts = [
     {
         timelineBadge: 'timeline-badge ust',
         uniBadge: '&#128047',
+        navbar: 'navbar-ust',
         postNumber: '150',
         postTitle: 'Dapitan Milktea',
         Username: 'ghoste101',
@@ -71,6 +73,7 @@ var posts = [
     {
         timelineBadge: 'timeline-badge up',
         uniBadge: '&#9994',
+        navbar: 'navbar-up',
         postNumber: '233',
         postTitle: 'Best Lib: Engg Lib',
         Username: 'iskolar101',
@@ -83,6 +86,7 @@ var posts = [
     {
         timelineBadge: 'timeline-badge ateneo',
         uniBadge: '&#x1f985',
+        navbar: 'navbar-admu',
         postNumber: '543',
         postTitle: 'Weird Fetishes',
         Username: 'areneyow101',

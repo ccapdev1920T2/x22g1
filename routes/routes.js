@@ -16,7 +16,7 @@ app.get('/', controller.getIndex);
 
 app.post('/',controller.postLogIn);
 
-app.get('/home', controller.getTimeline);
+app.get('/HOME', controller.getTimeline);
 
 //call function getADMUTL 
 app.get('/ADMU', controller.getADMU);
