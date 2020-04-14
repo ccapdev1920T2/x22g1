@@ -25,7 +25,6 @@ var user = {
     postTitle: 'ZZZZ',
     postBody: 'Hello There',
     postTags: '#gumanaKa'
-
 }
 
 // insert object user to collection 'userProfile'
