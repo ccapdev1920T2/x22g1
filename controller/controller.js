@@ -14,16 +14,24 @@ const controller = {
     },
 
     // executed when client requests '/' for HTTP POST defined in routes.js
-    postLogIn: function(req, res){
-        var username = req.body.username;
+    // postLogIn: function(req, res){
+    //     var username = req.body.username;
        
-        var query = {
-            Username: username,
-        }
+    //     var query = {
+    //         Username: username,
+    //     }
 
-        db.findOne('userProfile',query,function(result){
+    //     db.findOne('userProfile',query,function(result){
             
-        })
+    //     })
+    // },
+
+    checkUsername: function(req,res){
+        
+    },
+
+    checkPassword: function(req,res){
+
     },
 
     // retrieve user profile based on the username request of the client defined in routes.js
