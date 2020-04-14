@@ -8,9 +8,22 @@ const controller = {
         res.status(204);
     },
 
+    // render log-in page when client requests '/' defined in routes.js
     getIndex: function(req,res){
-
         res.render('login');
+    },
+
+    // executed when client requests '/' for HTTP POST defined in routes.js
+    postLogIn: function(req, res){
+        var username = req.body.username;
+       
+        var query = {
+            Username: username,
+        }
+
+        db.findOne('userProfile',query,function(result){
+            
+        })
     },
 
     // retrieve user profile based on the username request of the client defined in routes.js

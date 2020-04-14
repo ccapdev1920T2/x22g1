@@ -15,9 +15,8 @@ const port = 9090;
 // partials
 hbs.registerPartials(__dirname + '/views/partials');
 
-// define css,img, and views as static 
-app.use(express.static('css'));
-app.use(express.static('img'));
+// define css, img, js, and views as static 
+app.use(express.static('public'));
 app.use(express.static('views'));
 
 // define the paths contained in routes module
