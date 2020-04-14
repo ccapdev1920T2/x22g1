@@ -12,18 +12,21 @@ const app = express();
 app.get('/favicon.ico', controller.getFavicon);
 
 // call function getIndex when client sends a request for '/' defined in routes.js
-// app.get('/', controller.getIndex);
+app.get('/', controller.getIndex);
 
-// call function getUserProfile when client requests a username (parameter) 
-// app.get('/:Username', controller.getUserProfile);
-
-app.get('/', controller.getTimeline);
-
-app.get('/uhmm', controller.getTimeline);
+app.get('/home', controller.getTimeline);
 
 //call function getADMUTL 
-app.get('/ADMU', ADMUController.getADMU);
+app.get('/ADMU', controller.getADMU);
 
+app.get('/DLSU', controller.getDLSU);
+
+app.get('/UP', controller.getUP);
+
+app.get('/UST', controller.getUST);
+
+// call function getUserProfile when client requests a username (parameter) 
+app.get('/:Username', controller.getUserProfile);
 
 // enables to export app object when called in another .js file
 module.exports = app;

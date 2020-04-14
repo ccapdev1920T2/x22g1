@@ -42,12 +42,12 @@ const controller = {
     },
 
     getDLSU: function (req,res) {
-        // var post = {};
+        var post = {id: 0, CreditScore: 1};
       
-        // db.findMany('userPost',post,function(result){
-        //     res.render('timelineDLSU',result);
-        // })
-        res.render('timelineDLSU');
+        db.findMany('userPost',post,function(result){
+            res.render('timeline',result);
+        })
+        
     },
 
     getADMU: function (req,res){
@@ -57,7 +57,27 @@ const controller = {
         //     res.render('timelineADMU',result);
         // })
 
-        res.render('timelineADMU');
+        res.render('timeline');
+    },
+
+    getUP: function (req,res){
+        // var post = {};
+
+        // db.findMany('userPost',post,function(result){
+        //     res.render('timelineADMU',result);
+        // })
+
+        res.render('timeline');
+    },
+
+    getUST: function (req,res){
+        // var post = {};
+
+        // db.findMany('userPost',post,function(result){
+        //     res.render('timelineADMU',result);
+        // })
+
+        res.render('timeline');
     }
 }
 
