@@ -1,41 +1,51 @@
 $(document).ready(function () {
+    var uchecker = 0;
+    var pchecker = 1;
 
-    $('#username').blur(function(){
-        var username = $('#username').val();
+    $('#login-username').focus(function(){
+        var username = $('#login-username').val();
 
         $.get('/checkUsername', {Username : username}, function(result){
             
             if(result.Username == username){
-                $('#username').css('background-color', '#fff');
+                $('#login-username').css('border-color', '#d9dadc');
                 $('#error').text('');
-                $('#login').prop('disable',false);
+                $('#loginbutton').prop('disabled',false);
+                uchecker=1;
             }
 
             else{
-                $('#username').css('background-color', 'red');
+                $('#login-username').css('border-color', 'red');
                 $('#error').text('User does not exist!');
-                $('#login').prop('disable',true);
+                $('#loginbutton').prop('disabled',true);
             }
         })
     })
 
-    $('#password').blur(function(){
-        var pass = $('#password').val();
+    $('#login-password').focus(function(){
+        var pass = $('#login-password').val();
 
         $.get('/checkPassword', {Password : pass}, function(result){
             
             if(result.Password == pass){
-                $('#username').css('background-color', '#fff');
+                $('#login-password').css('border-color', '#d9dadc');
                 $('#error').text('');
-                $('#login').prop('disable',false);
+                $('#loginbutton').prop('disabled',false);
+                pchecker=1;
             }
 
             else{
-                $('#username').css('background-color', 'red');
+                $('#login-password').css('border-color', 'red');
                 $('#error').text('Incorrect Password!');
-                $('#login').prop('disable',true);
+                $('#loginbutton').prop('disabled',true);
             }
         })
     })
+
+    if( (uchecker == 1) && (pchecker == 1) ){
+        $('#login-password').css('border-color', '#d9dadc');
+        $('#error').text('');
+        $('#loginbutton').prop('disabled',false);
+    }
 
 })
