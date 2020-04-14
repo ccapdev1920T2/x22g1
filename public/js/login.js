@@ -2,6 +2,17 @@ $(document).ready(function () {
     var uchecker = 0;
     var pchecker = 1;
 
+    $.fn.onSignIn = function(googleUser){ 
+        var profile = googleUser.getBasicProfile();
+
+        alert("gello");
+        $('#error').text('User does not exist!');
+    }
+
+    //function OnSignIn
+
+    
+
     $('#login-username').focus(function(){
         var username = $('#login-username').val();
 
@@ -21,6 +32,26 @@ $(document).ready(function () {
             }
         })
     })
+
+    $('#login-username').blur(function(){
+        var username = $('#login-username').val();
+
+        $.get('/checkUsername', {Username : username}, function(result){
+            
+            if(result.Username == username){
+                $('#login-username').css('border-color', '#d9dadc');
+                $('#error').text('');
+                $('#loginbutton').prop('disabled',false);
+            }
+
+            else{
+                $('#login-username').css('border-color', 'red');
+                $('#error').text('User does not exist!');
+                $('#loginbutton').prop('disabled',true);
+            }
+        })
+    })
+
 
     $('#login-password').focus(function(){
         var pass = $('#login-password').val();
@@ -42,10 +73,23 @@ $(document).ready(function () {
         })
     })
 
-    if( (uchecker == 1) && (pchecker == 1) ){
-        $('#login-password').css('border-color', '#d9dadc');
-        $('#error').text('');
-        $('#loginbutton').prop('disabled',false);
-    }
+    $('#login-password').blur(function(){
+        var pass = $('#login-password').val();
+
+        $.get('/checkPassword', {Password : pass}, function(result){
+            
+            if(result.Password == pass){
+                $('#login-password').css('border-color', '#d9dadc');
+                $('#error').text('');
+                $('#loginbutton').prop('disabled',false);
+            }
+
+            else{
+                $('#login-password').css('border-color', 'red');
+                $('#error').text('Incorrect Password!');
+                $('#loginbutton').prop('disabled',true);
+            }
+        })
+    })
 
 })
