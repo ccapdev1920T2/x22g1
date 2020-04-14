@@ -8,6 +8,11 @@ const controller = {
         res.status(204);
     },
 
+    getIndex: function(req,res){
+
+        res.render('login');
+    },
+
     // retrieve user profile based on the username request of the client defined in routes.js
     getUserProfile: function(req,res){
         
