@@ -42,19 +42,22 @@ const controller = {
     },
 
     getDLSU: function (req,res) {
-        var post = {};
+        // var post = {};
       
-        db.findMany('userPost',post,function(result){
-            res.render('timeline',result);
-        })
+        // db.findMany('userPost',post,function(result){
+        //     res.render('timelineDLSU',result);
+        // })
+        res.render('timelineDLSU');
     },
 
     getADMU: function (req,res){
-        var post = {};
+        // var post = {};
 
-        db.findMany('userPost',post,function(result){
-            res.render('timeline',result);
-        })
+        // db.findMany('userPost',post,function(result){
+        //     res.render('timelineADMU',result);
+        // })
+
+        res.render('timelineADMU');
     }
 }
 
