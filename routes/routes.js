@@ -19,7 +19,7 @@ app.get('/favicon.ico', controller.getFavicon);
 
 app.get('/', controller.getTimeline);
 
-app.get('/DLSU', controller.getDLSU);
+app.get('/uhmm', controller.getTimeline);
 
 //call function getADMUTL 
 app.get('/ADMU', ADMUController.getADMU);
