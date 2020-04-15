@@ -25,10 +25,6 @@ app.use('/', routes);
 // set hbs as view engine
 app.set('view engine', 'hbs');
 
-app.get('/weh', function(req,res){
-    res.render('timeline');
-});
-
 // connects to the database
 // db.connect();
 
