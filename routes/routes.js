@@ -25,6 +25,8 @@ app.get('/checkPassword', controller.checkPassword);
 
 app.get('/signup', signUpController.getSignUp);
 
+app.post('/signup', signupController.postSignUp);
+
 app.get('/HOME', timelineController.getTimeline);
 
 //call function getADMUTL 

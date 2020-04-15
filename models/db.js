@@ -2,6 +2,12 @@
 //import mongodb module
 const mongodb = require('mongodb');
 
+//import mongoose module
+const mongoose = require('mongoose');
+
+//import user module
+const User = require('./userModels.js');
+
 // mongodb client (connection of mongodb server)
 const client = mongodb.MongoClient;
 const url = "mongodb://localhost:27017"; 
