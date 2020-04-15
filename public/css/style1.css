@@ -68,6 +68,33 @@
     background-image: url('img/logo.png');
 } */
 
+.dropdown-content-uni {
+    display: none;
+    position: fixed;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 9999999;
+    margin-top: 1px;
+  }
+
+  .dropdown-content-uni a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown:hover .dropdown-content-uni {
+    display: block;
+  }
+
+  .dropdown-content-uni a:hover {
+    background-color: #ddd;
+  }
+
 .dropdown-content {
     display: none;
     position: absolute;

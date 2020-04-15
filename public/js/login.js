@@ -1,28 +1,35 @@
 $(document).ready(function () {
-    var uchecker = 0;
-    var pchecker = 1;
 
-    $.fn.onSignIn = function(googleUser){ 
-        var profile = googleUser.getBasicProfile();
+    $('#loginbutton').prop('disabled',true);
 
-        alert("gello");
-        $('#error').text('User does not exist!');
-    }
-
-    //function OnSignIn
-
-    
-
-    $('#login-username').focus(function(){
+    $('#login-username').keyup(function(){
         var username = $('#login-username').val();
 
         $.get('/checkUsername', {Username : username}, function(result){
             
             if(result.Username == username){
-                $('#login-username').css('border-color', '#d9dadc');
-                $('#error').text('');
-                $('#loginbutton').prop('disabled',false);
-                uchecker=1;
+                // $('#login-username').css('border-color', '#d9dadc');
+                // $('#error').text('');
+                // $('#loginbutton').prop('disabled',false);
+
+                $('#login-password').keyup(function(){
+                    var pass = $('#login-password').val();
+            
+                    $.get('/checkPassword', {Password : pass}, function(result){
+                        
+                        if(result.Password == pass){
+                            $('#login-password').css('border-color', '#d9dadc');
+                            $('#error').text('');
+                            $('#loginbutton').prop('disabled',false);
+                        }
+            
+                        else{
+                            // $('#login-password').css('border-color', 'red');
+                            // $('#error').text('Incorrect Password!');
+                            $('#loginbutton').prop('disabled',true);
+                        }
+                    })
+                })
             }
 
             else{
@@ -33,25 +40,43 @@ $(document).ready(function () {
         })
     })
 
-    $('#login-username').blur(function(){
-        var username = $('#login-username').val();
+    $('#login-password').keyup(function(){
+        var pass = $('#login-password').val();
 
-        $.get('/checkUsername', {Username : username}, function(result){
+        $.get('/checkPassword', {Password : pass}, function(result){
             
-            if(result.Username == username){
-                $('#login-username').css('border-color', '#d9dadc');
-                $('#error').text('');
-                $('#loginbutton').prop('disabled',false);
+            if(result.Password == pass){
+                // $('#login-password').css('border-color', '#d9dadc');
+                // $('#error').text('');
+                // $('#loginbutton').prop('disabled',false);
+
+                $('#login-username').blur(function(){
+                    var username = $('#login-username').val();
+            
+                    $.get('/checkUsername', {Username : username}, function(result){
+                        
+                        if(result.Username == username){
+                            $('#login-username').css('border-color', '#d9dadc');
+                            $('#error').text('');
+                            $('#loginbutton').prop('disabled',false);
+                        }
+            
+                        else{
+                            //$('#login-username').css('border-color', 'red');
+                            $('#loginbutton').prop('disabled',true);
+                        }
+                    })
+                })
+            
             }
 
             else{
-                $('#login-username').css('border-color', 'red');
+                $('#login-password').css('border-color', 'red');
                 $('#error').text('User does not exist!');
                 $('#loginbutton').prop('disabled',true);
             }
         })
     })
-
 
     $('#login-password').focus(function(){
         var pass = $('#login-password').val();
@@ -62,31 +87,11 @@ $(document).ready(function () {
                 $('#login-password').css('border-color', '#d9dadc');
                 $('#error').text('');
                 $('#loginbutton').prop('disabled',false);
-                pchecker=1;
             }
 
             else{
-                $('#login-password').css('border-color', 'red');
-                $('#error').text('Incorrect Password!');
-                $('#loginbutton').prop('disabled',true);
-            }
-        })
-    })
-
-    $('#login-password').blur(function(){
-        var pass = $('#login-password').val();
-
-        $.get('/checkPassword', {Password : pass}, function(result){
-            
-            if(result.Password == pass){
-                $('#login-password').css('border-color', '#d9dadc');
-                $('#error').text('');
-                $('#loginbutton').prop('disabled',false);
-            }
-
-            else{
-                $('#login-password').css('border-color', 'red');
-                $('#error').text('Incorrect Password!');
+                // $('#login-password').css('border-color', 'red');
+                // $('#error').text('Incorrect Password!');
                 $('#loginbutton').prop('disabled',true);
             }
         })
