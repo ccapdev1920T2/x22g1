@@ -16,13 +16,12 @@ const timelineController = {
       
         db.findMany('userPost',post,function(result){
             db.find('userProfile', query, projection, function(user){
-                result = {
+                res.render('timeline',{
                     fn: user.fName,
                     ln: user.lName,
-                    cs: user.CreditScore
-                };
+                    cs: user.CreditScore,
+                });
             })
-            res.render('timeline',result);
         })
     },
 
