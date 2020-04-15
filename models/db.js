@@ -84,7 +84,19 @@ const database = {
     },
 
     // RETRIEVE a specific document in a collection based on query
-    findOne: function(collection, query, projection = null, retrieve) {
+    findOne: function(collection, query, retrieve) {
+        client.connect(url, options, function(err, db) {
+            if(err) throw err;
+            var database = db.db(dbName);
+            database.collection(collection).findOne(query, function(err, result) {
+                if(err) throw err;
+                db.close();
+                return retrieve(result);
+            });
+        });
+    },
+
+    find: function(collection, query, projection = null, retrieve) {
         client.connect(url, options, function(err, db) {
             if(err) throw err;
             var database = db.db(dbName);

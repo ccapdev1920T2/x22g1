@@ -15,7 +15,7 @@ const timelineController = {
         };
       
         db.findMany('userPost',post,function(result){
-            db.findOne('userProfile', query, projection, function(user){
+            db.find('userProfile', query, projection, function(user){
                 result = {
                     fn: user.fName,
                     ln: user.lName,
