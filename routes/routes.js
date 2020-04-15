@@ -40,6 +40,8 @@ app.get('/UP', timelineController.getUP);
 
 app.get('/UST', timelineController.getUST);
 
+// app.get('/indivPost', timelineController.getIndiv);
+
 // call function getUserProfile when client requests a username (parameter) 
 app.get('/:Username', controller.getUserProfile);
 
