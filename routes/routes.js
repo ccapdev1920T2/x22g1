@@ -21,8 +21,6 @@ app.get('/checkUsername', controller.checkUsername);
 
 app.get('/checkPassword', controller.checkPassword);
 
-// app.post('/',controller.postLogIn);
-
 app.get('/signup', signUpController.getSignUp);
 
 // app.post('/signup', signupController.postSignUp);
@@ -40,7 +38,7 @@ app.get('/UP', timelineController.getUP);
 
 app.get('/UST', timelineController.getUST);
 
-// app.get('/indivPost', timelineController.getIndiv);
+app.get('/indivPost', timelineController.getIndiv);
 
 // call function getUserProfile when client requests a username (parameter) 
 app.get('/:Username', controller.getUserProfile);
