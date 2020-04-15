@@ -1,3 +1,5 @@
+const db = require('../models/db.js');
+
 const timelineController = {
 
     getTimeline: function (req,res) {

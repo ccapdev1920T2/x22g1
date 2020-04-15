@@ -13,9 +13,11 @@ const controller = {
         res.render('login');
     },
 
-    // executed when client requests '/' for HTTP POST defined in routes.js
+    //executed when client requests '/' for HTTP POST defined in routes.js
     postLogIn: function(req, res){
-        var username = req.body.login-username;
+
+        
+        var username = req.body.username;
 
         var query = {
             Username: username,
