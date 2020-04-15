@@ -5,7 +5,7 @@ const express = require('express');
 // import module `controller` from `../controllers/controller.js`
 const controller = require('../controller/controller.js')
 
-const ADMUController = require('../controller/ADMUController.js')
+const signUpController = require('../controller/signUpController.js')
 
 const app = express();
 
@@ -19,6 +19,8 @@ app.get('/checkUsername', controller.checkUsername);
 app.get('/checkPassword', controller.checkPassword);
 
 //app.post('/',controller.postLogIn);
+
+app.get('/signup', signUpController.getSignUp);
 
 app.get('/HOME', controller.getTimeline);
 
