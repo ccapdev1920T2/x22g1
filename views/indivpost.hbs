@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<head>
+    <title>{{postTitle}}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style1.css">
+    <link rel="stylesheet" type="text/css" href="css/homepagestyle.css">
+    <link rel="icon" href="img/logo.png">
+    <script src="https://kit.fontawesome.com/080b1bc218.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    {{>header}}
+
+    <div class="container-fluid text-center">
+        <div class="row content">
+            <div class="center-post">
+                <div class="col-sm-8 text-left">
+                    <ul class="timeline">
+                        <li class="timeline-inverted">
+                            <div class="{{timelineBadge}}">{{{uniBadge}}}</div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <div class="postNum">{{postNumber}}</div>
+                                    <h4 class="timeline-title">
+                                        {{postTitle}}
+                                    </h4>
+                                    <div class ="dropdown">
+                                        <img src="/img/option.png" style="height: 20px; width: 23px; padding-right: 5px;" id="option1" title="Option">
+                                        <div class="dropdown-content">
+                                            <a href="#">Save Post</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="timeline-author">
+                                    <div class="author"> 
+                                        <a class="a-link" href="indivpost.html" target="_blank">By: {{Username}}</a>
+                                    </div>
+                                    <div class="userCreditScoree">({{CreditScore}} pts)</div>
+                                </span>
+                                <div class="timeline-body">
+                                    <p>{{postBody}}</p>
+                                </div>
+                                <div class="userTagss" title="Tags">
+                                    <span>
+                                        <a class="a-link" href="indivpost.html">Tags: {{postTags}}</a>
+                                    </span>
+                                </div>
+                                <hr>
+                                <div class="userbuttonscontainerr">
+                                    <div class="upvotecountt" title="Upvote Count"><p>{{Upvotes}} upvotes</p></div>                    
+                                    <div class="upvote"><img src="/img/upvote.png" id="upvote1" onclick="toggleUpvote(this)" title="Upvote"></div>
+                                    <div class="downvote"><img src="/img/downvote.png" id="downvote1" onclick="toggleDownvote(this)" title="Downvote"></div>
+                                    <div class="comment"> <img src="/img/comment.png" style="height: 48px; width: 47px; margin-left: -3px;" id="comment1" title="Comment"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-panel">
+                               <div class="comment-container">
+                                   <div class="comment-user">
+                                        <img class="comment-img" src="/img/boy.png">
+                                   </div>   
+                                    <div class="comment-body">
+                                        <div class="author">richard123
+                                            <span class="userCreditScoree">(20 pts)</span>
+                                        </div>
+                                        <p>@Asher Angeles ikaw ba yon?</p>
+                                    </div>
+                               </div>
+                               <div class="comment-container">
+                                <div class="comment-user">
+                                     <img class="comment-img" src="img/human.jpg">
+                                </div>   
+                                 <div class="comment-body">
+                                     <div class="author">patricianugget
+                                         <span class="userCreditScoree">(9 pts)</span>
+                                     </div>
+                                     <p>hay nakoooooooo magaral na nga lang kayo para masulit yung tuition amp</p>
+                                 </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {{>trending}}
+        </div>
+    </div>
+</body>
+
+</html>

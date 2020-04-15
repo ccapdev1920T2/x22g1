@@ -57,6 +57,27 @@ const timelineController = {
         db.findMany('userPost', post, function(result){
             res.render('timeline',result);
         })
+    },
+
+    getIndiv: function (req, res){
+        
+        var post = {Username: "ghoste101"};
+        var postNum = req.query.postNumber;
+        var query = {
+            postNumber: postNum,
+            
+        }
+
+        db.findOne('userPost',query,function(result){
+            if(result){
+                res.redirect('/indivpost?postNum=' + postNum);
+            }
+        })
+
+        db.findOne('userPost', post, function(result){
+            res.render('indivpost', result);
+        })
+
     }
 }
 
