@@ -69,6 +69,20 @@ const database = {
         });
     },
 
+    insert: function(collection, docs, retrieve) {
+        client.connect(url, options, function(err, db) {
+            if(err) throw err;
+            var database = db.db(dbName);
+            database.collection(collection).insert(docs, function(err, result) {
+                if(err) throw err;
+                console.log(result);
+                console.log('1 document successfuly inserted!');
+                db.close();
+                return retrieve(result);
+            });
+        });
+    },
+
     // RETRIEVE a specific document in a collection based on query
     findOne: function(collection, query, projection = null, retrieve) {
         client.connect(url, options, function(err, db) {
