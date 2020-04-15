@@ -90,9 +90,9 @@ const controller = {
     },
 
     getADMU: function (req,res){
-        var post = {};
+        var post = {uniBadge: "&#x1f985"};
       
-        db.findMany('userPost', {uniBadge: "&#x1f985"}, function(result){
+        db.findMany('userPost', post, function(result){
             res.render('timeline',result);
         })
     },
