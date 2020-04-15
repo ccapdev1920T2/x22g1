@@ -41,6 +41,12 @@ const controller = {
         db.findOne('userProfile', {Username : username}, function(result){
             res.send(result);
         })
+
+
+        // mongoose
+        // db.findOne(User, {username: username}, 'username', function (result) {
+        //     res.send(result);
+        // });
     },
 
     checkPassword: function(req,res){
@@ -53,6 +59,21 @@ const controller = {
         db.findOne('userProfile', {Password : pass}, function(result){
             res.send(result);
         })
+
+    },
+
+    checkEmail: function(req, res){
+
+        var email = req.query.Email;
+
+        db.findOne('userProfile', {Email: email}, function(result){
+            res.send(result);
+        })
+
+        // mongoose
+        // db.findOne(User, {email: email}, 'email', function (result) {
+        //     res.send(result);
+        // });
 
     },
 

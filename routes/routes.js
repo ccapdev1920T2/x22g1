@@ -25,7 +25,9 @@ app.get('/checkPassword', controller.checkPassword);
 
 app.get('/signup', signUpController.getSignUp);
 
-app.post('/signup', signupController.postSignUp);
+// app.post('/signup', signupController.postSignUp);
+
+app.get('/checkEmail', controller.checkEmail);
 
 app.get('/HOME', timelineController.getTimeline);
 
