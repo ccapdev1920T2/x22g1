@@ -15,6 +15,8 @@ const port = 9090;
 // partials
 hbs.registerPartials(__dirname + '/views/partials');
 
+app.use(express.urlencoded({extended: true}));
+
 // define css, img, js, and views as static 
 app.use(express.static('public'));
 app.use(express.static('views'));

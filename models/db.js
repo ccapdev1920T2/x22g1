@@ -13,7 +13,7 @@ const client = mongodb.MongoClient;
 const url = "mongodb://localhost:27017"; 
 
 // additional options to prevent warnings when we run the code
-const options = {useUnifiedTopology: true};
+const options = {useUnifiedTopology: true,  useNewUrlParser: true};
 
 // name of database
 const dbName = 'Big4FW_database';
