@@ -15,7 +15,7 @@
     <div class = "template">
         <div class="scope">
             <div class = "header">
-                <a class="logo" tabindex="-1" title="B4FW"></a>
+                <a class="logo" href="/" tabindex="-1" title="B4FW"></a>
             </div>
         </div>
         
@@ -27,7 +27,7 @@
                     <span id="login-continue" class="h5">To continue, log in to Freedom Wall.</span>
                 </div>
             </div>
-            <div class="row">
+            {{!-- <div class="row">
                 <div class="col-xs-12" style="margin-left: 180px; margin-top: 10px; margin-bottom: 20px;">
                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 </div>
@@ -38,8 +38,8 @@
                         <strong class="divider-title"> or </strong>
                     </div>
                 </div>
-            </div>
-            <form name="Log-in" method="post" class="form-login">
+            </div> --}}
+            <form name="hello " method="post" class="form-login">
                 <div class="row">
                     <div class="col-xs-12">
                         <label for="login-username" class="for-forms">
@@ -58,18 +58,24 @@
                                 placeholder="Password" required>
                     </div>
                 </div>
-                <div class="row row-submit">
+            </form>
+            <div class="row row-submit">
                     <div class="col-xs-12">
                         <div class="loginbuttonblock">
                             <input type="submit" id="loginbutton" value="LOG-IN">
                         </div>
                     </div>
-                </div> 
-            </form>
+            </div> 
             <div class="row">
                 <div id="error" style="margin-left: 165px; color: red; font-size:16px; font-weight:600;"></div>
                 <div class="col-xs-12">
                     <div class="divider"></div>
+                    <div class="col-xs-12 text-center">
+                        <span id="account-continue" class="h3">Don't have an account?</span>
+                    </div>
+                     <div class="col-xs-12">
+                        <a href="" class="btn btn-block btn-grey signup sign"><i class="fas fa-sign-in-alt"></i> SIGN UP NOW! </a>
+                    </div>
                     <p class="text-center text-muted footer">Big Four: Freedom Wall</p>
                 </div>
             </div>
