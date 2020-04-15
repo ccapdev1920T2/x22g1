@@ -21,6 +21,7 @@
     "googleapis": "^48.0.0",
     "hbs": "^4.1.1",
     "mongodb": "^3.5.5",
+    "mongoose": "^5.9.9",
     "supervisor": "^0.12.0"
   }
 }
