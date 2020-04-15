@@ -205,6 +205,45 @@ label{
     min-width: 160px;
     text-transform: uppercase;
     white-space: normal;
+    cursor: pointer;
+}
+
+#loginbutton:disabled {
+    cursor: not-allowed;
+    color: #A8A8A8;
+    background-color: #E3E3E3;
+    border: 4px solid #E3E3E3;
+}
+
+#loginbutton{
+    padding: 16px 4px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    line-height: 1;
+    border-radius: 500px;
+    transition-property: background-color, border-color, color, box-shadow, filter;
+    transition-duration: .3s;
+    letter-spacing: 2px;
+    min-width: 160px;
+    text-transform: uppercase;
+    white-space: normal;
+    color: #fff;
+    background-color: rgb(182, 55, 55);
+    width: 100%;
+}
+
+#loginbutton:active{
+    box-shadow: inset 0 2px 5px rgb(223, 34, 65);   
+}
+
+.btn:disabled{
+    cursor: not-allowed;
+    color: #A8A8A8;
+    background-color: #E3E3E3;
+    border: 4px solid #E3E3E3;
 }
 
 .btn-red{
@@ -240,7 +279,7 @@ label{
     box-shadow: inset 0 2px 5px rgb(223, 34, 65);   
 }
 
-.btn-block{
+.loginbuttonblock{
     display: block;
     width: 100%;
 }

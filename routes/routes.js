@@ -14,7 +14,11 @@ app.get('/favicon.ico', controller.getFavicon);
 // call function getIndex when client sends a request for '/' defined in routes.js
 app.get('/', controller.getIndex);
 
-app.post('/',controller.postLogIn);
+app.get('/checkUsername', controller.checkUsername);
+
+app.get('/checkPassword', controller.checkPassword);
+
+//app.post('/',controller.postLogIn);
 
 app.get('/HOME', controller.getTimeline);
 
