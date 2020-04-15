@@ -16,15 +16,11 @@ var user = {
     Password: 'lasalle',
     DisplayPicture: 'human.jpg',
     CreditScore: '54',
-    SavedPostID: '1',
-    University: 'DLSU',
     Bio: 'I love web development!',
     fName: 'Ira',
     lName: 'Villanueva',
-    postNumber: '#8888',
-    postTitle: 'ZZZZ',
-    postBody: 'Hello There',
-    postTags: '#gumanaKa'
+    //SavedPostID: '1',
+    //University: 'DLSU',
 }
 
 // insert object user to collection 'userProfile'

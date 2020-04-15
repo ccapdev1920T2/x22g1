@@ -1,7 +1,7 @@
 
 const db = require('../models/db.js');
 
-const User = require('../models/userModels.js');
+//const User = require('../models/userModels.js');
 
 const signUpController = {
 
@@ -13,21 +13,21 @@ const signUpController = {
 
         var email = req.body.email;
         var password = req.body.password;
-        var passwordRecheck = req.body.passwordRecheck;
         var fName = req.body.fName;
         var lName = req.body.lName;
         var username = req.body.username;
+        var pic = 'default.png'
 
         var user = {
-            email: email,
-            password: password,
-            passwordRecheck: passwordRecheck,
+            Email: email,
+            Password: password,
             fName: fName,
             lName: lName,
-            username: username
+            Username: username,
+            DisplayPicture: pic
         }
 
-        // db.insertOne(User, user, function(flag) {
+        // db.insertOne('userProfile', user, function(flag) {
         //     if(flag) {
         //         res.redirect('/HOME?username=' + username);
         //     }
