@@ -16,7 +16,7 @@ const controller = {
     //executed when client requests '/' for HTTP POST defined in routes.js
     postLogIn: function(req, res){
 
-        
+
         var username = req.body.username;
 
         var query = {
@@ -94,42 +94,6 @@ const controller = {
             // render 'profile.hbs' with the variables based on the result function filtered by the query object
             res.render('profile',result)
         });
-    },
-
-    // retrieve all posts by finding all documents in collection userPost
-    
-
-    getDLSU: function (req,res) {
-        var post = {uniBadge: "&#127993"};
-      
-        db.findMany('userPost', post, function(result){
-            res.render('timeline',result);
-        })
-        
-    },
-
-    getADMU: function (req,res){
-        var post = {uniBadge: "&#x1f985"};
-      
-        db.findMany('userPost', post, function(result){
-            res.render('timeline',result);
-        })
-    },
-
-    getUP: function (req,res){
-        var post = {uniBadge: "&#9994"};
-      
-        db.findMany('userPost', post, function(result){
-            res.render('timeline',result);
-        })
-    },
-
-    getUST: function (req,res){
-        var post = {uniBadge: "&#128047"};
-      
-        db.findMany('userPost', post, function(result){
-            res.render('timeline',result);
-        })
     }
 }
 

@@ -21,7 +21,7 @@ app.get('/checkUsername', controller.checkUsername);
 
 app.get('/checkPassword', controller.checkPassword);
 
-//app.post('/',controller.postLogIn);
+// app.post('/',controller.postLogIn);
 
 app.get('/signup', signUpController.getSignUp);
 
@@ -31,14 +31,14 @@ app.get('/checkEmail', controller.checkEmail);
 
 app.get('/HOME', timelineController.getTimeline);
 
-//call function getADMUTL 
-app.get('/ADMU', controller.getADMU);
+//call function getADMU
+app.get('/ADMU', timelineController.getADMU);
 
-app.get('/DLSU', controller.getDLSU);
+app.get('/DLSU', timelineController.getDLSU);
 
-app.get('/UP', controller.getUP);
+app.get('/UP', timelineController.getUP);
 
-app.get('/UST', controller.getUST);
+app.get('/UST', timelineController.getUST);
 
 // call function getUserProfile when client requests a username (parameter) 
 app.get('/:Username', controller.getUserProfile);
