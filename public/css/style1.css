@@ -295,6 +295,14 @@
     background: #fff;
 }
 
+.a-link{
+    color: #64676b;
+}
+
+.a-link:hover{
+    color:  #4c4d4e;
+}
+
 .text-area{
     height: inherit;
     text-align: initial;
