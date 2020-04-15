@@ -16,7 +16,8 @@ const signUpController = {
         var fName = req.body.fName;
         var lName = req.body.lName;
         var username = req.body.username;
-        var pic = 'default.png'
+        var pic = 'default.png';
+        var userbio = 'This is your default bio';
 
         var user = {
             Email: email,
@@ -24,14 +25,15 @@ const signUpController = {
             fName: fName,
             lName: lName,
             Username: username,
-            DisplayPicture: pic
+            DisplayPicture: pic,
+            Bio: userbio
         }
 
-        // db.insertOne('userProfile', user, function(flag) {
-        //     if(flag) {
-        //         res.redirect('/HOME?username=' + username);
-        //     }
-        // });
+        db.insert('userProfile', user, function(flag) {
+            if(flag) {
+                res.redirect('/HOME?username=' + username);
+            }
+        });
 
     }
 
