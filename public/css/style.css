@@ -233,31 +233,18 @@ label{
     color: #fff;
     background-color: rgb(182, 55, 55);
     width: 100%;
-}
-
-#loginbutton{
-    padding: 16px 4px 18px;
-    font-size: 14px;
-    font-weight: 700;
-    text-align: center;
-    vertical-align: middle;
-    border: 1px solid transparent;
-    line-height: 1;
-    border-radius: 500px;
-    transition-property: background-color, border-color, color, box-shadow, filter;
-    transition-duration: .3s;
-    letter-spacing: 2px;
-    min-width: 160px;
-    text-transform: uppercase;
-    white-space: normal;
-    color: #fff;
-    background-color: rgb(182, 55, 55);
-    width: 100%;
-    margin-block-start: 10px;
+    cursor: pointer;
 }
 
 #loginbutton:active{
     box-shadow: inset 0 2px 5px rgb(223, 34, 65);   
+}
+
+#loginbutton:hover{
+    border: 1px rgb(122, 29, 29) solid;
+    box-shadow: 0 1px 1px #EAEAEA, inset 0 1px 0 rgb(48, 46, 46);
+    background:  rgb(134, 32, 32);
+    color: #fff;
 }
 
 .btn:disabled{
@@ -272,6 +259,12 @@ label{
     background-color: rgb(182, 55, 55);
 }
 
+.btn-block{
+    display: block;
+    width: 92%;
+    margin-left: 17px;
+}
+
 .btn-grey{
     color: #fff;
     background-color: #fff;
@@ -282,7 +275,7 @@ label{
 .signup:hover {
     border: 1px rgb(61, 59, 59) solid;
     box-shadow: 0 1px 1px #EAEAEA, inset 0 1px 0 rgb(48, 46, 46);
-    background:  rgb(61, 58, 58);
+    background:  rgb(109, 103, 103);
     color: #fff;
 }
 

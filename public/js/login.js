@@ -8,9 +8,9 @@ $(document).ready(function () {
         $.get('/checkUsername', {Username : username}, function(result){
             
             if(result.Username == username){
-                // $('#login-username').css('border-color', '#d9dadc');
-                // $('#error').text('');
-                // $('#loginbutton').prop('disabled',false);
+                $('#login-username').css('border-color', '#d9dadc');
+                $('#error').text('');
+               
 
                 $('#login-password').keyup(function(){
                     var pass = $('#login-password').val();

@@ -70,7 +70,6 @@ const database = {
             var database = db.db(dbName);
             database.collection(collection).findOne(query, function(err, result) {
                 if(err) throw err;
-                console.log('1 document retrieved!');
                 db.close();
                 return retrieve(result);
             });
