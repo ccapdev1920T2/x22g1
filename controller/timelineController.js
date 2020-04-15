@@ -14,13 +14,10 @@ const timelineController = {
             CreditScore: 1
         };
       
-        db.findMany('userPost',post,function(result){
-            db.find('userProfile', query, projection, function(user){
-                res.render('timeline',{
-                    fn: user.fName,
-                    ln: user.lName,
-                    cs: user.CreditScore,
-                });
+        db.findMany('userPost',post,function(posts){
+            db.find('userProfile', query, projection, function(userDetails){
+                // res.render('timeline',posts);
+                res.render('timeline',{fn: userDetails.fName, ln: userDetails.lName, cs: userDetails.CreditScore});
             })
         })
     },
