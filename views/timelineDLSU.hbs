@@ -71,46 +71,46 @@
                         {{>createPost}}
                         
                         <hr>
-                        {{#each this}}
-                        <ul class="timeline">
-                            <li class="timeline-inverted">
-                                <div class="timeline-badge lasalle">{{uniBadge}}</div>
-                                <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <div class="postNum">{{postNumber}}</div>
-                                        <h4 class="timeline-title">
-                                            <a href="indivpost.html" style="color: rgb(78, 73, 73);">{{postTitle}}</a>
-                                        </h4>
-                                        <div class ="dropdown">
-                                            <img src="option.png" style="height: 20px; width: 23px; padding-right: 5px;" id="option1" title="Option">
-                                            <div class="dropdown-content">
-                                                <a href="#">Save Post</a>
-                                                <a href="#">Share</a>
+                         {{#each this}}
+                            {{#if postNumber}}
+                            <ul class="timeline">
+                                <li class="timeline-inverted">
+                                    <div class="{{timelineBadge}}">{{uniBadge}}</div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <div class="postNum">{{postNumber}}</div>
+                                            <h4 class="timeline-title">
+                                                <a href="indivpost.html" style="color: rgb(78, 73, 73);">{{postTitle}}</a>
+                                            </h4>
+                                            <div class ="dropdown">
+                                                <img src="/img/option.png" style="height: 20px; width: 23px; padding-right: 5px;" id="option1" title="Option">
+                                                <div class="dropdown-content">
+                                                    <a href="#">Save Post</a>
+                                                    <a href="#">Share</a>
+                                                </div>
                                             </div>
                                         </div>
+                                        <span class="timeline-author">
+                                            <div class="author"> By: {{Username}} </div>
+                                            <div class="userCreditScoree">({{CreditScore}} pts)</div>
+                                        </span>
+                                        <div class="timeline-body">
+                                            <p>{{postBody}}</p>
+                                        </div>
+                                        <div class="userTagss" title="Tags">
+                                            <span>Tags: {{postTags}}</span>
+                                        </div>
+                                        <hr>
+                                        <div class="userbuttonscontainerr">
+                                            <div class="upvotecountt" title="Upvote Count"><p>{{Upvotes}} upvotes</p></div>                    
+                                            <div class="upvote"><img src="/img/upvote.png" id="upvote1" onclick="toggleUpvote(this)" title="Upvote"></div>
+                                            <div class="downvote"><img src="/img/downvote.png" id="downvote1" onclick="toggleDownvote(this)" title="Downvote"></div>
+                                            <div class="comment"> <img src="/img/comment.png" style="height: 48px; width: 47px; margin-left: -3px;" id="comment1" title="Comment"></div>
+                                        </div>
                                     </div>
-                                    <span class="timeline-author">
-                                        <div class="author"> By: {{Username}} </div>
-                                        <div class="userCreditScoree">({{CreditScore}} pts)</div>
-                                    </span>
-                                    <div class="timeline-body">
-                                        <p>{{postBody}}</p>
-                                    </div>
-                                    <div class="userTagss" title="Tags">
-                                        <span>Tags: {{postTags}}</span>
-                                    </div>
-                                    <hr>
-                                    <div class="userbuttonscontainerr">
-                                        <div class="upvotecountt" title="Upvote Count"><p>{{Upvotes}} upvotes</p></div>                    
-                                        <div class="upvote"><img src="upvote.png" id="upvote1" onclick="toggleUpvote(this)" title="Upvote"></div>
-                                        <div class="downvote"><img src="downvote.png" id="downvote1" onclick="toggleDownvote(this)" title="Downvote"></div>
-                                        <div class="comment"> <img src="comment.png" style="height: 48px; width: 47px; margin-left: -3px;" id="comment1" title="Comment"></div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                        {{else}}
-                        <p>hello</p>
+                                </li>
+                            </ul>
+                            {{/if}}
                         {{/each}}
                     </div>
                 </div>
