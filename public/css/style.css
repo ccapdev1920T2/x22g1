@@ -233,10 +233,18 @@ label{
     color: #fff;
     background-color: rgb(182, 55, 55);
     width: 100%;
+    cursor: pointer;
 }
 
 #loginbutton:active{
     box-shadow: inset 0 2px 5px rgb(223, 34, 65);   
+}
+
+#loginbutton:hover{
+    border: 1px rgb(122, 29, 29) solid;
+    box-shadow: 0 1px 1px #EAEAEA, inset 0 1px 0 rgb(48, 46, 46);
+    background:  rgb(134, 32, 32);
+    color: #fff;
 }
 
 .btn:disabled{
@@ -261,7 +269,7 @@ label{
 .signup:hover {
     border: 1px rgb(61, 59, 59) solid;
     box-shadow: 0 1px 1px #EAEAEA, inset 0 1px 0 rgb(48, 46, 46);
-    background:  rgb(61, 58, 58);
+    background:  rgb(109, 103, 103);
     color: #fff;
 }
 

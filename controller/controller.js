@@ -14,17 +14,19 @@ const controller = {
     },
 
     // executed when client requests '/' for HTTP POST defined in routes.js
-    // postLogIn: function(req, res){
-    //     var username = req.body.username;
-       
-    //     var query = {
-    //         Username: username,
-    //     }
+    postLogIn: function(req, res){
+        var username = req.body.login-username;
 
-    //     db.findOne('userProfile',query,function(result){
-            
-    //     })
-    // },
+        var query = {
+            Username: username,
+        }
+
+        db.findOne('userProfile',query,function(result){
+            if(result){
+                res.redirect('/HOME?username=' + username);
+            }
+        })
+    },
 
     // executes when client request for HTTP GET '/checkUsername' defined in routes.js
     checkUsername: function(req,res){
@@ -72,13 +74,7 @@ const controller = {
     },
 
     // retrieve all posts by finding all documents in collection userPost
-    getTimeline: function (req,res) {
-        var post = {};
-      
-        db.findMany('userPost',post,function(result){
-            res.render('timeline',result);
-        })
-    },
+    
 
     getDLSU: function (req,res) {
         var post = {uniBadge: "&#127993"};
