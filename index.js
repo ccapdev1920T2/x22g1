@@ -27,8 +27,11 @@ app.use('/', routes);
 // set hbs as view engine
 app.set('view engine', 'hbs');
 
+// parses incoming requests with urlencoded payloads
+app.use(express.urlencoded({extended: true}));
+
 // connects to the database
-// db.connect();
+db.connect();
 
 app.listen(port, function(){
     console.log('App listening at port ' + port)
