@@ -1,10 +1,11 @@
 // import module from db.js in models directory
-const db = require('./models/db.js')
+const db = require('./models/db.js');
 
-// name of collections
-const userProfile = 'userProfile';
-const userPost = 'userPost';
+//import user module
+const User = require('./models/userModels.js');
 
+// import userposts module
+const Posts = require('./models/UserPostModels.js');
 
 // call function createDatabase 
 db.connect();
@@ -24,7 +25,7 @@ var user = {
 }
 
 // insert object user to collection 'userProfile'
-db.insertOne(userProfile, user);
+db.insertOne(User, user, function(flag){});
 
 // var post = {
 //     postNumber: '123',
@@ -93,4 +94,4 @@ var posts = [
     }
 ]
 
-db.insertMany(userPost,posts);
+db.insertMany(Posts,posts, function(flag) {});
