@@ -5,7 +5,6 @@ const timelineController = {
     // retrieve all posts by finding all documents in collection userPost
     getTimeline: function (req,res) {
         var post = {};
-
         var query = {Username: 'iravillanueva'};
 
         var projection = {
@@ -25,7 +24,6 @@ const timelineController = {
     },
 
     getSideProfile: function (req,res) {
-
         var query = {Username: 'iravillanueva'};
 
         var projection = {
