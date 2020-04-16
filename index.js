@@ -8,8 +8,6 @@ const routes = require('./routes/routes.js');
 // import module `database` from `./model/db.js`
 const db = require('./models/db.js');
 
-var async = require('async');
-
 const path = require('path');
 const app = express();
 const port = 9090;
