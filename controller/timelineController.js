@@ -21,6 +21,7 @@ const timelineController = {
             //     res.render('timeline',{fn: userDetails.fName, ln: userDetails.lName, cs: userDetails.CreditScore});
             // })
         })
+
     },
 
     getSideProfile: function (req,res) {
