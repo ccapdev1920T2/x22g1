@@ -15,9 +15,6 @@ const timelineController = {
     // retrieve all posts by finding all documents in collection userPost
     getTimeline: function (req,res) {
         var post = {};
-        var query = {Username: 'iravillanueva'};
-
-        var projection = 'fName lName CreditScore';
       
         db.findMany(Posts,post,function(posts){
             res.render('timeline',posts);
@@ -34,7 +31,7 @@ const timelineController = {
 
         var projection = 'fName lName CreditScore';
 
-        db.findOne(User, query, projection, function(userDetails){
+        db.find(User, query, projection, function(userDetails){
             //res.render('timeline',{fn: userDetails.fName, ln: userDetails.lName, cs: userDetails.CreditScore});
             //res.send(userDetails);
             res.render('sideProfile',{

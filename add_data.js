@@ -15,6 +15,7 @@ var user = {
     Username: 'iravillanueva',
     Email: 'iravillanueva94@dlsu.edu.ph',
     Password: 'lasalle',
+    passwordRecheck: 'lasalle',
     DisplayPicture: 'human.jpg',
     CreditScore: '54',
     Bio: 'I love web development!',

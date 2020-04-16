@@ -33,6 +33,7 @@ const database = {
 
     insertOne: function(model, doc, callback) {
         model.create(doc, function(error, result) {
+            console.log(error);
             if(error) return callback(false);
             console.log('Added ' + result);
             return callback(true);
@@ -41,6 +42,7 @@ const database = {
 
     insertMany: function(model, docs) {
         model.insertMany(docs, function(error, result) {
+            console.log(error);
             if(error) return callback(false);
             console.log('Added ' + result);
             return callback(true);
@@ -49,6 +51,7 @@ const database = {
 
     findOne: function(model, query, callback) {
         model.findOne(query, function(error, result) {
+            console.log(error);
             if(error) return callback(false);
             return callback(result);
         });
@@ -56,6 +59,7 @@ const database = {
 
     find: function(model, query, projection, callback) {
         model.findOne(query, projection, function(error, result) {
+            console.log(error);
             if(error) return callback(false);
             return callback(result);
         });
@@ -63,6 +67,7 @@ const database = {
 
     findMany: function(model, query, projection, callback) {
         model.find(query, projection, function(error, result) {
+            console.log(error);
             if(error) return callback(false);
             return callback(result);
         });
@@ -70,6 +75,7 @@ const database = {
 
     updateOne: function(model, filter, update) {
         model.updateOne(filter, update, function(error, result) {
+            console.log(error);
             if(error) return callback(false);
             console.log('Document modified: ' + result.nModified);
             return callback(true);
@@ -78,6 +84,7 @@ const database = {
 
     updateMany: function(model, filter, update) {
         model.updateMany(filter, update, function(error, result) {
+            console.log(error);
             if(error) return callback(false);
             console.log('Documents modified: ' + result.nModified);
             return callback(true);
@@ -86,6 +93,7 @@ const database = {
 
     deleteOne: function(model, conditions) {
         model.deleteOne(conditions, function (error, result) {
+            console.log(error);
             if(error) return callback(false);
             console.log('Document deleted: ' + result.deletedCount);
             return callback(true);
@@ -94,6 +102,7 @@ const database = {
 
     deleteMany: function(model, conditions) {
         model.deleteMany(conditions, function (error, result) {
+            console.log(error);
             if(error) return callback(false);
             console.log('Document deleted: ' + result.deletedCount);
             return callback(true);

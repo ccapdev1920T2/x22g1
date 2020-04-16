@@ -40,11 +40,11 @@ var UserPostSchema = new mongoose.Schema({
     },
     Upvotes: {
         type: Number,
-        required: true
+        required: false
     },
     Downvotes: {
         type: String,
-        required: true
+        required: false
     },
 });
 
