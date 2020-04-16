@@ -1,5 +1,15 @@
 const db = require('../models/db.js');
 
+//import user module
+const User = require('../models/userModels.js');
+
+// import userposts module
+const Posts = require('../models/UserPostModels.js');
+
+// import usercomments module
+const Comments = require('../models/UserCommentModels.js');
+
+
 const timelineController = {
 
     // retrieve all posts by finding all documents in collection userPost
@@ -7,13 +17,9 @@ const timelineController = {
         var post = {};
         var query = {Username: 'iravillanueva'};
 
-        var projection = {
-            fName: 1,
-            lName: 1,
-            CreditScore: 1
-        };
+        var projection = 'fName lName CreditScore';
       
-        db.findMany('userPost',post,function(posts){
+        db.findMany(Posts,post,function(posts){
             res.render('timeline',posts);
             // db.find('userProfile', query, projection, function(userDetails){
             //     res.render('timeline',posts);
@@ -26,13 +32,9 @@ const timelineController = {
     getSideProfile: function (req,res) {
         var query = {Username: 'iravillanueva'};
 
-        var projection = {
-            fName: 1,
-            lName: 1,
-            CreditScore: 1
-        };
+        var projection = 'fName lName CreditScore';
 
-        db.find('userProfile', query, projection, function(userDetails){
+        db.findOne(User, query, projection, function(userDetails){
             //res.render('timeline',{fn: userDetails.fName, ln: userDetails.lName, cs: userDetails.CreditScore});
             //res.send(userDetails);
             res.render('sideProfile',{
@@ -46,7 +48,7 @@ const timelineController = {
     getDLSU: function (req,res){
         var post = {uniBadge: "&#127993"};
       
-        db.findMany('userPost', post, function(result){
+        db.findMany(Posts, post, function(result){
             res.render('timeline',result);
         })
         
@@ -56,7 +58,7 @@ const timelineController = {
     getADMU: function (req,res){
         var post = {uniBadge: "&#x1f985"};
       
-        db.findMany('userPost', post, function(result){
+        db.findMany(Posts, post, function(result){
             res.render('timeline',result);
         })
     },
@@ -65,7 +67,7 @@ const timelineController = {
     getUP: function (req,res){
         var post = {uniBadge: "&#9994"};
       
-        db.findMany('userPost', post, function(result){
+        db.findMany(Posts, post, function(result){
             res.render('timeline',result);
         })
     },
@@ -74,7 +76,7 @@ const timelineController = {
     getUST: function (req,res){
         var post = {uniBadge: "&#128047"};
       
-        db.findMany('userPost', post, function(result){
+        db.findMany(Posts, post, function(result){
             res.render('timeline',result);
         })
     },
@@ -84,7 +86,7 @@ const timelineController = {
     
          var post = {Username: "ghoste101"};
     
-        db.findOne('userPost', post, function(result){
+        db.findOne(Posts, post, function(result){
             res.render('indivPost', result);
         })     
 
