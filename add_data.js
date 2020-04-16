@@ -46,7 +46,7 @@ var posts = [
         navbar: 'navbar-dlsu',
         postNumber: '123',
         postTitle: 'Cute guy sa henry grounds',
-        Username: 'luhzul101',
+        Username: 'iravillanueva',
         CreditScore: '60',
         postBody: 'Shoutout nga pala dun sa cute guy na nakatambay sa henry grounds kanina mga 4 pm cute mo po',
         postTags: '#lasalle',
