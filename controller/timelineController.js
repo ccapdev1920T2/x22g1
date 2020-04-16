@@ -34,12 +34,12 @@ const timelineController = {
         };
 
         db.find('userProfile', query, projection, function(userDetails){
-            res.render('timeline',{fn: userDetails.fName, ln: userDetails.lName, cs: userDetails.CreditScore});
+            //res.render('timeline',{fn: userDetails.fName, ln: userDetails.lName, cs: userDetails.CreditScore});
             //res.send(userDetails);
-            // res.render('/partials/sideProfile',{
-            //     fName: userDetails.fName, 
-            //     lName: userDetails.lName, 
-            //     CreditScore: userDetails.CreditScore});
+            res.render('sideProfile',{
+                fName: userDetails.fName, 
+                lName: userDetails.lName, 
+                CreditScore: userDetails.CreditScore});
         })
     },
 
