@@ -1,6 +1,15 @@
 
 const db = require('../models/db.js');
 
+//import user module
+const User = require('../models/userModels.js');
+
+// import userposts module
+const Posts = require('../models/UserPostModels.js');
+
+// import usercomments module
+const Comments = require('../models/UserCommentModels.js');
+
 //const User = require('../models/userModels.js');
 
 const signUpController = {
@@ -41,7 +50,7 @@ const signUpController = {
         var email = req.query.Email;
         //console.log(email);
 
-        db.findOne('userProfile', {Email: email}, function(result){
+        db.findOne(User, {Email: email}, function(result){
             res.send(result);
         })
 
@@ -60,7 +69,7 @@ const signUpController = {
 
         // call the function findOne() from the module in db.js and use the object query to filter the collection 'userProfile' in the database
         // sends an empty string if no result was found. otherwise, send an object containing 'Username'
-        db.findOne('userProfile', {Username : username}, function(result){
+        db.findOne(User, {Username : username}, function(result){
             res.send(result);
         })
 

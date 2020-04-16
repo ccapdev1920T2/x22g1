@@ -1,6 +1,15 @@
 // import module from db.js in models directory
 const db = require('../models/db.js');
 
+//import user module
+const User = require('../models/userModels.js');
+
+// import userposts module
+const Posts = require('../models/UserPostModels.js');
+
+// import usercomments module
+const Comments = require('../models/UserCommentModels.js');
+
 // define objects for client request functions for a certain path in the server
 const controller = {
 
@@ -21,7 +30,7 @@ const controller = {
             Username: Username,
         }
 
-        db.findOne('userProfile',query,function(result){
+        db.findOne(User,query,function(result){
             if(result){
                 res.redirect('/HOME?Username=' + Username);
             }
@@ -36,7 +45,7 @@ const controller = {
 
         // call the function findOne() from the module in db.js and use the object query to filter the collection 'userProfile' in the database
         // sends an empty string if no result was found. otherwise, send an object containing 'Username'
-        db.findOne('userProfile', {Username : username}, function(result){
+        db.findOne(User, {Username : username}, function(result){
             res.send(result);
         })
 
@@ -54,7 +63,7 @@ const controller = {
 
         // call the function findOne() from the module in db.js and use the object query to filter the collection 'userProfile' in the database
         // sends an empty string if no result was found. otherwise, send an object containing 'Username'
-        db.findOne('userProfile', {Password : pass}, function(result){
+        db.findOne(User, {Password : pass}, function(result){
             res.send(result);
         })
 
@@ -72,7 +81,7 @@ const controller = {
         };
 
         // call the function findOne() from the module in db.js and use the object query to filter the collection 'userProfile' in the database
-        db.findOne('userProfile',query,function(result){
+        db.findOne(User,query,function(result){
 
             // render 'profile.hbs' with the variables based on the result function filtered by the query object
             res.render('profile',result)

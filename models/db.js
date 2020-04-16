@@ -1,6 +1,14 @@
 //import mongoose module
 const mongoose = require('mongoose');
 
+//import user module
+const User = require('../models/userModels.js');
+
+// import userposts module
+const Posts = require('../models/UserPostModels.js');
+
+// import usercomments module
+const Comments = require('../models/UserCommentModels.js');
 
 const url = "mongodb://localhost:27017"; 
 

@@ -7,7 +7,7 @@ const userPost = 'userPost';
 
 
 // call function createDatabase 
-db.createDatabase();
+db.connect();
 
 // create/populate userProfile objects containing fields such as Username, Email, Password, DisplayPicture, CreditScore, SavedPostID, University, Bio
 var user = {
