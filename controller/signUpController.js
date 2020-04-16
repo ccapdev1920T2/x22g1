@@ -29,13 +29,28 @@ const signUpController = {
             Bio: userbio
         }
 
-        db.insert('userProfile', user, function(flag) {
-            if(flag) {
-                res.redirect('/HOME?username=' + username);
-            }
-        });
+        // db.insert('userProfile', user, function(flag) {
+        //     if(flag) {
+        //         res.redirect('/HOME?username=' + username);
+        //     }
+        // });
 
-    }
+    },
+
+    checkEmail: function(req, res){
+        var email = req.query.Email;
+        console.log(email);
+
+        db.findOne('userProfile', {Email: email}, function(result){
+            res.send(result);
+        })
+
+        // mongoose
+        // db.findOne(User, {email: email}, 'email', function (result) {
+        //     res.send(result);
+        // });
+
+    },
 
 
 }

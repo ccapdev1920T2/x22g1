@@ -60,21 +60,6 @@ const controller = {
 
     },
 
-    checkEmail: function(req, res){
-
-        var email = req.query.Email;
-
-        db.findOne('userProfile', {Email: email}, function(result){
-            res.send(result);
-        })
-
-        // mongoose
-        // db.findOne(User, {email: email}, 'email', function (result) {
-        //     res.send(result);
-        // });
-
-    },
-
     // retrieve user profile based on the username request of the client defined in routes.js
     getUserProfile: function(req,res){
         
