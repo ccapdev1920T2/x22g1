@@ -15,17 +15,15 @@ const controller = {
 
     //executed when client requests '/' for HTTP POST defined in routes.js
     postLogIn: function(req, res){
-
-
-        var username = req.body.username;
+        var Username = req.body.username;
 
         var query = {
-            Username: username,
+            Username: Username,
         }
 
         db.findOne('userProfile',query,function(result){
             if(result){
-                res.redirect('/HOME?username=' + username);
+                res.redirect('/HOME?Username=' + Username);
             }
         })
     },
