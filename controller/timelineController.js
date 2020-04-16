@@ -83,8 +83,6 @@ const timelineController = {
 
     getIndiv: function (req, res){
     
-        var post = {Username: "ghoste101"};
-
 
         var postNum = req.params.postNumber;
 
