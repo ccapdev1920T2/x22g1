@@ -1,15 +1,9 @@
-
-//import mongodb module
-const mongodb = require('mongodb');
-
 //import mongoose module
 const mongoose = require('mongoose');
 
 //import user module
 const User = require('./userModels.js');
 
-// mongodb client (connection of mongodb server)
-const client = mongodb.MongoClient;
 const url = "mongodb://localhost:27017"; 
 
 // additional options to prevent warnings when we run the code
@@ -32,7 +26,7 @@ const database = {
     },
 
     insertOne: function(model, doc, callback) {
-        db.create(doc, function(error, result) {
+        model.create(doc, function(error, result) {
             if(error) return callback(false);
             console.log('Added ' + result);
             return callback(true);
@@ -40,7 +34,7 @@ const database = {
     },
 
     insertMany: function(model, docs) {
-        db.insertMany(docs, function(error, result) {
+        model.insertMany(docs, function(error, result) {
             if(error) return callback(false);
             console.log('Added ' + result);
             return callback(true);
@@ -48,28 +42,28 @@ const database = {
     },
 
     findOne: function(model, query, callback) {
-        db.findOne(query, function(error, result) {
+        model.findOne(query, function(error, result) {
             if(error) return callback(false);
             return callback(result);
         });
     },
 
     find: function(model, query, projection, callback) {
-        db.findOne(query, projection, function(error, result) {
+        model.findOne(query, projection, function(error, result) {
             if(error) return callback(false);
             return callback(result);
         });
     },
 
     findMany: function(model, query, projection, callback) {
-        db.find(query, projection, function(error, result) {
+        model.find(query, projection, function(error, result) {
             if(error) return callback(false);
             return callback(result);
         });
     },
 
     updateOne: function(model, filter, update) {
-        db.updateOne(filter, update, function(error, result) {
+        model.updateOne(filter, update, function(error, result) {
             if(error) return callback(false);
             console.log('Document modified: ' + result.nModified);
             return callback(true);
@@ -77,7 +71,7 @@ const database = {
     },
 
     updateMany: function(model, filter, update) {
-        db.updateMany(filter, update, function(error, result) {
+        model.updateMany(filter, update, function(error, result) {
             if(error) return callback(false);
             console.log('Documents modified: ' + result.nModified);
             return callback(true);
@@ -85,7 +79,7 @@ const database = {
     },
 
     deleteOne: function(model, conditions) {
-        db.deleteOne(conditions, function (error, result) {
+        model.deleteOne(conditions, function (error, result) {
             if(error) return callback(false);
             console.log('Document deleted: ' + result.deletedCount);
             return callback(true);
@@ -93,7 +87,7 @@ const database = {
     },
 
     deleteMany: function(model, conditions) {
-        db.deleteMany(conditions, function (error, result) {
+        model.deleteMany(conditions, function (error, result) {
             if(error) return callback(false);
             console.log('Document deleted: ' + result.deletedCount);
             return callback(true);
