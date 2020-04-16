@@ -39,7 +39,7 @@ const signUpController = {
 
     checkEmail: function(req, res){
         var email = req.query.Email;
-        console.log(email);
+        //console.log(email);
 
         db.findOne('userProfile', {Email: email}, function(result){
             res.send(result);
@@ -52,6 +52,24 @@ const signUpController = {
 
     },
 
+    checkSignUpUsername: function(req,res){
+
+        // retrieve value of Username stored in req.query object
+        var username = req.query.Username;
+        //console.log(username);
+
+        // call the function findOne() from the module in db.js and use the object query to filter the collection 'userProfile' in the database
+        // sends an empty string if no result was found. otherwise, send an object containing 'Username'
+        db.findOne('userProfile', {Username : username}, function(result){
+            res.send(result);
+        })
+
+
+        // mongoose
+        // db.findOne(User, {username: username}, 'username', function (result) {
+        //     res.send(result);
+        // });
+    },
 
 }
 
