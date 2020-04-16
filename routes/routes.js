@@ -40,10 +40,10 @@ app.get('/UP', timelineController.getUP);
 
 app.get('/UST', timelineController.getUST);
 
-app.get('/indivPost', timelineController.getIndiv);
+app.get('/indivPost/:postNumber', timelineController.getIndiv);
 
 // call function getUserProfile when client requests a username (parameter) 
-app.get('/:Username', controller.getUserProfile);
+app.get('/profile/:Username', controller.getUserProfile);
 
 // enables to export app object when called in another .js file
 module.exports = app;

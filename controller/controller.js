@@ -9,7 +9,7 @@ const controller = {
     },
 
     // render log-in page when client requests '/' defined in routes.js
-    getIndex: function(req,res){
+    getIndex: function(req,res){        
         res.render('login');
     },
 
@@ -93,6 +93,9 @@ const controller = {
             res.render('profile',result)
         });
     }
+
+
+
 }
 
  // enables to export controller object when called in another .js file

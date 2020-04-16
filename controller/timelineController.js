@@ -7,6 +7,7 @@ const timelineController = {
         var post = {};
         var query = {Username: 'iravillanueva'};
 
+
         var projection = {
             fName: 1,
             lName: 1,
@@ -82,9 +83,16 @@ const timelineController = {
 
     getIndiv: function (req, res){
     
-         var post = {Username: "ghoste101"};
+        var post = {Username: "ghoste101"};
+
+
+        var postNum = req.params.postNumber;
+
+        var details = {
+            postNumber: postNum
+        }
     
-        db.findOne('userPost', post, function(result){
+        db.findOne('userPost', details, function(result){
             res.render('indivPost', result);
         })     
 
