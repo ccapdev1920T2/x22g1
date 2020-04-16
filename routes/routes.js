@@ -29,6 +29,8 @@ app.get('/checkEmail', controller.checkEmail);
 
 app.get('/HOME', timelineController.getTimeline);
 
+app.get('/getSideProfile', timelineController.getSideProfile)
+
 //call function getADMU
 app.get('/ADMU', timelineController.getADMU);
 

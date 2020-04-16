@@ -110,11 +110,11 @@ const database = {
 
     // RETRIEVE multiple documents in a collection based on query
     // projection - to show columns in your database or returns specific fields in the result; filter query using projection
-    findMany: function(collection, query, retrieve, projection = null) {
+    findMany: function(collection, query, retrieve) {
         client.connect(url, options, function(err, db) {
             if(err) throw err;
             var database = db.db(dbName);
-            database.collection(collection).find(query, {projection: projection}).toArray(function (err,result){
+            database.collection(collection).find(query).toArray(function (err,result){
                 if(err) throw err;
                 console.log(result);
                 console.log('Documents retrieved: ' + result.insertedCount);
