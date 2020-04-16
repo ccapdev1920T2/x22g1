@@ -11,30 +11,34 @@ const signUpController = {
 
     postSignUp: function(req,res){
 
-        var email = req.body.email;
-        var password = req.body.password;
+        var Email = req.body.email;
+        var Password = req.body.password;
         var fName = req.body.fName;
         var lName = req.body.lName;
-        var username = req.body.username;
+        var Username = req.body.username;
         var pic = 'default.png';
         var userbio = 'This is your default bio';
 
+        console.log(Email);
+
         var user = {
-            Email: email,
-            Password: password,
+            Email: Email,
+            Password: Password,
             fName: fName,
             lName: lName,
-            Username: username,
+            Username: Username,
             DisplayPicture: pic,
             Bio: userbio
         }
 
-        // db.insert('userProfile', user, function(flag) {
-        //     if(flag) {
-        //         res.redirect('/HOME?username=' + username);
+        // db.insert('userProfile',user,function(result){
+        //     if(result){
+        //         res.redirect('/HOME?Username=' + Username);
         //     }
-        // });
+        // })
 
+        res.redirect('/HOME?Username=' + Username);
+        
     },
 
     checkEmail: function(req, res){

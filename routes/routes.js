@@ -23,7 +23,7 @@ app.get('/checkPassword', controller.checkPassword);
 
 app.get('/signup', signUpController.getSignUp);
 
-app.post('/signup', signUpController.getSignUp);
+app.post('/signup', signUpController.postSignUp);
 
 app.get('/checkEmail', signUpController.checkEmail);
 
