@@ -4,4 +4,5 @@ $(document).ready(function () {
     
     //$('#error').text('User does not exist!');
     $('#sideprofile').load('/getSideProfile');
+    
 })

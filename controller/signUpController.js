@@ -19,8 +19,6 @@ const signUpController = {
         var pic = 'default.png';
         var userbio = 'This is your default bio';
 
-        console.log(Email);
-
         var user = {
             Email: Email,
             Password: Password,
@@ -31,13 +29,13 @@ const signUpController = {
             Bio: userbio
         }
 
-        // db.insert('userProfile',user,function(result){
-        //     if(result){
-        //         res.redirect('/HOME?Username=' + Username);
-        //     }
-        // })
+        db.insert('userProfile',user,function(result){
+            if(result){
+                res.redirect('/HOME?Username=' + Username);
+            }
+        })
 
-        res.redirect('/HOME?Username=' + Username);
+        //res.redirect('/HOME?Username=' + Username);
         
     },
 
