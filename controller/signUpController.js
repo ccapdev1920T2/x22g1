@@ -31,13 +31,13 @@ const signUpController = {
             Bio: userbio
         }
 
-        // db.insert('userProfile',user,function(result){
-        //     if(result){
-        //         res.redirect('/HOME?Username=' + Username);
-        //     }
-        // })
+        db.insert('userProfile',user,function(result){
+            if(result){
+                res.redirect('/HOME?Username=' + Username);
+            }
+        })
 
-        res.redirect('/HOME?Username=' + Username);
+        // res.redirect('/HOME?Username=' + Username);
         
     },
 

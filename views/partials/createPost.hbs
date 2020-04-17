@@ -53,13 +53,15 @@
                                 <span class="media-span">
                                 <div class="media-pic">
                                     <div class="dropdown">
-                                        <div class="media-text"><i class="fas fa-filter"></i>UniFilter</div>
-                                            <div class="dropdown-content-uni">
-                                                <a href="ADMU">ADMU</a>
-                                                <a href="DLSU">DLSU</a>
-                                                <a href="UP">UP</a>
-                                                <a href="UST">UST</a>
-                                            </div>
+                                        {{!-- <div class="media-text"><i class="fas fa-filter"></i>UniFilter</div> --}}
+                                            {{!-- <div class="dropdown-content-uni"> --}}
+                                                <select id="universities" name="universities">
+                                                    <option value="ADMU">ADMU</option>
+                                                    <option value="DLSU">DLSU</option>
+                                                    <option value="UP">UP</option>
+                                                    <option value="UST">UST</option>
+                                                </select>
+                                            {{!-- </div> --}}
                                     </div>
                                 </div>
                                 </span>
@@ -69,7 +71,7 @@
                             <div class="media-icon">
                                 <span class="media-span">
                                     <div class="media-pic">
-                                    <div class="media-text"><i class="far fa-edit"></i>Post</div>
+                                    <div class="media-text"><i class="far fa-edit"></i><a href="/HOME">Post</div>
                                     </div>
                                 </span>
                             </div>

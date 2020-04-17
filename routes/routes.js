@@ -7,6 +7,7 @@ const controller = require('../controller/controller.js')
 
 const signUpController = require('../controller/signUpController.js')
 const timelineController = require('../controller/timelineController.js')
+const createPostController = require('../controller/createPostController.js')
 
 const app = express();
 
@@ -30,6 +31,8 @@ app.get('/checkEmail', signUpController.checkEmail);
 app.get('/checkSignUpUsername', signUpController.checkSignUpUsername);
 
 app.get('/HOME', timelineController.getTimeline);
+
+app.post('/HOME', createPostController.postCreate);
 
 app.get('/getSideProfile', timelineController.getSideProfile)
 
