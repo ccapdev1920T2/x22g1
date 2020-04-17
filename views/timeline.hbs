@@ -70,7 +70,7 @@
                 <div class="center-post">
                     <div class="col-sm-8 text-left">
                         {{>createPost}}
-                        
+                        <p id="yes"></p>
                         <hr>
                         {{#each this}}
                             {{#if postNumber}}
@@ -108,9 +108,9 @@
                                         <hr>
                                         <div class="userbuttonscontainerr">
                                             <div class="upvotecountt" title="Upvote Count"><p>{{Upvotes}} upvotes</p></div>                    
-                                            <div class="upvote"><img src="/img/upvote.png" id="upvote1" onclick="toggleUpvote(this)" title="Upvote"></div>
-                                            <div class="downvote"><img src="/img/downvote.png" id="downvote1" onclick="toggleDownvote(this)" title="Downvote"></div>
-                                            <div class="comment"> <img src="/img/comment.png" style="height: 48px; width: 47px; margin-left: -3px;" id="comment1" title="Comment"></div>
+                                            <div class="upvote"><img src="/img/upvote.png" id="upvote" title="Upvote" class="upvotee"></div>
+                                            <div class="downvote"><img src="/img/downvote.png" id="downvote" title="Downvote" class="downvotee"></div>
+                                            <div class="comment"> <img src="/img/comment.png" style="height: 48px; width: 47px; margin-left: -3px;" id="comment" title="Comment"></div>
                                         </div>
                                     </div>
                                 </li>
