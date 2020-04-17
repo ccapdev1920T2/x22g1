@@ -31,9 +31,7 @@ $(document).ready(function(){
                 $('#loginbutton').prop('disabled',true);
             }
 
-            if(username == ""){
-                $('#register-username').css('border-color', '#d9dadc');
-                $('#error').text(''); 
+            else if(username == ''){
                 $('#loginbutton').prop('disabled',true);
             }
 

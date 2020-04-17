@@ -7,13 +7,16 @@ const timelineController = {
         var post = {};
         var query = {Username: 'iravillanueva'};
 
-
         var projection = {
             fName: 1,
             lName: 1,
             CreditScore: 1
         };
-      
+
+        db.findMany('userProfile',post,function(){
+            
+        })
+
         db.findMany('userPost',post,function(posts){
             res.render('timeline',posts);
             // db.find('userProfile', query, projection, function(userDetails){
@@ -22,6 +25,14 @@ const timelineController = {
             // })
         })
 
+    },
+
+    getPosts: function (req, res){
+        var post = {};
+
+        db.findMany('userPost',post,function(posts){
+            res.render('timeline',posts);
+        })
     },
 
     getSideProfile: function (req,res) {
@@ -79,7 +90,6 @@ const timelineController = {
             res.render('timeline',result);
         })
     },
-
 
     getIndiv: function (req, res){
     
