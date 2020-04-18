@@ -21,7 +21,7 @@ const createPostController = {
 
         }
 
-        db.insert('userPost',posts,function(result){
+        db.insertOne('userPost',posts,function(result){
             if(result){
                 res.redirect('/HOME?postTitle=' + postTitle);
             }
