@@ -8,35 +8,40 @@ $(document).ready(function () {
 
     $(".upvote").click(function() {
         if ($(this).attr("class") == "upvote"){
-            this.src = this.src.replace("/img/upvote.png","/img/upvoted.png");
-            if($(this).next().attr("src") == 'http://localhost:9090/img/downvoted.png'){
-                $(this).next().attr("src","/img/downvote.png")
-            }
-            // var yes = this.src;
-            // $("#yes").text(yes);
-            // if(this.src == "http://localhost:9090/img/upvoted.png"){
-            //     this.src = "/img/upvote.png"
-            // }
-        } 
-        else{
-            this.src = this.src.replace("/img/upvoted.png","/img/upvote.png");
-        }
 
-        $(this).toggleClass("on");
+            if(this.src == "http://localhost:9090/img/upvote.png"){
+                this.src = "/img/upvoted.png";
+
+                if($(this).next().attr("src") == 'http://localhost:9090/img/downvoted.png'){
+                    $(this).next().attr("src","/img/downvote.png")
+                }
+                else if($(this).next().attr("src") == '/img/downvoted.png'){
+                    $(this).next().attr("src","/img/downvote.png")
+                }
+            }
+            else{
+                this.src = "/img/upvote.png";
+            }
+
+        } 
     });
 
     $(".downvote").click(function() {
         if ($(this).attr("class") == "downvote"){
-            this.src = this.src.replace("/img/downvote.png","/img/downvoted.png");
-            if($(this).prev().attr("src") == 'http://localhost:9090/img/upvoted.png'){
-                $(this).prev().attr("src","/img/upvote.png")
+            if(this.src == "http://localhost:9090/img/downvote.png"){
+                this.src = "/img/downvoted.png";
+
+                if($(this).prev().attr("src") == 'http://localhost:9090/img/upvoted.png'){
+                    $(this).prev().attr("src","/img/upvote.png")
+                }
+                else if($(this).prev().attr("src") == '/img/upvoted.png'){
+                    $(this).prev().attr("src","/img/upvote.png")
+                }
+            }
+            else{
+                this.src = "/img/downvote.png";
             }
         } 
-        else{
-            this.src = this.src.replace("/img/downvoted.png","/img/downvote.png");
-        }
-        $(this).toggleClass("on");
-        
     });
 
 })
