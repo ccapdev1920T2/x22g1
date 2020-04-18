@@ -13,10 +13,6 @@ const timelineController = {
             CreditScore: 1
         };
 
-        db.findMany('userProfile',post,function(){
-            
-        })
-
         db.findMany('userPost',post,function(posts){
             res.render('timeline',posts);
             // db.find('userProfile', query, projection, function(userDetails){
@@ -37,7 +33,6 @@ const timelineController = {
 
     getSideProfile: function (req,res) {
         var query = {Username: 'iravillanueva'};
-
         var projection = {
             fName: 1,
             lName: 1,
