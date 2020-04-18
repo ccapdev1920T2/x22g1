@@ -99,9 +99,26 @@ const timelineController = {
             res.render('indivPost', result);
         })     
 
+    },
+
+    postVotes: function(req,res){
+
+        var click = {clickTime: new Date()};
+
+        db.insertOne('userPost', click, function(result){
+            console.log('click added to db');
+        })
+    },
+
+    getVotes: function(req,res){
+
+        var post = {clickTime}
+
+        db.find('userPost', post, function(result){
+            res.send(result);
+        })
+
     }
-
-
     
 }
 

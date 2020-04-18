@@ -17,21 +17,27 @@
             <div class="box-text">
                 <div class="box-title">
                     <div class="text-area">
-                        <textarea name="postTitle" id="postTitle" class="post-area-title" placeholder="Title of your post"></textarea>
+                        <form method="POST">
+                            <textarea name="postTitle" id="postTitle" class="post-area-title" placeholder="Title of your post"></textarea>
+                        </form>
                     </div>
                 </div>
             </div>
             <div class="box-text">
                 <div class="box">
                     <div class="text-area">
-                        <textarea name="post" id="post" class="post-area" placeholder="Any story to tell?"></textarea>
+                        <form method="POST">
+                            <textarea name="post" id="post" class="post-area" placeholder="Any story to tell?"></textarea>
+                        </form>
                     </div>
                 </div>
             </div>
             <div class="box-text">
                 <div class="box-tags">
                     <div class="text-area">
-                        <textarea name="postTags" id="postTags" class="post-area-tags" placeholder="Tags you want others to search"></textarea>
+                        <form method="POST">
+                            <textarea name="postTags" id="postTags" class="post-area-tags" placeholder="Tags you want others to search"></textarea>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -56,10 +62,10 @@
                                         {{!-- <div class="media-text"><i class="fas fa-filter"></i>UniFilter</div> --}}
                                             {{!-- <div class="dropdown-content-uni"> --}}
                                                 <select id="universities" name="universities">
-                                                    <option value="ADMU">ADMU</option>
-                                                    <option value="DLSU">DLSU</option>
-                                                    <option value="UP">UP</option>
-                                                    <option value="UST">UST</option>
+                                                    <option value="&#x1f985">ADMU</option>
+                                                    <option value="&#127993">DLSU</option>
+                                                    <option value="&#9994">UP</option>
+                                                    <option value="&#128047">UST</option>
                                                 </select>
                                             {{!-- </div> --}}
                                     </div>
@@ -71,7 +77,7 @@
                             <div class="media-icon">
                                 <span class="media-span">
                                     <div class="media-pic">
-                                    <div class="media-text"><i class="far fa-edit"></i><a href="/HOME">Post</div>
+                                    <div class="media-text" type="SUBMIT"><i class="far fa-edit"></i>Post</div>
                                     </div>
                                 </span>
                             </div>

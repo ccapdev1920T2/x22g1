@@ -12,8 +12,12 @@ $(document).ready(function () {
             if(this.src == "http://localhost:9090/img/upvote.png"){
                 this.src = "/img/upvoted.png";
 
+                
+
+
                 if($(this).next().attr("src") == 'http://localhost:9090/img/downvoted.png'){
                     $(this).next().attr("src","/img/downvote.png")
+                    alert('button was clicked');
                 }
                 else if($(this).next().attr("src") == '/img/downvoted.png'){
                     $(this).next().attr("src","/img/downvote.png")

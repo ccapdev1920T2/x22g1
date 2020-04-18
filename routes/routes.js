@@ -32,9 +32,7 @@ app.get('/checkSignUpUsername', signUpController.checkSignUpUsername);
 
 app.get('/HOME', timelineController.getTimeline);
 
-app.post('/HOME', createPostController.postCreate);
-
-app.get('/getSideProfile', timelineController.getSideProfile)
+app.get('/getSideProfile', timelineController.getSideProfile);
 
 //call function getADMU
 app.get('/ADMU', timelineController.getADMU);
@@ -46,6 +44,12 @@ app.get('/UP', timelineController.getUP);
 app.get('/UST', timelineController.getUST);
 
 app.get('/indivPost/:postNumber', timelineController.getIndiv);
+
+app.post('/HOME', createPostController.postCreate);
+
+app.post('/clicked', timelineController.postVotes);
+
+app.get('/clicks', timelineController.getVotes);
 
 // call function getUserProfile when client requests a username (parameter) 
 app.get('/profile/:Username', controller.getUserProfile);

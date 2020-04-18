@@ -12,6 +12,7 @@ const createPostController = {
         var postTags = req.body.postTags;
         var uniBadge = req.body.universities;
         
+        console.log(req.body.postTitle);
 
         var posts = {
             postTitle: postTitle,
@@ -20,6 +21,8 @@ const createPostController = {
             uniBadge: uniBadge
 
         }
+
+        
 
         db.insertOne('userPost',posts,function(result){
             if(result){
