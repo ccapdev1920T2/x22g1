@@ -31,7 +31,9 @@ app.set('view engine', 'hbs');
 app.use(express.urlencoded({extended: true}));
 
 // connects to the database
- db.connect();
+db.connect();
+
+// save the data into database
 
 app.listen(port, function(){
     console.log('App listening at port ' + port)

@@ -38,11 +38,27 @@ const signUpController = {
             Bio: userbio
         }
 
-        // db.insert('userProfile', user, function(flag) {
-        //     if(flag) {
-        //         res.redirect('/HOME?username=' + username);
-        //     }
-        // });
+        var nUser = new User({
+            Email: email,
+            Password: password,
+            fName: fName,
+            lName: lName,
+            Username: username,
+            DisplayPicture: pic,
+            Bio: userbio
+        });
+
+        nUser.save(function(err,NewUser){
+            if (err) throw err;
+            console.log(newUser);
+            console.log('Successful signup!');
+        })
+
+        db.insert(User, user, function(flag) {
+            if(flag) {
+                res.redirect('/HOME?username=' + username);
+            }
+        });
 
     },
 
