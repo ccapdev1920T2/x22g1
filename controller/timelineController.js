@@ -11,15 +11,18 @@ const timelineController = {
             fName: 1,
             lName: 1,
             CreditScore: 1,
-            Username: 1
+            Username: 1,
+            DisplayPicture: 1,
         };
 
         db.findMany('userPost',post,function(posts){
             db.find('userProfile', query, projection, function(userDetails){
+                console.log(userDetails.DisplayPicture);
                 res.render('timeline',{
                     fn: userDetails.fName, 
                     ln: userDetails.lName, 
                     cs: userDetails.CreditScore,
+                    image: userDetails.DisplayPicture,
                     posts: posts,
                     username: userDetails.Username
                 });
