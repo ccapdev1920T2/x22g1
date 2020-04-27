@@ -54,7 +54,8 @@ const timelineController = {
                     ln: userDetails.lName, 
                     cs: userDetails.CreditScore,
                     posts: posts,
-                    username: userDetails.Username
+                    username: userDetails.Username,
+                    navbar: "navbar-dlsu"
                 });
             })
         })    
@@ -80,7 +81,8 @@ const timelineController = {
                     ln: userDetails.lName, 
                     cs: userDetails.CreditScore,
                     posts: posts,
-                    username: userDetails.Username
+                    username: userDetails.Username,
+                    navbar: "navbar-admu"
                 });
             })
         })   
@@ -106,7 +108,8 @@ const timelineController = {
                     ln: userDetails.lName, 
                     cs: userDetails.CreditScore,
                     posts: posts,
-                    username: userDetails.Username
+                    username: userDetails.Username,
+                    navbar: "navbar-up"
                 });
             })
         })   
@@ -132,7 +135,8 @@ const timelineController = {
                     ln: userDetails.lName, 
                     cs: userDetails.CreditScore,
                     posts: posts,
-                    username: userDetails.Username
+                    username: userDetails.Username,
+                    navbar: "navbar-ust"
                 });
             })
         })   
