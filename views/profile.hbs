@@ -12,6 +12,79 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="jquery-3.4.1.min.js" type="text/javascript"></script>
         <script src="https://kit.fontawesome.com/080b1bc218.js" crossorigin="anonymous"></script>
+    
+        <script type="text/javascript">
+            function openTab(evt, Post){
+            var i, tabcontent, tablinks;
+
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            document.getElementById(Post).style.display = "block";
+            evt.currentTarget.className += " active";
+            }
+            
+            function toggleUpvote(sender){
+                var uvoted = document.createElement("img");
+                uvoted.src = "upvoted.png";
+                var dvoted = document.createElement("img");
+                dvoted.src = "downvoted.png";
+
+                var image = document.getElementById(sender.id);
+                var nimage = document.getElementById(image.nextElementSibling.id);
+                
+                if(image.src != uvoted.src){
+                    if(nimage.src == dvoted.src){
+                        nimage.src = "downvote.png";
+                        image.src = "upvoted.png";
+                    }
+                    else{
+                        image.src = "upvoted.png";
+                    }
+                }
+                else if(image.src == uvoted.src){
+                    image.src = "upvote.png";
+                }
+            }; 
+
+            function toggleDownvote(sender){
+                var uvoted = document.createElement("img");
+                uvoted.src = "upvoted.png";
+                var dvoted = document.createElement("img");
+                dvoted.src = "downvoted.png";
+
+                var image = document.getElementById(sender.id);
+                var pimage = document.getElementById(image.previousElementSibling.id);
+            
+                if(image.src != dvoted.src){
+                    if(pimage.src == uvoted.src){
+                        pimage.src = "upvote.png";
+                        image.src = "downvoted.png";
+                    }
+                    else{
+                        image.src = "downvoted.png";
+                    }
+                }
+                else if(image.src == dvoted.src){
+                    image.src = "downvote.png";
+                }
+            }
+
+            $(document).ready(function(){
+                document.getElementById("RecentPost").style.display = "block";
+                tablinks = document.getElementsByClassName("tablinks");
+                tablinks[0].className += " active";
+            });
+
+        </script>
+
     </head>
 
     <body>

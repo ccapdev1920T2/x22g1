@@ -43,6 +43,9 @@ app.get('/UP', timelineController.getUP);
 
 app.get('/UST', timelineController.getUST);
 
+// call function getUserProfile when client requests a username (parameter) 
+app.get('/profile/:Username', timelineController.getUserProfile);
+
 app.get('/indivPost/:postNumber', timelineController.getIndiv);
 
 //app.post('/HOME', createPostController.postCreate);
@@ -50,9 +53,6 @@ app.get('/indivPost/:postNumber', timelineController.getIndiv);
 // app.post('/clicked', timelineController.postVotes);
 
 // app.get('/clicks', timelineController.getVotes);
-
-// call function getUserProfile when client requests a username (parameter) 
-app.get('/profile/:Username', controller.getUserProfile);
 
 // enables to export app object when called in another .js file
 module.exports = app;
