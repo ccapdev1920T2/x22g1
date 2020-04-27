@@ -26,31 +26,13 @@ const timelineController = {
 
     },
 
-    getPosts: function (req, res){
-        var post = {};
+    // getPosts: function (req, res){
+    //     var post = {};
 
-        db.findMany('userPost',post,function(posts){
-            res.render('timeline',posts);
-        })
-    },
-
-    getSideProfile: function (req,res) {
-        var query = {Username: 'iravillanueva'};
-        var projection = {
-            fName: 1,
-            lName: 1,
-            CreditScore: 1
-        };
-
-        db.find('userProfile', query, projection, function(userDetails){
-            //res.render('timeline',{fn: userDetails.fName, ln: userDetails.lName, cs: userDetails.CreditScore});
-            //res.send(userDetails);
-            res.render('sideProfile',{
-                fName: userDetails.fName, 
-                lName: userDetails.lName, 
-                CreditScore: userDetails.CreditScore});
-        })
-    },
+    //     db.findMany('userPost',post,function(posts){
+    //         res.render('timeline',posts);
+    //     })
+    // },
 
     // retrieve all posts with uniBadge '&#127993' by finding all documents in collection userPost
     getDLSU: function (req,res){
@@ -90,8 +72,6 @@ const timelineController = {
     },
 
     getIndiv: function (req, res){
-    
-
         var postNum = req.params.postNumber;
 
         var details = {
@@ -104,24 +84,29 @@ const timelineController = {
 
     },
 
-    postVotes: function(req,res){
+    // updateUpvote: function (req,res){
+    //     var upvotecount = req.query.Upvotes;
+    //     console.log(upvotecount);
+    // }
 
-        var click = {clickTime: new Date()};
+    // postVotes: function(req,res){
 
-        db.insertOne('userPost', click, function(result){
-            console.log('click added to db');
-        })
-    },
+    //     var click = {clickTime: new Date()};
 
-    getVotes: function(req,res){
+    //     db.insertOne('userPost', click, function(result){
+    //         console.log('click added to db');
+    //     })
+    // },
 
-        var post = {clickTime}
+    // getVotes: function(req,res){
 
-        db.find('userPost', post, function(result){
-            res.send(result);
-        })
+    //     var post = {clickTime}
 
-    }
+    //     db.find('userPost', post, function(result){
+    //         res.send(result);
+    //     })
+
+    // }
     
 }
 

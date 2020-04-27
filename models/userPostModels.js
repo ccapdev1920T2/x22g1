@@ -42,10 +42,6 @@ var UserPostSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    Downvotes: {
-        type: String,
-        required: true
-    },
 });
 
 module.exports = mongoose.model('UserPosts', UserPostSchema);
