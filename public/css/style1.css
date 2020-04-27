@@ -581,6 +581,7 @@ hr {
 }
 
 .trendingbox{
+    margin-left: 30px;
     margin-top: 50px;
     height: 400px;
     width: 300px;
