@@ -17,7 +17,6 @@ const timelineController = {
 
         db.findMany('userPost',post,function(posts){
             db.find('userProfile', query, projection, function(userDetails){
-                console.log(userDetails.DisplayPicture);
                 res.render('timeline',{
                     fn: userDetails.fName, 
                     ln: userDetails.lName, 
@@ -145,7 +144,7 @@ const timelineController = {
         })   
     },
 
-    getIndiv: function (req, res){
+    getIndivPost: function (req, res){
         var postNum = req.params.postNumber;
 
         var details = {
@@ -170,11 +169,33 @@ const timelineController = {
         };
 
         // call the function findOne() from the module in db.js and use the object query to filter the collection 'userProfile' in the database
-        db.findOne('userProfile',query,function(result){
+        // render 'profile.hbs' with the variables based on the result function filtered by the query object
+        // db.findOne('userProfile',query,function(result){
+        //     res.render('profile',result)
+        // });
 
-            // render 'profile.hbs' with the variables based on the result function filtered by the query object
-            res.render('profile',result)
-        });
+        var projection = {
+            fName: 1,
+            lName: 1,
+            CreditScore: 1,
+            DisplayPicture: 1,
+            Username: 1,
+            Bio: 1
+        };
+
+        db.findMany('userPost',query,function(posts){
+            db.find('userProfile', query, projection, function(userDetails){
+                res.render('profile',{
+                    fn: userDetails.fName, 
+                    ln: userDetails.lName, 
+                    cs: userDetails.CreditScore,
+                    bio: userDetails.Bio,
+                    posts: posts,
+                    image: userDetails.DisplayPicture,
+                    username: userDetails.Username,
+                });
+            })
+        }) 
     }
     // updateUpvote: function (req,res){
     //     var upvotecount = req.query.Upvotes;
