@@ -152,13 +152,12 @@ const timelineController = {
         }
     
         db.findOne('userPost', details, function(result){
-            res.render('indivPost', result);
+            res.render('indivpost', result);
         })     
 
     },
-    
-    // retrieve user profile based on the username request of the client defined in routes.js
-    getUserProfile: function(req,res){
+     // retrieve user profile based on the username request of the client defined in routes.js
+     getUserProfile: function(req,res){
         
         // retrieve the username parameter from the URL
         var u = req.params.Username;
@@ -180,23 +179,30 @@ const timelineController = {
             CreditScore: 1,
             DisplayPicture: 1,
             Username: 1,
-            Bio: 1
+            Bio: 1,
         };
 
         db.findMany('userPost',query,function(posts){
             db.find('userProfile', query, projection, function(userDetails){
-                res.render('profile',{
-                    fn: userDetails.fName, 
-                    ln: userDetails.lName, 
-                    cs: userDetails.CreditScore,
-                    bio: userDetails.Bio,
-                    posts: posts,
-                    image: userDetails.DisplayPicture,
-                    username: userDetails.Username,
-                });
+               if(userDetails != null){
+                    res.render('profile',{
+                        fn: userDetails.fName, 
+                        ln: userDetails.lName, 
+                        cs: userDetails.CreditScore,
+                        bio: userDetails.Bio,
+                        posts: posts,
+                        image: userDetails.DisplayPicture,
+                        username: userDetails.Username,
+                    });
+                }
+                else{
+                    res.send("error");
+                }
             })
         }) 
     }
+    
+   
     // updateUpvote: function (req,res){
     //     var upvotecount = req.query.Upvotes;
     //     console.log(upvotecount);
