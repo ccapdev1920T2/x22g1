@@ -43,8 +43,8 @@ $(document).ready(function () {
         } 
     });
 
-    $('$comment').click(function(){
-        $('#contacts').append(data);
+    $(".comment").click(function(){
+        $('#commentBar').append();
     })
 
 })
