@@ -24,7 +24,7 @@ const signUpController = {
             Password: Password,
             fName: fName,
             lName: lName,
-            Username: Username,
+            DisplayName: Username,
             DisplayPicture: pic,
             Bio: userbio
         }
@@ -62,7 +62,7 @@ const signUpController = {
 
         // call the function findOne() from the module in db.js and use the object query to filter the collection 'userProfile' in the database
         // sends an empty string if no result was found. otherwise, send an object containing 'Username'
-        db.findOne('userProfile', {Username : username}, function(result){
+        db.findOne('userProfile', {DisplayName : username}, function(result){
             res.send(result);
         })
 

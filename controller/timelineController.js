@@ -6,13 +6,13 @@ const timelineController = {
     // retrieve all posts by finding all documents in collection userPost
     getTimeline: function (req,res) {
         var post = {};
-        var query = {Username: req.query.Username};
+        var query = {DisplayName: req.query.Username};
 
         var projection = {
             fName: 1,
             lName: 1,
             CreditScore: 1,
-            Username: 1,
+            DisplayName: 1,
             DisplayPicture: 1,
         };
 
@@ -47,7 +47,7 @@ const timelineController = {
             fName: 1,
             lName: 1,
             CreditScore: 1,
-            Username: 1
+            DisplayName: 1
         };
 
         db.findMany('userPost',post,function(posts){
@@ -57,7 +57,7 @@ const timelineController = {
                     ln: userDetails.lName, 
                     cs: userDetails.CreditScore,
                     posts: posts,
-                    username: userDetails.Username,
+                    DisplayName: userDetails.DisplayName,
                     navbar: "navbar-dlsu"
                 });
             })
@@ -74,7 +74,7 @@ const timelineController = {
             fName: 1,
             lName: 1,
             CreditScore: 1,
-            Username: 1
+            DisplayName: 1
         };
 
         db.findMany('userPost',post,function(posts){
@@ -84,7 +84,7 @@ const timelineController = {
                     ln: userDetails.lName, 
                     cs: userDetails.CreditScore,
                     posts: posts,
-                    username: userDetails.Username,
+                    DisplayName: userDetails.DisplayName,
                     navbar: "navbar-admu"
                 });
             })
@@ -101,7 +101,7 @@ const timelineController = {
             fName: 1,
             lName: 1,
             CreditScore: 1,
-            Username: 1
+            DisplayName: 1
         };
 
         db.findMany('userPost',post,function(posts){
@@ -111,7 +111,7 @@ const timelineController = {
                     ln: userDetails.lName, 
                     cs: userDetails.CreditScore,
                     posts: posts,
-                    username: userDetails.Username,
+                    DisplayName: userDetails.DisplayName,
                     navbar: "navbar-up"
                 });
             })
@@ -128,7 +128,7 @@ const timelineController = {
             fName: 1,
             lName: 1,
             CreditScore: 1,
-            Username: 1
+            DisplayName: 1
         };
 
         db.findMany('userPost',post,function(posts){
@@ -138,7 +138,7 @@ const timelineController = {
                     ln: userDetails.lName, 
                     cs: userDetails.CreditScore,
                     posts: posts,
-                    username: userDetails.Username,
+                    DisplayName: userDetails.DisplayName,
                     navbar: "navbar-ust"
                 });
             })
@@ -194,7 +194,7 @@ const timelineController = {
 
         // assign the retrieved username as an object 'query'
         var query = {
-            Username: u
+            DisplayName: u
         };
 
         // call the function findOne() from the module in db.js and use the object query to filter the collection 'userProfile' in the database
@@ -208,7 +208,7 @@ const timelineController = {
             lName: 1,
             CreditScore: 1,
             DisplayPicture: 1,
-            Username: 1,
+            DisplayName: 1,
             Bio: 1,
         };
 
@@ -222,7 +222,7 @@ const timelineController = {
                         bio: userDetails.Bio,
                         posts: posts,
                         image: userDetails.DisplayPicture,
-                        username: userDetails.Username,
+                        DisplayName: userDetails.DisplayName,
                     });
                 }
                 else{

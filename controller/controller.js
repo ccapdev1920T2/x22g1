@@ -18,7 +18,7 @@ const controller = {
         var Username = req.body.username;
 
         var query = {
-            Username: Username,
+            DisplayName: Username,
         }
 
         db.findOne('userProfile',query,function(result){
