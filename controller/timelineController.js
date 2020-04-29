@@ -199,12 +199,14 @@ const timelineController = {
      getUserProfile: function(req,res){
         
         // retrieve the username parameter from the URL
-        var u = req.params.Username;
+        var u = req.params.DisplayName;
 
         // assign the retrieved username as an object 'query'
         var query = {
             DisplayName: u
         };
+
+        //var update = {$set: {"CreditScore": "12"}}
 
         // call the function findOne() from the module in db.js and use the object query to filter the collection 'userProfile' in the database
         // render 'profile.hbs' with the variables based on the result function filtered by the query object
@@ -220,6 +222,8 @@ const timelineController = {
             DisplayName: 1,
             Bio: 1,
         };
+
+        //db.updateOne('userProfile', query, update);
 
         db.findMany('userPost',query,function(posts){
             db.find('userProfile', query, projection, function(userDetails){
