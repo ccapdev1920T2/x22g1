@@ -23,7 +23,7 @@ const controller = {
 
         db.findOne('userProfile',query,function(result){
             if(result){
-                res.redirect('/HOME?Username=' + Username);
+                res.redirect('/HOME?_id=' + result._id + '&Username=' + Username);
             }
         })
     },

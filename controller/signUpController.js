@@ -31,7 +31,7 @@ const signUpController = {
 
         db.insert('userProfile',user,function(result){
             if(result){
-                res.redirect('/HOME?Username=' + Username);
+                res.redirect('/HOME?_id=' + result._id + '&Username=' + Username);
             }
         })
 

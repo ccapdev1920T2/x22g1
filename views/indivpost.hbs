@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    {{>header Username = username}}
+    {{>header Username = username navbar = navbar}}
 
     <div class="container-fluid text-center">
         <div class="row content">
@@ -25,7 +25,7 @@
                                         <div class="timeline-heading">
                                             {{!-- <div class="postNum">{{postNumber}}</div> --}}
                                             <h4 class="timeline-title">
-                                                <a href="/indivPost/{{posts._id}}" style="color: rgb(78, 73, 73);">{{posts.postTitle}}</a>
+                                                <p style="color: rgb(78, 73, 73);">{{posts.postTitle}}</p>
                                             </h4>
                                             <div class ="dropdown">
                                                 <img src="/img/option.png" style="height: 20px; width: 23px; padding-right: 5px;" id="option1" title="Option">

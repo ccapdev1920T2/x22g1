@@ -24,7 +24,7 @@ const timelineController = {
                     cs: userDetails.CreditScore,
                     image: userDetails.DisplayPicture,
                     posts: posts,
-                    username: userDetails.Username
+                    username: userDetails.Username,
                 });
             })
         })
@@ -146,17 +146,44 @@ const timelineController = {
     },
 
     getIndivPost: function (req, res){
-        var id = req.params._id;
+        var id = req.query._id;
 
         var details = {
             _id: ObjectId(id)
         }
 
          db.findOne('userPost', details, function(result){
-            res.render('indivpost',{
-                posts: result,
-                username: result.Username
-            });
+            if(result.uniBadge == '&#127993'){
+                res.render('indivpost',{
+                    posts: result,
+                    username: req.query.Username,
+                    navbar: "navbar-dlsu"
+                });
+            }
+
+            else if(result.uniBadge == "&#x1f985"){
+                res.render('indivpost',{
+                    posts: result,
+                    username: req.query.Username,
+                    navbar: "navbar-admu"
+                });
+            }
+
+            else if(result.uniBadge == "&#9994" ){
+                res.render('indivpost',{
+                    posts: result,
+                    username: req.query.Username,
+                    navbar: "navbar-up"
+                });
+            }
+
+            else{
+                res.render('indivpost',{
+                    posts: result,
+                    username: req.query.Username,
+                    navbar: "navbar-ust"
+                });
+            }
         })   
     },
      // retrieve user profile based on the username request of the client defined in routes.js
