@@ -66,6 +66,9 @@
                                         </div>
                                     </div>
                                 </li>
+                                {{#each userComments}}
+                                    {{>commentBar DisplayPicture = image}}
+                                {{/each}}
                             </ul>
                             {{/if}}
                         {{/each}}

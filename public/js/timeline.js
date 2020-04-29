@@ -5,7 +5,6 @@ $(document).ready(function () {
     //$('#error').text('User does not exist!');
     //$('#sideprofile').load('/getSideProfile');
 
-
     $(".upvote").click(function() {
         if ($(this).attr("class") == "upvote"){
 
@@ -43,4 +42,9 @@ $(document).ready(function () {
             }
         } 
     });
+
+    $(".comment").click(function(){
+        $('#commentBar').append();
+    })
+
 })
