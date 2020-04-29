@@ -24,7 +24,7 @@
                         {{>createPost}}
                         <hr>
                         {{#each posts}}
-                            {{#if postNumber}}
+                            {{#if _id}}
                             <ul class="timeline">
                                 <li class="timeline-inverted">
                                     <div class="{{timelineBadge}}">{{{uniBadge}}}</div>
