@@ -24,7 +24,7 @@ const timelineController = {
                     cs: userDetails.CreditScore,
                     image: userDetails.DisplayPicture,
                     posts: posts,
-                    username: userDetails.Username,
+                    username: req.query.Username,
                 });
             })
         })
