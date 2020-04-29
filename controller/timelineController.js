@@ -202,9 +202,13 @@ const timelineController = {
         var u = req.params.DisplayName;
 
         // assign the retrieved username as an object 'query'
-        var query = {
-            DisplayName: u
+        var querypost = {
+            Username: u
         };
+
+        var queryuser = {
+            DisplayName: u
+        }
 
         //var update = {$set: {"CreditScore": "12"}}
 
@@ -225,9 +229,8 @@ const timelineController = {
 
         //db.updateOne('userProfile', query, update);
 
-        db.findMany('userPost',query,function(posts){
-            console.log(posts);
-            db.find('userProfile', query, projection, function(userDetails){
+        db.findMany('userPost',querypost,function(posts){
+            db.find('userProfile', queryuser, projection, function(userDetails){
                if(userDetails != null){
                     res.render('profile',{
                         fn: userDetails.fName, 
