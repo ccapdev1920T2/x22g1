@@ -146,56 +146,18 @@ const timelineController = {
     },
 
     getIndivPost: function (req, res){
-        // var postNum = req.params.postNumber;
-
-        // var details = {
-        //     postNumber: postNum
-        // }
-    
-        
-
         var id = req.params._id;
-         console.log(id);
 
         var details = {
-            _id: ObjectId("5ea8267e2044ab1cb8bc76cb")
+            _id: ObjectId(id)
         }
 
          db.findOne('userPost', details, function(result){
-            res.render('indivpost', result);
+            res.render('indivpost',{
+                posts: result,
+                username: result.Username
+            });
         })   
-        // var projection = {
-        //     fName: 1,
-        //     lName: 1,
-        //     CreditScore: 1,
-        //     Username: 1,
-        //     _id: 1
-        // };
-    
-        // db.find('userPost', details, projection, function(result){
-        //     console.log(result);
-        //     res.render('indivpost', result);
-        // })    
-        
-
-        
-        // db.find('userProfile', query, projection, function(userDetails){
-        //     if(userDetails != null){
-        //          res.render('profile',{
-        //              fn: userDetails.fName, 
-        //              ln: userDetails.lName, 
-        //              cs: userDetails.CreditScore,
-        //              bio: userDetails.Bio,
-        //              posts: posts,
-        //              image: userDetails.DisplayPicture,
-        //              username: userDetails.Username,
-        //          });
-        //      }
-        //      else{
-        //          res.send("error");
-        //      }
-        //  })
-
     },
      // retrieve user profile based on the username request of the client defined in routes.js
      getUserProfile: function(req,res){
