@@ -44,7 +44,7 @@ app.get('/UP', timelineController.getUP);
 app.get('/UST', timelineController.getUST);
 
 // call function getUserProfile when client requests a username (parameter) 
-app.get('/profile/:Username', timelineController.getUserProfile);
+app.get('/profile/:DisplayName', timelineController.getUserProfile);
 
 app.get('/indivPost', timelineController.getIndivPost);
 

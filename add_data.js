@@ -11,7 +11,7 @@ db.createDatabase();
 
 // create/populate userProfile objects containing fields such as Username, Email, Password, DisplayPicture, CreditScore, SavedPostID, University, Bio
 var user = {
-    Username: 'iravillanueva',
+    DisplayName: 'iravillanueva',
     Email: 'iravillanueva94@dlsu.edu.ph',
     Password: 'lasalle',
     DisplayPicture: 'human.jpg',

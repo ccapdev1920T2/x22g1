@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top {{navbar}}">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/HOME?Username={{Username}}">BIG FOUR: Freedom Wall</a>
+            <a class="navbar-brand" href="/HOME?Username={{DisplayName}}">BIG FOUR: Freedom Wall</a>
         </div>
         <form class="navbar-form navbar-left" action="/action_page.php">
             <div class="input-group">
@@ -14,13 +14,13 @@
             </div>
         </form>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="/HOME?Username={{Username}}"><i class="fas fa-home"></i> HOME</a></li>
-            <li><a href="/ADMU?Username={{Username}}">&#x1f985 ADMU</a></li>
-            <li><a href="/DLSU?Username={{Username}}">&#127993 DLSU</a></li>
-            <li><a href="/UP?Username={{Username}}">&#9994 UP</a></li>
-            <li><a href="/UST?Username={{Username}}">&#128047 UST</a></li>
+            <li><a href="/HOME?Username={{DisplayName}}"><i class="fas fa-home"></i> HOME</a></li>
+            <li><a href="/ADMU?Username={{DisplayName}}">&#x1f985 ADMU</a></li>
+            <li><a href="/DLSU?Username={{DisplayName}}">&#127993 DLSU</a></li>
+            <li><a href="/UP?Username={{DisplayName}}">&#9994 UP</a></li>
+            <li><a href="/UST?Username={{DisplayName}}">&#128047 UST</a></li>
                 <div class="dropdown prof">
-                    <li><a href="/profile/{{Username}}" class="dropbtn" style="color:white; font-size:14px; border: 1px solid white; margin-right: 10px;" title="Go to Profile"><i class="far fa-user"></i> PROFILE</a></li>
+                    <li><a href="/profile/{{DisplayName}}" class="dropbtn" style="color:white; font-size:14px; border: 1px solid white; margin-right: 10px;" title="Go to Profile"><i class="far fa-user"></i> PROFILE</a></li>
                     <div class="dropdown-content">
                         <a href="/">Log out</a>
                     </div>
