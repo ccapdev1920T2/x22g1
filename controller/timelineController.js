@@ -6,7 +6,7 @@ const timelineController = {
     // retrieve all posts by finding all documents in collection userPost
     getTimeline: function (req,res) {
         var post = {};
-        var query = {DisplayName: req.query.Username};
+        var query = {DisplayName: req.query.DisplayName};
 
         var projection = {
             fName: 1,
@@ -24,7 +24,7 @@ const timelineController = {
                     cs: userDetails.CreditScore,
                     image: userDetails.DisplayPicture,
                     posts: posts,
-                    username: req.query.Username,
+                    DisplayName: req.query.DisplayName,
                 });
             })
         })
@@ -41,13 +41,14 @@ const timelineController = {
     // retrieve all posts with uniBadge '&#127993' by finding all documents in collection userPost
     getDLSU: function (req,res){
         var post = {uniBadge: "&#127993"};
-        var query = {Username: req.query.Username};
+        var query = {DisplayName: req.query.DisplayName};
 
         var projection = {
             fName: 1,
             lName: 1,
             CreditScore: 1,
-            DisplayName: 1
+            DisplayName: 1,
+            DisplayPicture: 1,
         };
 
         db.findMany('userPost',post,function(posts){
@@ -57,6 +58,7 @@ const timelineController = {
                     ln: userDetails.lName, 
                     cs: userDetails.CreditScore,
                     posts: posts,
+                    image: userDetails.DisplayPicture,
                     DisplayName: userDetails.DisplayName,
                     navbar: "navbar-dlsu"
                 });
@@ -68,13 +70,14 @@ const timelineController = {
     getADMU: function (req,res){
         var post = {uniBadge: "&#x1f985"};
       
-        var query = {Username: req.query.Username};
+        var query = {DisplayName: req.query.DisplayName};
 
         var projection = {
             fName: 1,
             lName: 1,
             CreditScore: 1,
-            DisplayName: 1
+            DisplayName: 1,
+            DisplayPicture: 1,
         };
 
         db.findMany('userPost',post,function(posts){
@@ -84,6 +87,7 @@ const timelineController = {
                     ln: userDetails.lName, 
                     cs: userDetails.CreditScore,
                     posts: posts,
+                    image: userDetails.DisplayPicture,
                     DisplayName: userDetails.DisplayName,
                     navbar: "navbar-admu"
                 });
@@ -95,13 +99,14 @@ const timelineController = {
     getUP: function (req,res){
         var post = {uniBadge: "&#9994"};
         
-        var query = {Username: req.query.Username};
+        var query = {DisplayName: req.query.DisplayName};
 
         var projection = {
             fName: 1,
             lName: 1,
             CreditScore: 1,
-            DisplayName: 1
+            DisplayName: 1,
+            DisplayPicture: 1,
         };
 
         db.findMany('userPost',post,function(posts){
@@ -111,6 +116,7 @@ const timelineController = {
                     ln: userDetails.lName, 
                     cs: userDetails.CreditScore,
                     posts: posts,
+                    image: userDetails.DisplayPicture,
                     DisplayName: userDetails.DisplayName,
                     navbar: "navbar-up"
                 });
@@ -122,13 +128,14 @@ const timelineController = {
     getUST: function (req,res){
         var post = {uniBadge: "&#128047"};
       
-        var query = {Username: req.query.Username};
+        var query = {DisplayName: req.query.DisplayName};
 
         var projection = {
             fName: 1,
             lName: 1,
             CreditScore: 1,
-            DisplayName: 1
+            DisplayName: 1,
+            DisplayPicture: 1,
         };
 
         db.findMany('userPost',post,function(posts){
@@ -138,6 +145,7 @@ const timelineController = {
                     ln: userDetails.lName, 
                     cs: userDetails.CreditScore,
                     posts: posts,
+                    image: userDetails.DisplayPicture,
                     DisplayName: userDetails.DisplayName,
                     navbar: "navbar-ust"
                 });
@@ -147,6 +155,7 @@ const timelineController = {
 
     getIndivPost: function (req, res){
         var id = req.query._id;
+        console.log()
 
         var details = {
             _id: ObjectId(id)
@@ -156,7 +165,7 @@ const timelineController = {
             if(result.uniBadge == '&#127993'){
                 res.render('indivpost',{
                     posts: result,
-                    username: req.query.Username,
+                    username: req.query.DisplayName,
                     navbar: "navbar-dlsu"
                 });
             }
@@ -164,7 +173,7 @@ const timelineController = {
             else if(result.uniBadge == "&#x1f985"){
                 res.render('indivpost',{
                     posts: result,
-                    username: req.query.Username,
+                    username: req.query.DisplayName,
                     navbar: "navbar-admu"
                 });
             }
@@ -172,7 +181,7 @@ const timelineController = {
             else if(result.uniBadge == "&#9994" ){
                 res.render('indivpost',{
                     posts: result,
-                    username: req.query.Username,
+                    username: req.query.DisplayName,
                     navbar: "navbar-up"
                 });
             }
@@ -180,7 +189,7 @@ const timelineController = {
             else{
                 res.render('indivpost',{
                     posts: result,
-                    username: req.query.Username,
+                    username: req.query.DisplayName,
                     navbar: "navbar-ust"
                 });
             }

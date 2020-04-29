@@ -25,7 +25,7 @@ $(document).ready(function(){
 
         $.get('/checkSignUpUsername', {Username: username}, function(result){
 
-            if(result.Username == username){
+            if(result.DisplayName == username){
                 $('#register-username').css('border-color', 'red');
                 $('#error').text('Username already registered!'); 
                 $('#loginbutton').prop('disabled',true);
