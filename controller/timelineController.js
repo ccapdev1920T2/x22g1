@@ -226,6 +226,7 @@ const timelineController = {
         //db.updateOne('userProfile', query, update);
 
         db.findMany('userPost',query,function(posts){
+            console.log(posts);
             db.find('userProfile', query, projection, function(userDetails){
                if(userDetails != null){
                     res.render('profile',{
