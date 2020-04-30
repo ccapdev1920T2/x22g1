@@ -48,6 +48,8 @@ app.get('/profile/:DisplayName', timelineController.getUserProfile);
 
 app.get('/indivPost', timelineController.getIndivPost);
 
+// app.get('/check', timelineController.check);
+
 //app.post('/HOME', createPostController.postCreate);
 
 // app.post('/clicked', timelineController.postVotes);

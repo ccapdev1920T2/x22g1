@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-    // $('#postbutton').prop('disabled',true);
-
     $(".upvote").click(function() {
         if ($(this).attr("class") == "upvote"){
 
@@ -40,19 +38,22 @@ $(document).ready(function () {
         } 
     });
 
-    $('#postTitle').keyup(function(){
-        var email = $('#postTitle').val();
-       
-       
-   });
+//     $('#postTitle').keyup(function(){
+//         var email = $('#postTitle').val();
 
-   
-   $('#postTitle').keyup(function(){
-           
-});
+//         $.get('/check', {Email: email}, function(result){
 
-
-   
+//             // if(result.Email == email) {
+//             //     $('#register-email').css('border-color', 'red');
+//             //     $('#error').text('Email already registered!');      
+//             // }
+            
+//             // else{
+//             //     $('#register-email').css('border-color', '#d9dadc');
+//             //     $('#error').text(''); 
+//             // }
+//         });
+//    });
 
     // $(".comment").click(function(){
     //     $('#commentBar').append();

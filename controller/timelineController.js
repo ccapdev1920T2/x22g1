@@ -245,6 +245,12 @@ const timelineController = {
         }) 
     },
 
+    check: function(req, res){
+        var email = req.query.Email;
+        console.log(email);
+
+    },
+
     // createPost: function(req,res){
 
     // },

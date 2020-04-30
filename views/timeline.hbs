@@ -16,143 +16,16 @@
         {{>header DisplayName = DisplayName navbar = navbar}}
         <div class="container-fluid text-center">
             <div class="row content line-nav">
-                <div class="col-sm-2 sidenav" id="sideprofile">
+                <div class="col-sm-2 sidenav" id="sideprofile" style="margin-left: -20px;">
                     {{>sideProfile fName = fn lName = ln CreditScore = cs DisplayName = DisplayName DisplayPicture = image}}
                 </div>
                 <div class="center-post">
                     <div class="col-sm-8 text-left">
-                        {{!-- {{>createPost}} --}}
-                        
-                        <form name="CreatePost" method="POST">
-                            <div class="post-text">
-                                <div class="whole-post">
-                                    <div class="post-pic">
-                                        <a class="pic" href="/profile/{{DisplayName}}">
-                                            <img class="img" src="/img/{{image}}" height="40" width="40" alt>
-                                        </a>
-                                    </div>
-                                    <div class="actual-text">
-                                        <div class="box-text">
-                                            <div class="box-title">
-                                                <div class="text-area">
-                                                    <textarea name="postTitle" id="postTitle" class="post-area-title" placeholder="Title of your post"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="box-text">
-                                            <div class="box">
-                                                <div class="text-area">                                  
-                                                    <textarea name="postBody" id="postBody" class="post-area" placeholder="Any story to tell?"></textarea>                                                  
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="box-text">
-                                            <div class="box-tags">
-                                                <div class="text-area">                                                  
-                                                    <textarea name="postTags" id="postTags" class="post-area-tags" placeholder="Tags you want others to search"></textarea>                                                   
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="buttons-post">
-                                            <div class="buttons-post2">
-                                                <ul class="buttons-post-icons">
-                                                    <li class="media-button">
-                                                        <div class="media-icon">
-                                                            <span class="media-span">
-                                                                <div class="media-pic"style="border: 1px solid gray">
-                                                                <div class="media-text"><i class="far fa-images"></i> Photo/Video</div>
-                                                                </div>
-                                                            </span>
-                                                        </div>
-                                                    </li>
-                                                    <li class="media-button">
-                                                        <div class="media-icon">
-                                                            <span class="media-span">
-                                                            <div class="media-pic" style="border: 1px solid gray">
-                                                                <div class="dropdown">
-                                                                    {{!-- <div class="media-text"><i class="fas fa-filter"></i>UniFilter</div> --}}
-                                                                        {{!-- <div class="dropdown-content-uni"> --}}
-                                                                            <div class = "media-text"> <i class="fas fa-filter"></i>
-                                                                               <select id="universities" name="universities" style="border: none; background-color: rgba(126, 125, 125, 0); cursor:pointer">
-                                                                                    <option value="&#x1f985">ADMU</option>
-                                                                                    <option value="&#127993">DLSU</option>
-                                                                                    <option value="&#9994">UP</option>
-                                                                                    <option value="&#128047">UST</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        {{!-- </div> --}}
-                                                                </div>
-                                                            </div>
-                                                            </span>
-                                                        </div>
-                                                    </li>
-                                                    <li class="media-button-timeline" style="margin-left: 205px;">
-                                                        <div class="media-icon">
-                                                            <span class="media-span">
-                                                                <div class="media-pic" id="pbutton">
-                                                                    <div class = "media-text">
-                                                                        <i class="far fa-edit"></i><input type="submit" id="postbutton" value="Post" style="background-color: rgba(255, 255, 255, 0.007); border: none;">
-                                                                    </div>
-                                                                </div>
-                                                            </span>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-
+                        {{>createPost}}
                         <hr>
                         {{#each posts}}
                             {{#if _id}}
-                            <ul class="timeline">
-                                <li class="timeline-inverted">
-                                    <div class="{{timelineBadge}}">{{{uniBadge}}}</div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            {{!-- <div class="postNum">{{postNumber}}</div> --}}
-                                            <h4 class="timeline-title">
-                                                <a href="/indivPost?_id={{_id}}&DisplayName={{User}}" style="color: rgb(78, 73, 73);">{{postTitle}}</a>
-                                            </h4>
-                                            <div class ="dropdown">
-                                                <img src="/img/option.png" style="height: 20px; width: 23px; padding-right: 5px;" id="option1" title="Option">
-                                                <div class="dropdown-content">
-                                                    <a href="#">Save Post</a>
-                                                    <a href="#">Share</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <span class="timeline-author">
-                                            <div class="author">  
-                                                <a class="a-link" href="/profile/{{Username}}">By: {{Username}}</a>
-                                            </div>
-                                            <div class="userCreditScoree">({{CreditScore}} pts)</div>
-                                        </span>
-                                        <div class="timeline-body">
-                                            <p>{{postBody}}</p>
-                                        </div>
-                                        <div class="userTagss" title="Tags">
-                                            <span>
-                                                <a class="a-link" href="indivpost.html">Tags: {{postTags}}</a>
-                                            </span>
-                                        </div>
-                                        <hr>
-                                        <div class="userbuttonscontainerr">
-                                            <p class ="upvotecountt" id="upvotecount" title="Upvote Count">{{Upvotes}} upvotes</p>
-                                                {{!-- <p id="counter"></p>--}}
-                                            <img src="/img/upvote.png" id="upvote" title="Upvote" class="upvote">
-                                            <img src="/img/downvote.png" id="downvote" title="Downvote" class="downvote">
-                                            <img src="/img/comment.png" style="height: 43px; width: 47px; margin-left: -3px;" id="comment" class="comment" title="Comment">
-                                        </div>
-                                    </div>
-                                </li>
-                                {{!-- {{#each userComments}}
-                                    {{>commentBar DisplayPicture = image}}
-                                {{/each}} --}}
-                            </ul>
+                                {{>post}}
                             {{/if}}
                         {{/each}}
                     </div>
