@@ -616,3 +616,19 @@ hr {
     border-right: 1px solid #dddd;
     border-left: 1px solid #dddd;
 }
+
+#postbutton:disabled {
+    cursor: not-allowed;
+    color: #A8A8A8;
+    background-color: #E3E3E3;
+    border: 4px solid #E3E3E3;
+}
+
+#pbutton{
+    background-color:rgba(81, 210, 182, 0.651);
+    border: 1px solid gray;
+}
+
+#pbutton:hover {
+    background-color: rgba(76, 180, 158, 0.774);
+}

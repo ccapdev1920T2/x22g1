@@ -42,7 +42,7 @@
                                         <div class="box-text">
                                             <div class="box">
                                                 <div class="text-area">                                  
-                                                    <textarea name="postBody" id="post" class="post-area" placeholder="Any story to tell?"></textarea>                                                  
+                                                    <textarea name="postBody" id="postBody" class="post-area" placeholder="Any story to tell?"></textarea>                                                  
                                                 </div>
                                             </div>
                                         </div>
@@ -59,7 +59,7 @@
                                                     <li class="media-button">
                                                         <div class="media-icon">
                                                             <span class="media-span">
-                                                                <div class="media-pic">
+                                                                <div class="media-pic"style="border: 1px solid gray">
                                                                 <div class="media-text"><i class="far fa-images"></i> Photo/Video</div>
                                                                 </div>
                                                             </span>
@@ -68,12 +68,12 @@
                                                     <li class="media-button">
                                                         <div class="media-icon">
                                                             <span class="media-span">
-                                                            <div class="media-pic">
+                                                            <div class="media-pic" style="border: 1px solid gray">
                                                                 <div class="dropdown">
                                                                     {{!-- <div class="media-text"><i class="fas fa-filter"></i>UniFilter</div> --}}
                                                                         {{!-- <div class="dropdown-content-uni"> --}}
                                                                             <div class = "media-text"> <i class="fas fa-filter"></i>
-                                                                               <select id="universities" name="universities" style="border: none; background-color: rgba(126, 125, 125, 0)">
+                                                                               <select id="universities" name="universities" style="border: none; background-color: rgba(126, 125, 125, 0); cursor:pointer">
                                                                                     <option value="&#x1f985">ADMU</option>
                                                                                     <option value="&#127993">DLSU</option>
                                                                                     <option value="&#9994">UP</option>
@@ -86,11 +86,13 @@
                                                             </span>
                                                         </div>
                                                     </li>
-                                                    <li class="media-button-timeline" style="margin-left: 220px;">
+                                                    <li class="media-button-timeline" style="margin-left: 205px;">
                                                         <div class="media-icon">
                                                             <span class="media-span">
-                                                                <div class="media-pic" style="background-color:rgba(81, 210, 182, 0.651);">
-                                                                <div class="media-text" type="SUBMIT"><i class="far fa-edit"></i>Post</div>
+                                                                <div class="media-pic" id="pbutton">
+                                                                    <div class = "media-text">
+                                                                        <i class="far fa-edit"></i><input type="submit" id="postbutton" value="Post" style="background-color: rgba(255, 255, 255, 0.007); border: none;">
+                                                                    </div>
                                                                 </div>
                                                             </span>
                                                         </div>
@@ -125,7 +127,7 @@
                                         </div>
                                         <span class="timeline-author">
                                             <div class="author">  
-                                                <a class="a-link" href="/profile/{{Username}}" target="_blank">By: {{Username}}</a>
+                                                <a class="a-link" href="/profile/{{Username}}">By: {{Username}}</a>
                                             </div>
                                             <div class="userCreditScoree">({{CreditScore}} pts)</div>
                                         </span>

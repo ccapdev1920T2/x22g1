@@ -245,9 +245,9 @@ const timelineController = {
         }) 
     },
 
-    createPost: function(req,res){
+    // createPost: function(req,res){
 
-    },
+    // },
     
    
     // updateUpvote: function (req,res){

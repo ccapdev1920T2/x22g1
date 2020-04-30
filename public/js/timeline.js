@@ -1,9 +1,6 @@
 $(document).ready(function () {
 
-    // $('#error').load('/getTimeline');
-    
-    //$('#error').text('User does not exist!');
-    //$('#sideprofile').load('/getSideProfile');
+    // $('#postbutton').prop('disabled',true);
 
     $(".upvote").click(function() {
         if ($(this).attr("class") == "upvote"){
@@ -43,8 +40,22 @@ $(document).ready(function () {
         } 
     });
 
-    $(".comment").click(function(){
-        $('#commentBar').append();
-    })
+    $('#postTitle').keyup(function(){
+        var email = $('#postTitle').val();
+       
+       
+   });
+
+   
+   $('#postTitle').keyup(function(){
+           
+});
+
+
+   
+
+    // $(".comment").click(function(){
+    //     $('#commentBar').append();
+    // })
 
 })
