@@ -9,21 +9,21 @@ const userPost = 'userPost';
 // call function createDatabase 
 // db.createDatabase();
 
-// Atlas
-const MongoClient = require('mongodb').MongoClient;
+// // Atlas
+// const MongoClient = require('mongodb').MongoClient;
 
-// replace the uri string with your connection string.
-const uri = "mongodb+srv://blycuasi:lasalle@cluster0-hinlh.mongodb.net/test?retryWrites=true&w=majority";
-MongoClient.connect(uri, function(err, client) {
-   if(err) {
-        console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
-   }
-   console.log('Connected...');
-   const collection = client.db("test").collection("devices");
-   // perform actions on the collection object
-   client.close();
-});
-// End of Atlas
+// // replace the uri string with your connection string.
+// const uri = "mongodb+srv://blycuasi:lasalle@cluster0-hinlh.mongodb.net/test?retryWrites=true&w=majority";
+// MongoClient.connect(uri, function(err, client) {
+//    if(err) {
+//         console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
+//    }
+//    console.log('Connected...');
+//    const collection = client.db("test").collection("devices");
+//    // perform actions on the collection object
+//    client.close();
+// });
+// // End of Atlas
 
 // create/populate userProfile objects containing fields such as Username, Email, Password, DisplayPicture, CreditScore, SavedPostID, University, Bio
 var user = {
@@ -60,7 +60,7 @@ var posts = [
         timelineBadge: 'timeline-badge lasalle',
         uniBadge: '&#127993',
         navbar: 'navbar-dlsu',
-        postNumber: '123',
+        User: '',
         postTitle: 'Cute guy sa henry grounds',
         Username: 'iravillanueva',
         CreditScore: '60',
@@ -73,7 +73,7 @@ var posts = [
         timelineBadge: 'timeline-badge ust',
         uniBadge: '&#128047',
         navbar: 'navbar-ust',
-        postNumber: '150',
+        User: '',
         postTitle: 'Dapitan Milktea',
         Username: 'ghoste101',
         CreditScore: '84',
@@ -86,7 +86,7 @@ var posts = [
         timelineBadge: 'timeline-badge up',
         uniBadge: '&#9994',
         navbar: 'navbar-up',
-        postNumber: '233',
+        User: '',
         postTitle: 'Best Lib: Engg Lib',
         Username: 'iskolar101',
         CreditScore: '350',
@@ -99,7 +99,7 @@ var posts = [
         timelineBadge: 'timeline-badge ateneo',
         uniBadge: '&#x1f985',
         navbar: 'navbar-admu',
-        postNumber: '543',
+        User: '',
         postTitle: 'Weird Fetishes',
         Username: 'areneyow101',
         CreditScore: '601',

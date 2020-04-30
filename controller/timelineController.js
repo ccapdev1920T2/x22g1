@@ -16,6 +16,9 @@ const timelineController = {
             DisplayPicture: 1,
         };
 
+        var update = {$set: {"User": req.query.DisplayName}}
+        db.updateMany('userPost', post, update);
+
         db.findMany('userPost',post,function(posts){
             db.find('userProfile', query, projection, function(userDetails){
                 res.render('timeline',{
