@@ -245,17 +245,30 @@ const timelineController = {
         }) 
     },
 
-    check: function(req, res){
-        var email = req.query.Email;
-        console.log(email);
+    createPost: function(req,res){
+        var postTitle = req.query.postTitle;
+        var postBody = req.query.postBody;
+        var DisplayName = req.query.DisplayName;
 
+        console.log(postTitle);
+        console.log(DisplayName);
+        
+
+    
+
+        // db.insertOne(User, {name: name, number: number}, function(flag) {
+        //     res.render('partials/card', {name: name, number: number}, function (err, html) {
+        //         res.send(html);
+        //     });
+        // });
     },
 
-    // createPost: function(req,res){
+    // check: function(req, res){
+    //     var email = req.query.Email;
+    //     console.log(email);
 
     // },
-    
-   
+
     // updateUpvote: function (req,res){
     //     var upvotecount = req.query.Upvotes;
     //     console.log(upvotecount);

@@ -43,10 +43,12 @@ app.get('/UP', timelineController.getUP);
 
 app.get('/UST', timelineController.getUST);
 
-// call function getUserProfile when client requests a username (parameter) 
+// call function getUserProfile when client requests a username (parameter) che
 app.get('/profile/:DisplayName', timelineController.getUserProfile);
 
 app.get('/indivPost', timelineController.getIndivPost);
+
+app.get('/createPost', timelineController.createPost);
 
 // app.get('/check', timelineController.check);
 

@@ -23,11 +23,13 @@
                     <div class="col-sm-8 text-left">
                         {{>createPost}}
                         <hr>
-                        {{#each posts}}
-                            {{#if _id}}
-                                {{>post}}
-                            {{/if}}
-                        {{/each}}
+                        <div id="post">
+                            {{#each posts}}
+                                {{#if _id}}
+                                    {{>post}}
+                                {{/if}}
+                            {{/each}}
+                        </div>
                     </div>
                 </div>
                 {{>trending}}
