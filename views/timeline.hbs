@@ -21,7 +21,88 @@
                 </div>
                 <div class="center-post">
                     <div class="col-sm-8 text-left">
-                        {{>createPost}}
+                        {{!-- {{>createPost}} --}}
+                        
+                        <form name="CreatePost" method="POST">
+                            <div class="post-text">
+                                <div class="whole-post">
+                                    <div class="post-pic">
+                                        <a class="pic" href="/profile/{{DisplayName}}">
+                                            <img class="img" src="/img/{{image}}" height="40" width="40" alt>
+                                        </a>
+                                    </div>
+                                    <div class="actual-text">
+                                        <div class="box-text">
+                                            <div class="box-title">
+                                                <div class="text-area">
+                                                    <textarea name="postTitle" id="postTitle" class="post-area-title" placeholder="Title of your post"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-text">
+                                            <div class="box">
+                                                <div class="text-area">                                  
+                                                    <textarea name="postBody" id="post" class="post-area" placeholder="Any story to tell?"></textarea>                                                  
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-text">
+                                            <div class="box-tags">
+                                                <div class="text-area">                                                  
+                                                    <textarea name="postTags" id="postTags" class="post-area-tags" placeholder="Tags you want others to search"></textarea>                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="buttons-post">
+                                            <div class="buttons-post2">
+                                                <ul class="buttons-post-icons">
+                                                    <li class="media-button">
+                                                        <div class="media-icon">
+                                                            <span class="media-span">
+                                                                <div class="media-pic">
+                                                                <div class="media-text"><i class="far fa-images"></i> Photo/Video</div>
+                                                                </div>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                    <li class="media-button">
+                                                        <div class="media-icon">
+                                                            <span class="media-span">
+                                                            <div class="media-pic">
+                                                                <div class="dropdown">
+                                                                    {{!-- <div class="media-text"><i class="fas fa-filter"></i>UniFilter</div> --}}
+                                                                        {{!-- <div class="dropdown-content-uni"> --}}
+                                                                            <div class = "media-text"> <i class="fas fa-filter"></i>
+                                                                               <select id="universities" name="universities" style="border: none; background-color: rgba(126, 125, 125, 0)">
+                                                                                    <option value="&#x1f985">ADMU</option>
+                                                                                    <option value="&#127993">DLSU</option>
+                                                                                    <option value="&#9994">UP</option>
+                                                                                    <option value="&#128047">UST</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        {{!-- </div> --}}
+                                                                </div>
+                                                            </div>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                    <li class="media-button-timeline" style="margin-left: 220px;">
+                                                        <div class="media-icon">
+                                                            <span class="media-span">
+                                                                <div class="media-pic" style="background-color:rgba(81, 210, 182, 0.651);">
+                                                                <div class="media-text" type="SUBMIT"><i class="far fa-edit"></i>Post</div>
+                                                                </div>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
                         <hr>
                         {{#each posts}}
                             {{#if _id}}
@@ -59,16 +140,16 @@
                                         <hr>
                                         <div class="userbuttonscontainerr">
                                             <p class ="upvotecountt" id="upvotecount" title="Upvote Count">{{Upvotes}} upvotes</p>
-                                                {{!-- <p id="counter"></p>                 --}}
+                                                {{!-- <p id="counter"></p>--}}
                                             <img src="/img/upvote.png" id="upvote" title="Upvote" class="upvote">
                                             <img src="/img/downvote.png" id="downvote" title="Downvote" class="downvote">
                                             <img src="/img/comment.png" style="height: 43px; width: 47px; margin-left: -3px;" id="comment" class="comment" title="Comment">
                                         </div>
                                     </div>
                                 </li>
-                                {{#each userComments}}
+                                {{!-- {{#each userComments}}
                                     {{>commentBar DisplayPicture = image}}
-                                {{/each}}
+                                {{/each}} --}}
                             </ul>
                             {{/if}}
                         {{/each}}

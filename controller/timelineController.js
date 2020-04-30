@@ -213,14 +213,6 @@ const timelineController = {
             DisplayName: u
         }
 
-        //var update = {$set: {"CreditScore": "12"}}
-
-        // call the function findOne() from the module in db.js and use the object query to filter the collection 'userProfile' in the database
-        // render 'profile.hbs' with the variables based on the result function filtered by the query object
-        // db.findOne('userProfile',query,function(result){
-        //     res.render('profile',result)
-        // });
-
         var projection = {
             fName: 1,
             lName: 1,
@@ -230,8 +222,9 @@ const timelineController = {
             Bio: 1,
         };
 
-        //db.updateOne('userProfile', query, update);
-
+        
+        // call the function findOne() from the module in db.js and use the object query to filter the collection 'userProfile' in the database
+        // render 'profile.hbs' with the variables based on the result function filtered by the query object
         db.findMany('userPost',querypost,function(posts){
             db.find('userProfile', queryuser, projection, function(userDetails){
                if(userDetails != null){
@@ -250,7 +243,11 @@ const timelineController = {
                 }
             })
         }) 
-    }
+    },
+
+    createPost: function(req,res){
+
+    },
     
    
     // updateUpvote: function (req,res){
