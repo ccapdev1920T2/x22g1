@@ -32,7 +32,7 @@ app.get('/checkSignUpUsername', signUpController.checkSignUpUsername);
 
 app.get('/HOME', timelineController.getTimeline);
 
-app.get('/addPost', createPostController.postCreate);
+app.get('/createPost', timelineController.createPost);
 
 //app.get('/updateUpvote', timelineController.updateUpvote);
 
