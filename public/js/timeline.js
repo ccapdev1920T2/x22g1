@@ -52,12 +52,27 @@ $(document).ready(function () {
            var navbar = 'navbar-admu';
     
             if(postTitle != '' && postBody != ''){
+                console.log('pasok');
                 $('#postTitle').val('');
                 $('#postBody').val('');
                 $('#postTags').val('');
-                $.get('/createPost', {postTitle: postTitle, postBody: postBody, postTags: postTags, timelineBadge: timelineBadge, navbar: navbar, DisplayName: DisplayName, uniBadge: uniBadge}, function(data, status){
-                    // $('#post').append(data);
-                })
+                $.get('/createPost', {
+                    postTitle: postTitle, 
+                    postBody: postBody, 
+                    postTags: postTags, 
+                    timelineBadge: timelineBadge, 
+                    navbar: navbar, DisplayName: 
+                    DisplayName, uniBadge: uniBadge
+                }, function(data, status){
+                    $('#post').append(data);
+                    console.log('uy nag append');
+                    $('postTitle'),prop('value', '');
+                    $('postBody'),prop('value', '');
+                    $('postTags'),prop('value', '');
+                    $('timelineBadge'),prop('value', '');
+                    $('navbar'),prop('value', '');
+                    $('DisplayName'),prop('value', '');
+                });
             }
         }
 
@@ -70,9 +85,22 @@ $(document).ready(function () {
                 $('#postTitle').val('');
                 $('#postBody').val('');
                 $('#postTags').val('');
-                $.get('/createPost', {postTitle: postTitle, postBody: postBody, postTags: postTags, timelineBadge: timelineBadge, navbar: navbar, DisplayName: DisplayName, uniBadge: uniBadge}, function(data, status){
-                     // $('#post').append(data);
-                })
+                $.get('/createPost', {
+                    postTitle: postTitle, 
+                    postBody: postBody, 
+                    postTags: postTags, 
+                    timelineBadge: timelineBadge, 
+                    navbar: navbar, DisplayName: 
+                    DisplayName, uniBadge: uniBadge
+                }, function(data, status){
+                    $('#post').append(data);
+                    $('postTitle'),prop('value', '');
+                    $('postBody'),prop('value', '');
+                    $('postTags'),prop('value', '');
+                    $('timelineBadge'),prop('value', '');
+                    $('navbar'),prop('value', '');
+                    $('DisplayName'),prop('value', '');
+                });
             }
         }
 
@@ -85,9 +113,22 @@ $(document).ready(function () {
                 $('#postTitle').val('');
                 $('#postBody').val('');
                 $('#postTags').val('');
-                $.get('/createPost', {postTitle: postTitle, postBody: postBody, postTags: postTags, timelineBadge: timelineBadge, navbar: navbar, DisplayName: DisplayName, uniBadge: uniBadge}, function(data, status){
-                     // $('#post').append(data);
-                })
+                $.get('/createPost', {
+                    postTitle: postTitle, 
+                    postBody: postBody, 
+                    postTags: postTags, 
+                    timelineBadge: timelineBadge, 
+                    navbar: navbar, DisplayName: 
+                    DisplayName, uniBadge: uniBadge
+                }, function(data, status){
+                    $('#post').append(data);
+                    $('postTitle'),prop('value', '');
+                    $('postBody'),prop('value', '');
+                    $('postTags'),prop('value', '');
+                    $('timelineBadge'),prop('value', '');
+                    $('navbar'),prop('value', '');
+                    $('DisplayName'),prop('value', '');
+                });
             }
         }
 
@@ -100,9 +141,22 @@ $(document).ready(function () {
                 $('#postTitle').val('');
                 $('#postBody').val('');
                 $('#postTags').val('');
-                $.get('/createPost', {postTitle: postTitle, postBody: postBody, postTags: postTags, timelineBadge: timelineBadge, navbar: navbar, DisplayName: DisplayName, uniBadge: uniBadge}, function(data, status){
-                     // $('#post').append(data);
-                })
+                $.get('/createPost', {
+                    postTitle: postTitle, 
+                    postBody: postBody, 
+                    postTags: postTags, 
+                    timelineBadge: timelineBadge, 
+                    navbar: navbar, DisplayName: 
+                    DisplayName, uniBadge: uniBadge
+                }, function(data, status){
+                    $('#post').append(data);
+                    $('postTitle'),prop('value', '');
+                    $('postBody'),prop('value', '');
+                    $('postTags'),prop('value', '');
+                    $('timelineBadge'),prop('value', '');
+                    $('navbar'),prop('value', '');
+                    $('DisplayName'),prop('value', '');
+                });
             }
         }
 

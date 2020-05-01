@@ -24,11 +24,17 @@ const createPostController = {
 
         
 
-        db.insertOne('userPost',posts,function(result){
-            if(result){
-                res.redirect('/HOME?postTitle=' + postTitle);
-            }
-        })
+        // db.insertOne('userPost',posts,function(result){
+        //     if(result){
+        //         res.redirect('/HOME?postTitle=' + postTitle);
+        //     }
+        // })
+
+        db.insertOne('userPost', posts, function(result) {
+            res.render('partials/post', posts, function (err, html) {
+                res.send(html);
+            });
+        });
 
         
         
