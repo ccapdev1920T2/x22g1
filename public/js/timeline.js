@@ -41,16 +41,72 @@ $(document).ready(function () {
     $("#postbutton").click(function() {
        var postTitle = $('#postTitle').val();
        var postBody = $('#postBody').val();
+       var postTags = $('#postTags').val();
        var DisplayName = $('#DisplayName').text();
+       var element = document.getElementById("universities");
+       var univ = element.options[element.selectedIndex].text;
+    
+       if(univ == 'ADMU'){
+           var uniBadge = "&#x1f985";
+           var timelineBadge = "timeline-badge ateneo";
+           var navbar = 'navbar-admu';
+    
+            if(postTitle != '' && postBody != ''){
+                $('#postTitle').val('');
+                $('#postBody').val('');
+                $('#postTags').val('');
+                $.get('/createPost', {postTitle: postTitle, postBody: postBody, postTags: postTags, timelineBadge: timelineBadge, navbar: navbar, DisplayName: DisplayName, uniBadge: uniBadge}, function(data, status){
+                    // $('#post').append(data);
+                })
+            }
+        }
 
-       if(postTitle != '' && postBody != ''){
-           $('#postTitle').val('');
-           $('#postBody').val('');
-           $.get('/createPost', {postTitle: postTitle, postBody: postBody, DisplayName: DisplayName}, function(data, status){
-                // $('#post').append(data);
-           })
-       }
+        else if(univ == 'DLSU'){
+            var uniBadge = "&#127993";
+            var timelineBadge = "timeline-badge lasalle";
+            var navbar = 'navbar-dlsu';
      
+             if(postTitle != '' && postBody != ''){
+                $('#postTitle').val('');
+                $('#postBody').val('');
+                $('#postTags').val('');
+                $.get('/createPost', {postTitle: postTitle, postBody: postBody, postTags: postTags, timelineBadge: timelineBadge, navbar: navbar, DisplayName: DisplayName, uniBadge: uniBadge}, function(data, status){
+                     // $('#post').append(data);
+                })
+            }
+        }
+
+        else if(univ == 'UST'){
+            var uniBadge = "&#9994";
+            var timelineBadge = "timeline-badge ust";
+            var navbar = 'navbar-ust';
+     
+             if(postTitle != '' && postBody != ''){
+                $('#postTitle').val('');
+                $('#postBody').val('');
+                $('#postTags').val('');
+                $.get('/createPost', {postTitle: postTitle, postBody: postBody, postTags: postTags, timelineBadge: timelineBadge, navbar: navbar, DisplayName: DisplayName, uniBadge: uniBadge}, function(data, status){
+                     // $('#post').append(data);
+                })
+            }
+        }
+
+        else{
+            var uniBadge = "&#128047";
+            var timelineBadge = "timeline-badge up";
+            var navbar = 'navbar-up';
+     
+             if(postTitle != '' && postBody != ''){
+                $('#postTitle').val('');
+                $('#postBody').val('');
+                $('#postTags').val('');
+                $.get('/createPost', {postTitle: postTitle, postBody: postBody, postTags: postTags, timelineBadge: timelineBadge, navbar: navbar, DisplayName: DisplayName, uniBadge: uniBadge}, function(data, status){
+                     // $('#post').append(data);
+                })
+            }
+        }
+
+        
     });
 
 

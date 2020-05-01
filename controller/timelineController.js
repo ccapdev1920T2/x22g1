@@ -246,13 +246,21 @@ const timelineController = {
     },
 
     createPost: function(req,res){
-        var postTitle = req.query.postTitle;
-        var postBody = req.query.postBody;
-        var DisplayName = req.query.DisplayName;
-
-        console.log(postTitle);
-        console.log(DisplayName);
+        var post = {
+            postTitle: req.query.postTitle,
+            postBody: req.query.postBody,
+            postTags: req.query.postTags,
+            Username: req.query.DisplayName,
+            uniBadge: req.query.uniBadge,
+            navbar: req.query.navbar,
+            Upvotes: '0'
+        }
         
+        // db.insert('userPost',post,function(result){
+        //     if(result){
+        //         console.log(result);
+        //     }
+        // })
 
     
 
