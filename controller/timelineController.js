@@ -264,11 +264,11 @@ const timelineController = {
 
     
 
-        // db.insertOne(User, {name: name, number: number}, function(flag) {
-        //     res.render('partials/card', {name: name, number: number}, function (err, html) {
-        //         res.send(html);
-        //     });
-        // });
+        db.insertOne('userPost', post, function(result) {
+            res.render('partials/post', posts, function (err, html) {
+                res.send(html);
+            });
+        });
     },
 
     // check: function(req, res){
