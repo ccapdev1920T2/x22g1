@@ -251,32 +251,25 @@ const timelineController = {
             CreditScore: 1
         }
 
-        db.find('userProfile',query, projection, function(result){
-            //console.log(result.CreditScore);
-        })
-        // var post = {
-        //     postTitle: req.query.postTitle,
-        //     postBody: req.query.postBody,
-        //     postTags: req.query.postTags,
-        //     Username: req.query.DisplayName,
-        //     uniBadge: req.query.uniBadge,
-        //     navbar: req.query.navbar,
-        //     Upvotes: '0'
-        // }
-        
-        // db.insert('userPost',post,function(result){
-        //     if(result){
-        //         console.log(result);
-        //     }
-        // })
+        db.find('userProfile',query, projection, function(user){
+           var post = {
+                postTitle: req.query.postTitle,
+                postBody: req.query.postBody,
+                postTags: req.query.postTags,
+                Username: req.query.DisplayName,
+                uniBadge: req.query.uniBadge,
+                navbar: req.query.navbar,
+                Upvotes: '0',
+                CreditScore: user.CreditScore,
+                timelineBadge: req.query.timelineBadge
+            }
 
-    
-
-        db.insertOne('userPost', post, function(result) {
-            res.render('partials/post', posts, function (err, html) {
-                res.send(html);
+            db.insertOne('userPost', post, function(result) {
+                res.render('partials/post', posts, function (err, html) {
+                    res.send(html);
+                });
             });
-        });
+        })
     },
 
     // check: function(req, res){
