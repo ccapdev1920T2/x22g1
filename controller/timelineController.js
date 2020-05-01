@@ -252,7 +252,7 @@ const timelineController = {
         }
 
         db.find('userProfile',query, projection, function(user){
-           var post = {
+            var post = {
                 postTitle: req.query.postTitle,
                 postBody: req.query.postBody,
                 postTags: req.query.postTags,
@@ -263,13 +263,14 @@ const timelineController = {
                 CreditScore: user.CreditScore,
                 timelineBadge: req.query.timelineBadge
             }
-
+    
             db.insertOne('userPost', post, function(result) {
-                res.render('partials/post', posts, function (err, html) {
+                res.render('partials/post', post, function (err, html) {
                     res.send(html);
                 });
             });
         })
+        
     },
 
     // check: function(req, res){
