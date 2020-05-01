@@ -158,46 +158,56 @@ const timelineController = {
 
     getIndivPost: function (req, res){
         var id = req.query._id;
+        var user = {
+            DisplayName: req.query.DisplayName
+        }
         console.log()
 
         var details = {
             _id: ObjectId(id),
-            
         }
 
-         db.findOne('userPost', details, function(result){
-            if(result.uniBadge == '&#127993'){
-                res.render('indivpost',{
-                    posts: result,
-                    username: req.query.DisplayName,
-                    navbar: "navbar-dlsu",
-                    // image: 
-                });
-            }
 
-            else if(result.uniBadge == "&#x1f985"){
-                res.render('indivpost',{
-                    posts: result,
-                    username: req.query.DisplayName,
-                    navbar: "navbar-admu"
-                });
-            }
 
-            else if(result.uniBadge == "&#9994" ){
-                res.render('indivpost',{
-                    posts: result,
-                    username: req.query.DisplayName,
-                    navbar: "navbar-up"
-                });
-            }
 
-            else{
-                res.render('indivpost',{
-                    posts: result,
-                    username: req.query.DisplayName,
-                    navbar: "navbar-ust"
-                });
-            }
+        db.findOne('userPost', details, function(result){
+            db.findOne('userProfile', user, function(userPicture){
+                if(result.uniBadge == '&#127993'){
+                        res.render('indivpost',{
+                            posts: result,
+                            username: req.query.DisplayName,
+                            navbar: "navbar-dlsu",
+                            image: userPicture
+                        });
+                    }
+        
+                    else if(result.uniBadge == "&#x1f985"){
+                        res.render('indivpost',{
+                            posts: result,
+                            username: req.query.DisplayName,
+                            navbar: "navbar-admu",
+                            image: userPicture
+                        });
+                    }
+        
+                    else if(result.uniBadge == "&#9994" ){
+                        res.render('indivpost',{
+                            posts: result,
+                            username: req.query.DisplayName,
+                            navbar: "navbar-up",
+                            image: userPicture
+                        });
+                    }
+        
+                    else{
+                        res.render('indivpost',{
+                            posts: result,
+                            username: req.query.DisplayName,
+                            navbar: "navbar-ust",
+                            image: userPicture
+                        });
+                    }
+            })
         })   
     },
      // retrieve user profile based on the username request of the client defined in routes.js
