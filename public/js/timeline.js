@@ -52,6 +52,7 @@ $(document).ready(function () {
            var navbar = 'navbar-admu';
     
             if(postTitle != '' && postBody != ''){
+                console.log('pasok');
                 $('#postTitle').val('');
                 $('#postBody').val('');
                 $('#postTags').val('');
@@ -64,6 +65,13 @@ $(document).ready(function () {
                     DisplayName, uniBadge: uniBadge
                 }, function(data, status){
                     $('#post').append(data);
+                    console.log('uy nag append');
+                    $('postTitle'),prop('value', '');
+                    $('postBody'),prop('value', '');
+                    $('postTags'),prop('value', '');
+                    $('timelineBadge'),prop('value', '');
+                    $('navbar'),prop('value', '');
+                    $('DisplayName'),prop('value', '');
                 });
             }
         }
@@ -86,6 +94,12 @@ $(document).ready(function () {
                     DisplayName, uniBadge: uniBadge
                 }, function(data, status){
                     $('#post').append(data);
+                    $('postTitle'),prop('value', '');
+                    $('postBody'),prop('value', '');
+                    $('postTags'),prop('value', '');
+                    $('timelineBadge'),prop('value', '');
+                    $('navbar'),prop('value', '');
+                    $('DisplayName'),prop('value', '');
                 });
             }
         }
@@ -108,6 +122,12 @@ $(document).ready(function () {
                     DisplayName, uniBadge: uniBadge
                 }, function(data, status){
                     $('#post').append(data);
+                    $('postTitle'),prop('value', '');
+                    $('postBody'),prop('value', '');
+                    $('postTags'),prop('value', '');
+                    $('timelineBadge'),prop('value', '');
+                    $('navbar'),prop('value', '');
+                    $('DisplayName'),prop('value', '');
                 });
             }
         }
@@ -130,6 +150,12 @@ $(document).ready(function () {
                     DisplayName, uniBadge: uniBadge
                 }, function(data, status){
                     $('#post').append(data);
+                    $('postTitle'),prop('value', '');
+                    $('postBody'),prop('value', '');
+                    $('postTags'),prop('value', '');
+                    $('timelineBadge'),prop('value', '');
+                    $('navbar'),prop('value', '');
+                    $('DisplayName'),prop('value', '');
                 });
             }
         }
