@@ -161,7 +161,8 @@ const timelineController = {
         console.log()
 
         var details = {
-            _id: ObjectId(id)
+            _id: ObjectId(id),
+            
         }
 
          db.findOne('userPost', details, function(result){
@@ -169,7 +170,8 @@ const timelineController = {
                 res.render('indivpost',{
                     posts: result,
                     username: req.query.DisplayName,
-                    navbar: "navbar-dlsu"
+                    navbar: "navbar-dlsu",
+                    // image: 
                 });
             }
 

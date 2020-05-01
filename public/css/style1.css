@@ -178,6 +178,18 @@
     padding-right: 48px;
 }
 
+.post-comment{
+    width: 475px;
+    height: 50px;
+    resize: none;
+    padding-top: 0px;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: 18px;
+    padding-right: 48px;
+}
+
 .box-creating{
     border-color: transparent;
     border-left-width: 0;
