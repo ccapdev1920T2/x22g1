@@ -248,15 +248,23 @@ const timelineController = {
     },
 
     createPost: function(req,res){
-        var post = {
-            postTitle: req.query.postTitle,
-            postBody: req.query.postBody,
-            postTags: req.query.postTags,
-            Username: req.query.DisplayName,
-            uniBadge: req.query.uniBadge,
-            navbar: req.query.navbar,
-            Upvotes: '0'
+        var query = {DisplayName: req.query.DisplayName}
+        var projection = {
+            CreditScore: 1
         }
+
+        db.find('userProfile',query, projection, function(result){
+            //console.log(result.CreditScore);
+        })
+        // var post = {
+        //     postTitle: req.query.postTitle,
+        //     postBody: req.query.postBody,
+        //     postTags: req.query.postTags,
+        //     Username: req.query.DisplayName,
+        //     uniBadge: req.query.uniBadge,
+        //     navbar: req.query.navbar,
+        //     Upvotes: '0'
+        // }
         
         // db.insert('userPost',post,function(result){
         //     if(result){
@@ -266,11 +274,11 @@ const timelineController = {
 
     
 
-        // db.insertOne(User, {name: name, number: number}, function(flag) {
-        //     res.render('partials/card', {name: name, number: number}, function (err, html) {
-        //         res.send(html);
-        //     });
-        // });
+        db.insertOne('userPost', post, function(result) {
+            res.render('partials/post', posts, function (err, html) {
+                res.send(html);
+            });
+        });
     },
 
     // check: function(req, res){
