@@ -250,7 +250,7 @@ const timelineController = {
         var projection = {
             CreditScore: 1
         }
-
+        
         db.find('userProfile',query, projection, function(user){
            var post = {
                 postTitle: req.query.postTitle,
@@ -265,7 +265,7 @@ const timelineController = {
             }
 
             db.insertOne('userPost', post, function(result) {
-                res.render('partials/post', posts, function (err, html) {
+                res.render('partials/post', post, function (err, html) {
                     res.send(html);
                 });
             });

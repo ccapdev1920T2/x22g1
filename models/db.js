@@ -50,7 +50,7 @@ const database = {
             var database = db.db(dbName);
             database.collection(collection).insertOne(doc, function (err, result) {
                 if(err) throw err;
-                console.log(result);
+                //console.log(result);
                 console.log('1 document successfuly inserted!');
                 db.close();
             });
@@ -64,7 +64,7 @@ const database = {
             var database = db.db(dbName);
             database.collection(collection).insertMany(docs, function(err, result) {
                 if(err) throw err;
-                console.log(result);
+                //console.log(result);
                 console.log('Documents inserted: ' + result.insertedCount);
                 db.close();
             });
