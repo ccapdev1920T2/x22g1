@@ -158,44 +158,56 @@ const timelineController = {
 
     getIndivPost: function (req, res){
         var id = req.query._id;
+        var user = {
+            DisplayName: req.query.DisplayName
+        }
         console.log()
 
         var details = {
-            _id: ObjectId(id)
+            _id: ObjectId(id),
         }
 
-         db.findOne('userPost', details, function(result){
-            if(result.uniBadge == '&#127993'){
-                res.render('indivpost',{
-                    posts: result,
-                    username: req.query.DisplayName,
-                    navbar: "navbar-dlsu"
-                });
-            }
 
-            else if(result.uniBadge == "&#x1f985"){
-                res.render('indivpost',{
-                    posts: result,
-                    username: req.query.DisplayName,
-                    navbar: "navbar-admu"
-                });
-            }
 
-            else if(result.uniBadge == "&#9994" ){
-                res.render('indivpost',{
-                    posts: result,
-                    username: req.query.DisplayName,
-                    navbar: "navbar-up"
-                });
-            }
 
-            else{
-                res.render('indivpost',{
-                    posts: result,
-                    username: req.query.DisplayName,
-                    navbar: "navbar-ust"
-                });
-            }
+        db.findOne('userPost', details, function(result){
+            db.findOne('userProfile', user, function(userPicture){
+                if(result.uniBadge == '&#127993'){
+                        res.render('indivpost',{
+                            posts: result,
+                            username: req.query.DisplayName,
+                            navbar: "navbar-dlsu",
+                            image: userPicture
+                        });
+                    }
+        
+                    else if(result.uniBadge == "&#x1f985"){
+                        res.render('indivpost',{
+                            posts: result,
+                            username: req.query.DisplayName,
+                            navbar: "navbar-admu",
+                            image: userPicture
+                        });
+                    }
+        
+                    else if(result.uniBadge == "&#9994" ){
+                        res.render('indivpost',{
+                            posts: result,
+                            username: req.query.DisplayName,
+                            navbar: "navbar-up",
+                            image: userPicture
+                        });
+                    }
+        
+                    else{
+                        res.render('indivpost',{
+                            posts: result,
+                            username: req.query.DisplayName,
+                            navbar: "navbar-ust",
+                            image: userPicture
+                        });
+                    }
+            })
         })   
     },
      // retrieve user profile based on the username request of the client defined in routes.js
@@ -252,7 +264,7 @@ const timelineController = {
         }
         
         db.find('userProfile',query, projection, function(user){
-           var post = {
+            var post = {
                 postTitle: req.query.postTitle,
                 postBody: req.query.postBody,
                 postTags: req.query.postTags,
@@ -263,13 +275,14 @@ const timelineController = {
                 CreditScore: user.CreditScore,
                 timelineBadge: req.query.timelineBadge
             }
-
+    
             db.insertOne('userPost', post, function(result) {
                 res.render('partials/post', post, function (err, html) {
                     res.send(html);
                 });
             });
         })
+        
     },
 
     // check: function(req, res){
