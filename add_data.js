@@ -36,6 +36,7 @@ var user = {
     Bio: 'I love web development!',
     fName: 'Ira',
     lName: 'Villanueva',
+    liked: [_id] //IRA TAMA BA TO ??? 
     //SavedPostID: '1',
     //University: 'DLSU',
 }

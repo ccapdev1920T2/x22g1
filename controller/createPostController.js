@@ -36,6 +36,20 @@ const createPostController = {
         
     },
 
+    // likePost: function(req, res) {
+    //     let username = req.session.user;
+    //     let postId = req.body.postId;
+
+    //     helper.likePost(postId, username, res);
+    // },
+
+    // unlikePost: function(req, res) {
+    //     let username = req.session.user;
+    //     let postId = req.body.postId;
+
+    //     helper.unlikePost(postId, username, res);
+    // },
+
 }
 
 module.exports = createPostController;

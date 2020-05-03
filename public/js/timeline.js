@@ -5,7 +5,7 @@ $(document).ready(function () {
 
             if(this.src == "http://localhost:9090/img/upvote.png"){
                 this.src = "/img/upvoted.png";
-
+                    //ipapasa dito yung id nung post para masave
                 if($(this).next().attr("src") == 'http://localhost:9090/img/downvoted.png'){
                     $(this).next().attr("src","/img/downvote.png")
                 }
@@ -17,6 +17,16 @@ $(document).ready(function () {
                 this.src = "/img/upvote.png";
             }
 
+
+            // $.ajax({
+            //     url: "/likePost",
+            //     type: "PUT",
+            //     data: {username: username, postId: postId}
+            // }).done((e) => {
+            //     //$('#unlike-btn').prop('disabled', false);
+            // }).fail((e) => {
+
+            // })
         } 
     });
 
@@ -35,6 +45,15 @@ $(document).ready(function () {
             else{
                 this.src = "/img/downvote.png";
             }
+            $.ajax({
+                url: "/unlikePost",
+                type: "PUT",
+                data: {username: username, postId: postId}
+            }).done((e) => {
+                //$('#unlike-btn').prop('disabled', false);
+            }).fail((e) => {
+                
+            })
         } 
     });
 
