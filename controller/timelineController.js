@@ -286,9 +286,11 @@ const timelineController = {
     },
 
     createComment: function(req,res){
+        console.log("hello")
         var query = {
             DisplayName: req.query.DisplayName,
-            DisplayPicture: req.query.DisplayPicture
+            DisplayPicture: req.query.DisplayPicture,
+            
         }
         var projection = {
             CreditScore: 1
@@ -299,9 +301,10 @@ const timelineController = {
                 name: req.query.DisplayName,
                 commentBody: req.query.commentBar,
                 icon: req.query.DisplayPicture,
-                CreditScore: user.CreditScore
+                CreditScore: user.CreditScore,
+                
             }
-
+            
             db.insertOne('userComments', comments, function(result){
                 res.render('partials/commentCard', comments, function(err,html){
                     res.send(html);

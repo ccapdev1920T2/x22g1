@@ -38,11 +38,11 @@ $(document).ready(function () {
         } 
     });
 
-    $(".sendButton").click(function(){
-        var commentBar = $('#commentBar').val();
+    $("#sendButton").click(function(){
+        var commentBar = $('#commentBar').val('hello');
         
         if(commentBar != ''){
-            $('#commentBar').val('');
+            $('#commentBar').val('hello');
             $.get('/createComment',{
                 commentBar: commentBar
             }, function(data, status){
