@@ -12,7 +12,7 @@ var async = require('async');
 
 const path = require('path');
 const app = express();
-const port = 9090;
+const port = process.env.PORT || 8000;
 
 // partials
 hbs.registerPartials(__dirname + '/views/partials');
