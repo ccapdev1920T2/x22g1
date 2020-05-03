@@ -4,6 +4,7 @@ const db = require('./models/db.js')
 // name of collections
 const userProfile = 'userProfile';
 const userPost = 'userPost';
+const userComments = 'userComments';
 
 
 // call function createDatabase 
@@ -54,6 +55,12 @@ db.insertOne(userProfile, user);
 
 // // insert object user to collection 'userPost'
 // db.insertOne(userPost, post);
+
+// var comments = {
+//     DisplayName
+// }
+
+// db.insertOne(userCommnets, comments)
 
 var posts = [
     {
