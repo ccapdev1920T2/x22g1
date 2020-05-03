@@ -42,7 +42,7 @@ $(document).ready(function () {
         var commentBar = $('#commentBar').val('hello');
         
         if(commentBar != ''){
-            $('#commentBar').val('hello');
+            $('#commentBar').val('');
             $.get('/createComment',{
                 commentBar: commentBar
             }, function(data, status){
