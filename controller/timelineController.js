@@ -285,6 +285,31 @@ const timelineController = {
         
     },
 
+    createComment: function(req,res){
+        var query = {
+            DisplayName: req.query.DisplayName,
+            DisplayPicture: req.query.DisplayPicture
+        }
+        var projection = {
+            CreditScore: 1
+        }
+
+        db.find('userProfile', query, projection, function(user){
+            var comments = {
+                name: req.query.DisplayName,
+                commentBody: req.query.commentBar,
+                icon: req.query.DisplayPicture,
+                CreditScore: user.CreditScore
+            }
+
+            db.insertOne('userComments', comments, function(result){
+                res.render('partials/commentCard', comments, function(err,html){
+                    res.send(html);
+                })
+            })
+        })
+    }
+
     // check: function(req, res){
     //     var email = req.query.Email;
     //     console.log(email);

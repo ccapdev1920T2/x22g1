@@ -52,6 +52,8 @@ app.get('/indivPost', timelineController.getIndivPost);
 
 app.get('/createPost', timelineController.createPost);
 
+app.get('/createComment', timelineController.createComment);
+
 // app.get('/check', timelineController.check);
 
 //app.post('/HOME', createPostController.postCreate);

@@ -38,6 +38,20 @@ $(document).ready(function () {
         } 
     });
 
+    $(".sendButton").click(function(){
+        var commentBar = $('#commentBar').val();
+        
+        if(commentBar != ''){
+            $('#commentBar').val('');
+            $.get('/createComment',{
+                commentBar: commentBar
+            }, function(data, status){
+                $('#commentBar').append(data);
+            })
+        }
+
+    })
+
     $("#postbutton").click(function() {
        var postTitle = $('#postTitle').val();
        var postBody = $('#postBody').val();

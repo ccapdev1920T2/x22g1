@@ -56,11 +56,14 @@ db.insertOne(userProfile, user);
 // // insert object user to collection 'userPost'
 // db.insertOne(userPost, post);
 
-// var comments = {
-//     DisplayName
-// }
+var comments = {
+    name: 'iravillanueva',
+    commentBody: 'ganun talaga',
+    Icon: 'human.jpg',
+    CreditScore: '54'
+}
 
-// db.insertOne(userCommnets, comments)
+db.insertOne(userComments, comments);
 
 var posts = [
     {
@@ -120,4 +123,5 @@ db.insertMany(userPost,posts);
 
 // db.dropCollection(userPost);
 // db.dropCollection(userProfile);
+
 
