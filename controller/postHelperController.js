@@ -13,9 +13,10 @@ const helper = {
     // },
 
     likePost: function(postId, username, res) {
-        Post.updateOne({_id: postId}, {$inc: {numberOfLikes: 1}})
+        Post.updateOne({_id: postId}, {$inc: {numberOfLikes: 1}}) //so yung $inc = yung nag aadd or nag dedecrease
         .then((a) => {
-            User.updateOne({username: username }, {$addToSet: {postsLiked: postId} })
+            User.updateOne({username: username }, {$addToSet: {postsLiked: postId} }) 
+            //$addToSet = inaad niya yung values sa loob ng array na naka array, so linalagay niya yung postId sa postLiked (WOAH PWEDE TO SA SAVED POST)
             .then((b) => {
                 res.send(true);
             });
