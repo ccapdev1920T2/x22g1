@@ -167,8 +167,8 @@ const timelineController = {
             _id: ObjectId(id),
         }
 
-
-
+        // var update = {$set: {"User": req.query.DisplayName}}
+        // db.updateMany('userComments', comments, update);
 
         db.findOne('userPost', details, function(result){
             db.findOne('userProfile', user, function(userPicture){
@@ -299,6 +299,7 @@ const timelineController = {
         }
 
         db.find('userProfile', query, projection, function(user){
+           
             var comments = {
                 name: req.query.DisplayName,
                 commentBody: req.query.commentBar,
@@ -312,6 +313,8 @@ const timelineController = {
                     res.send(html);
                 })
             })
+
+          
         })
     }
 
