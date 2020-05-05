@@ -19,7 +19,7 @@
 
         {{!-- do the header separate --}}
         {{>header DisplayName = DisplayName}}
-        {{>userProfile fName = fn lName = ln Bio = bio DisplayPicture = image CreditScore = cs}}
+        {{>userProfile fName = fn lName = ln Bio = bio DisplayPicture = image CreditScore = cs DisplayName = DisplayName}}
         <div id="buttoncontainer">
             <div class="button1">
                 <button class="tablinks" id="Recent_Post" title="Recent Posts" >Recent Posts</button>
@@ -30,9 +30,8 @@
         </div>
 
         <div class="center-post" style="margin-left: 200px;">
-            <div class="col-sm-8 text-left" style="margin-left: 70px;">
+            <div class="col-sm-8" style="margin-left: 70px;">
                 <div id="RecentPost" class="tabcontent">
-                    <hr>
                     {{#each posts}}
                             {{#if postNumber}}
                             <ul class="timeline">
