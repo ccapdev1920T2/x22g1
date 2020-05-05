@@ -16,17 +16,6 @@ $(document).ready(function () {
             else{
                 this.src = "/img/upvote.png";
             }
-
-
-            // $.ajax({
-            //     url: "/likePost",
-            //     type: "PUT",
-            //     data: {username: username, postId: postId}
-            // }).done((e) => {
-            //     //$('#unlike-btn').prop('disabled', false);
-            // }).fail((e) => {
-
-            // })
         } 
     });
 
