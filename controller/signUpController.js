@@ -18,6 +18,7 @@ const signUpController = {
         var Username = req.body.username;
         var pic = 'default.png';
         var userbio = 'This is your default bio';
+        var CreditScore = 0;
 
         var user = {
             Email: Email,
@@ -26,12 +27,13 @@ const signUpController = {
             lName: lName,
             DisplayName: Username,
             DisplayPicture: pic,
-            Bio: userbio
+            Bio: userbio,
+            CreditScore: CreditScore
         }
 
         db.insertOne('userProfile',user,function(result){
             if(result){
-                res.redirect('/HOME?_id=' + result._id + '&DisplayName=' + DisplayName);
+                res.redirect('/HOME?_id=' + result._id + '&DisplayName=' + user.DisplayName);
             }
         })
 
