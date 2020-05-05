@@ -314,6 +314,8 @@
     background: #fff;
 }
 
+
+
 .a-link{
     color: #64676b;
 }
@@ -481,7 +483,7 @@ hr {
 
 .upvotecountt{
     height: 40px;
-    width: 480px;
+    width: 515px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 10px;
     padding-left: -20px;
