@@ -1,19 +1,20 @@
-
 // import module `express`
 const express = require('express');
 
 // import module `controller` from `../controllers/controller.js`
-const controller = require('../controller/controller.js')
+const controller = require('../controller/controller.js');
 
-const signUpController = require('../controller/signUpController.js')
-const timelineController = require('../controller/timelineController.js')
-const createPostController = require('../controller/createPostController.js')
+const signUpController = require('../controller/signUpController.js');
+const timelineController = require('../controller/timelineController.js');
+const createPostController = require('../controller/createPostController.js');
+const profileController = require('../controller/profileController.js');
 
 const app = express();
 
 app.get('/favicon.ico', controller.getFavicon);
 
 // call function getIndex when client sends a request for '/' defined in routes.js
+// controller
 app.get('/', controller.getIndex);
 
 app.post('/', controller.postLogIn);
@@ -21,6 +22,8 @@ app.post('/', controller.postLogIn);
 app.get('/checkUsername', controller.checkUsername);
 
 app.get('/checkPassword', controller.checkPassword);
+
+// signUpController
 
 app.get('/signup', signUpController.getSignUp);
 
@@ -30,13 +33,19 @@ app.get('/checkEmail', signUpController.checkEmail);
 
 app.get('/checkSignUpUsername', signUpController.checkSignUpUsername);
 
+// timelineController
+
 app.get('/HOME', timelineController.getTimeline);
 
 app.get('/createPost', timelineController.createPost);
 
-//app.get('/updateUpvote', timelineController.updateUpvote);
+app.get('/indivPost', timelineController.getIndivPost);
 
-//call function getADMU
+app.get('/createPost', timelineController.createPost);
+
+app.get('/createComment', timelineController.createComment);
+
+// timelineController for Universities
 app.get('/ADMU', timelineController.getADMU);
 
 app.get('/DLSU', timelineController.getDLSU);
@@ -45,14 +54,14 @@ app.get('/UP', timelineController.getUP);
 
 app.get('/UST', timelineController.getUST);
 
+// profileController
+app.get('/profile/:DisplayName', profileController.getUserProfile);
+
+app.get('/editprofile/:DisplayName', profileController.editProfile);
+
+//app.get('/updateUpvote', timelineController.updateUpvote);
+
 // call function getUserProfile when client requests a username (parameter) che
-app.get('/profile/:DisplayName', timelineController.getUserProfile);
-
-app.get('/indivPost', timelineController.getIndivPost);
-
-app.get('/createPost', timelineController.createPost);
-
-app.get('/createComment', timelineController.createComment);
 
 // app.get('/check', timelineController.check);
 
