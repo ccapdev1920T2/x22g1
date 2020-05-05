@@ -29,7 +29,7 @@ const signUpController = {
             Bio: userbio
         }
 
-        db.insert('userProfile',user,function(result){
+        db.insertOne('userProfile',user,function(result){
             if(result){
                 res.redirect('/HOME?_id=' + result._id + '&DisplayName=' + DisplayName);
             }

@@ -269,6 +269,7 @@ const timelineController = {
                 postBody: req.query.postBody,
                 postTags: req.query.postTags,
                 Username: req.query.DisplayName,
+                User: req.query.DisplayName,
                 uniBadge: req.query.uniBadge,
                 navbar: req.query.navbar,
                 Upvotes: '0',
