@@ -287,14 +287,14 @@ const timelineController = {
     },
 
     createComment: function(req,res){
-        console.log("hello")
+        
         var query = {
             DisplayName: req.query.DisplayName,
             DisplayPicture: req.query.DisplayPicture,
             
         }
         var projection = {
-            CreditScore: 1
+        //     CreditScore: 1
         }
 
         db.find('userProfile', query, projection, function(user){
@@ -302,7 +302,7 @@ const timelineController = {
                 name: req.query.DisplayName,
                 commentBody: req.query.commentBar,
                 icon: req.query.DisplayPicture,
-                CreditScore: user.CreditScore,
+                // CreditScore: user.CreditScore,
                 
             }
             

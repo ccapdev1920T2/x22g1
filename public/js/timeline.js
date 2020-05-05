@@ -39,7 +39,7 @@ $(document).ready(function () {
     });
 
     $("#sendButton").click(function(){
-        var commentBar = $('#commentBar').val('hello');
+        var commentBar = $('#commentBar').val();
         
         if(commentBar != ''){
             $('#commentBar').val('');
@@ -48,6 +48,8 @@ $(document).ready(function () {
             }, function(data, status){
                 $('#commentBar').append(data);
             })
+        }else{
+            $('#error').text('');
         }
 
     })
