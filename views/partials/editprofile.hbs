@@ -1,0 +1,35 @@
+<div id="container1">
+    {{!-- <div id="putborder"> --}}
+        <div id="profilecontainer">
+            <div class="headertext">
+                <p>User Profile</p>
+            </div>
+            <div class="profile-header-container">   
+                <div class="profile-header-img">
+                    <img class="img-circle" src="/img/{{DisplayPicture}}">
+                    <div class="rank-label-container">
+                        <span class="label label-default rank-label" title="Credit Score">{{CreditScore}}</span>
+                        <br>
+                        <label for="upload">
+                            <img src="/img/editicon.png" style="height: 25px; width: 25px; margin-top: -220px; margin-right: -100px; cursor: pointer;"> 
+                            <input id="upload" type="file" style="display: none;">
+                        </label>
+                    </div>
+                </div>
+                <div class="user-info-block">
+                    <div class="user-heading" title="User's Name">
+                        <label for="editname">Name: </label>
+                        <input type="text" id="editname" placeholder={{DisplayName}} class="edit">
+                    </div>
+                    <div class="textbio" title="User's Bio">
+                        <div class="bioname">
+                            Bio:
+                        </div>
+                        <textarea id="editbio" placeholder={{Bio}} class="editbio" style="resize: none;"></textarea>
+                    </div>
+                    <a href="/profile/{{DisplayName}}" type="button"> Save </a>
+                </div>
+            </div> 
+        </div>
+    {{!-- </div> --}}
+</div>
