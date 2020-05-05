@@ -46,7 +46,7 @@ $(document).ready(function () {
             $.get('/createComment',{
                 commentBar: commentBar
             }, function(data, status){
-                $('#commentBar').append(data);
+                $('#displayComment').append(data);
             })
         }else{
             $('#error').text('');
@@ -107,7 +107,7 @@ $(document).ready(function () {
         }
 
         else if(univ == 'UST'){
-            var uniBadge = "&#9994";
+            var uniBadge = "&#128047";
             var timelineBadge = "timeline-badge ust";
             var navbar = 'navbar-ust';
      
@@ -129,7 +129,7 @@ $(document).ready(function () {
         }
 
         else{
-            var uniBadge = "&#128047";
+            var uniBadge = "&#9994";
             var timelineBadge = "timeline-badge up";
             var navbar = 'navbar-up';
      
