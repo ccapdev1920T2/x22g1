@@ -291,6 +291,7 @@ const timelineController = {
         var query = {
             DisplayName: req.query.DisplayName,
             DisplayPicture: req.query.DisplayPicture,
+            // CreditScore: req.query.CreditScore
             
         }
         var projection = {
