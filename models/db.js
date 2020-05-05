@@ -44,7 +44,7 @@ const database = {
     },
 
     // CREATE/insert a document in a collection
-    insertOne: function(collection,doc) {
+    insertOne: function(collection,doc, retrieve) {
         client.connect(url, options, function(err, db) {
             if(err) throw err;
             var database = db.db(dbName);
@@ -53,6 +53,7 @@ const database = {
                 //console.log(result);
                 console.log('1 document successfuly inserted!');
                 db.close();
+                return retrieve(result);
             });
         });
     },

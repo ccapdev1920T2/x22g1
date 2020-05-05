@@ -63,7 +63,7 @@ var comments = {
     CreditScore: '54'
 }
 
-db.insertOne(userComments, comments);
+db.insertOne(userComments, comments, function(){});
 
 var posts = [
     {
