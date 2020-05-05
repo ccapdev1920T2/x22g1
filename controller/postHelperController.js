@@ -3,14 +3,14 @@ const ObjectId = require('mongodb').ObjectID;
 
 const helper = {
     
-    likePost: function(req, res){
-        var post = {}
+    // likePost: function(req, res){
+    //     var post = {}
         
         
-        db.updateOne('userPost', post, function(post){
-            postId = req.query._id
-        })
-    },
+    //     db.updateOne('userPost', post, function(post){
+    //         postId = req.query._id
+    //     })
+    // },
 
     likePost: function(postId, username, res) {
         Post.updateOne({_id: postId}, {$inc: {numberOfLikes: 1}})
