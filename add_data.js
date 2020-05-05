@@ -33,7 +33,7 @@ var user = {
     Password: 'lasalle',
     DisplayPicture: 'human.jpg',
     CreditScore: '54',
-    Bio: 'I love web development!',
+    Bio: 'A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and fe',
     fName: 'Ira',
     lName: 'Villanueva',
     //SavedPostID: '1',

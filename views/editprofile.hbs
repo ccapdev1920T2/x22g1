@@ -1,6 +1,27 @@
-<div id="container1">
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edit Profile</title>
+        <meta name="description" content="User Profile">
+        <meta name="keyword" content="profile,name,user information">
+        <link href="/css/profilestyle.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/style1.css">   
+        <link rel="stylesheet" type="text/css" href="/css/homepagestyle.css">
+        <link rel="icon" href="/img/logo.png">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="/js/timeline.js" type="text/javascript"></script>
+        <script src="/js/profile.js" type="text/javascript"></script>
+        <script src="https://kit.fontawesome.com/080b1bc218.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+
+        {{!-- do the header separate --}}
+        {{>header DisplayName = DisplayName}}
+        <div id="container1">
     {{!-- <div id="putborder"> --}}
-        <div id="profilecontainer">
+        <div id="eprofilecontainer">
             <div class="headertext">
                 <p>User Profile</p>
             </div>
@@ -21,11 +42,12 @@
                         <label for="editname">Name: </label>
                         <input type="text" id="editname" placeholder={{DisplayName}} class="edit">
                     </div>
-                    <div class="textbio" title="User's Bio">
+                
+                    <div class="user-heading" title="User's Bio">
                         <div class="bioname">
                             Bio:
                         </div>
-                        <textarea id="editbio" placeholder={{Bio}} class="editbio" style="resize: none;"></textarea>
+                        <textarea id="editbio" placeholder={{Bio}} class="editbio" style="resize: none; width: 80%" maxlength="150"></textarea>
                     </div>
                     <a href="/profile/{{DisplayName}}" type="button"> Save </a>
                 </div>
@@ -33,3 +55,7 @@
         </div>
     {{!-- </div> --}}
 </div>
+    </body>
+</html>
+
+

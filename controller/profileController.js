@@ -77,13 +77,13 @@ const profileController = {
         db.findMany('userPost',querypost,function(posts){
             db.find('userProfile', queryuser, projection, function(userDetails){
             if(userDetails != null){
-                    res.render('partials/editprofile',{
+                    res.render('editprofile',{
                         fn: userDetails.fName, 
                         ln: userDetails.lName, 
                         cs: userDetails.CreditScore,
-                        bio: userDetails.Bio,
+                        Bio: userDetails.Bio,
                         posts: posts,
-                        image: userDetails.DisplayPicture,
+                        DisplayPicture: userDetails.DisplayPicture,
                         DisplayName: userDetails.DisplayName,
                     });
                 }
