@@ -40,14 +40,14 @@
                 <div class="user-info-block">
                     <div class="user-heading" title="User's Name">
                         <label for="editname">Name: </label>
-                        <input type="text" id="editname" placeholder={{DisplayName}} class="edit">
+                        <input type="text" id="editname" placeholder="{{fn}} {{ln}}" class="edit">
                     </div>
                 
                     <div class="user-heading" title="User's Bio">
                         <div class="bioname">
                             Bio:
                         </div>
-                        <textarea id="editbio" placeholder={{Bio}} class="editbio" style="resize: none; width: 80%" maxlength="150"></textarea>
+                        <textarea id="editbio" placeholder="{{Bio}}" class="editbio" style="resize: none; width: 80%" maxlength="150"></textarea>
                     </div>
                     <a href="/profile/{{DisplayName}}" type="button"> Save </a>
                 </div>
