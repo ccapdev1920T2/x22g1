@@ -60,7 +60,7 @@ var comments = {
     name: 'iravillanueva',
     commentBody: 'ganun talaga',
     Icon: 'human.jpg',
-    CreditScore: '54'
+    CreditScore: '54',
 }
 
 db.insertOne(userComments, comments, function(){});
@@ -75,7 +75,7 @@ var posts = [
         Username: 'iravillanueva',
         CreditScore: '60',
         postBody: 'Shoutout nga pala dun sa cute guy na nakatambay sa henry grounds kanina mga 4 pm cute mo po',
-        postTags: '#lasalle',
+        postTags: '#lasalle', 
         Upvotes: '55'
     },
 
