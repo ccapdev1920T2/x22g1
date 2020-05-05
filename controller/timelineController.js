@@ -158,57 +158,65 @@ const timelineController = {
 
     getIndivPost: function (req, res){
         var id = req.query._id;
-        var user = {
-            DisplayName: req.query.DisplayName
-        }
-        console.log()
-
-        var details = {
-            _id: ObjectId(id),
-        }
+        var user = {DisplayName: req.query.DisplayName};
+        var details = {_id: ObjectId(id)};
+        var comment = {PostID: id};
 
         // var update = {$set: {"User": req.query.DisplayName}}
         // db.updateMany('userComments', comments, update);
-
-        db.findOne('userPost', details, function(result){
-            db.findOne('userProfile', user, function(userPicture){
-                if(result.uniBadge == '&#127993'){
-                        res.render('indivpost',{
-                            posts: result,
-                            username: req.query.DisplayName,
-                            navbar: "navbar-dlsu",
-                            image: userPicture
-                        });
-                    }
-        
-                    else if(result.uniBadge == "&#x1f985"){
-                        res.render('indivpost',{
-                            posts: result,
-                            username: req.query.DisplayName,
-                            navbar: "navbar-admu",
-                            image: userPicture
-                        });
-                    }
-        
-                    else if(result.uniBadge == "&#9994" ){
-                        res.render('indivpost',{
-                            posts: result,
-                            username: req.query.DisplayName,
-                            navbar: "navbar-up",
-                            image: userPicture
-                        });
-                    }
-        
-                    else{
-                        res.render('indivpost',{
-                            posts: result,
-                            username: req.query.DisplayName,
-                            navbar: "navbar-ust",
-                            image: userPicture
-                        });
-                    }
-            })
-        })   
+        db.findMany('userComments',comment,function(usercomment){
+            db.findOne('userPost', details, function(result){
+                db.findOne('userProfile', user, function(userPicture){
+                    if(result.uniBadge == '&#127993'){
+                            res.render('indivpost',{
+                                posts: result,
+                                username: req.query.DisplayName,
+                                navbar: "navbar-dlsu",
+                                image: userPicture.DisplayPicture,
+                                comments: usercomment,
+                                cs: userPicture.CreditScore,
+                                id: id
+                            });
+                        }
+            
+                        else if(result.uniBadge == "&#x1f985"){
+                            res.render('indivpost',{
+                                posts: result,
+                                username: req.query.DisplayName,
+                                navbar: "navbar-admu",
+                                image: userPicture.DisplayPicture,
+                                comments: usercomment,
+                                cs: userPicture.CreditScore,
+                                id: id
+                            });
+                        }
+            
+                        else if(result.uniBadge == "&#9994" ){
+                            res.render('indivpost',{
+                                posts: result,
+                                username: req.query.DisplayName,
+                                navbar: "navbar-up",
+                                image: userPicture.DisplayPicture,
+                                comments: usercomment,
+                                cs: userPicture.CreditScore,
+                                id: id
+                            });
+                        }
+            
+                        else{
+                            res.render('indivpost',{
+                                posts: result,
+                                username: req.query.DisplayName,
+                                navbar: "navbar-ust",
+                                image: userPicture.DisplayPicture,
+                                comments: usercomment,
+                                cs: userPicture.CreditScore,
+                                id: id
+                            });
+                        }
+                })
+            })   
+        })
     },
      // retrieve user profile based on the username request of the client defined in routes.js
      getUserProfile: function(req,res){
@@ -287,25 +295,22 @@ const timelineController = {
     },
 
     createComment: function(req,res){
-        
         var query = {
-            DisplayName: req.query.DisplayName,
-            DisplayPicture: req.query.DisplayPicture,
-            // CreditScore: req.query.CreditScore
-            
+            DisplayName: req.query.DisplayName      
         }
+        
         var projection = {
-        //     CreditScore: 1
+            CreditScore: 1,
+            DisplayPicture: 1,
         }
 
         db.find('userProfile', query, projection, function(user){
-           
             var comments = {
                 name: req.query.DisplayName,
                 commentBody: req.query.commentBar,
-                icon: req.query.DisplayPicture,
-                // CreditScore: user.CreditScore,
-                
+                DisplayPicture: user.DisplayPicture,
+                PostID: req.query.PostID,
+                CreditScore: user.CreditScore,
             }
             
             db.insertOne('userComments', comments, function(result){
@@ -313,8 +318,6 @@ const timelineController = {
                     res.send(html);
                 })
             })
-
-          
         })
     }
 

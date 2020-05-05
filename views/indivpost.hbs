@@ -64,9 +64,13 @@
                                 <li class="timeline-inverted">
                                     <div class="timeline-panel">
                                         <div id="displayComment">
-                                            {{>commentCard}}
+                                            {{#each comments}}
+                                                {{#if PostID}}
+                                                    {{>commentCard}}
+                                                {{/if}}
+                                            {{/each}}
                                         </div>
-                                    {{>commentBar DisplayPicture = image}}
+                                    {{>commentBar DisplayPicture = image name = username CreditScore = cs id = id}}
                                     </div>
                                 </li>
                             </ul>

@@ -182,12 +182,19 @@
     width: 475px;
     height: 50px;
     resize: none;
+    margin-top: 20px;
+    margin-left: -4px;
     padding-top: 0px;
     font-size: 14px;
     font-weight: normal;
     letter-spacing: normal;
     line-height: 18px;
     padding-right: 48px;
+    border-radius: 20px;
+    padding-top: 5px;
+    padding-left: 5px;
+    background-color: rgba(255, 255, 255, 0.548);
+    overflow: hidden;
 }
 
 .box-creating{
@@ -548,6 +555,13 @@ hr {
 .comment-body{
     text-align: justify;
     background-color: rgba(233, 231, 231, 0.87);
+    border-radius: 15px;
+    padding: 10px 10px 3px;
+}
+
+.barbody{
+    text-align: justify;
+    background-color: rgba(233, 231, 231, 0);
     border-radius: 15px;
     padding: 10px 10px 3px;
 }

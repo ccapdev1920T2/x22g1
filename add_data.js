@@ -41,7 +41,7 @@ var user = {
 }
 
 // insert object user to collection 'userProfile'
-db.insertOne(userProfile, user);
+db.insertOne(userProfile, user, function(){});
 
 // var post = {
 //     postNumber: '123',
@@ -56,14 +56,15 @@ db.insertOne(userProfile, user);
 // // insert object user to collection 'userPost'
 // db.insertOne(userPost, post);
 
-var comments = {
-    name: 'iravillanueva',
-    commentBody: 'ganun talaga',
-    Icon: 'human.jpg',
-    CreditScore: '54',
-}
+// var comments = {
+//     name: 'iravillanueva',
+//     commentBody: 'ganun talaga',
+//     Icon: 'human.jpg',
+//     CreditScore: '54',
+//     PostID: '5eaa43e2af57977770784c65'
+// }
 
-db.insertOne(userComments, comments, function(){});
+// db.insertOne(userComments, comments, function(){});
 
 var posts = [
     {
@@ -123,5 +124,4 @@ db.insertMany(userPost,posts);
 
 // db.dropCollection(userPost);
 // db.dropCollection(userProfile);
-
-
+// db.dropCollection(userComments);

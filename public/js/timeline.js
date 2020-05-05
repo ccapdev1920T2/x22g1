@@ -40,11 +40,15 @@ $(document).ready(function () {
 
     $("#sendButton").click(function(){
         var commentBar = $('#commentBar').val();
+        var DisplayName = $('#author').text();
+        var PostID = $('#postid').text();
         
         if(commentBar != ''){
             $('#commentBar').val('');
             $.get('/createComment',{
-                commentBar: commentBar
+                commentBar: commentBar,
+                DisplayName: DisplayName,
+                PostID: PostID
             }, function(data, status){
                 $('#displayComment').append(data);
             })
