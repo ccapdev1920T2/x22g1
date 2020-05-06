@@ -1,22 +1,34 @@
 $(document).ready(function () {
 
     $(".upvote").click(function() {
-        if ($(this).attr("class") == "upvote"){
+        // if ($(this).attr("class") == "upvote"){
 
-            if(this.src == "http://localhost:9090/img/upvote.png"){
-                this.src = "/img/upvoted.png";
-                    //ipapasa dito yung id nung post para masave
-                if($(this).next().attr("src") == 'http://localhost:9090/img/downvoted.png'){
-                    $(this).next().attr("src","/img/downvote.png")
-                }
-                else if($(this).next().attr("src") == '/img/downvoted.png'){
-                    $(this).next().attr("src","/img/downvote.png")
-                }
-            }
-            else{
-                this.src = "/img/upvote.png";
-            }
-        } 
+        //     if(this.src == "http://localhost:9090/img/upvote.png"){
+        //         this.src = "/img/upvoted.png";
+        //             //ipapasa dito yung id nung post para masave
+        //         if($(this).next().attr("src") == 'http://localhost:9090/img/downvoted.png'){
+        //             $(this).next().attr("src","/img/downvote.png")
+        //         }
+        //         else if($(this).next().attr("src") == '/img/downvoted.png'){
+        //             $(this).next().attr("src","/img/downvote.png")
+        //         }
+        //     }
+        //     else{
+        //         this.src = "/img/upvote.png";
+        //     }
+        // } 
+        var postID = $(this).parent().next().find('p:nth-child(1)').text();
+        var user =  $(this).parent().next().find('p:nth-child(2)').text();
+        var upvote = 1;
+        var downvote = 0;
+
+        $.get('/statusPost', {
+            postID: postID,
+            user: user,
+            upvote: upvote,
+            downvote: downvote
+        })
+
     });
 
     $(".downvote").click(function() {

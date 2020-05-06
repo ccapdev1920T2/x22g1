@@ -36,7 +36,6 @@ var user = {
     Bio: 'A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and fe',
     fName: 'Ira',
     lName: 'Villanueva',
-    liked: [_id] //IRA TAMA BA TO ??? 
     //SavedPostID: '1',
     //University: 'DLSU',
 }
@@ -57,16 +56,6 @@ db.insertOne(userProfile, user, function(){});
 // // insert object user to collection 'userPost'
 // db.insertOne(userPost, post);
 
-// var comments = {
-//     name: 'iravillanueva',
-//     commentBody: 'ganun talaga',
-//     Icon: 'human.jpg',
-//     CreditScore: '54',
-//     PostID: '5eaa43e2af57977770784c65'
-// }
-
-// db.insertOne(userComments, comments, function(){});
-
 var posts = [
     {
         timelineBadge: 'timeline-badge lasalle',
@@ -78,7 +67,9 @@ var posts = [
         CreditScore: '60',
         postBody: 'Shoutout nga pala dun sa cute guy na nakatambay sa henry grounds kanina mga 4 pm cute mo po',
         postTags: '#lasalle', 
-        Upvotes: '55'
+        Upvotes: '55',
+        Upvote: 'upvote.png',
+        Downvote: 'downvote.png',
     },
 
     {
@@ -91,7 +82,9 @@ var posts = [
         CreditScore: '84',
         postBody: 'SOLID NUNG BAGONG MILKTEA MALAPIT SA DAPITAN??? TRY NIYO GUYS ???',
         postTags: '#ust #milktea',
-        Upvotes: '398'
+        Upvotes: '398',
+        Upvote: 'upvote.png',
+        Downvote: 'downvote.png',
     },
 
     {
@@ -104,7 +97,9 @@ var posts = [
         CreditScore: '350',
         postBody: 'So ano ba talaga ang the best library sa diliman? engg lib parin mga sis :p',
         postTags: '#up #diliman #bestlib',
-        Upvotes: '345'
+        Upvotes: '345',
+        Upvote: 'upvote.png',
+        Downvote: 'downvote.png',
     },
 
     {
@@ -117,7 +112,9 @@ var posts = [
         CreditScore: '601',
         postBody: 'What fetish will you keep a secret from the people you know IRL?',
         postTags: '#fetish',
-        Upvotes: '99'
+        Upvotes: '99',
+        Upvote: 'upvote.png',
+        Downvote: 'downvote.png',
     }
 ]
 
@@ -125,4 +122,4 @@ db.insertMany(userPost,posts);
 
 // db.dropCollection(userPost);
 // db.dropCollection(userProfile);
-// db.dropCollection(userComments);
+

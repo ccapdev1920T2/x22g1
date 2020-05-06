@@ -273,6 +273,32 @@ const timelineController = {
                 })
             })
         })
+    },
+
+    statusPost: function(req, res){
+        var postID = req.query.postID;
+        var user = req.query.user;
+        var upvote = req.query.upvote;
+        var downvote = req.query.downvote;
+
+        var status = {
+            postID: postID,
+            user: user,
+            upvote: upvote,
+            downvote: downvote
+        }
+
+        console.log(postID);
+        console.log(user);
+        console.log(upvote);
+        console.log(downvote);
+
+        // db.insertOne('statusPost', status, function(result){
+
+            
+
+
+        // })
     }
 
     // check: function(req, res){
