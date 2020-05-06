@@ -122,4 +122,5 @@ db.insertMany(userPost,posts);
 
 // db.dropCollection(userPost);
 // db.dropCollection(userProfile);
+// db.dropCollection('statusPost');
 

@@ -54,7 +54,11 @@ app.get('/UP', timelineController.getUP);
 
 app.get('/UST', timelineController.getUST);
 
-app.get('/statusPost', timelineController.statusPost);
+app.get('/getStatus', timelineController.getStatus);
+
+app.get('/insertStatus', timelineController.insertStatus);
+
+app.get('/updateStatus', timelineController.updateStatus);
 
 // profileController
 app.get('/profile/:DisplayName', profileController.getUserProfile);
