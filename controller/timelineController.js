@@ -370,6 +370,7 @@ const timelineController = {
             upvote: '0',
             downvote: '1'
         }
+        var meron = 0;
 
         db.findManyP('statusPost', queryupvote, projectstatus, function(status){
             if(status.length != 0){
@@ -469,6 +470,8 @@ const timelineController = {
             upvote: '0',
             downvote: '1'
         }
+
+        var meron = 0;
 
         db.findManyP('statusPost', queryupvote, projectstatus, function(status){
             if(status.length != 0){
