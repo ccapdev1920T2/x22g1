@@ -7,7 +7,6 @@ const timelineController = {
     getTimeline: function (req,res) {
         var post = {};
         var query = {DisplayName: req.query.DisplayName};
-
         var projection = {
             fName: 1,
             lName: 1,
@@ -18,6 +17,17 @@ const timelineController = {
 
         var update = {$set: {"User": req.query.DisplayName}}
         db.updateMany('userPost', post, update);
+
+        // var status = {
+        //     user: req.query.DisplayName,
+        //     upvote: 1
+        // };
+        // db.findMany('statusPost', status, function(result){
+        //     console.log(result);
+        // })
+
+        //db.findMany('statusPost', {}, function(){})
+
 
         db.findMany('userPost',post,function(posts){
             db.find('userProfile', query, projection, function(userDetails){
@@ -275,12 +285,13 @@ const timelineController = {
         })
     },
 
-    statusPost: function(req, res){
+    insertStatus: function(req, res){
         var postID = req.query.postID;
         var user = req.query.user;
         var upvote = req.query.upvote;
         var downvote = req.query.downvote;
 
+        console.log(user);
         var status = {
             postID: postID,
             user: user,
@@ -288,17 +299,50 @@ const timelineController = {
             downvote: downvote
         }
 
-        console.log(postID);
-        console.log(user);
+        console.log("insert");
+
+        db.insertOne('statusPost', status, function(result){})
+    },
+
+    getStatus: function(req,res){
+        var postID = req.query.postID;
+        var user = req.query.user;
+        var query = {
+            postID: postID,
+            user: user
+        }
+
+        console.log("get");
+        console.log(postID)
+        db.findOne('statusPost', query, function(result){
+            res.send(result);
+        })
+
+    },
+
+    updateStatus: function(req,res){
+        var postID = req.query.postID;
+        var user = req.query.user;
+        var upvote = req.query.upvote;
+        var downvote = req.query.downvote;
+        var query = {
+            postID: postID,
+            user: user
+        };
+
+        console.log("update");
+        console.log(req.query.yes);
         console.log(upvote);
         console.log(downvote);
 
-        // db.insertOne('statusPost', status, function(result){
+        var update = {$set: {
+            "upvote": upvote,
+            "downvote": downvote
+            }
+        }
 
-            
+        db.updateOne('statusPost', query, update);
 
-
-        // })
     }
 
     // check: function(req, res){
