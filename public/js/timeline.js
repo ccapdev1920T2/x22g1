@@ -91,7 +91,7 @@ $(document).ready(function () {
                     navbar: navbar, DisplayName: 
                     DisplayName, uniBadge: uniBadge
                 }, function(data, status){
-                    $('#post').append(data);
+                    $('#post').prepend(data);
                 });
             }
         }
@@ -113,7 +113,7 @@ $(document).ready(function () {
                     navbar: navbar, DisplayName: 
                     DisplayName, uniBadge: uniBadge
                 }, function(data, status){
-                    $('#post').append(data);
+                    $('#post').prepend(data);
                 });
             }
         }
@@ -135,7 +135,7 @@ $(document).ready(function () {
                     navbar: navbar, DisplayName: 
                     DisplayName, uniBadge: uniBadge
                 }, function(data, status){
-                    $('#post').append(data);
+                    $('#post').prepend(data);
                 });
             }
         }
@@ -157,7 +157,7 @@ $(document).ready(function () {
                     navbar: navbar, DisplayName: 
                     DisplayName, uniBadge: uniBadge
                 }, function(data, status){
-                    $('#post').append(data);
+                    $('#post').prepend(data);
                 });
             }
         }
