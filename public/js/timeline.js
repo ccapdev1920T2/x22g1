@@ -19,8 +19,7 @@ $(document).ready(function () {
         // } 
 
         if ($(this).attr("class") == "upvote"){
-
-            if(this.src == "http://localhost:9090/img/upvote.png"){
+            if((this.src == "http://localhost:9090/img/upvote.png") || (this.src == "/img/upvote.png")){
                 this.src = "/img/upvoted.png";
                 
                 var postID = $(this).parent().next().find('p:nth-child(1)').text();
