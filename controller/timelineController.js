@@ -377,7 +377,7 @@ const timelineController = {
                             cs: userDetails.CreditScore,
                             image: userDetails.DisplayPicture,
                             posts: posts,
-                            DisplayName: req.query.DisplayName,
+                            DisplayName: req.query.user,
                         });
                     })
                 })
@@ -475,7 +475,7 @@ const timelineController = {
                             cs: userDetails.CreditScore,
                             image: userDetails.DisplayPicture,
                             posts: posts,
-                            DisplayName: req.query.DisplayName,
+                            DisplayName: req.query.user,
                         });
                     })
                 })
