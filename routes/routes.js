@@ -61,6 +61,8 @@ app.get('/profile/:DisplayName', profileController.getUserProfile);
 
 app.get('/editprofile/:DisplayName', profileController.editProfile);
 
+app.get('/editprofile/:DisplayName', profileController.updateProfile);
+
 //app.get('/updateUpvote', timelineController.updateUpvote);
 
 // call function getUserProfile when client requests a username (parameter) che
