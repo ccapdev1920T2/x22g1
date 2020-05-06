@@ -11,7 +11,7 @@ $(document).ready(function () {
         //         }
         //         else if($(this).next().attr("src") == '/img/downvoted.png'){
         //             $(this).next().attr("src","/img/downvote.png")
-        //         }
+        //         }/
         //     }
         //     else{
         //         this.src = "/img/upvote.png";
