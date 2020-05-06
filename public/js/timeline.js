@@ -73,7 +73,6 @@ $(document).ready(function () {
                             user: user,
                             upvote: upvote,
                             downvote: downvote,
-                            yes: yes
                         })
                     }
                     else{

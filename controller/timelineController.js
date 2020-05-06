@@ -24,41 +24,49 @@ const timelineController = {
             upvote: '1',
             downvote: '0'
         };
-
-        db.findManyP('statusPost', queryupvote, projectstatus, function(downstatus){
-            console.log(downstatus);
-
-            downstatus.forEach(function(i){
-               db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvoted.png', "Downvote": 'downvote.png'}})
-            });
-        });
-        
         var querydownvote = {
             user: req.query.DisplayName,
             upvote: '0',
             downvote: '1'
         }
+        var meron = 0;
 
-        db.findManyP('statusPost', querydownvote, projectstatus, function(downstatus){
-            console.log(downstatus);
-
-            downstatus.forEach(function(i){
-               db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvote.png', "Downvote": 'downvoted.png'}})
-            });
+        db.findManyP('statusPost', queryupvote, projectstatus, function(status){
+            if(status.length != 0){
+                console.log("meron");
+                meron = 1;
+                status.forEach(function(i){
+                    db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvoted.png', "Downvote": 'downvote.png'}})
+                 });
+            }
+            db.findManyP('statusPost', querydownvote, projectstatus, function(dstatus){
+                if(dstatus.length != 0){
+                    console.log("meron");
+                    dstatus.forEach(function(i){
+                        db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvote.png', "Downvote": 'downvoted.png'}})
+                     });
+                }
+                else if(meron != 1){
+                    console.log("wala");
+                    db.updateMany('userPost', {}, {$set: {"Upvote": 'upvote.png', "Downvote": 'downvote.png'}})
+                }
+                
+                db.findMany('userPost',post,function(posts){
+                    db.find('userProfile', query, projection, function(userDetails){
+                        res.render('timeline',{
+                            fn: userDetails.fName, 
+                            ln: userDetails.lName, 
+                            cs: userDetails.CreditScore,
+                            image: userDetails.DisplayPicture,
+                            posts: posts,
+                            DisplayName: req.query.DisplayName,
+                        });
+                    })
+                })
+            });     
         });
-
-        db.findMany('userPost',post,function(posts){
-            db.find('userProfile', query, projection, function(userDetails){
-                res.render('timeline',{
-                    fn: userDetails.fName, 
-                    ln: userDetails.lName, 
-                    cs: userDetails.CreditScore,
-                    image: userDetails.DisplayPicture,
-                    posts: posts,
-                    DisplayName: req.query.DisplayName,
-                });
-            })
-        })
+        
+        db.findMany('statusPost', {}, function(){});        
     },
 
     // getPosts: function (req, res){
@@ -316,8 +324,6 @@ const timelineController = {
             downvote: downvote
         }
 
-        console.log("insert");
-
         db.insertOne('statusPost', status, function(result){})
 
         var post = {};
@@ -330,9 +336,6 @@ const timelineController = {
             DisplayPicture: 1,
         };
 
-        var update = {$set: {"User": req.query.user}}
-        db.updateMany('userPost', post, update);
-
         var projectstatus = {postID: 1,_id: 0}  
         var queryupvote = {
             user: req.query.user,
@@ -340,40 +343,46 @@ const timelineController = {
             downvote: '0'
         };
 
-        db.findManyP('statusPost', queryupvote, projectstatus, function(downstatus){
-            console.log(downstatus);
-
-            downstatus.forEach(function(i){
-               db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvoted.png', "Downvote": 'downvote.png'}})
-            });
-        });
-        
         var querydownvote = {
             user: req.query.user,
             upvote: '0',
             downvote: '1'
         }
 
-        db.findManyP('statusPost', querydownvote, projectstatus, function(downstatus){
-            console.log(downstatus);
-
-            downstatus.forEach(function(i){
-               db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvote.png', "Downvote": 'downvoted.png'}})
-            });
+        db.findManyP('statusPost', queryupvote, projectstatus, function(status){
+            if(status.length != 0){
+                console.log("meron");
+                meron = 1;
+                status.forEach(function(i){
+                    db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvoted.png', "Downvote": 'downvote.png'}})
+                 });
+            }
+            db.findManyP('statusPost', querydownvote, projectstatus, function(dstatus){
+                if(dstatus.length != 0){
+                    console.log("meron");
+                    dstatus.forEach(function(i){
+                        db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvote.png', "Downvote": 'downvoted.png'}})
+                     });
+                }
+                else if(meron != 1){
+                    console.log("wala");
+                    db.updateMany('userPost', {}, {$set: {"Upvote": 'upvote.png', "Downvote": 'downvote.png'}})
+                }
+                
+                db.findMany('userPost',post,function(posts){
+                    db.find('userProfile', query, projection, function(userDetails){
+                        res.render('timeline',{
+                            fn: userDetails.fName, 
+                            ln: userDetails.lName, 
+                            cs: userDetails.CreditScore,
+                            image: userDetails.DisplayPicture,
+                            posts: posts,
+                            DisplayName: req.query.DisplayName,
+                        });
+                    })
+                })
+            });     
         });
-
-        db.findMany('userPost',post,function(posts){
-            db.find('userProfile', query, projection, function(userDetails){
-                res.render('timeline',{
-                    fn: userDetails.fName, 
-                    ln: userDetails.lName, 
-                    cs: userDetails.CreditScore,
-                    image: userDetails.DisplayPicture,
-                    posts: posts,
-                    DisplayName: req.query.user,
-                });
-            })
-        })
     },
 
     getStatus: function(req,res){
@@ -425,9 +434,6 @@ const timelineController = {
             DisplayPicture: 1,
         };
 
-        var update = {$set: {"User": req.query.user}}
-        db.updateMany('userPost', post, update);
-
         var projectstatus = {postID: 1,_id: 0}  
         var queryupvote = {
             user: req.query.user,
@@ -435,41 +441,49 @@ const timelineController = {
             downvote: '0'
         };
 
-        db.findManyP('statusPost', queryupvote, projectstatus, function(downstatus){
-            console.log(downstatus);
-
-            downstatus.forEach(function(i){
-               db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvoted.png', "Downvote": 'downvote.png'}})
-            });
-        });
-        
         var querydownvote = {
             user: req.query.user,
             upvote: '0',
             downvote: '1'
         }
 
-        db.findManyP('statusPost', querydownvote, projectstatus, function(downstatus){
-            console.log(downstatus);
-
-            downstatus.forEach(function(i){
-               db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvote.png', "Downvote": 'downvoted.png'}})
-            });
+        db.findManyP('statusPost', queryupvote, projectstatus, function(status){
+            if(status.length != 0){
+                console.log("meron");
+                meron = 1;
+                status.forEach(function(i){
+                    db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvoted.png', "Downvote": 'downvote.png'}})
+                 });
+            }
+            db.findManyP('statusPost', querydownvote, projectstatus, function(dstatus){
+                if(dstatus.length != 0){
+                    console.log("meron");
+                    dstatus.forEach(function(i){
+                        db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvote.png', "Downvote": 'downvoted.png'}})
+                     });
+                }
+                else if(meron != 1){
+                    console.log("wala");
+                    db.updateMany('userPost', {}, {$set: {"Upvote": 'upvote.png', "Downvote": 'downvote.png'}})
+                }
+                
+                db.findMany('userPost',post,function(posts){
+                    db.find('userProfile', query, projection, function(userDetails){
+                        res.render('timeline',{
+                            fn: userDetails.fName, 
+                            ln: userDetails.lName, 
+                            cs: userDetails.CreditScore,
+                            image: userDetails.DisplayPicture,
+                            posts: posts,
+                            DisplayName: req.query.DisplayName,
+                        });
+                    })
+                })
+            });     
         });
+    },
 
-        db.findMany('userPost',post,function(posts){
-            db.find('userProfile', query, projection, function(userDetails){
-                res.render('timeline',{
-                    fn: userDetails.fName, 
-                    ln: userDetails.lName, 
-                    cs: userDetails.CreditScore,
-                    image: userDetails.DisplayPicture,
-                    posts: posts,
-                    DisplayName: req.query.user,
-                });
-            })
-        })
-    }
+   
 
     // check: function(req, res){
     //     var email = req.query.Email;
