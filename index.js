@@ -1,6 +1,8 @@
 // import modules express and handlebars
 const express = require('express');
 const hbs = require('hbs');
+const bodyParser= require('body-parser');
+const multer = require('multer');
 
 // import routes module
 const routes = require('./routes/routes.js');
@@ -16,6 +18,7 @@ const port = process.env.PORT || 9090;
 hbs.registerPartials(__dirname + '/views/partials');
 
 app.use(express.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}))
 
 // define css, img, js, and views as static 
 app.use(express.static('public'));
@@ -26,6 +29,20 @@ app.use('/', routes);
 
 // set hbs as view engine
 app.set('view engine', 'hbs');
+
+
+//multer
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+  })
+   
+  var upload = multer({ storage: storage })
 
 // connects to the database
 // db.connect();

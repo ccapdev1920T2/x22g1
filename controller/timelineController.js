@@ -256,6 +256,25 @@ const timelineController = {
         })
     },
 
+    uploadPhoto: function(req,res){
+        var img = fs.readFileSync(req.file.path);
+        var encode_image = img.toString('base64');
+
+        var finalImg = {
+            contentType: req.file.mimetype,
+            image:  new Buffer(encode_image, 'base64')
+         };
+
+         db.insertOne('userPost', finalImg, function(result){
+            console.log(result)
+            console.log('saved to database')
+            res.redirect('/')
+         })
+
+         
+
+    },
+
     createPost: function(req,res){
         var query = {DisplayName: req.query.DisplayName}
         var projection = {

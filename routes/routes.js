@@ -41,9 +41,12 @@ app.get('/createPost', timelineController.createPost);
 
 app.get('/indivPost', timelineController.getIndivPost);
 
+app.post('/uploadphoto', timelineController.uploadPhoto);
+
 app.get('/createPost', timelineController.createPost);
 
 app.get('/createComment', timelineController.createComment);
+
 
 // timelineController for Universities
 app.get('/ADMU', timelineController.getADMU);

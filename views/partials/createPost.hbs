@@ -43,7 +43,15 @@
                                 <div class="media-icon">
                                     <span class="media-span">
                                         <div class="media-pic"style="border: 1px solid gray">
-                                        <div class="media-text"><i class="far fa-images"></i> Photo/Video</div>
+                                        <div class="media-text">
+                                            <form action="/uploadPhoto" enctype="multipart/form-data" method="POST"> 
+                                                <label for="upload" style="cursor:pointer">
+                                                    <i class="far fa-images"></i> 
+                                                    Photo
+                                                    <input id="upload" type="file" accept="image/*" style="display: none;">
+                                                </label>
+                                            </form>
+                                        </div>
                                         </div>
                                     </span>
                                 </div>
