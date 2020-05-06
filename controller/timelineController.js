@@ -35,6 +35,7 @@ const timelineController = {
             if(status.length != 0){
                 console.log("meron");
                 meron = 1;
+                db.updateMany('userPost', {}, {$set: {"Upvote": 'upvote.png', "Downvote": 'downvote.png'}})
                 status.forEach(function(i){
                     db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvoted.png', "Downvote": 'downvote.png'}})
                  });
@@ -272,7 +273,9 @@ const timelineController = {
                 navbar: req.query.navbar,
                 Upvotes: '0',
                 CreditScore: user.CreditScore,
-                timelineBadge: req.query.timelineBadge
+                timelineBadge: req.query.timelineBadge,
+                Upvote: 'upvote.png',
+                Downvote: 'downvote.png',
             }
     
             db.insertOne('userPost', post, function(result) {
@@ -353,6 +356,7 @@ const timelineController = {
             if(status.length != 0){
                 console.log("meron");
                 meron = 1;
+                db.updateMany('userPost', {}, {$set: {"Upvote": 'upvote.png', "Downvote": 'downvote.png'}})
                 status.forEach(function(i){
                     db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvoted.png', "Downvote": 'downvote.png'}})
                  });
@@ -451,6 +455,7 @@ const timelineController = {
             if(status.length != 0){
                 console.log("meron");
                 meron = 1;
+                db.updateMany('userPost', {}, {$set: {"Upvote": 'upvote.png', "Downvote": 'downvote.png'}})
                 status.forEach(function(i){
                     db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvoted.png', "Downvote": 'downvote.png'}})
                  });
