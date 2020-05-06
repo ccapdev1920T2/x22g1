@@ -2,8 +2,8 @@
 const db = require('./models/db.js')
 
 // name of collections
-const userProfile = 'userProfile';
 const userPost = 'userPost';
+const userProfile = 'userProfile';
 const userComments = 'userComments';
 
 // drop collection

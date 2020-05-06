@@ -2,10 +2,9 @@
 const db = require('./models/db.js')
 
 // name of collections
-const userProfile = 'userProfile';
 const userPost = 'userPost';
+const userProfile = 'userProfile';
 const userComments = 'userComments';
-
 
 // call function createDatabase 
 // db.createDatabase();
@@ -36,7 +35,7 @@ var user = {
     Bio: 'A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and fe',
     fName: 'Ira',
     lName: 'Villanueva',
-    liked: [_id] //IRA TAMA BA TO ??? 
+    // liked: [_id] //IRA TAMA BA TO ??? 
     //SavedPostID: '1',
     //University: 'DLSU',
 }
