@@ -256,24 +256,26 @@ const timelineController = {
         })
     },
 
-    uploadPhoto: function(req,res){
+    uploadImage: function(req,res){
+        
+        var uploadPhoto = upload.single('picture');
         var img = fs.readFileSync(req.file.path);
         var encode_image = img.toString('base64');
-
-        var finalImg = {
-            contentType: req.file.mimetype,
-            image:  new Buffer(encode_image, 'base64')
-         };
-
-         db.insertOne('userPost', finalImg, function(result){
+         // Define a JSONobject for the image attributes for saving to database
+          
+         var finalImg = {
+              contentType: req.file.mimetype,
+              image:  new Buffer(encode_image, 'base64')
+           };
+        
+        db.insertOne(finalImg, function(result){
             console.log(result)
             console.log('saved to database')
             res.redirect('/')
-         })
-
-         
+        })
 
     },
+
 
     createPost: function(req,res){
         var query = {DisplayName: req.query.DisplayName}
@@ -370,7 +372,6 @@ const timelineController = {
             upvote: '0',
             downvote: '1'
         }
-        var meron = 0;
 
         db.findManyP('statusPost', queryupvote, projectstatus, function(status){
             if(status.length != 0){
@@ -470,8 +471,6 @@ const timelineController = {
             upvote: '0',
             downvote: '1'
         }
-
-        var meron = 0;
 
         db.findManyP('statusPost', queryupvote, projectstatus, function(status){
             if(status.length != 0){
