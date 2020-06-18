@@ -69,41 +69,9 @@ $(document).ready(function () {
                 })
             }
         } 
-
-        // var postID = this.src;
-        //  $.get('/statusPost', {
-        //     postID: postID,
-        // })
-       
-
     });
 
     $(".downvote").click(function() {
-        // if ($(this).attr("class") == "downvote"){
-        //     if(this.src == "http://localhost:9090/img/downvote.png"){
-        //         this.src = "/img/downvoted.png";
-
-        //         if($(this).prev().attr("src") == 'http://localhost:9090/img/upvoted.png'){
-        //             $(this).prev().attr("src","/img/upvote.png")
-        //         }
-        //         else if($(this).prev().attr("src") == '/img/upvoted.png'){
-        //             $(this).prev().attr("src","/img/upvote.png")
-        //         }
-        //     }
-        //     else{
-        //         this.src = "/img/downvote.png";
-        //     }
-        //     $.ajax({
-        //         url: "/unlikePost",
-        //         type: "PUT",
-        //         data: {username: username, postId: postId}
-        //     }).done((e) => {
-        //         //$('#unlike-btn').prop('disabled', false);
-        //     }).fail((e) => {
-                
-        //     })
-        // } 
-
         if ($(this).attr("class") == "downvote"){
             if(this.src == "http://localhost:9090/img/downvote.png"){
                 this.src = "/img/downvoted.png";
