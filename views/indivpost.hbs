@@ -8,7 +8,7 @@
     <link rel="icon" href="/img/logo.png">
     <script src="https://kit.fontawesome.com/080b1bc218.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="/js/timeline.js" type="text/javascript"></script>
+    <script src="/js/indivpost.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -55,8 +55,8 @@
                                         <div class="userbuttonscontainerr">
                                             <p class ="upvotecountt" id="upvotecount" title="Upvote Count">{{posts.Upvotes}} upvotes</p>
                                                 {{!-- <p id="counter"></p>                 --}}
-                                            <img src="/img/upvote.png" id="upvote" title="Upvote" class="upvote">
-                                            <img src="/img/downvote.png" id="downvote" title="Downvote" class="downvote">
+                                            <img src="/img/{{posts.Upvote}}" id="upvote" title="Upvote" class="upvote">
+                                            <img src="/img/{{posts.Downvote}}" id="downvote" title="Downvote" class="downvote">
                                             {{!-- <img src="/img/comment.png" style="height: 43px; width: 47px; margin-left: -3px;" id="comment" class="comment" title="Comment"> --}}
                                         </div>
                                     </div>

@@ -2,7 +2,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const bodyParser= require('body-parser');
-const multer = require('multer');
+// const multer = require('multer');
 
 // import routes module
 const routes = require('./routes/routes.js');
@@ -33,16 +33,16 @@ app.set('view engine', 'hbs');
 
 //multer
 
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'uploads')
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.fieldname + '-' + Date.now())
-    }
-  })
+// var storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//       cb(null, 'uploads')
+//     },
+//     filename: function (req, file, cb) {
+//       cb(null, file.fieldname + '-' + Date.now())
+//     }
+//   })
    
-  var upload = multer({ storage: storage })
+  // var upload = multer({ storage: storage })
 
 // connects to the database
 // db.connect();

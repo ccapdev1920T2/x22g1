@@ -6,6 +6,7 @@ const controller = require('../controller/controller.js');
 
 const signUpController = require('../controller/signUpController.js');
 const timelineController = require('../controller/timelineController.js');
+const indivpostController = require('../controller/indivpostController.js');
 const createPostController = require('../controller/createPostController.js');
 const profileController = require('../controller/profileController.js');
 
@@ -39,14 +40,14 @@ app.get('/HOME', timelineController.getTimeline);
 
 app.get('/createPost', timelineController.createPost);
 
-app.get('/indivPost', timelineController.getIndivPost);
-
 app.post('/uploadphoto', timelineController.uploadImage);
 
 app.get('/createPost', timelineController.createPost);
 
-app.get('/createComment', timelineController.createComment);
+// indivpostController
+app.get('/indivPost', indivpostController.getIndivPost);
 
+app.get('/createComment', indivpostController.createComment);
 
 // timelineController for Universities
 app.get('/ADMU', timelineController.getADMU);
