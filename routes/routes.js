@@ -41,7 +41,7 @@ app.get('/createPost', timelineController.createPost);
 
 app.get('/indivPost', timelineController.getIndivPost);
 
-app.post('/uploadphoto', timelineController.uploadPhoto);
+app.post('/uploadphoto', timelineController.uploadImage);
 
 app.get('/createPost', timelineController.createPost);
 
@@ -56,6 +56,8 @@ app.get('/DLSU', timelineController.getDLSU);
 app.get('/UP', timelineController.getUP);
 
 app.get('/UST', timelineController.getUST);
+
+// get status for each post
 
 app.get('/getStatus', timelineController.getStatus);
 
