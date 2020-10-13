@@ -31,7 +31,8 @@ const profileSchema = mongoose.Schema({
         default: 'default.png',
     },
     creditScore: {
-        type: Number
+        type: Number,
+        default: 0
     },
 })
 

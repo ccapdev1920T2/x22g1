@@ -24,18 +24,21 @@ const profileController = require('../controllers/profileController.js');
 const app = express();
 
 // initialize multer for file upload use 
-// var storage = multer.diskStorage({
-//     destination: function (req, file, cd) {
-//         if (file.fieldname === 'avatar') {
-//             cd(null, './public/avatars');
-//         }
-//     },
-//     filename: function (req, file, cd) {
-//         cd(null, file.originalname);
-//     },
-// });
+var storage = multer.diskStorage({
+    destination: function (req, file, cd) {
+        if (file.fieldname === 'avatar') {
+            cd(null, './public/avatars');
+        }
+    },
+    filename: function (req, file, cd) {
+        cd(null, file.originalname);
+    },
+});
 
-// var upload = multer({ storage: storage });
+var upload = multer({ storage: storage });
+var uploadFilter = upload.fields([
+    { name: 'avatar', maxCount: 1 },
+]);
 
 // Init Cookie and Body Parser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -70,9 +73,9 @@ app.post('/', loginController.postLogIn);
 
 // signUpController
 app.get('/signup', signUpController.getSignUp);
-app.post('/signup', signUpController.postSignUp);
-app.get('/checkEmail', signUpController.checkEmail);
-app.get('/checkSignUpUsername', signUpController.checkSignUpUsername);
+app.post('/signup', 
+    uploadFilter,
+    signUpController.postSignUp);
 
 // timelineController
 app.get('/timeline', timelineController.getTimeline);

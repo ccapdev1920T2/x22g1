@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="icon" href="/img/logo.png">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-     <script src="/js/signup.js" type="text/javascript"></script>
+     {{!-- <script src="/js/signup.js" type="text/javascript"></script> --}}
     <script src="https://kit.fontawesome.com/080b1bc218.js" crossorigin="anonymous"></script>
 </head>
 
@@ -23,63 +23,66 @@
         <div class="content">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <span id="login-continue" class="h5">Sign up with your email address</span>
+                    <span id="login-continue" class="h5">Sign up</span>
                 </div>
             </div>
         
             <form name="signUp" method="POST" class="form-login">
                 <div class="row">
+                    <label>Profile Photo</label><br />
+                    <div class="container form-upload"
+                        style="justify-content: center; align-items: center; text-align: center;">
+                        <img class="img-circle" id="output" src="/img/portrait.png" style="margin-left: 2px;" />
+                        <div>
+                            <div class="col" style="padding-left: 90px;">
+                                <p class="mx-auto w-100">
+                                    <input type="file" id="avatar" name="avatar" accept="image/jpeg, image/png"
+                                        value="{{input.avatar}}"
+                                        onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" />
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="register-email">Email</label><br />
                     <div class="col-xs-12">
-                        <label for="login-email" class="for-forms">
-                            Email address
-                        </label>
-                        <input type="email" class="form-control" name="email" id="register-email" placeholder="Email address" required>
+                        <input type="email" class="form-control" name="email" id="register-email" placeholder="Email address" value="{{input.email}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <label>Password</label><br />
+                    <div class="col-xs-12">
+                        <input type="password" class="form-control" name="password" id="register-password" placeholder="Password">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <label for="login-password" class="for-forms">
-                            Password
-                        </label>
-                        <input type="password" class="form-control" name="password" id="register-password" placeholder="Password" required>
+                        <input type="password" class="form-control" name="passwordConfirm" id="register-password-recheck" placeholder="Confirm Password">
                     </div>
                 </div>
                 <div class="row">
+                    <label>First Name</label><br />
                     <div class="col-xs-12">
-                        <label for="login-password-recheck" class="for-forms">
-                            Password Recheck
-                        </label>
-                        <input type="password" class="form-control" name="passwordRecheck" id="register-password-recheck" placeholder="Confirm Password" required>
+                        <input type="text" class="form-control" name="fName" id="register-fName" placeholder="First Name" value="{{input.fName}}"> 
                     </div>
                 </div>
                 <div class="row">
+                    <label>Last Name</label><br />
                     <div class="col-xs-12">
-                        <label for="login-fname" class="for-forms">
-                            First Name
-                        </label>
-                        <input type="text" class="form-control" name="fName" id="register-fName" placeholder="First Name" required>
+                        <input type="text" class="form-control" name="lName" id="register-lName" placeholder="Last Name" value="{{input.lName}}">
                     </div>
                 </div>
                 <div class="row">
+                    <label>Username</label><br />
                     <div class="col-xs-12">
-                        <label for="login-lname" class="for-forms">
-                            Last Name
-                        </label>
-                        <input type="text" class="form-control" name="lName" id="register-lName" placeholder="Last Name" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <label for="login-username" class="for-forms">
-                            Username
-                        </label>
-                        <input type="text" class="form-control" name="username" id="register-username" placeholder="What should we call you?" required>
+                        <input type="text" class="form-control" name="username" id="register-username" placeholder="What should we call you?">
                     </div>
                 </div>
                 <div class="row row-submit">
                     <div class="col-xs-12">
                         <div class="loginbuttonblock">
-                            <input type="submit" id="loginbutton" value="SIGN-UP">
+                            <button type="submit" id="loginbutton">SIGN-UP</button>
                         </div>
                     </div>
                 </div>
