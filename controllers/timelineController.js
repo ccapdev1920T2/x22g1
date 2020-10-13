@@ -4,71 +4,74 @@ const ObjectId = require('mongodb').ObjectID;
 const timelineController = {
 
     // retrieve all posts by finding all documents in collection userPost
-    getTimeline: function (req,res) {
-        var post = {};
-        var query = {DisplayName: req.query.DisplayName};
-        var projection = {
-            fName: 1,
-            lName: 1,
-            CreditScore: 1,
-            DisplayName: 1,
-            DisplayPicture: 1,
-        };
-
-        var update = {$set: {"User": req.query.DisplayName}}
-        db.updateMany('userPost', post, update);
-
-        var projectstatus = {postID: 1,_id: 0}  
-        var queryupvote = {
-            user: req.query.DisplayName,
-            upvote: '1',
-            downvote: '0'
-        };
-        var querydownvote = {
-            user: req.query.DisplayName,
-            upvote: '0',
-            downvote: '1'
-        }
-        var meron = 0;
-
-        db.findManyP('statusPost', queryupvote, projectstatus, function(status){
-            if(status.length != 0){
-                console.log("meron");
-                meron = 1;
-                db.updateMany('userPost', {}, {$set: {"Upvote": 'upvote.png', "Downvote": 'downvote.png'}})
-                status.forEach(function(i){
-                    db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvoted.png', "Downvote": 'downvote.png'}})
-                 });
-            }
-            db.findManyP('statusPost', querydownvote, projectstatus, function(dstatus){
-                if(dstatus.length != 0){
-                    console.log("meron");
-                    dstatus.forEach(function(i){
-                        db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvote.png', "Downvote": 'downvoted.png'}})
-                     });
-                }
-                else if(meron != 1){
-                    console.log("wala");
-                    db.updateMany('userPost', {}, {$set: {"Upvote": 'upvote.png', "Downvote": 'downvote.png'}})
-                }
-                
-                db.findMany('userPost',post,function(posts){
-                    db.find('userProfile', query, projection, function(userDetails){
-                        res.render('timeline',{
-                            fn: userDetails.fName, 
-                            ln: userDetails.lName, 
-                            cs: userDetails.CreditScore,
-                            image: userDetails.DisplayPicture,
-                            posts: posts,
-                            DisplayName: req.query.DisplayName,
-                        });
-                    })
-                })
-            });     
-        });
-        
-        db.findMany('statusPost', {}, function(){});        
+    getTimeline: function (req, res){
+        res.render('timeline');
     },
+    // getTimeline: function (req,res) {
+    //     var post = {};
+    //     var query = {DisplayName: req.query.DisplayName};
+    //     var projection = {
+    //         fName: 1,
+    //         lName: 1,
+    //         CreditScore: 1,
+    //         DisplayName: 1,
+    //         DisplayPicture: 1,
+    //     };
+
+    //     var update = {$set: {"User": req.query.DisplayName}}
+    //     db.updateMany('userPost', post, update);
+
+    //     var projectstatus = {postID: 1,_id: 0}  
+    //     var queryupvote = {
+    //         user: req.query.DisplayName,
+    //         upvote: '1',
+    //         downvote: '0'
+    //     };
+    //     var querydownvote = {
+    //         user: req.query.DisplayName,
+    //         upvote: '0',
+    //         downvote: '1'
+    //     }
+    //     var meron = 0;
+
+    //     db.findManyP('statusPost', queryupvote, projectstatus, function(status){
+    //         if(status.length != 0){
+    //             console.log("meron");
+    //             meron = 1;
+    //             db.updateMany('userPost', {}, {$set: {"Upvote": 'upvote.png', "Downvote": 'downvote.png'}})
+    //             status.forEach(function(i){
+    //                 db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvoted.png', "Downvote": 'downvote.png'}})
+    //              });
+    //         }
+    //         db.findManyP('statusPost', querydownvote, projectstatus, function(dstatus){
+    //             if(dstatus.length != 0){
+    //                 console.log("meron");
+    //                 dstatus.forEach(function(i){
+    //                     db.updateOne('userPost', {_id: ObjectId(i.postID)}, {$set: {"Upvote": 'upvote.png', "Downvote": 'downvoted.png'}})
+    //                  });
+    //             }
+    //             else if(meron != 1){
+    //                 console.log("wala");
+    //                 db.updateMany('userPost', {}, {$set: {"Upvote": 'upvote.png', "Downvote": 'downvote.png'}})
+    //             }
+                
+    //             db.findMany('userPost',post,function(posts){
+    //                 db.find('userProfile', query, projection, function(userDetails){
+    //                     res.render('timeline',{
+    //                         fn: userDetails.fName, 
+    //                         ln: userDetails.lName, 
+    //                         cs: userDetails.CreditScore,
+    //                         image: userDetails.DisplayPicture,
+    //                         posts: posts,
+    //                         DisplayName: req.query.DisplayName,
+    //                     });
+    //                 })
+    //             })
+    //         });     
+    //     });
+        
+    //     db.findMany('statusPost', {}, function(){});        
+    // },
 
     // getPosts: function (req, res){
     //     var post = {};

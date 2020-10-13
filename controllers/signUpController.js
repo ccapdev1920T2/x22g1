@@ -42,7 +42,7 @@ const signUpController = {
             bcrypt.hash(password, saltRounds, (err, hash) => {
 
                 //user used default avatar
-                if (!req.files['avatar']) {
+                if (!req.files) {
                     const profile = {
                         _id: new mongoose.Types.ObjectId(),
                         email: email,
@@ -56,6 +56,7 @@ const signUpController = {
                     db.insertOne(Profile, profile, function (flag) {
                         if (flag) {
                             req.session.user = profile._id;
+                            res.redirect('/timeline');
                         }
                     });
                 }
@@ -77,9 +78,12 @@ const signUpController = {
                     var avatarFileName = helper.renameAvatar(req, newAvatarName);
                     profile.avatar = avatarFileName;
 
+                    console.log(profile);
+
                     db.insertOne(Profile, profile, function (flag) {
                         if (flag) {
                             req.session.user = profile._id;
+                            res.redirect('/timeline');
                         }
                     });
                 }           
