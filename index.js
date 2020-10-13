@@ -1,68 +1,48 @@
 // import modules express and handlebars
 const express = require('express');
 const hbs = require('hbs');
-const bodyParser= require('body-parser');
-// const multer = require('multer');
+const mongoose = require('mongoose');
 
-// import routes module
-const routes = require('./routes/routes.js');
-
-// import module `database` from `./model/db.js`
-const db = require('./models/db.js');
-
-const path = require('path');
+// data base and express
 const app = express();
-const port = process.env.PORT || 9090;
 
-// partials
-hbs.registerPartials(__dirname + '/views/partials');
-
-app.use(express.urlencoded({extended: true}));
-app.use(bodyParser.urlencoded({extended: true}))
-
-// define css, img, js, and views as static 
+// define static folders
 app.use(express.static('public'));
 app.use(express.static('views'));
-
-// define the paths contained in routes module
-app.use('/', routes);
 
 // set hbs as view engine
 app.set('view engine', 'hbs');
 
+// parses incoming requests with urlencoded payloads
+app.use(express.urlencoded({ extended: true }));
 
-//multer
+// import routes module
+const routes = require('./routes/routes.js');
 
-// var storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//       cb(null, 'uploads')
-//     },
-//     filename: function (req, file, cb) {
-//       cb(null, file.fieldname + '-' + Date.now())
-//     }
-//   })
-   
-  // var upload = multer({ storage: storage })
+// partials
+hbs.registerPartials(__dirname + '/views/partials');
+
+// define the paths contained in routes module
+app.use('/', routes);
 
 // connects to the database
-// db.connect();
+const url = 'mongodb://localhost:27017/Big4FW_database';
+const options = {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+};
+mongoose.connect(url, options, err => {
+  if (err) throw err;
+  console.log('connected at ' + url);
+});
 
-// const MongoClient = require('mongodb').MongoClient;
+// binds the server to a specific port
+let port = process.env.PORT;
 
-// // replace the uri string with your connection string.
-// const uri = "mongodb://victor:lasalle@cluster0-shard-00-00-fxgom.mongodb.net:27017,cluster0-shard-00-01-fxgom.mongodb.net:27017,cluster0-shard-00-02-fxgom.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority";
-// MongoClient.connect(uri, function(err, client) {
-//    if(err) {
-//         console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
-//    }
-//    console.log('Connected...');
-//    const collection = client.db("test").collection("devices");
-//    // perform actions on the collection object
-//    client.close();
-// });
+if(port == null || port == "") {
+    port = 9090;
+}
 
-app.listen(port, function(){
-    console.log('App listening at port ' + port)
-})
-
-
+app.listen(port, function () {
+    console.log('app listening at port ' + port);
+});
