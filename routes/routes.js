@@ -65,11 +65,8 @@ app.use((req, res, next) => {
 
 // loginController
 app.get('/favicon.ico', loginController.getFavicon);
-app.get('/login', loginController.getIndex);
-app.get('/login', loginController.getIndex);
-app.post('/login', loginController.postLogIn);
-app.get('/checkUsername', loginController.checkUsername);
-app.get('/checkPassword', loginController.checkPassword);
+app.get('/', loginController.getLogIn);
+app.post('/', loginController.postLogIn);
 
 // signUpController
 app.get('/signup', signUpController.getSignUp);

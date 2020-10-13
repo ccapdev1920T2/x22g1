@@ -11,19 +11,19 @@ const loginController = {
     },
 
     // render log-in page when client requests '/login' defined in routes.js
-    getIndex: function (req,res) {        
+    getLogIn: function (req,res) {        
         res.render('login');
     },
 
     // executed when client requests '/login' for HTTP POST defined in routes.js
     postLogIn: function(req, res){
-        var username = helper.sanitize(req.body.username);
+        var email = helper.sanitize(req.body.email);
         var password = helper.sanitize(req.body.password);
 
-        if (username.trim() == '' || password == '') {
+        if (email.trim() == '' || password == '') {
             res.render('login', {
                 input: req.body,
-                loginErrorMessage: 'Please input your email and password!',
+                loginErrorMessage: 'Please input your email and password',
             });
         } else {
             db.findOne(Profile, { email: email }, '', function (user) {
@@ -38,14 +38,14 @@ const loginController = {
                         } else {
                             res.render('login', {
                                 input: req.body,
-                                loginErrorMessage: 'Invalid username or password!',
+                                loginErrorMessage: 'Invalid email or password',
                             });
                         }
                     });
                 } else {
                     res.render('login', {
                         input: req.body,
-                        loginErrorMessage: 'Invalid username or password!',
+                        loginErrorMessage: 'Invalid email or password',
                     });
                 }
             });
