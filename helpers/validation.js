@@ -49,6 +49,9 @@ const validation = {
                     if (data) return Promise.reject();
                 })
                 .withMessage('Username is already in use'),
+            check('bio')
+                .notEmpty()
+                .withMessage('Please enter a bio'),
         ];
     },
 };

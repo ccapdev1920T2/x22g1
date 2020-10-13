@@ -28,6 +28,7 @@
             </div>
         
             <form name="signUp" method="POST" class="form-login">
+                <small style="color: red; margin-left: -15px">* Required fields</small>
                 <div class="row">
                     <label>Profile Photo</label><br />
                     <div class="container form-upload"
@@ -45,39 +46,64 @@
                     </div>
                 </div>
                 <div class="row">
-                    <label for="register-email">Email</label><br />
+                    <label for="register-email">Email <span style="color: red"> *</span></label><br />
                     <div class="col-xs-12">
-                        <input type="email" class="form-control" name="email" id="register-email" placeholder="Email address" value="{{input.email}}">
+                        <input type="text" class="form-control" name="email" id="register-email" placeholder="Email address" value="{{input.email}}">
                     </div>
+                    <p style="color: red; margin-top: 1px; margin-bottom: -2px">
+                        {{details.emailError}}
+                    </p>
                 </div>
                 <div class="row">
-                    <label>Password</label><br />
+                    <label>Password  <span style="color: red"> *</span></label><br />
                     <div class="col-xs-12">
                         <input type="password" class="form-control" name="password" id="register-password" placeholder="Password">
                     </div>
+                    <p style="color: red; margin-top: 1px; margin-bottom: -2px">
+                        {{details.passwordError}}
+                    </p>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
                         <input type="password" class="form-control" name="passwordConfirm" id="register-password-recheck" placeholder="Confirm Password">
                     </div>
+                    <p style="color: red; margin-top: 1px; margin-bottom: -2px">
+                        {{details.passwordConfirmError}}
+                    </p>
                 </div>
                 <div class="row">
-                    <label>First Name</label><br />
+                    <label>First Name  <span style="color: red"> *</span></label><br />
                     <div class="col-xs-12">
                         <input type="text" class="form-control" name="fName" id="register-fName" placeholder="First Name" value="{{input.fName}}"> 
                     </div>
+                    <p style="color: red; margin-top: 1px; margin-bottom: -2px">
+                        {{details.fNameError}}
+                    </p>
                 </div>
                 <div class="row">
-                    <label>Last Name</label><br />
+                    <label>Last Name  <span style="color: red"> *</span></label><br />
                     <div class="col-xs-12">
                         <input type="text" class="form-control" name="lName" id="register-lName" placeholder="Last Name" value="{{input.lName}}">
                     </div>
+                     <p style="color: red; margin-top: 1px; margin-bottom: -2px">
+                        {{details.lNameError}}
+                    </p>
                 </div>
                 <div class="row">
-                    <label>Username</label><br />
+                    <label>Username  <span style="color: red"> *</span></label><br />
                     <div class="col-xs-12">
-                        <input type="text" class="form-control" name="username" id="register-username" placeholder="What should we call you?">
+                        <input type="text" class="form-control" name="username" id="register-username" placeholder="What should we call you?" value="{{input.username}}">
                     </div>
+                    <p style="color: red; margin-top: 1px; margin-bottom: -2px">
+                        {{details.usernameError}}
+                    </p>
+                </div>
+                <div class="row">
+                     <label>Bio  <span style="color: red"> *</span></label><br />
+                    <textarea class="w-100" id="shortprofile" name="bio" style="resize: none; height: 8em; width: 30em; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px" placeholder="Tell us something about yourself">{{input.shortprofile}}</textarea>
+                    <p style="color: red; margin-top: 1px; margin-bottom: -2px">
+                        {{details.bioError}}
+                    </p>
                 </div>
                 <div class="row row-submit">
                     <div class="col-xs-12">

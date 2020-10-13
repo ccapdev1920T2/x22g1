@@ -24,13 +24,19 @@ const signUpController = {
                 details[errors[i].param + 'Error'] = errors[i].msg;
 
             res.render('signup', {
-                inputs: req.body,
+                input: req.body,
                 details: details,
             });
             
         } 
         else {
             var { email, password, fName, lName, username } = req.body;
+            var email = helper.sanitize(req.body.email);
+            var password = helper.sanitize(req.body.password);
+            var username = helper.sanitize(req.body.username);
+            var fName = helper.sanitize(req.body.fName);
+            var lName = helper.sanitize(req.body.lName);
+            var bio = helper.sanitize(req.body.bio);
 
             // apply hashing
             bcrypt.hash(password, saltRounds, (err, hash) => {
@@ -44,6 +50,7 @@ const signUpController = {
                         fName: fName,
                         lName: lName,
                         username: username,
+                        bio: bio
                     };
 
                     db.insertOne(Profile, profile, function (flag) {
@@ -62,6 +69,7 @@ const signUpController = {
                         fName: fName,
                         lName: lName,
                         username: username,
+                        bio: bio
                     };
 
                     //rename user's uploaded avatar

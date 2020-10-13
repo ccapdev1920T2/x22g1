@@ -24,7 +24,7 @@ const profileSchema = mongoose.Schema({
     },
     bio: {
         type: String,
-        default: "Welcome to Big4FW!"
+        required: true
     },
     avatar: {
         type: String,

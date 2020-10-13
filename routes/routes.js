@@ -6,6 +6,7 @@ const database = require('../models/db.js'); //CONNECT DB
 const cookieParser = require('cookie-parser'); //COOKIES
 const bodyParser = require('body-parser'); //BODY PARSING
 var multer = require('multer'); //FILE UPLOAD
+const validation = require('../helpers/validation.js'); //FORM VALIDATION
 
 // import login controller
 const loginController = require('../controllers/loginController.js');
@@ -75,7 +76,9 @@ app.post('/', loginController.postLogIn);
 app.get('/signup', signUpController.getSignUp);
 app.post('/signup', 
     uploadFilter,
-    signUpController.postSignUp);
+    validation.signupValidation(),
+    signUpController.postSignUp
+);
 
 // timelineController
 app.get('/timeline', timelineController.getTimeline);
