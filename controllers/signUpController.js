@@ -1,7 +1,9 @@
-
+const bcrypt = require('bcrypt');
+const mongoose = require('mongoose');
 const db = require('../models/db.js');
 
-//const User = require('../models/userModels.js');
+const Profile = require('../models/ProfileModel');
+const saltRounds = 10;
 
 const signUpController = {
 

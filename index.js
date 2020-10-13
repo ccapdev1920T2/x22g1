@@ -36,6 +36,8 @@ mongoose.connect(url, options, err => {
   console.log('connected at ' + url);
 });
 
+// 404 error page
+
 // binds the server to a specific port
 let port = process.env.PORT;
 

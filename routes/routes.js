@@ -65,8 +65,9 @@ app.use((req, res, next) => {
 
 // loginController
 app.get('/favicon.ico', loginController.getFavicon);
-app.get('/', loginController.getIndex);
-app.post('/', loginController.postLogIn);
+app.get('/login', loginController.getIndex);
+app.get('/login', loginController.getIndex);
+app.post('/login', loginController.postLogIn);
 app.get('/checkUsername', loginController.checkUsername);
 app.get('/checkPassword', loginController.checkPassword);
 
@@ -77,7 +78,7 @@ app.get('/checkEmail', signUpController.checkEmail);
 app.get('/checkSignUpUsername', signUpController.checkSignUpUsername);
 
 // timelineController
-app.get('/HOME', timelineController.getTimeline);
+app.get('/timeline', timelineController.getTimeline);
 app.get('/createPost', timelineController.createPost);
 app.post('/uploadphoto', timelineController.uploadImage);
 app.get('/createPost', timelineController.createPost);
