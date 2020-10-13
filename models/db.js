@@ -1,4 +1,8 @@
 const mongoose = require('mongoose');
+const options = {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+};
 
 if(process.env.PORT == null || process.env.PORT == "") {
     const url = 'mongodb://localhost:27017/Big4FW_database';
@@ -14,11 +18,6 @@ if(process.env.PORT == null || process.env.PORT == "") {
         }
 
     });
-
-    const options = {
-        useUnifiedTopology: true,
-        useNewUrlParser: true
-    };
 }
 
 const database = {
