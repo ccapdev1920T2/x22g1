@@ -11,8 +11,13 @@ const loginController = {
     },
 
     // render log-in page when client requests '/login' defined in routes.js
-    getLogIn: function (req,res) {        
-        res.render('login');
+    getLogIn: function (req,res) {    
+        if(!req.session.user){
+            res.render('login');
+        }
+        else{
+            res.redirect('timeline')
+        }
     },
 
     // executed when client requests '/login' for HTTP POST defined in routes.js
