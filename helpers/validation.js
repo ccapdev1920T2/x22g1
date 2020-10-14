@@ -54,6 +54,28 @@ const validation = {
                 .withMessage('Please enter a bio'),
         ];
     },
+
+    createPostValidation: function (){
+        return [
+            check('title')
+                .isLength({ max: 40 })
+                .withMessage('Title can only contain 40 characters')
+                .notEmpty()
+                .withMessage('Please enter your post title'),
+            check('body')
+                .notEmpty()
+                .withMessage('Please enter your post content'),
+            check('tags').customSanitizer(value =>
+                value.split(','),
+            ),
+            check('tags.*')
+                .trim()
+                .matches(/^#\w+$/)
+                .withMessage('Invalid tag')
+                .bail()
+                .trim()
+        ]
+    }
 };
 
 module.exports = validation;

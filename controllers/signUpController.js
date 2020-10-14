@@ -30,7 +30,6 @@ const signUpController = {
             
         } 
         else {
-            var { email, password, fName, lName, username } = req.body;
             var email = helper.sanitize(req.body.email);
             var password = helper.sanitize(req.body.password);
             var username = helper.sanitize(req.body.username);

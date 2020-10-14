@@ -1,11 +1,46 @@
 const db = require('../models/db.js');
-const ObjectId = require('mongodb').ObjectID;
+const { validationResult } = require('express-validator');
+const Profile = require('../models/ProfileModel');
 
 const timelineController = {
 
     // retrieve all posts by finding all documents in collection userPost
     getTimeline: function (req, res){
-        res.render('timeline');
+        if(!req.session.user) res.redirect('/login');
+        else{
+            db.findOne(Profile, {_id: req.session.user}, '', function(user){
+                res.render('timeline', {
+                    user: user
+                });
+            })
+        }
+    },
+
+    createPost: function (req, res){
+        var errors = validationResult(req);
+        console.log(req.body);
+        if (!errors.isEmpty()) {
+            errors = errors.errors;
+
+            var details = {};
+            for (let i = 0; i < errors.length; i++){
+                  // remove array indices for wildcard checks
+                  details[`${errors[i].param.replace(/\[\d\]/g, '')}Error`] =
+                  errors[i].msg;
+            }
+
+            db.findOne(Profile, {_id: req.session.user}, '', function(user){
+                res.render('timeline', {
+                    user: user,
+                    input: req.body,
+                    details: details,
+                });
+            })
+            
+        } 
+        else {
+        
+        }
     },
     // getTimeline: function (req,res) {
     //     var post = {};
@@ -82,7 +117,7 @@ const timelineController = {
     // },
 
     // retrieve all posts with uniBadge '&#127993' by finding all documents in collection userPost
-    getDLSU: function (req,res){
+    getDLSU: function (req,res) {
         var post = {uniBadge: "&#127993"};
         var query = {DisplayName: req.query.DisplayName};
 
@@ -216,37 +251,36 @@ const timelineController = {
 
     },
 
-
-    createPost: function(req,res){
-        var query = {DisplayName: req.query.DisplayName}
-        var projection = {
-            CreditScore: 1
-        }
+    // createPost: function(req,res){
+    //     var query = {DisplayName: req.query.DisplayName}
+    //     var projection = {
+    //         CreditScore: 1
+    //     }
         
-        db.find('userProfile',query, projection, function(user){
-            var post = {
-                postTitle: req.query.postTitle,
-                postBody: req.query.postBody,
-                postTags: req.query.postTags,
-                Username: req.query.DisplayName,
-                User: req.query.DisplayName,
-                uniBadge: req.query.uniBadge,
-                navbar: req.query.navbar,
-                Upvotes: '0',
-                CreditScore: user.CreditScore,
-                timelineBadge: req.query.timelineBadge,
-                Upvote: 'upvote.png',
-                Downvote: 'downvote.png',
-            }
+    //     db.find('userProfile',query, projection, function(user){
+    //         var post = {
+    //             postTitle: req.query.postTitle,
+    //             postBody: req.query.postBody,
+    //             postTags: req.query.postTags,
+    //             Username: req.query.DisplayName,
+    //             User: req.query.DisplayName,
+    //             uniBadge: req.query.uniBadge,
+    //             navbar: req.query.navbar,
+    //             Upvotes: '0',
+    //             CreditScore: user.CreditScore,
+    //             timelineBadge: req.query.timelineBadge,
+    //             Upvote: 'upvote.png',
+    //             Downvote: 'downvote.png',
+    //         }
     
-            db.insertOne('userPost', post, function(result) {
-                res.render('partials/post', post, function (err, html) {
-                    res.send(html);
-                });
-            });
-        })
+    //         db.insertOne('userPost', post, function(result) {
+    //             res.render('partials/post', post, function (err, html) {
+    //                 res.send(html);
+    //             });
+    //         });
+    //     })
         
-    },
+    // },
 
     insertStatus: function(req, res){
         var postID = req.query.postID;

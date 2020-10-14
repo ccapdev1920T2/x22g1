@@ -82,9 +82,10 @@ app.post('/signup',
 
 // timelineController
 app.get('/timeline', timelineController.getTimeline);
-app.get('/createPost', timelineController.createPost);
-app.post('/uploadphoto', timelineController.uploadImage);
-app.get('/createPost', timelineController.createPost);
+app.post('/createPost', 
+    validation.createPostValidation(),
+    timelineController.createPost);
+// app.post('/uploadphoto', timelineController.uploadImage);
 
 // indivpostController
 app.get('/indivPost', indivpostController.getIndivPost);
@@ -103,6 +104,13 @@ app.get('/updateStatus', timelineController.updateStatus);
 app.get('/profile/:DisplayName', profileController.getUserProfile);
 app.get('/editprofile/:DisplayName', profileController.editProfile);
 app.get('/editprofile/:DisplayName', profileController.updateProfile);
+
+//logout
+app.get('/logout', function (req, res) {
+    req.logout;
+    req.session.destroy(function (err) {});
+    res.redirect('/');
+});
 
 //app.get('/updateUpvote', timelineController.updateUpvote);
 
