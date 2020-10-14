@@ -10,10 +10,6 @@ const postSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    email: {
-        type: String, 
-        required: true
-    },
     body: {
         type: String, 
         required: true
@@ -25,7 +21,7 @@ const postSchema = mongoose.Schema({
     photo: {
         type: String
     },
-    uniBadge: {
+    university: {
         type: String,
         required: true
     },

@@ -1,6 +1,8 @@
 const db = require('../models/db.js');
 const { validationResult } = require('express-validator');
+const helper = require('../helpers/helper.js');
 const Profile = require('../models/ProfileModel');
+const Post = require('../models/PostModel');
 
 const timelineController = {
 
@@ -39,7 +41,25 @@ const timelineController = {
             
         } 
         else {
-        
+            var title = helper.sanitize(req.body.title);
+            var body = helper.sanitize(req.body.body);
+            var tags = helper.sanitize(req.body.tags);
+            var univ = helper.sanitize(req.body.university);
+
+            const post = {
+                _id: new mongoose.Types.ObjectId(),
+                user: req.session.user,
+                title: title,
+                body: body,
+                tags: tags,
+                university: univ
+            }
+
+            db.insertOne(Post, post, function(flag){
+                if(flag){
+                    res.redirect('/timeline');
+                }
+            })
         }
     },
     // getTimeline: function (req,res) {
