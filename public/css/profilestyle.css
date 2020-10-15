@@ -98,7 +98,7 @@ body{
 
 .user-info-block {
     color: rgba(0, 0, 0, 0.795);
-    margin-top: -30px;
+    margin-top: -45px;
     text-align: center;
     border-radius: 30px;
     height: 100px;
@@ -117,8 +117,7 @@ body{
 
 .textbio{
     text-align: center;
-    font-style: italic;
-    font-family: 'Courier New', Courier, monospace;
+    
     letter-spacing: -1px;
     padding: 0px 5px 0px 5px;
     width: 400px;
