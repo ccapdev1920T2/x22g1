@@ -5,7 +5,7 @@
             <div class="timeline-heading">
                 {{!-- <div class="postNum">{{postNumber}}</div> --}}
                 <h4 class="timeline-title">
-                    <a href="/indivPost?_id={{_id}}&DisplayName={{User}}" style="color: rgb(78, 73, 73);">{{postTitle}}</a>
+                    <a href="/indivPost?_id={{_id}}&DisplayName={{User}}" style="color: rgb(78, 73, 73);">{{title}}</a>
                 </h4>
                 <div class ="dropdown">
                     <img src="/img/option.png" style="height: 20px; width: 23px; padding-right: 5px;" id="option1" title="Option">
@@ -17,24 +17,24 @@
             </div>
             <span class="timeline-author">
                 <div class="author">  
-                    <a class="a-link" href="/profile/{{Username}}">By: {{Username}}</a>
+                    <a class="a-link" href="/profile/{{username}}">By: {{user.username}}</a>
                 </div>
-                <div class="userCreditScoree">({{CreditScore}} pts)</div>
+                <div class="userCreditScoree">({{user.creditScore}} pts)</div>
             </span>
             <div class="timeline-body">
-                <p>{{postBody}}</p>
+                <p>{{body}}</p>
             </div>
             <div class="userTagss" title="Tags">
                 <span>
-                    <a class="a-link" href="indivpost.html">Tags: {{postTags}}</a>
+                    <a class="a-link" href="indivpost.html">Tags: {{tags}}</a>
                 </span>
             </div>
             <hr>
             <div class="userbuttonscontainerr">
-                <p class ="upvotecountt" id="upvotecount" title="Upvote Count">{{Upvotes}} upvotes</p>
+                <p class ="upvotecountt" id="upvotecount" title="Upvote Count">{{upvote}} upvotes, <span>{{downvote}} downvotes</span></p>
                     {{!-- <p id="counter"></p>--}}
-                <img src="/img/{{Upvote}}" id="upvote" title="Upvote" class="upvote">
-                <img src="/img/{{Downvote}}" id="downvote" title="Downvote" class="downvote">
+                <img src="/img/upvote.png" id="upvote" title="Upvote" class="upvote">
+                <img src="/img/downvote.png" id="downvote" title="Downvote" class="downvote">
                 {{!-- <a href="/indivPost?_id={{_id}}&DisplayName={{User}}" > --}}
                 <img src="/img/comment.png" style="height: 43px; width: 47px; margin-left: -3px;" id="comment" class="comment" title="Comment">
             </div>

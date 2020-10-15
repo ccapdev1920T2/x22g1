@@ -102,7 +102,7 @@
                                         <div class="box-text">
                                             <div class="box-tags">
                                                 <div class="text-area">                                                  
-                                                    <input type="text" name="tags" id="tags" class="post-area-tags" placeholder="#Tags (Separate your tags with comma)" value="{{input.tags}}"></input>                                             
+                                                    <input type="text" name="tags" id="tags" class="post-area-tags" placeholder="#Tags (Separate your tags with comma)" value="{{input.tags}}" autocomplete="off"></input>                                             
                                                 </div>
                                                  <p style="color: red; margin-top: -5px; margin-bottom: 2px; font-size: 10px"> 
                                                     {{details.tagsError}}
@@ -159,7 +159,7 @@
                                                             <span class="media-span">
                                                                 <div class="media-pic" id="pbutton">
                                                                     <div class = "media-text">
-                                                                        <i class="far fa-edit"></i><input type="submit" id="postbutton" value="Post" style="background-color: rgba(255, 255, 255, 0.007); border: none;">
+                                                                        <i class="far fa-edit"></i><button type="submit" id="postbutton" style="background-color: rgba(255, 255, 255, 0.007); border: none;">Post</button>
                                                                     </div>
                                                                 </div>
                                                             </span>
@@ -175,10 +175,11 @@
                         <hr>
                         <div id="post">
                             {{#each posts}}
-                                {{#if _id}}
-                                    {{>post}}
-                                {{/if}}
+                                {{>post }}
                             {{/each}}
+                             {{!-- {{#if _id}}
+                                    {{>post}}
+                                {{/if}} --}}
                         </div>
                     </div>
                 </div>

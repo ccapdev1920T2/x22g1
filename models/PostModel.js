@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const postSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     user: {
-        type: mongoose.Types.ObjectId,
-        Ref: 'Profile'
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Profile'
     },
     title: {
         type: String,
@@ -27,12 +27,16 @@ const postSchema = mongoose.Schema({
     },
     upvote: {
         type: Number,
-        required: true
+        default: 0
     },
     downvote: {
         type: Number,
-        required: true
-    }
+        default: 0
+    },
+    created: {
+        type: Date,
+        default: Date.now,
+    },
 })
 
 module.exports = mongoose.model('Post', postSchema);

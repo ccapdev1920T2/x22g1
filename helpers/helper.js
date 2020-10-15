@@ -1,5 +1,6 @@
 const sanitize = require('mongo-sanitize');
 const fs = require('fs');
+const Post = require('../models/PostModel');
 
 const helper = {
     sanitize: function (query) {
@@ -15,6 +16,13 @@ const helper = {
         fs.renameSync(req.files['avatar'][0].path, newURL);
         return newName + extension;
     },
+
+    getTimelinePosts: function (){
+        return Post.find()
+            .populate('user')
+            .sort('-created')
+            .lean()
+    }
 };
 
 module.exports = helper;

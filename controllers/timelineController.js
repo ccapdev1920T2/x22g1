@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const db = require('../models/db.js');
 const { validationResult } = require('express-validator');
 const helper = require('../helpers/helper.js');
@@ -11,16 +12,25 @@ const timelineController = {
         if(!req.session.user) res.redirect('/login');
         else{
             db.findOne(Profile, {_id: req.session.user}, '', function(user){
-                res.render('timeline', {
-                    user: user
-                });
+
+                var getPost = helper.getTimelinePosts();
+                getPost.exec(function(err, post){
+                    if (err) throw err;
+                    console.log(post);
+                    res.render('timeline', {
+                        active_session: req.session.user && req.cookies.user_sid,
+                        active_user: req.session.user,
+                        user: user,
+                        posts: post
+                    });
+                })
             })
         }
     },
 
     createPost: function (req, res){
         var errors = validationResult(req);
-        console.log(req.body);
+        
         if (!errors.isEmpty()) {
             errors = errors.errors;
 
