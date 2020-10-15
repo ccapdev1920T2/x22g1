@@ -1,6 +1,8 @@
  <ul class="timeline">
     <li class="timeline-inverted">
-        <div class="{{timelineBadge}}">{{{uniBadge}}}</div>
+        {{#match university 'ADMU'}}
+            <div class="timeline-badge ateneo">&#x1f985</div>
+        {{/match}}
         <div class="timeline-panel">
             <div class="timeline-heading">
                 {{!-- <div class="postNum">{{postNumber}}</div> --}}
