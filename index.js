@@ -17,20 +17,6 @@ hbs.registerHelper('match', function(v1, v2, options){
     return v1 == v2 ? options.fn(this) : options.inverse(this);
 });
 
-// app.engine(
-//     'hbs',
-//     exphbs({
-//         extname: 'hbs',
-
-//         // custom helpers
-//         helpers: {
-//             match: function (v1, v2, options) {
-//                 return v1 == v2 ? options.fn(this) : options.inverse(this);
-//             },
-//         },
-//     }),
-// );
-
 // parses incoming requests with urlencoded payloads
 app.use(express.urlencoded({ extended: true }));
 
