@@ -133,11 +133,12 @@
 .userCreditScoree{
     height: auto;
     width: auto;
-    padding-top: 4px;
+    padding-top: 3px;
     font-size: 9px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: rgb(128, 128, 128);
     margin-left: 5px;
+    margin-right: 5px;
 }
 
 .post-area-tags{

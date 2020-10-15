@@ -3,6 +3,15 @@
         {{#match university 'ADMU'}}
             <div class="timeline-badge ateneo">&#x1f985</div>
         {{/match}}
+        {{#match university 'DLSU'}}
+            <div class="timeline-badge lasalle">&#127993</div>
+        {{/match}}
+        {{#match university 'UP'}}
+            <div class="timeline-badge up">&#9994</div>
+        {{/match}}
+        {{#match university 'UST'}}
+            <div class="timeline-badge ust">&#128047</div>
+        {{/match}}
         <div class="timeline-panel">
             <div class="timeline-heading">
                 {{!-- <div class="postNum">{{postNumber}}</div> --}}
@@ -21,7 +30,7 @@
                 <div class="author">  
                     <a class="a-link" href="/profile/{{username}}">By: {{user.username}}</a>
                 </div>
-                <div class="userCreditScoree">({{user.creditScore}} pts)</div>
+                <div class="userCreditScoree">({{user.creditScore}} pts)</div>    
             </span>
             <div class="timeline-body">
                 <p>{{body}}</p>

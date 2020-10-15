@@ -17,12 +17,40 @@ const helper = {
         return newName + extension;
     },
 
-    getTimelinePosts: function (){
+    getAllPosts: function () {
         return Post.find()
             .populate('user')
             .sort('-created')
             .lean()
-    }
+    },
+
+    getDLSUPost: function () {
+        return Post.find({university: 'DLSU'})
+            .populate('user')
+            .sort('-created')
+            .lean()
+    },
+
+    getADMUPost: function () {
+        return Post.find({university: 'ADMU'})
+            .populate('user')
+            .sort('-created')
+            .lean()
+    },
+
+    getUPPost: function () {
+        return Post.find({university: 'UP'})
+            .populate('user')
+            .sort('-created')
+            .lean()
+    },
+
+    getUSTPost: function () {
+        return Post.find({university: 'UST'})
+            .populate('user')
+            .sort('-created')
+            .lean()
+    },
 };
 
 module.exports = helper;

@@ -7,13 +7,13 @@ const Post = require('../models/PostModel');
 
 const timelineController = {
 
-    // retrieve all posts by finding all documents in collection userPost
+    // retrieve all posts by finding all documents in Post collection
     getTimeline: function (req, res){
         if(!req.session.user) res.redirect('/login');
         else{
             db.findOne(Profile, {_id: req.session.user}, '', function(user){
 
-                var getPost = helper.getTimelinePosts();
+                var getPost = helper.getAllPosts();
                 getPost.exec(function(err, post){
                     if (err) throw err;
                     console.log(post);
@@ -28,6 +28,7 @@ const timelineController = {
         }
     },
 
+    // create a post to be inserted in the Post collection 
     createPost: function (req, res){
         var errors = validationResult(req);
         
@@ -72,6 +73,92 @@ const timelineController = {
             })
         }
     },
+
+    // retrieve all DLSU posts in Post collection
+    getDLSU: function (req, res){
+        if(!req.session.user) res.redirect('/login');
+        else{
+            db.findOne(Profile, {_id: req.session.user}, '', function(user){
+
+                var getPost = helper.getDLSUPost();
+                getPost.exec(function(err, post){
+                    if (err) throw err;
+                    console.log(post);
+                    res.render('timeline', {
+                        active_session: req.session.user && req.cookies.user_sid,
+                        active_user: req.session.user,
+                        user: user,
+                        posts: post
+                    });
+                })
+            })
+        }
+    },
+
+    // retrieve all ADMU posts in Post collection
+    getADMU: function (req, res){
+        if(!req.session.user) res.redirect('/login');
+        else{
+            db.findOne(Profile, {_id: req.session.user}, '', function(user){
+
+                var getPost = helper.getADMUPost();
+                getPost.exec(function(err, post){
+                    if (err) throw err;
+                    console.log(post);
+                    res.render('timeline', {
+                        active_session: req.session.user && req.cookies.user_sid,
+                        active_user: req.session.user,
+                        user: user,
+                        posts: post
+                    });
+                })
+            })
+        }
+    },
+
+    // retrieve all UP posts in Post collection
+    getUP: function (req, res){
+        if(!req.session.user) res.redirect('/login');
+        else{
+            db.findOne(Profile, {_id: req.session.user}, '', function(user){
+
+                var getPost = helper.getUPPost();
+                getPost.exec(function(err, post){
+                    if (err) throw err;
+                    console.log(post);
+                    res.render('timeline', {
+                        active_session: req.session.user && req.cookies.user_sid,
+                        active_user: req.session.user,
+                        user: user,
+                        posts: post
+                    });
+                })
+            })
+        }
+    },
+
+    // retrieve all UST posts in Post collection
+    getUST: function (req, res){
+        if(!req.session.user) res.redirect('/login');
+        else{
+            db.findOne(Profile, {_id: req.session.user}, '', function(user){
+
+                var getPost = helper.getUSTPost();
+                getPost.exec(function(err, post){
+                    if (err) throw err;
+                    console.log(post);
+                    res.render('timeline', {
+                        active_session: req.session.user && req.cookies.user_sid,
+                        active_user: req.session.user,
+                        user: user,
+                        posts: post
+                    });
+                })
+            })
+        }
+    },
+
+
     // getTimeline: function (req,res) {
     //     var post = {};
     //     var query = {DisplayName: req.query.DisplayName};
@@ -146,120 +233,120 @@ const timelineController = {
     //     })
     // },
 
-    // retrieve all posts with uniBadge '&#127993' by finding all documents in collection userPost
-    getDLSU: function (req,res) {
-        var post = {uniBadge: "&#127993"};
-        var query = {DisplayName: req.query.DisplayName};
+    // // retrieve all posts with uniBadge '&#127993' by finding all documents in collection userPost
+    // getDLSU: function (req,res) {
+    //     var post = {uniBadge: "&#127993"};
+    //     var query = {DisplayName: req.query.DisplayName};
 
-        var projection = {
-            fName: 1,
-            lName: 1,
-            CreditScore: 1,
-            DisplayName: 1,
-            DisplayPicture: 1,
-        };
+    //     var projection = {
+    //         fName: 1,
+    //         lName: 1,
+    //         CreditScore: 1,
+    //         DisplayName: 1,
+    //         DisplayPicture: 1,
+    //     };
 
-        db.findMany('userPost',post,function(posts){
-            db.find('userProfile', query, projection, function(userDetails){
-                res.render('timeline',{
-                    fn: userDetails.fName, 
-                    ln: userDetails.lName, 
-                    cs: userDetails.CreditScore,
-                    posts: posts,
-                    image: userDetails.DisplayPicture,
-                    DisplayName: userDetails.DisplayName,
-                    navbar: "navbar-dlsu"
-                });
-            })
-        })    
-    },
+    //     db.findMany('userPost',post,function(posts){
+    //         db.find('userProfile', query, projection, function(userDetails){
+    //             res.render('timeline',{
+    //                 fn: userDetails.fName, 
+    //                 ln: userDetails.lName, 
+    //                 cs: userDetails.CreditScore,
+    //                 posts: posts,
+    //                 image: userDetails.DisplayPicture,
+    //                 DisplayName: userDetails.DisplayName,
+    //                 navbar: "navbar-dlsu"
+    //             });
+    //         })
+    //     })    
+    // },
 
-    // retrieve all posts with uniBadge '&#x1f985' by finding all documents in collection userPost
-    getADMU: function (req,res){
-        var post = {uniBadge: "&#x1f985"};
+    // // retrieve all posts with uniBadge '&#x1f985' by finding all documents in collection userPost
+    // getADMU: function (req,res){
+    //     var post = {uniBadge: "&#x1f985"};
       
-        var query = {DisplayName: req.query.DisplayName};
+    //     var query = {DisplayName: req.query.DisplayName};
 
-        var projection = {
-            fName: 1,
-            lName: 1,
-            CreditScore: 1,
-            DisplayName: 1,
-            DisplayPicture: 1,
-        };
+    //     var projection = {
+    //         fName: 1,
+    //         lName: 1,
+    //         CreditScore: 1,
+    //         DisplayName: 1,
+    //         DisplayPicture: 1,
+    //     };
 
-        db.findMany('userPost',post,function(posts){
-            db.find('userProfile', query, projection, function(userDetails){
-                res.render('timeline',{
-                    fn: userDetails.fName, 
-                    ln: userDetails.lName, 
-                    cs: userDetails.CreditScore,
-                    posts: posts,
-                    image: userDetails.DisplayPicture,
-                    DisplayName: userDetails.DisplayName,
-                    navbar: "navbar-admu"
-                });
-            })
-        })   
-    },
+    //     db.findMany('userPost',post,function(posts){
+    //         db.find('userProfile', query, projection, function(userDetails){
+    //             res.render('timeline',{
+    //                 fn: userDetails.fName, 
+    //                 ln: userDetails.lName, 
+    //                 cs: userDetails.CreditScore,
+    //                 posts: posts,
+    //                 image: userDetails.DisplayPicture,
+    //                 DisplayName: userDetails.DisplayName,
+    //                 navbar: "navbar-admu"
+    //             });
+    //         })
+    //     })   
+    // },
 
-    // retrieve all posts with uniBadge '&#99945' by finding all documents in collection userPost
-    getUP: function (req,res){
-        var post = {uniBadge: "&#9994"};
+    // // retrieve all posts with uniBadge '&#99945' by finding all documents in collection userPost
+    // getUP: function (req,res){
+    //     var post = {uniBadge: "&#9994"};
         
-        var query = {DisplayName: req.query.DisplayName};
+    //     var query = {DisplayName: req.query.DisplayName};
 
-        var projection = {
-            fName: 1,
-            lName: 1,
-            CreditScore: 1,
-            DisplayName: 1,
-            DisplayPicture: 1,
-        };
+    //     var projection = {
+    //         fName: 1,
+    //         lName: 1,
+    //         CreditScore: 1,
+    //         DisplayName: 1,
+    //         DisplayPicture: 1,
+    //     };
 
-        db.findMany('userPost',post,function(posts){
-            db.find('userProfile', query, projection, function(userDetails){
-                res.render('timeline',{
-                    fn: userDetails.fName, 
-                    ln: userDetails.lName, 
-                    cs: userDetails.CreditScore,
-                    posts: posts,
-                    image: userDetails.DisplayPicture,
-                    DisplayName: userDetails.DisplayName,
-                    navbar: "navbar-up"
-                });
-            })
-        })   
-    },
+    //     db.findMany('userPost',post,function(posts){
+    //         db.find('userProfile', query, projection, function(userDetails){
+    //             res.render('timeline',{
+    //                 fn: userDetails.fName, 
+    //                 ln: userDetails.lName, 
+    //                 cs: userDetails.CreditScore,
+    //                 posts: posts,
+    //                 image: userDetails.DisplayPicture,
+    //                 DisplayName: userDetails.DisplayName,
+    //                 navbar: "navbar-up"
+    //             });
+    //         })
+    //     })   
+    // },
 
-    // retrieve all posts with uniBadge '&#128047' by finding all documents in collection userPost
-    getUST: function (req,res){
-        var post = {uniBadge: "&#128047"};
+    // // retrieve all posts with uniBadge '&#128047' by finding all documents in collection userPost
+    // getUST: function (req,res){
+    //     var post = {uniBadge: "&#128047"};
       
-        var query = {DisplayName: req.query.DisplayName};
+    //     var query = {DisplayName: req.query.DisplayName};
 
-        var projection = {
-            fName: 1,
-            lName: 1,
-            CreditScore: 1,
-            DisplayName: 1,
-            DisplayPicture: 1,
-        };
+    //     var projection = {
+    //         fName: 1,
+    //         lName: 1,
+    //         CreditScore: 1,
+    //         DisplayName: 1,
+    //         DisplayPicture: 1,
+    //     };
 
-        db.findMany('userPost',post,function(posts){
-            db.find('userProfile', query, projection, function(userDetails){
-                res.render('timeline',{
-                    fn: userDetails.fName, 
-                    ln: userDetails.lName, 
-                    cs: userDetails.CreditScore,
-                    posts: posts,
-                    image: userDetails.DisplayPicture,
-                    DisplayName: userDetails.DisplayName,
-                    navbar: "navbar-ust"
-                });
-            })
-        })   
-    },
+    //     db.findMany('userPost',post,function(posts){
+    //         db.find('userProfile', query, projection, function(userDetails){
+    //             res.render('timeline',{
+    //                 fn: userDetails.fName, 
+    //                 ln: userDetails.lName, 
+    //                 cs: userDetails.CreditScore,
+    //                 posts: posts,
+    //                 image: userDetails.DisplayPicture,
+    //                 DisplayName: userDetails.DisplayName,
+    //                 navbar: "navbar-ust"
+    //             });
+    //         })
+    //     })   
+    // },
 
     uploadImage: function(req,res){
         

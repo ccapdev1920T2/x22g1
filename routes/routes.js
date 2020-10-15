@@ -85,6 +85,12 @@ app.get('/timeline', timelineController.getTimeline);
 app.post('/createPost', 
     validation.createPostValidation(),
     timelineController.createPost);
+app.get('/timeline/dlsu', timelineController.getDLSU);
+app.get('/timeline/admu', timelineController.getADMU);
+app.get('/timeline/up', timelineController.getUP);
+app.get('/timeline/ust', timelineController.getUST);
+
+
 // app.post('/uploadphoto', timelineController.uploadImage);
 
 // indivpostController
@@ -92,10 +98,10 @@ app.get('/indivPost', indivpostController.getIndivPost);
 app.get('/createComment', indivpostController.createComment);
 
 // timelineController for Universities
-app.get('/ADMU', timelineController.getADMU);
-app.get('/DLSU', timelineController.getDLSU);
-app.get('/UP', timelineController.getUP);
-app.get('/UST', timelineController.getUST);
+// app.get('/ADMU', timelineController.getADMU);
+// app.get('/DLSU', timelineController.getDLSU);
+// app.get('/UP', timelineController.getUP);
+// app.get('/UST', timelineController.getUST);
 app.get('/getStatus', timelineController.getStatus);
 app.get('/insertStatus', timelineController.insertStatus);
 app.get('/updateStatus', timelineController.updateStatus);
