@@ -17,7 +17,7 @@
         <nav class="navbar navbar-inverse navbar-fixed-top {{navbar}}">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/HOME?DisplayName={{DisplayName}}">BIG FOUR: Freedom Wall</a>
+                    <a class="navbar-brand" href="/timeline">BIG FOUR: Freedom Wall</a>
                 </div>
                 <form class="navbar-form navbar-left" action="/action_page.php">
                     <div class="input-group">
@@ -36,7 +36,7 @@
                     <li><a href="/timeline/up">&#9994 UP</a></li>
                     <li><a href="/timeline/ust">&#128047 UST</a></li>
                         <div class="dropdown prof">
-                            <li><a href="/profile/{{DisplayName}}" class="dropbtn" style="color:white; font-size:14px; border: 1px solid white; margin-right: 10px;" title="Go to Profile"><i class="far fa-user"></i> PROFILE</a></li>
+                            <li><a href="/profile/{{user._id}}" class="dropbtn" style="color:white; font-size:14px; border: 1px solid white; margin-right: 10px;" title="Go to Profile"><i class="far fa-user"></i> PROFILE</a></li>
                             <div class="dropdown-content">
                                 <a href="/logout">Log out</a>
                             </div>
@@ -50,7 +50,7 @@
                     {{!-- {{>sideProfile fName = fn lName = ln CreditScore = cs DisplayName = DisplayName DisplayPicture = image}} --}}
                     <div class="col-sm-2 sidenav">
                         <div class="content-sidenav">
-                            <a href="/profile/{{DisplayName}}"><img class="img-circle" src="/img/{{user.avatar}}"/> </a>
+                            <a href="/profile/{{user._id}}"><img class="img-circle" src="/img/{{user.avatar}}"/> </a>
                                 <div class="rank-label-container">
                                     <span class="label label-default rank-label" title="Credit Score" style="cursor:default;">{{user.creditScore}} pts</span>
                                 </div>

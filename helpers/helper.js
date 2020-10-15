@@ -51,6 +51,14 @@ const helper = {
             .sort('-created')
             .lean()
     },
+
+    getUserPost: function (userId) {
+        return Post.find({user: userId})
+            .populate('user')
+            .sort('-created')
+            .lean()
+    },
+
 };
 
 module.exports = helper;

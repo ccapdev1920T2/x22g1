@@ -83,12 +83,12 @@ const timelineController = {
                 var getPost = helper.getDLSUPost();
                 getPost.exec(function(err, post){
                     if (err) throw err;
-                    console.log(post);
                     res.render('timeline', {
                         active_session: req.session.user && req.cookies.user_sid,
                         active_user: req.session.user,
                         user: user,
-                        posts: post
+                        posts: post,
+                        navbar: "navbar-dlsu"
                     });
                 })
             })
@@ -104,12 +104,12 @@ const timelineController = {
                 var getPost = helper.getADMUPost();
                 getPost.exec(function(err, post){
                     if (err) throw err;
-                    console.log(post);
                     res.render('timeline', {
                         active_session: req.session.user && req.cookies.user_sid,
                         active_user: req.session.user,
                         user: user,
-                        posts: post
+                        posts: post,
+                        navbar: "navbar-admu"
                     });
                 })
             })
@@ -125,12 +125,12 @@ const timelineController = {
                 var getPost = helper.getUPPost();
                 getPost.exec(function(err, post){
                     if (err) throw err;
-                    console.log(post);
                     res.render('timeline', {
                         active_session: req.session.user && req.cookies.user_sid,
                         active_user: req.session.user,
                         user: user,
-                        posts: post
+                        posts: post,
+                        navbar: "navbar-up"
                     });
                 })
             })
@@ -146,12 +146,12 @@ const timelineController = {
                 var getPost = helper.getUSTPost();
                 getPost.exec(function(err, post){
                     if (err) throw err;
-                    console.log(post);
                     res.render('timeline', {
                         active_session: req.session.user && req.cookies.user_sid,
                         active_user: req.session.user,
                         user: user,
-                        posts: post
+                        posts: post,
+                        navbar: "navbar-ust"
                     });
                 })
             })

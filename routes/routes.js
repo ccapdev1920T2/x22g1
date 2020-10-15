@@ -90,6 +90,11 @@ app.get('/timeline/admu', timelineController.getADMU);
 app.get('/timeline/up', timelineController.getUP);
 app.get('/timeline/ust', timelineController.getUST);
 
+// profileController
+app.get('/profile/:userId', profileController.getProfile);
+
+
+
 
 // app.post('/uploadphoto', timelineController.uploadImage);
 
@@ -107,9 +112,9 @@ app.get('/insertStatus', timelineController.insertStatus);
 app.get('/updateStatus', timelineController.updateStatus);
 
 // profileController
-app.get('/profile/:DisplayName', profileController.getUserProfile);
-app.get('/editprofile/:DisplayName', profileController.editProfile);
-app.get('/editprofile/:DisplayName', profileController.updateProfile);
+// app.get('/profile/:DisplayName', profileController.getUserProfile);
+// app.get('/editprofile/:DisplayName', profileController.editProfile);
+// app.get('/editprofile/:DisplayName', profileController.updateProfile);
 
 //logout
 app.get('/logout', function (req, res) {
