@@ -27,13 +27,13 @@
                 </div>
             </div>
         
-            <form name="signUp" method="POST" class="form-login">
+            <form name="signUp" method="POST" class="form-login" enctype="multipart/form-data">
                 <small style="color: red; margin-left: -15px">* Required fields</small>
                 <div class="row">
                     <label>Profile Photo</label><br />
                     <div class="container form-upload"
                         style="justify-content: center; align-items: center; text-align: center;">
-                        <img class="img-circle" id="output" src="/img/portrait.png" style="margin-left: 2px;" />
+                        <img class="img-circle" id="output" src="/avatars/default.png" style="margin-left: 2px;" />
                         <div>
                             <div class="col" style="padding-left: 90px;">
                                 <p class="mx-auto w-100">
@@ -114,7 +114,7 @@
                 </div>
             </form>
             <div class="row">
-                <div id="error" style="margin-left: 165px; color: red; font-size:16px; font-weight:600;"></div>
+                <div id="error" style="color: red; font-size:16px; font-weight:600;"></div>
                 <div class="col-xs-12">
                     <div class="divider"></div>
                     <p class="text-center text-muted footer">Big Four: Freedom Wall</p>

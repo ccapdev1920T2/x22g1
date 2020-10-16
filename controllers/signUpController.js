@@ -41,7 +41,7 @@ const signUpController = {
             bcrypt.hash(password, saltRounds, (err, hash) => {
 
                 //user used default avatar
-                if (!req.files) {
+                if (!req.file) {
                     const profile = {
                         _id: new mongoose.Types.ObjectId(),
                         email: email,

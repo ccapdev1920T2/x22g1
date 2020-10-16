@@ -25,7 +25,7 @@ const profileController = require('../controllers/profileController.js');
 const app = express();
 
 // initialize multer for file upload use 
-var storage = multer.diskStorage({
+var avatarStorage = multer.diskStorage({
     destination: function (req, file, cd) {
         if (file.fieldname === 'avatar') {
             cd(null, './public/avatars');
@@ -36,10 +36,8 @@ var storage = multer.diskStorage({
     },
 });
 
-var upload = multer({ storage: storage });
-var uploadFilter = upload.fields([
-    { name: 'avatar', maxCount: 1 },
-]);
+var avatarUpload = multer({ storage: avatarStorage }).single('avatar');
+
 
 // Init Cookie and Body Parser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -75,7 +73,7 @@ app.post('/', loginController.postLogIn);
 // signUpController
 app.get('/signup', signUpController.getSignUp);
 app.post('/signup', 
-    uploadFilter,
+    avatarUpload,
     validation.signupValidation(),
     signUpController.postSignUp
 );
@@ -92,8 +90,10 @@ app.get('/timeline/ust', timelineController.getUST);
 
 // profileController
 app.get('/profile/:userId', profileController.getProfile);
-
-
+app.post('/editProfile',
+    avatarUpload,
+    profileController.editProfile);
+app.get('/checkUsername', profileController.checkUsername);
 
 
 // app.post('/uploadphoto', timelineController.uploadImage);

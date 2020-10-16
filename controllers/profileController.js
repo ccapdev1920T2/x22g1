@@ -1,13 +1,11 @@
 const db = require('../models/db.js');
 const helper = require('../helpers/helper.js');
 const Profile = require('../models/ProfileModel');
-const Post = require('../models/PostModel');
 
 const profileController = {
     // retrieve user profile based on the username request of the client defined in routes.js
     getProfile: function (req, res){
         var userId = helper.sanitize(req.params.userId);
-        console.log(userId);
 
         if(!req.session.user) res.redirect('/login');
         else{
@@ -26,6 +24,59 @@ const profileController = {
 
         }
     },
+
+    editProfile: function (req, res){
+        var username = helper.sanitize(req.body.username);
+        var fName = helper.sanitize(req.body.fName);
+        var lName = helper.sanitize(req.body.lName);
+        var bio = helper.sanitize(req.body.bio);
+
+        if (!req.file) {
+            db.updateOne(Profile, {_id: req.session.user}, {username: username, fName: fName, lName: lName, bio: bio}, function(result){
+                if(result){
+                    res.redirect(`/profile/${req.session.user}`);
+                }
+            })
+        }
+
+        // user uploaded his/her own avatar
+        else {
+            //rename user's uploaded avatar
+            var newAvatarName = req.session.user;
+            var avatarFileName = helper.renameAvatar(req, newAvatarName);
+
+            helper.updateAvatar(newAvatarName, avatarFileName, res);
+
+            db.updateOne(Profile, {_id: req.session.user}, {username: username, fName: fName, lName: lName, bio: bio}, function(result){
+                if(result){
+                    res.redirect(`/profile/${req.session.user}`);
+                }
+            })
+        }     
+
+    },
+
+    checkUsername: function (req, res){
+        // retrieve value of username stored in req.query object
+        var username = req.query.username;
+        console.log(username);
+
+        // call the function findOne() from the module in db.js and use the object query to filter the collection 'userProfile' in the database
+        // sends an empty string if no result was found. otherwise, send an object containing 'Username'
+        // db.findOne('userProfile', {DisplayName : username}, function(result){
+        //     res.send(result);
+        // })
+
+        db.findOne(Profile, {username: username}, '', function(result){
+            res.send(result);
+        })
+
+
+        // mongoose
+        // db.findOne(User, {username: username}, 'username', function (result) {
+        //     res.send(result);
+        // });
+    }
 
 //     getUserProfile: function(req,res){
             

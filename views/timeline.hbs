@@ -50,7 +50,7 @@
                     {{!-- {{>sideProfile fName = fn lName = ln CreditScore = cs DisplayName = DisplayName DisplayPicture = image}} --}}
                     <div class="col-sm-2 sidenav">
                         <div class="content-sidenav">
-                            <a href="/profile/{{user._id}}"><img class="img-circle" src="/img/{{user.avatar}}"/> </a>
+                            <a href="/profile/{{user._id}}"><img class="img-circle" src="/avatars/{{user.avatar}}"/> </a>
                                 <div class="rank-label-container">
                                     <span class="label label-default rank-label" title="Credit Score" style="cursor:default;">{{user.creditScore}} pts</span>
                                 </div>
@@ -75,7 +75,7 @@
                                 <div class="whole-post">
                                     <div class="post-pic">
                                         <a class="pic" href="/profile/{{DisplayName}}">
-                                            <img class="img" src="/img/{{user.avatar}}" height="40" width="40" alt>
+                                            <img class="img" src="/avatars/{{user.avatar}}" height="40" width="40" alt>
                                         </a>
                                     </div>
                                     <div class="actual-text">
