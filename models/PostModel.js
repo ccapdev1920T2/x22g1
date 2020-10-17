@@ -33,6 +33,10 @@ const postSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
+    delete: {
+        type: Boolean,
+        default: true
+    },
     created: {
         type: Date,
         default: Date.now,

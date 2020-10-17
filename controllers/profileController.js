@@ -17,7 +17,8 @@ const profileController = {
                         active_session: req.session.user && req.cookies.user_sid,
                         active_user: req.session.user,
                         user: user.toObject(),
-                        posts: post
+                        posts: post,
+                        profile: true
                     })
                 })
             })
@@ -61,21 +62,34 @@ const profileController = {
         var username = req.query.username;
         console.log(username);
 
-        // call the function findOne() from the module in db.js and use the object query to filter the collection 'userProfile' in the database
+        // call the function findOne() from the module in db.js and use the object query to filter the collection 'Profile' in the database
         // sends an empty string if no result was found. otherwise, send an object containing 'Username'
-        // db.findOne('userProfile', {DisplayName : username}, function(result){
-        //     res.send(result);
-        // })
-
         db.findOne(Profile, {username: username}, '', function(result){
             res.send(result);
         })
 
+    },
 
-        // mongoose
-        // db.findOne(User, {username: username}, 'username', function (result) {
-        //     res.send(result);
-        // });
+    getIndivProfile: function (req, res){
+        var userId = helper.sanitize(req.params.userId);
+
+        if(!req.session.user) res.redirect('/login');
+        else{
+            db.findOne(Profile, {_id: userId}, '', function(user){
+                var getPost = helper.getUserPost(userId);
+                getPost.exec(function(err, post){
+                    if (err) throw err;
+                    res.render('profile', {
+                        active_session: req.session.user && req.cookies.user_sid,
+                        active_user: req.session.user,
+                        user: user.toObject(),
+                        posts: post,
+                        profile: false
+                    })
+                })
+            })
+
+        }
     }
 
 //     getUserProfile: function(req,res){

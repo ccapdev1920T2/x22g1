@@ -87,6 +87,7 @@ app.get('/timeline/dlsu', timelineController.getDLSU);
 app.get('/timeline/admu', timelineController.getADMU);
 app.get('/timeline/up', timelineController.getUP);
 app.get('/timeline/ust', timelineController.getUST);
+app.get('/post/:postId', timelineController.getIndivPost);
 
 // profileController
 app.get('/profile/:userId', profileController.getProfile);
@@ -94,6 +95,7 @@ app.post('/editProfile',
     avatarUpload,
     profileController.editProfile);
 app.get('/checkUsername', profileController.checkUsername);
+app.get('/userid/:userId', profileController.getIndivProfile);
 
 
 // app.post('/uploadphoto', timelineController.uploadImage);

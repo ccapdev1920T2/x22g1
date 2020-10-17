@@ -75,12 +75,20 @@
             {{!-- </div>  --}}
         </div>
         <div id="buttoncontainer">
-            <div class="button1">
-                <button class="tablinks" id="Recent_Post" title="Recent Posts" >Recent Posts</button>
-            </div>
-            <div class="button2">
-                <button class="tablinks" id="Saved_Post" title="Saved Posts">Saved Posts</button>
-            </div>
+
+            {{#if profile}}
+                <div class="button1">
+                    <button class="tablinks" id="Recent_Post" title="Recent Posts" >Recent Posts</button>
+                </div>
+                <div class="button2">
+                    <button class="tablinks" id="Saved_Post" title="Saved Posts">Saved Posts</button>
+                </div>
+
+                {{else}}
+                 <div class="button1">
+                    <button class="tablinks" id="Recent_Post" title="Recent Posts" >Recent Posts</button>
+                </div>
+            {{/if}}
         </div>
 
         <div class="center-post" style="margin-left: 200px;">

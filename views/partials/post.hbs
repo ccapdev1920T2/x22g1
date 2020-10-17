@@ -16,19 +16,23 @@
             <div class="timeline-heading">
                 {{!-- <div class="postNum">{{postNumber}}</div> --}}
                 <h4 class="timeline-title">
-                    <a href="/indivPost?_id={{_id}}&DisplayName={{User}}" style="color: rgb(78, 73, 73);">{{title}}</a>
+                    <a href="/post/{{_id}}" style="color: rgb(78, 73, 73);">{{title}}</a>
                 </h4>
                 <div class ="dropdown">
                     <img src="/img/option.png" style="height: 20px; width: 23px; padding-right: 5px;" id="option1" title="Option">
                     <div class="dropdown-content">
-                        <a href="#">Save Post</a>
-                        <a href="#">Share</a>
+                        {{#if delete}}
+                            <a href="#">Save Post</a>
+                            <a href="#">Delete Post</a>
+                            {{else}}
+                            <a href="#">Save Post</a>
+                        {{/if}}
                     </div>
                 </div>
             </div>
             <span class="timeline-author">
                 <div class="author">  
-                    <a class="a-link" href="/profile/{{username}}">By: {{user.username}}</a>
+                    <a class="a-link" href="/userid/{{user._id}}">By: {{user.username}}</a>
                 </div>
                 <div class="userCreditScoree">({{user.creditScore}} pts)</div>    
             </span>
@@ -51,7 +55,7 @@
             </div>
             <div id="p_id">
                 <p id="pid" style="visibility: hidden; margin-top: -10px">{{_id}}</p>
-                <p id="uid" style="visibility: hidden; margin-top: -30px">{{User}}</p>
+                <p id="uid" style="visibility: hidden; margin-top: -25px">{{User}}</p>
             </div>
         </div>
     </li>

@@ -158,6 +158,29 @@ const timelineController = {
         }
     },
 
+    getIndivPost: function (req, res){
+        var postId = helper.sanitize(req.params.postId);
+
+        if(!req.session.user) res.redirect('/login');
+        else{
+            db.findOne(Post, {_id: postId}, '', function(result){
+                if(result){
+                    result
+                        .populate('user')
+                        .execPopulate(function(err, post){
+                            console.log("hello");
+                            console.log(post);
+                            res.render('indivpost', {
+                                active_session: req.session.user && req.cookies.user_sid,
+                                active_user: req.session.user,
+                                post: post.toObject(),
+                            })
+                        })
+                }
+            })
+
+        }
+    },
 
     // getTimeline: function (req,res) {
     //     var post = {};
