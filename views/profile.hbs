@@ -18,38 +18,8 @@
 
     <body>
         {{!-- do the header separate --}}
-        {{>header userid = user._id}}
+        {{>header userid = active_user}}
         {{!-- {{>userProfile fName = fn lName = ln Bio = bio DisplayPicture = image CreditScore = cs DisplayName = DisplayName}} --}}
-        {{!-- <nav class="navbar navbar-inverse navbar-fixed-top {{navbar}}">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/timeline">BIG FOUR: Freedom Wall</a>
-                </div>
-                <form class="navbar-form navbar-left" action="/action_page.php">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search" name="search">
-                        <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
-                        <i class="fas fa-search"></i>
-                        </button>
-                        </div>
-                    </div>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/timeline"><i class="fas fa-home"></i> HOME</a></li>
-                    <li><a href="/timeline/admu">&#x1f985 ADMU</a></li>
-                    <li><a href="/timeline/dlsu">&#127993 DLSU</a></li>
-                    <li><a href="/timeline/up">&#9994 UP</a></li>
-                    <li><a href="/timeline/ust">&#128047 UST</a></li>
-                        <div class="dropdown prof">
-                            <li><a href="/profile/{{user._id}}" class="dropbtn" style="color:white; font-size:14px; border: 1px solid white; margin-right: 10px;" title="Go to Profile"><i class="far fa-user"></i> PROFILE</a></li>
-                            <div class="dropdown-content">
-                                <a href="/logout">Log out</a>
-                            </div>
-                        </div>
-                </ul>
-            </div>
-        </nav>   --}}
         <div id="container1">
             {{!-- <div id="putborder"> --}}
                 <div id="profilecontainer"> 
@@ -65,7 +35,7 @@
                         </div>
                         <div class="user-info-block">
                             <div class="user-heading">
-                                <h3>{{user.fName}} {{user.lName}} <a href="" data-toggle="modal" data-target="#modalEdit"><i class="fas fa-user-edit fa-xs" title="Edit Profile" style="color: gray; margin-top: 10px; font-size: 20px"></i></a></h3>
+                                <h3>{{user.fName}} {{user.lName}} {{#if profile}}<a href="" data-toggle="modal" data-target="#modalEdit"><i class="fas fa-user-edit fa-xs" title="Edit Profile" style="color: gray; margin-top: 10px; font-size: 20px"></i></a>{{/if}}</h3>
                                  <p class="p-name" style="font-size: 13px; margin-top: -20px; font-family:Arial, Helvetica, sans-serif; font-style: italic; text-align: center" id="DisplayName">@{{user.username}}</p>
                             </div>
                             <div class="textbio" title="User's Bio">{{user.bio}}</div>
