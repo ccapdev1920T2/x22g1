@@ -18,9 +18,9 @@
 
     <body>
         {{!-- do the header separate --}}
-        {{!-- {{>header DisplayName = DisplayName}}
-        {{>userProfile fName = fn lName = ln Bio = bio DisplayPicture = image CreditScore = cs DisplayName = DisplayName}} --}}
-        <nav class="navbar navbar-inverse navbar-fixed-top {{navbar}}">
+        {{>header userid = user._id}}
+        {{!-- {{>userProfile fName = fn lName = ln Bio = bio DisplayPicture = image CreditScore = cs DisplayName = DisplayName}} --}}
+        {{!-- <nav class="navbar navbar-inverse navbar-fixed-top {{navbar}}">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="/timeline">BIG FOUR: Freedom Wall</a>
@@ -49,7 +49,7 @@
                         </div>
                 </ul>
             </div>
-        </nav>  
+        </nav>   --}}
         <div id="container1">
             {{!-- <div id="putborder"> --}}
                 <div id="profilecontainer"> 
