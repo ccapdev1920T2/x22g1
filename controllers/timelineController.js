@@ -9,7 +9,7 @@ const timelineController = {
 
     // retrieve all posts by finding all documents in Post collection
     getTimeline: function (req, res){
-        if(!req.session.user) res.redirect('/login');
+        if(!req.session.user) res.redirect('/');
         else{
             db.findOne(Profile, {_id: req.session.user}, '', function(user){
 
@@ -76,7 +76,7 @@ const timelineController = {
 
     // retrieve all DLSU posts in Post collection
     getDLSU: function (req, res){
-        if(!req.session.user) res.redirect('/login');
+        if(!req.session.user) res.redirect('/');
         else{
             db.findOne(Profile, {_id: req.session.user}, '', function(user){
 
@@ -97,7 +97,7 @@ const timelineController = {
 
     // retrieve all ADMU posts in Post collection
     getADMU: function (req, res){
-        if(!req.session.user) res.redirect('/login');
+        if(!req.session.user) res.redirect('/');
         else{
             db.findOne(Profile, {_id: req.session.user}, '', function(user){
 
@@ -118,7 +118,7 @@ const timelineController = {
 
     // retrieve all UP posts in Post collection
     getUP: function (req, res){
-        if(!req.session.user) res.redirect('/login');
+        if(!req.session.user) res.redirect('/');
         else{
             db.findOne(Profile, {_id: req.session.user}, '', function(user){
 
@@ -139,7 +139,7 @@ const timelineController = {
 
     // retrieve all UST posts in Post collection
     getUST: function (req, res){
-        if(!req.session.user) res.redirect('/login');
+        if(!req.session.user) res.redirect('/');
         else{
             db.findOne(Profile, {_id: req.session.user}, '', function(user){
 
@@ -161,7 +161,7 @@ const timelineController = {
     getIndivPost: function (req, res){
         var postId = helper.sanitize(req.params.postId);
 
-        if(!req.session.user) res.redirect('/login');
+        if(!req.session.user) res.redirect('/');
         else{
             db.findOne(Post, {_id: postId}, '', function(result){
                 if(result){
