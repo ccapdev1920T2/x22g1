@@ -15,7 +15,8 @@ const indivpostController = {
         db.findMany('userComments',comment,function(usercomment){
             db.findOne('userPost', details, function(result){
                 db.findOne('userProfile', user, function(userPicture){
-                    if(result.uniBadge == '&#127993'){
+                    db.findOne('userProfile', {_id: req.session.user}, function(active_user){
+                        if(result.uniBadge == '&#127993'){
                             res.render('indivpost',{
                                 posts: result,
                                 username: req.query.DisplayName,
@@ -23,7 +24,8 @@ const indivpostController = {
                                 image: userPicture.DisplayPicture,
                                 comments: usercomment,
                                 cs: userPicture.CreditScore,
-                                id: id
+                                id: id,
+                                user: active_user
                             });
                         }
             
@@ -35,7 +37,8 @@ const indivpostController = {
                                 image: userPicture.DisplayPicture,
                                 comments: usercomment,
                                 cs: userPicture.CreditScore,
-                                id: id
+                                id: id,
+                                user: active_user
                             });
                         }
             
@@ -47,7 +50,8 @@ const indivpostController = {
                                 image: userPicture.DisplayPicture,
                                 comments: usercomment,
                                 cs: userPicture.CreditScore,
-                                id: id
+                                id: id,
+                                user: active_user
                             });
                         }
             
@@ -59,9 +63,11 @@ const indivpostController = {
                                 image: userPicture.DisplayPicture,
                                 comments: usercomment,
                                 cs: userPicture.CreditScore,
-                                id: id
+                                id: id,
+                                user: active_user
                             });
                         }
+                    })
                 })
             })   
         })

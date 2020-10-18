@@ -195,12 +195,15 @@ const timelineController = {
                     result
                         .populate('user')
                         .execPopulate(function(err, post){
-                            console.log("hello");
-                            console.log(post);
-                            res.render('indivpost', {
-                                active_session: req.session.user && req.cookies.user_sid,
-                                active_user: req.session.user,
-                                post: post.toObject(),
+                            // console.log("hello");
+                            // console.log(post);
+                            db.findOne(Profile, {_id: req.session.user}, '', function(active_user){
+                                res.render('indivpost', {
+                                    active_session: req.session.user && req.cookies.user_sid,
+                                    active_user: req.session.user,
+                                    post: post.toObject(),
+                                    user: active_user,
+                                })
                             })
                         })
                 }

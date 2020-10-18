@@ -12,11 +12,11 @@
 </head>
 
 <body>
-    {{>header userid = post.user._id }}
+    {{>header userid = active_user }}
     <div class="container-fluid text-center">
         <div class="row content">
              <div class="col-sm-2 sidenav" id="sideprofile" style="margin-left: -20px;">
-                    {{>sideProfile fName = post.user.fName lName = post.user.lName CreditScore = post.user.creditScore DisplayName = post.user.username DisplayPicture = post.user.avatar userid = post.user._id}}
+                    {{>sideProfile fName = user.fName lName = user.lName CreditScore = user.creditScore DisplayName = user.username DisplayPicture = user.avatar userid = user._id}}
                 </div>
             <div class="center-post">
                 <div class="col-sm-8 text-left">
