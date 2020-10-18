@@ -31,48 +31,57 @@ const timelineController = {
 
     // create a post to be inserted in the Post collection 
     createPost: function (req, res){
-        var errors = validationResult(req);
-        
-        if (!errors.isEmpty()) {
-            errors = errors.errors;
-
-            var details = {};
-            for (let i = 0; i < errors.length; i++){
-                  // remove array indices for wildcard checks
-                  details[`${errors[i].param.replace(/\[\d\]/g, '')}Error`] =
-                  errors[i].msg;
-            }
-
-            db.findOne(Profile, {_id: req.session.user}, '', function(user){
-                res.render('timeline', {
-                    user: user,
-                    input: req.body,
-                    details: details,
-                });
-            })
+        if(!req.session.user) res.redirect('/');
+        else{
+            var errors = validationResult(req);
             
-        } 
-        else {
-            var title = helper.sanitize(req.body.title);
-            var body = helper.sanitize(req.body.body);
-            var tags = helper.sanitize(req.body.tags);
-            var univ = helper.sanitize(req.body.university);
+            if (!errors.isEmpty()) {
+                errors = errors.errors;
 
-            const post = {
-                _id: new mongoose.Types.ObjectId(),
-                user: req.session.user,
-                title: title,
-                body: body,
-                tags: tags,
-                university: univ
-            }
-
-            db.insertOne(Post, post, function(flag){
-                if(flag){
-                    res.redirect('/timeline');
+                var details = {};
+                for (let i = 0; i < errors.length; i++){
+                    // remove array indices for wildcard checks
+                    details[`${errors[i].param.replace(/\[\d\]/g, '')}Error`] =
+                    errors[i].msg;
                 }
-            })
-        }
+
+                db.findOne(Profile, {_id: req.session.user}, '', function(user){
+                    var getPost = helper.getAllPosts();
+                    getPost.exec(function(err, post){
+                        if (err) throw err;
+                        // console.log(post);
+                        res.render('timeline', {
+                            active_session: req.session.user && req.cookies.user_sid,
+                            active_user: req.session.user,
+                            user: user,
+                            posts: post,
+                            details: details,
+                        });
+                    })
+                })
+            } 
+            else {
+                var title = helper.sanitize(req.body.title);
+                var body = helper.sanitize(req.body.body);
+                var tags = helper.sanitize(req.body.tags);
+                var univ = helper.sanitize(req.body.university);
+
+                const post = {
+                    _id: new mongoose.Types.ObjectId(),
+                    user: req.session.user,
+                    title: title,
+                    body: body,
+                    tags: tags,
+                    university: univ
+                }
+
+                db.insertOne(Post, post, function(flag){
+                    if(flag){
+                        res.redirect('/timeline');
+                    }
+                })
+            }
+        }   
     },
 
     deletePost: function (req, res) {

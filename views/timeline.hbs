@@ -21,119 +21,17 @@
                 </div>
                 <div class="center-post">
                     <div class="col-sm-8 text-left">
-                        {{!-- {{>createPost}} --}}
-                        <div class="box-creating">
-                            <div class="creating">
-                                <span class="create-post">
-                                    <span class="post">Create Post</span>
-                                </span>
-                            </div>
-                        </div>
-
-                        <form name="createPost" method="POST" action="/createpost">
-                            <div class="post-text">
-                                <div class="whole-post">
-                                    <div class="post-pic">
-                                        <a class="pic" href="/profile/{{user._id}}">
-                                            <img class="img" src="/avatars/{{user.avatar}}" height="40" width="40" alt>
-                                        </a>
-                                    </div>
-                                    <div class="actual-text">
-                                        <div class="box-text">
-                                            <div class="box-title">
-                                                <div class="text-area">
-                                                    <textarea name="title" id="title" class="post-area-title" placeholder="Title of your post">{{input.title}}</textarea>
-                                                </div>
-                                                <p style="color: red; margin-top: -5px; margin-bottom: 2px; font-size: 10px"> 
-                                                    {{details.titleError}}
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="box-text">
-                                            <div class="box">
-                                                <div class="text-area">                                  
-                                                    <textarea name="body" id="body" class="post-area" placeholder="Any story to tell?">{{input.body}}</textarea>                                                  
-                                                </div>
-                                                 <p style="color: red; margin-top: -5px; margin-bottom: 2px; font-size: 10px"> 
-                                                    {{details.bodyError}}
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="box-text">
-                                            <div class="box-tags">
-                                                <div class="text-area">                                                  
-                                                    <input type="text" name="tags" id="tags" class="post-area-tags" placeholder="#Tags (Separate your tags with comma)" value="{{input.tags}}" autocomplete="off"></input>                                             
-                                                </div>
-                                                 <p style="color: red; margin-top: -5px; margin-bottom: 2px; font-size: 10px"> 
-                                                    {{details.tagsError}}
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="buttons-post">
-                                            <div class="buttons-post2">
-                                                <ul class="buttons-post-icons">
-                                                    <li class="media-button">
-                                                        <div class="media-icon">
-                                                            <span class="media-span">
-                                                                <div class="media-pic"style="border: 1px solid gray">
-                                                                <div class="media-text">
-                                                                    <form action="/uploadPhoto" enctype="multipart/form-data" method="POST"> 
-                                                                        <label for="upload" style="cursor:pointer">
-                                                                            <i class="far fa-images"></i> 
-                                                                            Photo
-                                                                            <input id="upload" type="file" accept="image/*" style="display: none;">
-                                                                        </label>
-                                                                    </form>
-                                                                </div>
-                                                                </div>
-                                                            </span>
-                                                        </div>
-                                                    </li>
-                                                    <li class="media-button">
-                                                        <div class="media-icon">
-                                                            <span class="media-span">
-                                                            <div class="media-pic" style="border: 1px solid gray">
-                                                                <div class="dropdown">
-                                                                    {{!-- <div class="media-text"><i class="fas fa-filter"></i>UniFilter</div> --}}
-                                                                        {{!-- <div class="dropdown-content-uni"> --}}
-                                                                            <div class = "media-text"> <i class="fas fa-filter"></i>
-                                                                                <select id="universities" name="university" style="border: none; background-color: rgba(126, 125, 125, 0); cursor:pointer">
-                                                                                    {{!-- <option value="&#x1f985">ADMU</option>
-                                                                                    <option value="&#127993">DLSU</option>
-                                                                                    <option value="&#9994">UP</option>
-                                                                                    <option value="&#128047">UST</option> --}}
-                                                                                    <option value="ADMU">ADMU</option>
-                                                                                    <option value="DLSU">DLSU</option>
-                                                                                    <option value="UP">UP</option>
-                                                                                    <option value="UST">UST</option> 
-                                                                                </select>
-                                                                            </div>
-                                                                        {{!-- </div> --}}
-                                                                </div>
-                                                            </div>
-                                                            </span>
-                                                        </div>
-                                                    </li>
-                                                    <li class="media-button-timeline" style="margin-left: 255px;">
-                                                        <div class="media-icon">
-                                                            <span class="media-span">
-                                                                <div class="media-pic" id="pbutton">
-                                                                    <button type="submit" id="postbutton" style="background-color: rgba(255, 255, 255, 0.007); border: none;">
-                                                                        <div class = "media-text">
-                                                                            <i class="far fa-edit"></i>Post
-                                                                        </div>
-                                                                    </button>
-                                                                </div>
-                                                            </span>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                        {{>createPost 
+                        userid = user._id 
+                        image = user.avatar 
+                        input_title = input.title
+                        details_titleError = details.titleError
+                        input_body = input.body
+                        details_bodyError = details.bodyError
+                        input_tags = input.tags
+                        details_tagsError = details.tagsError
+                        }}
+                        
                         <hr>
                         <div id="post">
                             {{#each posts}}
