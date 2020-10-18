@@ -21,12 +21,12 @@
                 <div class ="dropdown">
                     <img src="/img/option.png" style="height: 20px; width: 23px; padding-right: 5px;" id="option1" title="Option">
                     <div class="dropdown-content">
-                        {{#if delete}}
+                        {{#match user._id activeid}}
                             <a href="#">Save Post</a>
-                            <a href="#">Delete Post</a>
+                            <a href="/post/delete/{{this._id}}">Delete Post</a>
                             {{else}}
                             <a href="#">Save Post</a>
-                        {{/if}}
+                        {{/match}}
                     </div>
                 </div>
             </div>

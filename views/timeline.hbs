@@ -177,7 +177,7 @@
                         <hr>
                         <div id="post">
                             {{#each posts}}
-                                {{>post university = this.university}}
+                                {{>post university = this.university activeid = ../active_user}}
                             {{/each}}
                              {{!-- {{#if _id}}
                                     {{>post}}

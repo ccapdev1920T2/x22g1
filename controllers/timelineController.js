@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const db = require('../models/db.js');
 const { validationResult } = require('express-validator');
 const helper = require('../helpers/helper.js');
+const { ObjectID } = require('mongodb');
 const Profile = require('../models/ProfileModel');
 const Post = require('../models/PostModel');
 
@@ -16,7 +17,7 @@ const timelineController = {
                 var getPost = helper.getAllPosts();
                 getPost.exec(function(err, post){
                     if (err) throw err;
-                    console.log(post);
+                    // console.log(post);
                     res.render('timeline', {
                         active_session: req.session.user && req.cookies.user_sid,
                         active_user: req.session.user,
@@ -72,6 +73,23 @@ const timelineController = {
                 }
             })
         }
+    },
+
+    deletePost: function (req, res) {
+        var post_id = helper.sanitize(req.params.postId);
+        console.log('postid', post_id)
+        var post_details = {
+            _id: ObjectID(post_id)
+        }
+
+        db.deleteOne(Post, post_details, function(f){
+            if(f){
+                console.log('deleted: ', post_id)
+                res.redirect('/timeline');
+            }
+            
+        });
+        
     },
 
     // retrieve all DLSU posts in Post collection
