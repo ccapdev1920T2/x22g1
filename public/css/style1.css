@@ -133,15 +133,16 @@
 .userCreditScoree{
     height: auto;
     width: auto;
-    padding-top: 4px;
+    padding-top: 3px;
     font-size: 9px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: rgb(128, 128, 128);
     margin-left: 5px;
+    margin-right: 5px;
 }
 
 .post-area-tags{
-    width: 570px;
+    width: 640px;
     height: 25px;
     resize: none;
     padding-top: 0px;
@@ -154,7 +155,7 @@
 
 
 .post-area-title{
-    width: 570px;
+    width: 640px;
     height: 25px;
     resize: none;
     padding-top: 0px;
@@ -167,7 +168,7 @@
 
 
 .post-area{
-    width: 570px;
+    width: 640px;
     height: 50px;
     resize: none;
     padding-top: 0px;
@@ -176,6 +177,25 @@
     letter-spacing: normal;
     line-height: 18px;
     padding-right: 48px;
+}
+
+.post-comment{
+    width: 475px;
+    height: 50px;
+    resize: none;
+    margin-top: 20px;
+    margin-left: -4px;
+    padding-top: 0px;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: 18px;
+    padding-right: 48px;
+    border-radius: 20px;
+    padding-top: 5px;
+    padding-left: 5px;
+    background-color: rgba(255, 255, 255, 0.548);
+    overflow: hidden;
 }
 
 .box-creating{
@@ -294,6 +314,8 @@
     padding-right: 48px;
     background: #fff;
 }
+
+
 
 .a-link{
     color: #64676b;
@@ -462,7 +484,7 @@ hr {
 
 .upvotecountt{
     height: 40px;
-    width: 480px;
+    width: 515px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 10px;
     padding-left: -20px;
@@ -504,6 +526,7 @@ hr {
     font-size: 20px;
     padding-top: 10px;
     text-align: center;
+    cursor: default;
 }
 
 .timeline-body{
@@ -535,6 +558,13 @@ hr {
 .comment-body{
     text-align: justify;
     background-color: rgba(233, 231, 231, 0.87);
+    border-radius: 15px;
+    padding: 10px 10px 3px;
+}
+
+.barbody{
+    text-align: justify;
+    background-color: rgba(233, 231, 231, 0);
     border-radius: 15px;
     padding: 10px 10px 3px;
 }
@@ -581,6 +611,7 @@ hr {
 }
 
 .trendingbox{
+    margin-left: 30px;
     margin-top: 50px;
     height: 400px;
     width: 300px;
@@ -614,4 +645,20 @@ hr {
 .text-left{
     border-right: 1px solid #dddd;
     border-left: 1px solid #dddd;
+}
+
+#postbutton:disabled {
+    cursor: not-allowed;
+    color: #A8A8A8;
+    background-color: #E3E3E3;
+    border: 4px solid #E3E3E3;
+}
+
+#pbutton{
+    background-color:rgba(81, 210, 182, 0.651);
+    border: 1px solid gray;
+}
+
+#pbutton:hover {
+    background-color: rgba(76, 180, 158, 0.774);
 }

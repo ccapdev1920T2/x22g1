@@ -1,115 +1,97 @@
-//import mongoose module
 const mongoose = require('mongoose');
-
-//import user module
-const User = require('../models/userModels.js');
-
-// import userposts module
-const Posts = require('../models/UserPostModels.js');
-
-// import usercomments module
-const Comments = require('../models/UserCommentModels.js');
-
-const url = "mongodb://localhost:27017"; 
-
-// additional options to prevent warnings when we run the code
 const options = {
-    useUnifiedTopology: true,  
+    useUnifiedTopology: true,
     useNewUrlParser: true
 };
 
-// name of database
-const dbName = 'Big4FW_database';
+if(process.env.PORT == null || process.env.PORT == "") {
+    const url = 'mongodb://localhost:27017/Big4FW_database';
+} else {
+    const MongoClient = require('mongodb').MongoClient;
+    const url = "mongodb://victor:lasalle@cluster0-shard-00-00-fxgom.mongodb.net:27017,cluster0-shard-00-01-fxgom.mongodb.net:27017,cluster0-shard-00-02-fxgom.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority";
 
-// database functions (CRUD functions)
+    MongoClient.connect(url, function(err, client){
+        if(err) {
+            console.log("Error During Connection to ATLAS: ", err);
+        } else {
+            console.log('Connected to MongoDb ATLAS');
+        }
+
+    });
+}
+
 const database = {
 
-    connect: function(){
-        mongoose.connect(url, options, function(error){
+    connect: function () {
+        mongoose.connect(url, options, function(error) {
             if(error) throw error;
-            console.log('Connected to: ' + url + dbName);
+            console.log('Connected to: ' + url);
         });
     },
 
     insertOne: function(model, doc, callback) {
         model.create(doc, function(error, result) {
-            console.log(error);
             if(error) return callback(false);
             console.log('Added ' + result);
             return callback(true);
         });
     },
 
-    insertMany: function(model, docs) {
+    insertMany: function(model, docs, callback) {
         model.insertMany(docs, function(error, result) {
-            console.log(error);
             if(error) return callback(false);
             console.log('Added ' + result);
             return callback(true);
         });
     },
 
-    findOne: function(model, query, callback) {
-        model.findOne(query, function(error, result) {
-            console.log(error);
-            if(error) return callback(false);
-            return callback(result);
-        });
-    },
-
-    find: function(model, query, projection, callback) {
+    findOne: function(model, query, projection, callback) {
         model.findOne(query, projection, function(error, result) {
-            console.log(error);
             if(error) return callback(false);
+            console.log('Found ' + result);
             return callback(result);
         });
     },
 
     findMany: function(model, query, projection, callback) {
-        model.find(query, projection, function(error, result) {
-            console.log(error);
+        model.find(query, projection).lean().exec(function(error, result) {
             if(error) return callback(false);
             return callback(result);
         });
     },
 
-    updateOne: function(model, filter, update) {
+    updateOne: function(model, filter, update, callback) {
         model.updateOne(filter, update, function(error, result) {
-            console.log(error);
             if(error) return callback(false);
             console.log('Document modified: ' + result.nModified);
             return callback(true);
         });
     },
 
-    updateMany: function(model, filter, update) {
+    updateMany: function(model, filter, update, callback) {
         model.updateMany(filter, update, function(error, result) {
-            console.log(error);
             if(error) return callback(false);
             console.log('Documents modified: ' + result.nModified);
             return callback(true);
         });
     },
 
-    deleteOne: function(model, conditions) {
+    deleteOne: function(model, conditions, callback) {
         model.deleteOne(conditions, function (error, result) {
-            console.log(error);
             if(error) return callback(false);
             console.log('Document deleted: ' + result.deletedCount);
             return callback(true);
         });
     },
 
-    deleteMany: function(model, conditions) {
+    deleteMany: function(model, conditions, callback) {
         model.deleteMany(conditions, function (error, result) {
-            console.log(error);
             if(error) return callback(false);
             console.log('Document deleted: ' + result.deletedCount);
             return callback(true);
         });
     }
-
 }
 
-    // enables to export datebase object when called in another .js file
-    module.exports = database;
+ // enables to export datebase object when called in another .js file
+ module.exports = database;

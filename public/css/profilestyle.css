@@ -26,6 +26,20 @@ body{
     text-align: center;
     border-style: dotted;
     border-color:rgba(97, 134, 151, 0.884);
+    padding: 30px 10px 20px 10px;
+}
+
+#eprofilecontainer{
+    background-color: rgba(243, 240, 240, 0.849);
+    margin-top: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    width: 500px;
+    height: flex;
+    border-radius: 80px;
+    text-align: center;
+    border-style: dotted;
+    border-color:rgba(97, 134, 151, 0.884);
     padding-top: 30px;
 }
 
@@ -84,13 +98,18 @@ body{
 
 .user-info-block {
     color: rgba(0, 0, 0, 0.795);
-    margin-top: -20px;
+    margin-top: -45px;
     text-align: center;
     border-radius: 30px;
     height: 100px;
-    min-width: fit-content;
+    min-width: flex;
+    
 }
+.bioname{
+    text-align: center; 
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
+}
 .user-heading {
     text-align: center; 
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -98,10 +117,15 @@ body{
 
 .textbio{
     text-align: center;
-    font-style: italic;
-    font-family: 'Courier New', Courier, monospace;
+    
     letter-spacing: -1px;
+    padding: 0px 5px 0px 5px;
+    width: 400px;
+    height: 50px;
+    margin-left: 35px;
 }
+
+
 
 #buttoncontainer{
     margin-top: -30px;

@@ -1,62 +1,47 @@
-const mongoose = require('mongoose');
-
-const databaseURL = 'mongodb://localhost:27017';
-
-// additional options to prevent warnings when we run the code
-const options = {
-    useUnifiedTopology: true,  
-    useNewUrlParser: true
-};
-
 // import module from db.js in models directory
-const db = require('./models/db.js');
+const db = require('./models/db.js')
 
-//import user module
-const User = require('./models/userModels.js');
-
-// import userposts module
-const Posts = require('./models/UserPostModels.js');
+// name of collections
+const userPost = 'userPost';
+const userProfile = 'userProfile';
+const userComments = 'userComments';
 
 // call function createDatabase 
-db.connect();
+// db.createDatabase();
 
-// const UserModel = mongoose.model('User', UserSchema);
+// // Atlas
+// const MongoClient = require('mongodb').MongoClient;
 
-const userIra = new User({
-    Username: 'iravillanueva',
-    Email: 'iravillanueva94@dlsu.edu.ph',
-    Password: 'lasalle',
-    passwordRecheck: 'lasalle',
-    DisplayPicture: 'human.jpg',
-    CreditScore: '54',
-    Bio: 'I love web development!',
-    fName: 'Ira',
-    lName: 'Villanueva',
-});
-
-userIra.save(function(err, newUser){
-    if (err) throw err;
-    console.log(newUser);
-    console.log("Successfully created user!");
-});
+// // replace the uri string with your connection string.
+// const uri = "mongodb+srv://blycuasi:lasalle@cluster0-hinlh.mongodb.net/test?retryWrites=true&w=majority";
+// MongoClient.connect(uri, function(err, client) {
+//    if(err) {
+//         console.log('Error occurred while connecting to MongoDB Atlas...\n',err);
+//    }
+//    console.log('Connected...');
+//    const collection = client.db("test").collection("devices");
+//    // perform actions on the collection object
+//    client.close();
+// });
+// // End of Atlas
 
 // create/populate userProfile objects containing fields such as Username, Email, Password, DisplayPicture, CreditScore, SavedPostID, University, Bio
-// var user = {
-//     Username: 'iravillanueva',
-//     Email: 'iravillanueva94@dlsu.edu.ph',
-//     Password: 'lasalle',
-//     passwordRecheck: 'lasalle',
-//     DisplayPicture: 'human.jpg',
-//     CreditScore: '54',
-//     Bio: 'I love web development!',
-//     fName: 'Ira',
-//     lName: 'Villanueva',
+var user = {
+    DisplayName: 'iravillanueva',
+    Email: 'iravillanueva94@dlsu.edu.ph',
+    Password: 'lasalle',
+    DisplayPicture: 'human.jpg',
+    CreditScore: '54',
+    Bio: 'A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and fe',
+    fName: 'Ira',
+    lName: 'Villanueva',
+    // liked: [_id] //IRA TAMA BA TO ??? 
     //SavedPostID: '1',
     //University: 'DLSU',
-// }
+}
 
 // insert object user to collection 'userProfile'
-// db.insertOne(User, user, function(flag){});
+db.insertOne(userProfile, user, function(){});
 
 // var post = {
 //     postNumber: '123',
@@ -71,119 +56,71 @@ userIra.save(function(err, newUser){
 // // insert object user to collection 'userPost'
 // db.insertOne(userPost, post);
 
-const manyPosts = new Posts(
+var posts = [
     {
         timelineBadge: 'timeline-badge lasalle',
         uniBadge: '&#127993',
         navbar: 'navbar-dlsu',
-        postNumber: '123',
+        User: '',
         postTitle: 'Cute guy sa henry grounds',
-        Username: 'luhzul101',
+        Username: 'iravillanueva',
         CreditScore: '60',
         postBody: 'Shoutout nga pala dun sa cute guy na nakatambay sa henry grounds kanina mga 4 pm cute mo po',
-        postTags: '#lasalle',
-        Upvotes: '55'
+        postTags: '#lasalle', 
+        Upvotes: '55',
+        Upvote: 'upvote.png',
+        Downvote: 'downvote.png',
     },
 
     {
         timelineBadge: 'timeline-badge ust',
         uniBadge: '&#128047',
         navbar: 'navbar-ust',
-        postNumber: '150',
+        User: '',
         postTitle: 'Dapitan Milktea',
         Username: 'ghoste101',
         CreditScore: '84',
         postBody: 'SOLID NUNG BAGONG MILKTEA MALAPIT SA DAPITAN??? TRY NIYO GUYS ???',
         postTags: '#ust #milktea',
-        Upvotes: '398'
+        Upvotes: '398',
+        Upvote: 'upvote.png',
+        Downvote: 'downvote.png',
     },
 
     {
         timelineBadge: 'timeline-badge up',
         uniBadge: '&#9994',
         navbar: 'navbar-up',
-        postNumber: '233',
+        User: '',
         postTitle: 'Best Lib: Engg Lib',
         Username: 'iskolar101',
         CreditScore: '350',
         postBody: 'So ano ba talaga ang the best library sa diliman? engg lib parin mga sis :p',
         postTags: '#up #diliman #bestlib',
-        Upvotes: '345'
+        Upvotes: '345',
+        Upvote: 'upvote.png',
+        Downvote: 'downvote.png',
     },
 
     {
         timelineBadge: 'timeline-badge ateneo',
         uniBadge: '&#x1f985',
         navbar: 'navbar-admu',
-        postNumber: '543',
+        User: '',
         postTitle: 'Weird Fetishes',
         Username: 'areneyow101',
         CreditScore: '601',
         postBody: 'What fetish will you keep a secret from the people you know IRL?',
         postTags: '#fetish',
-        Upvotes: '99'
+        Upvotes: '99',
+        Upvote: 'upvote.png',
+        Downvote: 'downvote.png',
     }
-);
+]
 
-manyPosts.save(function(err, NewPosts){
-    if (err) throw err;
-    console.log(NewPosts);
-    console.log("Successfully created posts!");
-});
+db.insertMany(userPost,posts);
 
+// db.dropCollection(userPost);
+// db.dropCollection(userProfile);
+// db.dropCollection('statusPost');
 
-// var posts = [
-//     {
-//         timelineBadge: 'timeline-badge lasalle',
-//         uniBadge: '&#127993',
-//         navbar: 'navbar-dlsu',
-//         postNumber: '123',
-//         postTitle: 'Cute guy sa henry grounds',
-//         Username: 'luhzul101',
-//         CreditScore: '60',
-//         postBody: 'Shoutout nga pala dun sa cute guy na nakatambay sa henry grounds kanina mga 4 pm cute mo po',
-//         postTags: '#lasalle',
-//         Upvotes: '55'
-//     },
-
-//     {
-//         timelineBadge: 'timeline-badge ust',
-//         uniBadge: '&#128047',
-//         navbar: 'navbar-ust',
-//         postNumber: '150',
-//         postTitle: 'Dapitan Milktea',
-//         Username: 'ghoste101',
-//         CreditScore: '84',
-//         postBody: 'SOLID NUNG BAGONG MILKTEA MALAPIT SA DAPITAN??? TRY NIYO GUYS ???',
-//         postTags: '#ust #milktea',
-//         Upvotes: '398'
-//     },
-
-//     {
-//         timelineBadge: 'timeline-badge up',
-//         uniBadge: '&#9994',
-//         navbar: 'navbar-up',
-//         postNumber: '233',
-//         postTitle: 'Best Lib: Engg Lib',
-//         Username: 'iskolar101',
-//         CreditScore: '350',
-//         postBody: 'So ano ba talaga ang the best library sa diliman? engg lib parin mga sis :p',
-//         postTags: '#up #diliman #bestlib',
-//         Upvotes: '345'
-//     },
-
-//     {
-//         timelineBadge: 'timeline-badge ateneo',
-//         uniBadge: '&#x1f985',
-//         navbar: 'navbar-admu',
-//         postNumber: '543',
-//         postTitle: 'Weird Fetishes',
-//         Username: 'areneyow101',
-//         CreditScore: '601',
-//         postBody: 'What fetish will you keep a secret from the people you know IRL?',
-//         postTags: '#fetish',
-//         Upvotes: '99'
-//     }
-// ]
-
-// db.insertMany(Posts,posts, function(flag) {});

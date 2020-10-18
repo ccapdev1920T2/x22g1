@@ -1,4 +1,4 @@
-    <div class="box-creating">
+<div class="box-creating">
     <div class="creating">
         <span class="create-post">
             <span class="post">Create Post</span>
@@ -6,77 +6,92 @@
     </div>
 </div>
 
-<div class="post-text">
-    <div class="whole-post">
-        <div class="post-pic">
-            <a class="pic" href="profile.html">
-                <img class="img" src="/img/human.jpg" height="40" width="40" alt>
-            </a>
-        </div>
-        <div class="actual-text">
-            <div class="box-text">
-                <div class="box-title">
-                    <div class="text-area">
-                        <textarea name="postTitle" id="postTitle" class="post-area-title" placeholder="Title of your post"></textarea>
+<form name="CreatePost">
+    <div class="post-text">
+        <div class="whole-post">
+            <div class="post-pic">
+                <a class="pic" href="/profile/{{DisplayName}}">
+                    <img class="img" src="/img/{{image}}" height="40" width="40" alt>
+                </a>
+            </div>
+            <div class="actual-text">
+                <div class="box-text">
+                    <div class="box-title">
+                        <div class="text-area">
+                            <textarea name="postTitle" id="postTitle" class="post-area-title" placeholder="Title of your post"></textarea>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="box-text">
-                <div class="box">
-                    <div class="text-area">
-                        <textarea name="post" id="post" class="post-area" placeholder="Any story to tell?"></textarea>
+                <div class="box-text">
+                    <div class="box">
+                        <div class="text-area">                                  
+                            <textarea name="postBody" id="postBody" class="post-area" placeholder="Any story to tell?"></textarea>                                                  
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="box-text">
-                <div class="box-tags">
-                    <div class="text-area">
-                        <textarea name="postTags" id="postTags" class="post-area-tags" placeholder="Tags you want others to search"></textarea>
+                <div class="box-text">
+                    <div class="box-tags">
+                        <div class="text-area">                                                  
+                            <textarea name="postTags" id="postTags" class="post-area-tags" placeholder="Tags you want others to search"></textarea>                                                   
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="buttons-post">
-                <div class="buttons-post2">
-                    <ul class="buttons-post-icons">
-                        <li class="media-button">
-                            <div class="media-icon">
-                                <span class="media-span">
-                                    <div class="media-pic">
-                                    <div class="media-text"><i class="far fa-images"></i> Photo/Video</div>
-                                    </div>
-                                </span>
-                            </div>
-                        </li>
-                        
-                        <li class="media-button">
-                            <div class="media-icon">
-                                <span class="media-span">
-                                <div class="media-pic">
-                                    <div class="dropdown">
-                                        <div class="media-text"><i class="fas fa-filter"></i>UniFilter</div>
-                                            <div class="dropdown-content-uni">
-                                                <a href="ADMU">ADMU</a>
-                                                <a href="DLSU">DLSU</a>
-                                                <a href="UP">UP</a>
-                                                <a href="UST">UST</a>
-                                            </div>
-                                    </div>
+                <div class="buttons-post">
+                    <div class="buttons-post2">
+                        <ul class="buttons-post-icons">
+                            <li class="media-button">
+                                <div class="media-icon">
+                                    <span class="media-span">
+                                        <div class="media-pic"style="border: 1px solid gray">
+                                        <div class="media-text">
+                                            <form action="/uploadPhoto" enctype="multipart/form-data" method="POST"> 
+                                                <label for="upload" style="cursor:pointer">
+                                                    <i class="far fa-images"></i> 
+                                                    Photo
+                                                    <input id="upload" type="file" accept="image/*" style="display: none;">
+                                                </label>
+                                            </form>
+                                        </div>
+                                        </div>
+                                    </span>
                                 </div>
-                                </span>
-                            </div>
-                        </li>
-                        <li class="media-button-timeline">
-                            <div class="media-icon">
-                                <span class="media-span">
-                                    <div class="media-pic">
-                                    <div class="media-text"><i class="far fa-edit"></i>Post</div>
+                            </li>
+                            <li class="media-button">
+                                <div class="media-icon">
+                                    <span class="media-span">
+                                    <div class="media-pic" style="border: 1px solid gray">
+                                        <div class="dropdown">
+                                            {{!-- <div class="media-text"><i class="fas fa-filter"></i>UniFilter</div> --}}
+                                                {{!-- <div class="dropdown-content-uni"> --}}
+                                                    <div class = "media-text"> <i class="fas fa-filter"></i>
+                                                        <select id="universities" name="universities" style="border: none; background-color: rgba(126, 125, 125, 0); cursor:pointer">
+                                                            <option value="&#x1f985">ADMU</option>
+                                                            <option value="&#127993">DLSU</option>
+                                                            <option value="&#9994">UP</option>
+                                                            <option value="&#128047">UST</option>
+                                                        </select>
+                                                    </div>
+                                                {{!-- </div> --}}
+                                        </div>
                                     </div>
-                                </span>
-                            </div>
-                        </li>
-                    </ul>
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="media-button-timeline" style="margin-left: 255px;">
+                                <div class="media-icon">
+                                    <span class="media-span">
+                                        <div class="media-pic" id="pbutton">
+                                            <div class = "media-text">
+                                                <i class="far fa-edit"></i><input type="button" id="postbutton" value="Post" style="background-color: rgba(255, 255, 255, 0.007); border: none;">
+                                            </div>
+                                        </div>
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</form>

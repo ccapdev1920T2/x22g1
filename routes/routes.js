@@ -1,51 +1,141 @@
+// IMPORT
+const express = require('express'); //EXPRESS
+const session = require('express-session'); //EXPRESS-SESSIONS
+const database = require('../models/db.js'); //CONNECT DB
 
-// import module `express`
-const express = require('express');
+const cookieParser = require('cookie-parser'); //COOKIES
+const bodyParser = require('body-parser'); //BODY PARSING
+var multer = require('multer'); //FILE UPLOAD
+const validation = require('../helpers/validation.js'); //FORM VALIDATION
 
-// import module `controller` from `../controllers/controller.js`
-const controller = require('../controller/controller.js')
+// import login controller
+const loginController = require('../controllers/loginController.js');
 
-const signUpController = require('../controller/signUpController.js')
-const timelineController = require('../controller/timelineController.js')
+// import sign up controller
+const signUpController = require('../controllers/signUpController.js');
+
+// import timeline controller
+const timelineController = require('../controllers/timelineController.js');
+const indivpostController = require('../controllers/indivpostController.js');
+const createPostController = require('../controllers/createPostController.js');
+
+// import profile controller
+const profileController = require('../controllers/profileController.js');
 
 const app = express();
 
-app.get('/favicon.ico', controller.getFavicon);
+// initialize multer for file upload use 
+var avatarStorage = multer.diskStorage({
+    destination: function (req, file, cd) {
+        if (file.fieldname === 'avatar') {
+            cd(null, './public/avatars');
+        }
+    },
+    filename: function (req, file, cd) {
+        cd(null, file.originalname);
+    },
+});
 
-// call function getIndex when client sends a request for '/' defined in routes.js
-app.get('/', controller.getIndex);
+var avatarUpload = multer({ storage: avatarStorage }).single('avatar');
 
-app.post('/', controller.postLogIn);
 
-app.get('/checkUsername', controller.checkUsername);
+// Init Cookie and Body Parser
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 
-app.get('/checkPassword', controller.checkPassword);
+// Init Sessions
+app.use(
+    session({
+        key: 'user_sid', //user session id
+        secret: 'lifecouldbedream',
+        resave: false,
+        saveUninitialized: true,
+        store: database.sessionStore,
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24, // 1 Day.
+        },
+    }),
+);
 
+app.use((req, res, next) => {
+    if (req.cookies.user_sid && !req.session.user) {
+        res.clearCookie('user_sid');
+    }
+    next();
+});
+
+
+// loginController
+app.get('/favicon.ico', loginController.getFavicon);
+app.get('/', loginController.getLogIn);
+app.post('/', loginController.postLogIn);
+
+// signUpController
 app.get('/signup', signUpController.getSignUp);
+app.post('/signup', 
+    avatarUpload,
+    validation.signupValidation(),
+    signUpController.postSignUp
+);
 
-app.post('/signup', signUpController.getSignUp);
+// timelineController
+app.get('/timeline', timelineController.getTimeline);
+app.post('/createPost', 
+    validation.createPostValidation(),
+    timelineController.createPost);
+app.get('/timeline/dlsu', timelineController.getDLSU);
+app.get('/timeline/admu', timelineController.getADMU);
+app.get('/timeline/up', timelineController.getUP);
+app.get('/timeline/ust', timelineController.getUST);
+app.get('/post/:postId', timelineController.getIndivPost);
 
-app.get('/checkEmail', signUpController.checkEmail);
+// profileController
+app.get('/profile/:userId', profileController.getProfile);
+app.post('/editProfile',
+    avatarUpload,
+    profileController.editProfile);
+app.get('/checkUsername', profileController.checkUsername);
+app.get('/userid/:userId', profileController.getIndivProfile);
 
-app.get('/checkSignUpUsername', signUpController.checkSignUpUsername);
 
-app.get('/HOME', timelineController.getTimeline);
+// app.post('/uploadphoto', timelineController.uploadImage);
 
-app.get('/getSideProfile', timelineController.getSideProfile)
+// indivpostController
+app.get('/indivPost', indivpostController.getIndivPost);
+app.get('/createComment', indivpostController.createComment);
 
-//call function getADMU
-app.get('/ADMU', timelineController.getADMU);
+// timelineController for Universities
+// app.get('/ADMU', timelineController.getADMU);
+// app.get('/DLSU', timelineController.getDLSU);
+// app.get('/UP', timelineController.getUP);
+// app.get('/UST', timelineController.getUST);
+app.get('/getStatus', timelineController.getStatus);
+app.get('/insertStatus', timelineController.insertStatus);
+app.get('/updateStatus', timelineController.updateStatus);
 
-app.get('/DLSU', timelineController.getDLSU);
+// profileController
+// app.get('/profile/:DisplayName', profileController.getUserProfile);
+// app.get('/editprofile/:DisplayName', profileController.editProfile);
+// app.get('/editprofile/:DisplayName', profileController.updateProfile);
 
-app.get('/UP', timelineController.getUP);
+//logout
+app.get('/logout', function (req, res) {
+    req.logout;
+    req.session.destroy(function (err) {});
+    res.redirect('/');
+});
 
-app.get('/UST', timelineController.getUST);
+//app.get('/updateUpvote', timelineController.updateUpvote);
 
-app.get('/indivPost', timelineController.getIndiv);
+// call function getUserProfile when client requests a username (parameter) che
 
-// call function getUserProfile when client requests a username (parameter) 
-app.get('/:Username', controller.getUserProfile);
+// app.get('/check', timelineController.check);
+
+//app.post('/HOME', createPostController.postCreate);
+
+// app.post('/clicked', timelineController.postVotes);
+
+// app.get('/clicks', timelineController.getVotes);
 
 // enables to export app object when called in another .js file
 module.exports = app;

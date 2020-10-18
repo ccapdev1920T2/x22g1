@@ -1,91 +1,146 @@
 <!DOCTYPE html>
 
 <head>
-    <title>{{postTitle}}</title>
+    <title>{{post.title}}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style1.css">
-    <link rel="stylesheet" type="text/css" href="css/homepagestyle.css">
-    <link rel="icon" href="img/logo.png">
+    <link rel="stylesheet" type="text/css" href="/css/style1.css">
+    <link rel="stylesheet" type="text/css" href="/css/homepagestyle.css">
+    <link rel="icon" href="/img/logo.png">
     <script src="https://kit.fontawesome.com/080b1bc218.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/js/indivpost.js" type="text/javascript"></script>
 </head>
 
 <body>
-    {{>header}}
-
+    {{!-- {{>header DisplayName = username navbar = navbar }} --}}
+    <nav class="navbar navbar-inverse navbar-fixed-top {{navbar}}">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/timeline">BIG FOUR: Freedom Wall</a>
+                </div>
+                <form class="navbar-form navbar-left" action="/action_page.php">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="search">
+                        <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                        <i class="fas fa-search"></i>
+                        </button>
+                        </div>
+                    </div>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/timeline"><i class="fas fa-home"></i> HOME</a></li>
+                    <li><a href="/timeline/admu">&#x1f985 ADMU</a></li>
+                    <li><a href="/timeline/dlsu">&#127993 DLSU</a></li>
+                    <li><a href="/timeline/up">&#9994 UP</a></li>
+                    <li><a href="/timeline/ust">&#128047 UST</a></li>
+                        <div class="dropdown prof">
+                            <li><a href="/profile/{{post.user._id}}" class="dropbtn" style="color:white; font-size:14px; border: 1px solid white; margin-right: 10px;" title="Go to Profile"><i class="far fa-user"></i> PROFILE</a></li>
+                            <div class="dropdown-content">
+                                <a href="/logout">Log out</a>
+                            </div>
+                        </div>
+                </ul>
+            </div>
+        </nav>  
     <div class="container-fluid text-center">
         <div class="row content">
+             <div class="col-sm-2 sidenav" id="sideprofile" style="margin-left: -20px;">
+                    {{!-- {{>sideProfile fName = fn lName = ln CreditScore = cs DisplayName = DisplayName DisplayPicture = image}} --}}
+                    <div class="col-sm-2 sidenav">
+                        <div class="content-sidenav">
+                            <a href="/profile/{{post.user._id}}"><img class="img-circle" src="/avatars/{{post.user.avatar}}"/> </a>
+                                <div class="rank-label-container">
+                                    <span class="label label-default rank-label" title="Credit Score" style="cursor:default;">{{post.user.creditScore}} pts</span>
+                                </div>
+                            <p class="p-name">{{post.user.fName}} {{post.user.lName}}</p>
+                            <p class="p-name" style="font-size: 13px; margin-top: -20px; font-family:Arial, Helvetica, sans-serif; font-style: italic; text-align: center" id="DisplayName">@{{post.user.username}}</p>
+                        </div>
+                    </div>
+                </div>
             <div class="center-post">
                 <div class="col-sm-8 text-left">
-                    <ul class="timeline">
-                        <li class="timeline-inverted">
-                            <div class="{{timelineBadge}}">{{{uniBadge}}}</div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <div class="postNum">{{postNumber}}</div>
-                                    <h4 class="timeline-title">
-                                        {{postTitle}}
-                                    </h4>
-                                    <div class ="dropdown">
-                                        <img src="/img/option.png" style="height: 20px; width: 23px; padding-right: 5px;" id="option1" title="Option">
-                                        <div class="dropdown-content">
-                                            <a href="#">Save Post</a>
+                    {{!-- {{#each posts}} --}}
+                            {{!-- {{#if postNumber}} --}}
+                            <ul class="timeline">
+                                <li class="timeline-inverted">
+                                     {{#match post.university 'ADMU'}}
+                                        <div class="timeline-badge ateneo">&#x1f985</div>
+                                    {{/match}}
+                                    {{#match post.university 'DLSU'}}
+                                        <div class="timeline-badge lasalle">&#127993</div>
+                                    {{/match}}
+                                    {{#match post.university 'UP'}}
+                                        <div class="timeline-badge up">&#9994</div>
+                                    {{/match}}
+                                    {{#match post.university 'UST'}}
+                                        <div class="timeline-badge ust">&#128047</div>
+                                    {{/match}}
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            {{!-- <div class="postNum">{{postNumber}}</div> --}}
+                                            <h4 class="timeline-title">
+                                                <p style="color: rgb(78, 73, 73); margin-bottom: -20px;">{{post.title}}</p>
+                                            </h4>
+                                            <div class ="dropdown">
+                                                <img src="/img/option.png" style="height: 20px; width: 23px; padding-right: 5px;" id="option1" title="Option">
+                                                <div class="dropdown-content">
+                                                     {{#if post.delete}}
+                                                        <a href="#">Save Post</a>
+                                                        <a href="#">Delete Post</a>
+                                                        {{else}}
+                                                        <a href="#">Save Post</a>
+                                                    {{/if}}
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <span class="timeline-author">
-                                    <div class="author"> 
-                                        <a class="a-link" href="indivpost.html" target="_blank">By: {{Username}}</a>
-                                    </div>
-                                    <div class="userCreditScoree">({{CreditScore}} pts)</div>
-                                </span>
-                                <div class="timeline-body">
-                                    <p>{{postBody}}</p>
-                                </div>
-                                <div class="userTagss" title="Tags">
-                                    <span>
-                                        <a class="a-link" href="indivpost.html">Tags: {{postTags}}</a>
-                                    </span>
-                                </div>
-                                <hr>
-                                <div class="userbuttonscontainerr">
-                                    <div class="upvotecountt" title="Upvote Count"><p>{{Upvotes}} upvotes</p></div>                    
-                                    <div class="upvote"><img src="/img/upvote.png" id="upvote1" onclick="toggleUpvote(this)" title="Upvote"></div>
-                                    <div class="downvote"><img src="/img/downvote.png" id="downvote1" onclick="toggleDownvote(this)" title="Downvote"></div>
-                                    <div class="comment"> <img src="/img/comment.png" style="height: 48px; width: 47px; margin-left: -3px;" id="comment1" title="Comment"></div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-panel">
-                               <div class="comment-container">
-                                   <div class="comment-user">
-                                        <img class="comment-img" src="/img/boy.png">
-                                   </div>   
-                                    <div class="comment-body">
-                                        <div class="author">richard123
-                                            <span class="userCreditScoree">(20 pts)</span>
+                                        <span class="timeline-author">
+                                            <div class="author">  
+                                                <a class="a-link" href="/userid/{{post.user._id}}" target="_blank">By: {{post.user.username}}</a>
+                                            </div>
+                                            <div class="userCreditScoree">({{post.user.creditScore}} pts)</div>
+                                        </span>
+                                        <div class="timeline-body">
+                                            <p>{{post.body}}</p>
                                         </div>
-                                        <p>@Asher Angeles ikaw ba yon?</p>
+                                        <div class="userTagss" title="Tags">
+                                            <span>
+                                                <a class="a-link" href="indivpost.html">Tags: {{post.tags}}</a>
+                                            </span>
+                                        </div>
+                                        <hr>
+                                        <div class="userbuttonscontainerr">
+                                            <p class ="upvotecountt" id="upvotecount" title="Upvote Count">{{post.upvote}} upvotes, <span>{{post.downvote}} downvotes</p>
+                                                {{!-- <p id="counter"></p>                 --}}
+                                            <img src="/img/upvote.png" id="upvote" title="Upvote" class="upvote">
+                                            <img src="/img/downvote.png" id="downvote" title="Downvote" class="downvote">
+                                            <img src="/img/comment.png" style="height: 43px; width: 47px; margin-left: -3px;" id="comment" class="comment" title="Comment">
+                                        </div>
+                                        <div id="p_id">
+                                            <p id="pid" style="visibility: hidden; margin-top: -30px">{{post._id}}</p>
+                                            {{!-- <p id="uid" style="visibility: hidden; margin-top: -30px">{{post.user._id}}</p> --}}
+                                         </div>
                                     </div>
-                               </div>
-                               <div class="comment-container">
-                                <div class="comment-user">
-                                     <img class="comment-img" src="img/human.jpg">
-                                </div>   
-                                 <div class="comment-body">
-                                     <div class="author">patricianugget
-                                         <span class="userCreditScoree">(9 pts)</span>
-                                     </div>
-                                     <p>hay nakoooooooo magaral na nga lang kayo para masulit yung tuition amp</p>
-                                 </div>
-                            </div>
-                        </li>
-                    </ul>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-panel">
+                                        <div id="displayComment">
+                                            {{#each comments}}
+                                                {{#if PostID}}
+                                                    {{>commentCard}}
+                                                {{/if}}
+                                            {{/each}}
+                                        </div>
+                                    {{!-- {{>commentBar DisplayPicture = image name = username CreditScore = cs id = id}} --}}
+                                    </div>
+                                </li>
+                            </ul>
+                            {{!-- {{/if}} --}}
+                        {{!-- {{/each}} --}}
                 </div>
             </div>
             {{>trending}}
         </div>
     </div>
 </body>
-
 </html>

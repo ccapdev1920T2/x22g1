@@ -7,7 +7,7 @@ $(document).ready(function () {
 
         $.get('/checkUsername', {Username : username}, function(result){
             
-            if(result.Username == username){
+            if(result.DisplayName == username){
                 $('#login-username').css('border-color', '#d9dadc');
                 $('#error').text('');
                
