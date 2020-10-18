@@ -93,6 +93,7 @@ app.get('/post/:postId', timelineController.getIndivPost);
 app.get('/profile/:userId', profileController.getProfile);
 app.post('/editProfile',
     avatarUpload,
+    validation.editProfileValidation(),
     profileController.editProfile);
 app.get('/checkUsername', profileController.checkUsername);
 app.get('/userid/:userId', profileController.getIndivProfile);
@@ -125,6 +126,14 @@ app.get('/logout', function (req, res) {
     res.redirect('/');
 });
 
+app.use((req, res, next) => {
+    if (req.session.user) {
+      res.status(404).redirect('/timeline');
+    }
+    else {
+      res.status(404).redirect('/');
+    }
+});
 //app.get('/updateUpvote', timelineController.updateUpvote);
 
 // call function getUserProfile when client requests a username (parameter) che
