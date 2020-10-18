@@ -14,50 +14,10 @@
 
     <body>
         {{>header userid = user._id}}
-        {{!-- <nav class="navbar navbar-inverse navbar-fixed-top {{navbar}}">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/timeline">BIG FOUR: Freedom Wall</a>
-                </div>
-                <form class="navbar-form navbar-left" action="/action_page.php">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search" name="search">
-                        <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
-                        <i class="fas fa-search"></i>
-                        </button>
-                        </div>
-                    </div>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/timeline"><i class="fas fa-home"></i> HOME</a></li>
-                    <li><a href="/timeline/admu">&#x1f985 ADMU</a></li>
-                    <li><a href="/timeline/dlsu">&#127993 DLSU</a></li>
-                    <li><a href="/timeline/up">&#9994 UP</a></li>
-                    <li><a href="/timeline/ust">&#128047 UST</a></li>
-                        <div class="dropdown prof">
-                            <li><a href="/profile/{{user._id}}" class="dropbtn" style="color:white; font-size:14px; border: 1px solid white; margin-right: 10px;" title="Go to Profile"><i class="far fa-user"></i> PROFILE</a></li>
-                            <div class="dropdown-content">
-                                <a href="/logout">Log out</a>
-                            </div>
-                        </div>
-                </ul>
-            </div>
-        </nav> --}}
         <div class="container-fluid text-center">
             <div class="row content line-nav">
                 <div class="col-sm-2 sidenav" id="sideprofile" style="margin-left: -20px;">
-                    {{!-- {{>sideProfile fName = fn lName = ln CreditScore = cs DisplayName = DisplayName DisplayPicture = image}} --}}
-                    <div class="col-sm-2 sidenav">
-                        <div class="content-sidenav">
-                            <a href="/profile/{{user._id}}"><img class="img-circle" src="/avatars/{{user.avatar}}"/> </a>
-                                <div class="rank-label-container">
-                                    <span class="label label-default rank-label" title="Credit Score" style="cursor:default;">{{user.creditScore}} pts</span>
-                                </div>
-                            <p class="p-name">{{user.fName}} {{user.lName}}</p>
-                            <p class="p-name" style="font-size: 13px; margin-top: -20px; font-family:Arial, Helvetica, sans-serif; font-style: italic; text-align: center" id="DisplayName">@{{user.username}}</p>
-                        </div>
-                    </div>
+                    {{>sideProfile fName = user.fName lName = user.lName CreditScore = user.creditScore DisplayName = user.username DisplayPicture = user.avatar userid = user._id}}
                 </div>
                 <div class="center-post">
                     <div class="col-sm-8 text-left">
