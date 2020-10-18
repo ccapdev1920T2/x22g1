@@ -93,7 +93,6 @@ app.get('/post/:postId', timelineController.getIndivPost);
 app.get('/profile/:userId', profileController.getProfile);
 app.post('/editProfile',
     avatarUpload,
-    validation.editProfileValidation(),
     profileController.editProfile);
 app.get('/checkUsername', profileController.checkUsername);
 app.get('/userid/:userId', profileController.getIndivProfile);

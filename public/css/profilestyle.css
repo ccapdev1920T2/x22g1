@@ -333,3 +333,8 @@ body{
 .dropdownn:hover .dropdownn-content {
     display: block;
 }
+
+.has-error {
+    color: red;
+    margin-left: 15px;
+}

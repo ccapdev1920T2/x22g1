@@ -45,7 +45,8 @@
                 required: true,
             },
             bio: {
-                required: true
+                required: true,
+                maxlength: 150,
             }
         },
     // Custom message for error

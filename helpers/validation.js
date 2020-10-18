@@ -51,7 +51,9 @@ const validation = {
                 .withMessage('Username is already in use'),
             check('bio')
                 .notEmpty()
-                .withMessage('Please enter a bio'),
+                .withMessage('Please enter a bio')
+                .isLength({ max: 150 })
+                .withMessage('Please enter no more than 150 characters.'),
         ];
     },
 
@@ -75,7 +77,7 @@ const validation = {
                 .bail()
                 .trim()
         ]
-    }
+    },
 };
 
 module.exports = validation;
