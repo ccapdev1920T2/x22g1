@@ -38,6 +38,10 @@
      /* jquery.validate plugin added using cdn. Go to jqueryvalidation.org to see what methods are provided */
      $("#editProfile").validate({
         rules: {
+            username: {
+                required: true,
+                minlength: 6,
+            },
             fName: {
                 required: true,
             },
