@@ -48,8 +48,8 @@
             <div class="userbuttonscontainerr">
                 <p class ="upvotecountt" id="upvotecount" title="Upvote Count">{{upvote}} upvotes, <span>{{downvote}} downvotes</span></p>
                     {{!-- <p id="counter"></p>--}}
-                <img src="/img/upvote.png" id="upvote" title="Upvote" class="upvote">
-                <img src="/img/downvote.png" id="downvote" title="Downvote" class="downvote">
+                <img src="/img/upvote.png" id="upvote_{{_id}}" title="Upvote" class="upvote" onclick="upVote(this,downvote_{{_id}})">
+                <img src="/img/downvote.png" id="downvote_{{_id}}" title="Downvote" class="downvote" onclick="downVote(upvote_{{_id}},this)">
                 {{!-- <a href="/indivPost?_id={{_id}}&DisplayName={{User}}" > --}}
                 <img src="/img/comment.png" style="height: 43px; width: 47px; margin-left: -3px;" id="comment" class="comment" title="Comment">
             </div>

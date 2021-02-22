@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="/css/homepagestyle.css">
         <link rel="icon" href="/img/logo.png">
         <script src="/js/profile.js"></script>
+        <script src="/js/votes.js"></script>
         <script src="https://kit.fontawesome.com/080b1bc218.js" crossorigin="anonymous"></script>
     </head>
 
@@ -66,7 +67,7 @@
                 <div id="RecentPost" class="tabcontent">
                     <div id="post">
                             {{#each posts}}
-                                {{>post university = this.university}}
+                                {{>post university = this.university activeid = ../active_user}}
                             {{/each}}
                         </div>
                 </div>
@@ -108,7 +109,7 @@
             
              <div class="form-group" style="margin-left: 15px;">
                 <div class="col-xs-11">  
-                    <p><strong>Username</strong></p>
+                    <p><strong>Username</strong><span style="color: red"> *</span></p>
                     <input type="text" class="form-control" id="username" name="username" value="{{user.username}}"/>
                     <p id="error" style="color: red; margin-left: 15px"></p>
                 </div>
@@ -117,7 +118,7 @@
 
             <div class="form-group" style="margin-left: 15px;">
                 <div class="col-xs-11">  
-                    <p><strong>First Name</strong></p>
+                    <p><strong>First Name</strong><span style="color: red"> *</span></p>
                     <input type="text" class="form-control" id="fName" name="fName" value="{{user.fName}}" required/>
                 </div>
                 <div class="col-sm-7"></div>
@@ -125,7 +126,7 @@
 
             <div class="form-group" style="margin-left: 15px;">
                 <div class="col-xs-11">  
-                    <p><strong>Last Name</strong></p>
+                    <p><strong>Last Name</strong><span style="color: red"> *</span></p>
                     <input type="text" class="form-control" id="lName" name="lName" value="{{user.lName}}" required/>
                 </div>
                 <div class="col-sm-7"></div>
@@ -133,7 +134,7 @@
 
             <div class="form-group" style="margin-left: 15px;">
                 <div class="col-xs-11">  
-                    <p><strong>Bio</strong></p>
+                    <p><strong>Bio</strong><span style="color: red"> *</span></p>
                     <input type="text" class="form-control" id="bio" name="bio" value="{{user.bio}}" required/>
                 </div>
                 <div class="col-sm-7"></div>
