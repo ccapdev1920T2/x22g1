@@ -72,7 +72,13 @@
                         </div>
                 </div>
                  <div id="SavedPost" class="tabcontent">
-
+                     <div id="post">
+                            {{#each posts}}
+                                {{!-- {{#match user.postsSaved posts._id}} --}}
+                                    {{>post university = this.university activeid = ../active_user}}
+                                {{!-- {{/match}} --}}
+                            {{/each}}
+                        </div>
                  </div>
             </div>
         </div>

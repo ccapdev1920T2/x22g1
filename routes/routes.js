@@ -22,6 +22,9 @@ const createPostController = require('../controllers/createPostController.js');
 // import profile controller
 const profileController = require('../controllers/profileController.js');
 
+// import helper controller
+const postHelperController = require('../controllers/postHelperController.js');
+
 const app = express();
 
 // initialize multer for file upload use 
@@ -119,6 +122,10 @@ app.get('/updateStatus', timelineController.updateStatus);
 // app.get('/editprofile/:DisplayName', profileController.editProfile);
 // app.get('/editprofile/:DisplayName', profileController.updateProfile);
 
+// postHelperController
+app.get('/post/save/:postId', postHelperController.savePost);
+app.get('/post/unsave/:postId', postHelperController.unsavePost);
+
 //logout
 app.get('/logout', function (req, res) {
     req.logout;
@@ -134,6 +141,7 @@ app.use((req, res, next) => {
       res.status(404).redirect('/');
     }
 });
+
 //app.get('/updateUpvote', timelineController.updateUpvote);
 
 // call function getUserProfile when client requests a username (parameter) che

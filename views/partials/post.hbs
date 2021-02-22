@@ -22,10 +22,10 @@
                     <img src="/img/option.png" style="height: 20px; width: 23px; padding-right: 5px;" id="option1" title="Option">
                     <div class="dropdown-content">
                         {{#match user._id activeid}}
-                            <a href="#">Save Post</a>
+                            <a href="/post/save/{{this._id}}">Save Post</a>
                             <a href="/post/delete/{{this._id}}">Delete Post</a>
                             {{else}}
-                            <a href="#">Save Post</a>
+                            <a href="/post/save/{{this._id}}">Save Post</a>
                         {{/match}}
                     </div>
                 </div>

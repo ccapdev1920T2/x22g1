@@ -1,7 +1,10 @@
 const db = require('../models/db.js');
+const User = require('../models/ProfileModel.js');
 const ObjectId = require('mongodb').ObjectID;
+const mongoose = require('mongoose');
+const helper = require('../helpers/helper.js');
 
-const helper = {
+const postHelperController = {
     
     likePost: function(req, res){
         var post = {}
@@ -31,4 +34,26 @@ const helper = {
             });
         });
     },
+
+    savePost: function(req, res){
+        var post_id = helper.sanitize(req.params.postId);
+        var id = helper.sanitize(req.session.user)
+        console.log('postid', post_id)
+        console.log('id', id)
+        User.updateOne({_id: id }, {$push: {postsSaved: post_id} }, function (user) {
+            res.redirect('/profile'+id)
+        })
+    },
+
+    unsavePost: function(req, res){
+        var post_id = helper.sanitize(req.params.postId);
+        var id = helper.sanitize(req.session.user)
+        console.log('postid', post_id)
+        console.log('id', id)
+        User.updateOne({_id: id }, {$pull: {postsSaved: post_id} }, function (user) {
+            res.redirect('/profile'+id)
+        })
+    }
 }
+
+module.exports = postHelperController;

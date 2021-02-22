@@ -34,6 +34,10 @@ const profileSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
+    postsSaved: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Post'
+    }],
 })
 
 module.exports = mongoose.model('Profile', profileSchema);
