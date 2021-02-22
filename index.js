@@ -30,7 +30,7 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.use('/', routes);
 
 // connects to the database
-const url = 'mongodb://localhost:27017/Big4FW_database';
+const url = 'mongodb+srv://admin:big4user@big4fw.d5d5o.mongodb.net/big4fw?retryWrites=true&w=majority';
 const options = {
     useUnifiedTopology: true,
     useNewUrlParser: true,
