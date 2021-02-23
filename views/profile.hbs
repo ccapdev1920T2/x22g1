@@ -67,20 +67,14 @@
                 <div id="RecentPost" class="tabcontent">
                     <div id="post">
                             {{#each posts}}
-                                {{!-- {{#each save}} --}}
-                                    {{!-- {{#match posts._id save._id}} --}}
-                                    {{!-- {{>post university = this.university activeid = ../active_user saved = true}} --}}
-                                    {{!-- {{else}} --}}
-                                    {{>post university = this.university activeid = ../active_user}}
-                                    {{!-- {{/match}} --}}
-                                {{!-- {{/each}} --}}
+                                    {{>post university = this.university activeid = ../active_user saved = ../saved}}
                             {{/each}}
                         </div>
                 </div>
                  <div id="SavedPost" class="tabcontent">
                      <div id="post">
-                            {{#each save}}
-                                    {{>post university = this.university activeid = ../active_user saved = true}}
+                            {{#each display_save}}
+                                    {{>post university = this.university activeid = ../active_user saved = ../saved}}
                             {{/each}}
                         </div>
                  </div>

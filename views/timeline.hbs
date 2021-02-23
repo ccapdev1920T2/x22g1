@@ -36,14 +36,7 @@
                         <hr>
                         <div id="post">
                             {{#each posts}}
-                                {{!-- {{#each ../save}} --}}
-                                    {{!-- {{#match this._id ../this._id}} --}}
-                                    {{!-- {{>post university = this.university activeid = ../active_user saved = true postid = ../this._id curid = this._id}} --}}
-                                    {{!-- {{else}} --}}
-                                    {{!-- {{>post university = this.university activeid = ../active_user postid = ../this._id curid = this._id}} --}}
-                                    {{!-- {{/match}} --}}
-                                {{!-- {{/each}} --}}
-                                {{>post university = this.university activeid = ../active_user postid = ../this._id curid = this._id}}
+                                {{>post university = this.university activeid = ../active_user saved = ../saved}}
                             {{/each}}
                              {{!-- {{#if _id}}
                                     {{>post}}

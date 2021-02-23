@@ -22,19 +22,18 @@
                     <img src="/img/option.png" style="height: 20px; width: 23px; padding-right: 5px;" id="option1" title="Option">
                     <div class="dropdown-content">
                         {{#match user._id activeid}}
-                                {{#if saved}}
+                            {{#checkSaved this._id saved}}
                                 <a href="/post/unsave/{{this._id}}">Unsave Post</a>
-                                <a href="/post/delete/{{this._id}}">Delete Post</a>
-                                {{else}}
-                                <a href="/post/save/{{this._id}}">Save Post</a>
-                                <a href="/post/delete/{{this._id}}">Delete Post</a>
-                                {{/if}}
                             {{else}}
-                                {{#if saved}}
-                                <a href="/post/unsave/{{this._id}}">Unsave Post</a>
-                                {{else}}
                                 <a href="/post/save/{{this._id}}">Save Post</a>
-                                {{/if}}
+                            {{/checkSaved}}
+                                <a href="/post/delete/{{this._id}}">Delete Post</a>
+                        {{else}}
+                            {{#checkSaved this._id saved}}
+                            <a href="/post/unsave/{{this._id}}">Unsave Post</a>
+                            {{else}}
+                            <a href="/post/save/{{this._id}}">Save Post</a>
+                            {{/checkSaved}}
                         {{/match}}
                     </div>
                 </div>
@@ -63,9 +62,7 @@
                 <img src="/img/comment.png" style="height: 43px; width: 47px; margin-left: -3px;" id="comment" class="comment" title="Comment">
             </div>
             <div id="p_id">
-                <p id="pid" style="visibility: ; margin-top: -10px">postid {{postid}}</p>
-                <p id="pid" style="visibility: ; margin-top: -10px">curid {{curid}}</p>
-                <p id="pid" style="visibility: ; margin-top: -10px">id {{_id}}</p>
+                <p id="pid" style="visibility: hidden; margin-top: -10px">{{_id}}</p>
                 <p id="uid" style="visibility: hidden; margin-top: -25px">{{User}}</p>
             </div>
         </div>

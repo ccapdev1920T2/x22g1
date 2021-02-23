@@ -1,6 +1,7 @@
 // import modules express and handlebars
 const express = require('express');
 const hbs = require('hbs');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 // data base and express
@@ -13,12 +14,33 @@ app.use(express.static('views'));
 // set hbs as view engine
 app.set('view engine', 'hbs');
 
+// parses incoming requests with urlencoded payloads
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 hbs.registerHelper('match', function(v1, v2, options){
     return v1 == v2 ? options.fn(this) : options.inverse(this);
 });
 
-// parses incoming requests with urlencoded payloads
-app.use(express.urlencoded({ extended: true }));
+hbs.registerHelper('checkSaved', function(s, a, options) {
+        var string = a.toString();
+        var arr = string.split(",");
+        for (let i=0; i<arr.length; i++){
+            if (arr[i] == (s)) {
+            var valid = true
+            break;
+            } else {
+            var valid = false
+            }
+        }
+        if(valid){
+            return options.fn(this);
+        }
+        else{
+            return options.inverse(this)
+        }
+        
+});
 
 // import routes module
 const routes = require('./routes/routes.js');
