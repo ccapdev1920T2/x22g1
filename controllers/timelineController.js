@@ -17,13 +17,20 @@ const timelineController = {
                 var getPost = helper.getAllPosts();
                 getPost.exec(function(err, post){
                     if (err) throw err;
-                    // console.log(post);
-                    res.render('timeline', {
-                        active_session: req.session.user && req.cookies.user_sid,
-                        active_user: req.session.user,
-                        user: user,
-                        posts: post
-                    });
+                    var getSavedPost = helper.getSavedPost(req.session.user);
+                    getSavedPost.exec(function(err, saved){
+                        // console.log(saved[0].postsSaved)
+                        // console.log(saved)
+                        if (err) throw err;
+                        // console.log(post);
+                        res.render('timeline', {
+                            active_session: req.session.user && req.cookies.user_sid,
+                            active_user: req.session.user,
+                            user: user,
+                            posts: post,
+                            save: saved[0].postsSaved
+                        });
+                    })
                 })
             })
         }

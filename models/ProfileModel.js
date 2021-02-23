@@ -38,6 +38,14 @@ const profileSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Post'
     }],
+    postsUpVoted: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Post'
+    }],
+    postsDownVoted: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Post'
+    }],
 })
 
 module.exports = mongoose.model('Profile', profileSchema);

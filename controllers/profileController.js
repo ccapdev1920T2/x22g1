@@ -14,13 +14,15 @@ const profileController = {
                 getPost.exec(function(err, post){
                     var getSavedPost = helper.getSavedPost(userId);
                     getSavedPost.exec(function(err, saved){
+                        // console.log(saved[0].postsSaved)
+                        console.log(post._id)
                         if (err) throw err;
                         res.render('profile', {
                             active_session: req.session.user && req.cookies.user_sid,
                             active_user: req.session.user,
                             user: user.toObject(),
                             posts: post,
-                            save: saved,
+                            save: saved[0].postsSaved,
                             profile: true
                         })
                     })

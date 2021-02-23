@@ -103,7 +103,7 @@ const helper = {
     },
 
     getSavedPost: function (userId) {
-        return Profile.find({user: userId})
+         return Profile.find({_id: userId})
             .populate('postsSaved')
             .sort('-created')
             .lean()
