@@ -116,7 +116,8 @@ const timelineController = {
                         active_user: req.session.user,
                         user: user,
                         posts: post,
-                        navbar: "navbar-dlsu"
+                        navbar: "navbar-dlsu",
+                        saved: user.postsSaved
                     });
                 })
             })
@@ -137,7 +138,8 @@ const timelineController = {
                         active_user: req.session.user,
                         user: user,
                         posts: post,
-                        navbar: "navbar-admu"
+                        navbar: "navbar-admu",
+                        saved: user.postsSaved
                     });
                 })
             })
@@ -158,7 +160,8 @@ const timelineController = {
                         active_user: req.session.user,
                         user: user,
                         posts: post,
-                        navbar: "navbar-up"
+                        navbar: "navbar-up",
+                        saved: user.postsSaved
                     });
                 })
             })
@@ -179,7 +182,8 @@ const timelineController = {
                         active_user: req.session.user,
                         user: user,
                         posts: post,
-                        navbar: "navbar-ust"
+                        navbar: "navbar-ust",
+                        saved: user.postsSaved
                     });
                 })
             })
