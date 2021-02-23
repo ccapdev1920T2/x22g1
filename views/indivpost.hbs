@@ -46,10 +46,22 @@
                                                 <img src="/img/option.png" style="height: 20px; width: 23px; padding-right: 5px;" id="option1" title="Option">
                                                 <div class="dropdown-content">
                                                      {{#match post.user._id active_user}}
-                                                        <a href="#">Save Post</a>
+                                                        {{!-- <a href="#">Save Post</a>
                                                         <a href="/post/delete/{{post._id}}">Delete Post</a>
                                                         {{else}}
-                                                        <a href="#">Save Post</a>
+                                                        <a href="#">Save Post</a> --}}
+                                                        {{#checkSaved post._id saved}}
+                                                            <a href="/post/unsave/{{post._id}}">Unsave Post</a>
+                                                        {{else}}
+                                                            <a href="/post/save/{{post._id}}">Save Post</a>
+                                                        {{/checkSaved}}
+                                                            <a href="/post/delete/{{post._id}}">Delete Post</a>
+                                                    {{else}}
+                                                        {{#checkSaved post._id saved}}
+                                                        <a href="/post/unsave/{{post._id}}">Unsave Post</a>
+                                                        {{else}}
+                                                        <a href="/post/save/{{post._id}}">Save Post</a>
+                                                        {{/checkSaved}}
                                                     {{/match}}
                                                 </div>
                                             </div>

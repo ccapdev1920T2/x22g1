@@ -204,6 +204,7 @@ const timelineController = {
                                     active_user: req.session.user,
                                     post: post.toObject(),
                                     user: active_user,
+                                    saved: active_user.postsSaved
                                 })
                             })
                         })
