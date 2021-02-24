@@ -54,10 +54,27 @@
             </div>
             <hr>
             <div class="userbuttonscontainerr">
-                <p class ="upvotecountt" id="upvotecount" title="Upvote Count">{{upvote}} upvotes, <span>{{downvote}} downvotes</span></p>
+                <p class ="upvotecountt" id="upvotecount" title="Vote Count">{{upvote}} upvotes, <span>{{downvote}} downvotes</span></p>
                     {{!-- <p id="counter"></p>--}}
-                <img src="/img/upvote.png" id="upvote_{{_id}}" title="Upvote" class="upvote" onclick="upVote(this,downvote_{{_id}})">
-                <img src="/img/downvote.png" id="downvote_{{_id}}" title="Downvote" class="downvote" onclick="downVote(upvote_{{_id}},this)">
+                {{#checkUpvote this._id upvoted}}
+                    <a href="/post/unupvote/{{_id}}"><img src="/img/upvoted.png" id="upvote_{{_id}}" title="Upvote" class="upvote" onclick="upVote(this,downvote_{{_id}})"></a>
+                    <a href="/post/downvote/{{_id}}"><img src="/img/downvote.png" id="downvote_{{_id}}" title="Downvote" class="downvote" onclick="downVote(upvote_{{_id}},this)"></a>
+                    {{else}}
+
+                        {{#checkDownvote this._id downvoted}}
+                            <a href="/post/upvote/{{_id}}"><img src="/img/upvote.png" id="upvote_{{_id}}" title="Upvote" class="upvote" onclick="upVote(this,downvote_{{_id}})"></a>
+                            <a href="/post/undownvote/{{_id}}"><img src="/img/downvoted.png" id="downvote_{{_id}}" title="Downvote" class="downvote" onclick="downVote(upvote_{{_id}},this)"></a>
+                            {{else}} 
+                            <a href="/post/upvote/{{_id}}"><img src="/img/upvote.png" id="upvote_{{_id}}" title="Upvote" class="upvote" onclick="upVote(this,downvote_{{_id}})"></a>
+                            <a href="/post/downvote/{{_id}}"><img src="/img/downvote.png" id="downvote_{{_id}}" title="Downvote" class="downvote" onclick="downVote(upvote_{{_id}},this)"></a>
+                        {{/checkDownvote}}
+
+                {{/checkUpvote}}
+
+               {{!-- <img src="/img/upvote.png" id="upvote_{{_id}}" title="Upvote" class="upvote" onclick="upVote(this,downvote_{{_id}})">
+                <img src="/img/downvote.png" id="downvote_{{_id}}" title="Downvote" class="downvote" onclick="downVote(upvote_{{_id}},this)"> --}}
+                       
+                
                 {{!-- <a href="/indivPost?_id={{_id}}&DisplayName={{User}}" > --}}
                 <img src="/img/comment.png" style="height: 43px; width: 47px; margin-left: -3px;" id="comment" class="comment" title="Comment">
             </div>

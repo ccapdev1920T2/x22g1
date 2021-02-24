@@ -23,7 +23,9 @@ const timelineController = {
                         active_user: req.session.user,
                         user: user,
                         posts: post,
-                        saved: user.postsSaved
+                        saved: user.postsSaved,
+                        upvoted: user.postsUpVoted,
+                        downvoted: user.postsDownVoted
                     });
                 })
             })

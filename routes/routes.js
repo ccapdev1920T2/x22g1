@@ -125,6 +125,10 @@ app.get('/updateStatus', timelineController.updateStatus);
 // postHelperController
 app.get('/post/save/:postId', postHelperController.savePost);
 app.get('/post/unsave/:postId', postHelperController.unsavePost);
+app.get('/post/upvote/:postId', postHelperController.upvotePost);
+app.get('/post/downvote/:postId', postHelperController.downvotePost);
+app.get('/post/unupvote/:postId', postHelperController.unupvotePost);
+app.get('/post/undownvote/:postId', postHelperController.undownvotePost);
 
 //logout
 app.get('/logout', function (req, res) {

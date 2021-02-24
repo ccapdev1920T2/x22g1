@@ -1,37 +1,97 @@
-const db = require('../models/db.js');
 const User = require('../models/ProfileModel.js');
-const ObjectId = require('mongodb').ObjectID;
-const mongoose = require('mongoose');
+const Post = require('../models/PostModel');
 const helper = require('../helpers/helper.js');
+const db = require('../models/db.js');
 
 const postHelperController = {
     
-    likePost: function(req, res){
-        var post = {}
-        
-        db.updateOne('userPost', post, function(post){
-            postId = req.query._id
-        })
-    },
+    upvotePost: function(req, res) {
+        var post_id = helper.sanitize(req.params.postId);
+        var id = helper.sanitize(req.session.user);
 
-    likePost: function(postId, username, res) {
-        Post.updateOne({_id: postId}, {$inc: {numberOfLikes: 1}})
-        .then((a) => {
-            User.updateOne({username: username }, {$addToSet: {postsLiked: postId} })
-            .then((b) => {
-                res.send(true);
-            });
-        });
+        db.updateOne(Post,{_id: post_id, downvote: { $gt: 0} }, {$inc: {downvote: -1}}, function(post){
+            if(post){
+                //console.log(post);
+                db.updateOne(User,{_id: id}, {$pull: {postsDownVoted: post_id}}, function(user){
+                    if(user){
+                        //console.log(user);
+                        db.updateOne(Post,{_id: post_id}, {$inc: {upvote: 1}}, function(post){
+                            if(post){
+                                //console.log(post);
+                                db.updateOne(User,{_id: id}, {$push: {postsUpVoted: post_id}}, function(user){
+                                    if(user){
+                                        //console.log(user);
+                                        res.redirect('/timeline');
+                                    }
+                                })
+                            }
+                        })      
+                    }
+                })
+            }
+        }) 
     },
     
-    unlikePost: function(postId, username, res) {
-        Post.updateOne({_id: postId}, {$inc: {numberOfLikes: -1}})
-        .then((a) => {
-            User.updateOne({username: username }, {$pull: {postsLiked: postId} })
-            .then((b) => {
-                res.send(true);
-            });
-        });
+    unupvotePost: function(req, res) {
+        var post_id = helper.sanitize(req.params.postId);
+        var id = helper.sanitize(req.session.user);
+
+        db.updateOne(Post,{_id: post_id}, {$inc: {upvote: -1}}, function(post){
+            if(post){
+                //console.log(post);
+                db.updateOne(User,{_id: id}, {$pull: {postsUpVoted: post_id}}, function(user){
+                    if(user){
+                        //console.log(user);
+                        res.redirect('/timeline');
+                    }
+                })
+            }
+        })       
+    },
+
+    downvotePost: function(req, res) {
+        var post_id = helper.sanitize(req.params.postId);
+        var id = helper.sanitize(req.session.user);
+
+        db.updateOne(Post,{_id: post_id, upvote: {$gt: 0}}, {$inc: {upvote: -1}}, function(post){
+            if(post){
+                //console.log(post);
+                db.updateOne(User,{_id: id}, {$pull: {postsUpVoted: post_id}}, function(user){
+                    if(user){
+                        //console.log(user);
+                        db.updateOne(Post,{_id: post_id}, {$inc: {downvote: 1}}, function(post){
+                            if(post){
+                                //console.log(post);
+                                db.updateOne(User,{_id: id}, {$push: {postsDownVoted: post_id}}, function(user){
+                                    if(user){
+                                        //console.log(user);
+                                        res.redirect('/timeline');
+                                    }
+                                })
+                                 
+                            }
+                        })       
+                    }
+                })
+            }
+        })      
+    },
+
+    undownvotePost: function(req, res) {
+        var post_id = helper.sanitize(req.params.postId);
+        var id = helper.sanitize(req.session.user);
+
+        db.updateOne(Post,{_id: post_id}, {$inc: {downvote: -1}}, function(post){
+            if(post){
+                //console.log(post);
+                db.updateOne(User,{_id: id}, {$pull: {postsDownVoted: post_id}}, function(user){
+                    if(user){
+                        //console.log(user);
+                        res.redirect('/timeline');
+                    }
+                })
+            }
+        })
     },
 
     savePost: function(req, res){
