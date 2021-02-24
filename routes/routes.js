@@ -22,6 +22,9 @@ const createPostController = require('../controllers/createPostController.js');
 // import profile controller
 const profileController = require('../controllers/profileController.js');
 
+// import helper controller
+const postHelperController = require('../controllers/postHelperController.js');
+
 const app = express();
 
 // initialize multer for file upload use 
@@ -88,6 +91,7 @@ app.get('/timeline/admu', timelineController.getADMU);
 app.get('/timeline/up', timelineController.getUP);
 app.get('/timeline/ust', timelineController.getUST);
 app.get('/post/:postId', timelineController.getIndivPost);
+app.get('/post/delete/:postId', timelineController.deletePost);
 
 // profileController
 app.get('/profile/:userId', profileController.getProfile);
@@ -118,11 +122,24 @@ app.get('/updateStatus', timelineController.updateStatus);
 // app.get('/editprofile/:DisplayName', profileController.editProfile);
 // app.get('/editprofile/:DisplayName', profileController.updateProfile);
 
+// postHelperController
+app.get('/post/save/:postId', postHelperController.savePost);
+app.get('/post/unsave/:postId', postHelperController.unsavePost);
+
 //logout
 app.get('/logout', function (req, res) {
     req.logout;
     req.session.destroy(function (err) {});
     res.redirect('/');
+});
+
+app.use((req, res, next) => {
+    if (req.session.user) {
+      res.status(404).redirect('/timeline');
+    }
+    else {
+      res.status(404).redirect('/');
+    }
 });
 
 //app.get('/updateUpvote', timelineController.updateUpvote);

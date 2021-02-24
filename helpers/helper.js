@@ -102,6 +102,19 @@ const helper = {
             .lean()
     },
 
+    getSavedPost: function (userId) {
+         return Profile.find({_id: userId})
+            .populate({
+                path: 'postsSaved',
+                populate: {
+                    path: 'user',
+                    model: 'Profile'
+                }
+            })
+            .sort('-created')
+            .lean()
+    }
+
 };
 
 module.exports = helper;
