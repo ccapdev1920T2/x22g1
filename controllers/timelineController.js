@@ -119,7 +119,9 @@ const timelineController = {
                         user: user,
                         posts: post,
                         navbar: "navbar-dlsu",
-                        saved: user.postsSaved
+                        saved: user.postsSaved,
+                        upvoted: user.postsUpVoted,
+                        downvoted: user.postsDownVoted
                     });
                 })
             })
@@ -141,7 +143,9 @@ const timelineController = {
                         user: user,
                         posts: post,
                         navbar: "navbar-admu",
-                        saved: user.postsSaved
+                        saved: user.postsSaved,
+                        upvoted: user.postsUpVoted,
+                        downvoted: user.postsDownVoted
                     });
                 })
             })
@@ -163,7 +167,9 @@ const timelineController = {
                         user: user,
                         posts: post,
                         navbar: "navbar-up",
-                        saved: user.postsSaved
+                        saved: user.postsSaved,
+                        upvoted: user.postsUpVoted,
+                        downvoted: user.postsDownVoted
                     });
                 })
             })
@@ -185,7 +191,9 @@ const timelineController = {
                         user: user,
                         posts: post,
                         navbar: "navbar-ust",
-                        saved: user.postsSaved
+                        saved: user.postsSaved,
+                        upvoted: user.postsUpVoted,
+                        downvoted: user.postsDownVoted
                     });
                 })
             })

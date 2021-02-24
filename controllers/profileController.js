@@ -24,7 +24,9 @@ const profileController = {
                             posts: post,
                             display_save: saves[0].postsSaved,
                             saved: user.postsSaved,
-                            profile: true
+                            profile: true,
+                            upvoted: user.postsUpVoted,
+                            downvoted: user.postsDownVoted
                         })
                     })
                 })
