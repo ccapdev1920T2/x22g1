@@ -9,7 +9,6 @@ const postHelperController = {
     likePost: function(req, res){
         var post = {}
         
-        
         db.updateOne('userPost', post, function(post){
             postId = req.query._id
         })
@@ -41,7 +40,7 @@ const postHelperController = {
         console.log('postid', post_id)
         console.log('id', id)
         User.updateOne({_id: id }, {$push: {postsSaved: post_id} }, function (user) {
-            res.redirect('/profile'+id)
+            res.redirect('/profile/'+id)
         })
     },
 
@@ -51,7 +50,7 @@ const postHelperController = {
         console.log('postid', post_id)
         console.log('id', id)
         User.updateOne({_id: id }, {$pull: {postsSaved: post_id} }, function (user) {
-            res.redirect('/profile'+id)
+            res.redirect('/profile/'+id)
         })
     }
 }
