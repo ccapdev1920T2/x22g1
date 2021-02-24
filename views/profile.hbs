@@ -65,7 +65,14 @@
                         </div>
                         <div class="user-info-block">
                             <div class="user-heading">
-                                <h3>{{user.fName}} {{user.lName}} <a href="" data-toggle="modal" data-target="#modalEdit"><i class="fas fa-user-edit fa-xs" title="Edit Profile" style="color: gray; margin-top: 10px; font-size: 20px"></i></a></h3>
+                                <h3>{{user.fName}} {{user.lName}} 
+
+                                     {{#if profile}}
+                                        <a href="" data-toggle="modal" data-target="#modalEdit">
+                                            <i class="fas fa-user-edit fa-xs" title="Edit Profile" style="color: gray; margin-top: 10px; font-size: 20px"></i>
+                                        </a>
+                                     {{/if}}
+                                    </h3>
                                  <p class="p-name" style="font-size: 13px; margin-top: -20px; font-family:Arial, Helvetica, sans-serif; font-style: italic; text-align: center" id="DisplayName">@{{user.username}}</p>
                             </div>
                             <div class="textbio" title="User's Bio">{{user.bio}}</div>
