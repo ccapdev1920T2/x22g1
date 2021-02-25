@@ -23,16 +23,24 @@
                     <div class="dropdown-content">
                         {{#match user._id activeid}}
                             {{#checkSaved this._id saved}}
-                                <a href="/post/unsave/{{this._id}}">Unsave Post</a>
+                                {{!-- <a href="/post/unsave/{{this._id}}" id="unsave/{{this._id}}" class="unsave">Unsave Post</a> --}}
+                                <a id="unsave/{{this._id}}" class="unsave">Unsave Post</a>
+                                <a id="save/{{this._id}}" class="save" style="display: none">Save Post</a>
                             {{else}}
-                                <a href="/post/save/{{this._id}}">Save Post</a>
+                                {{!-- <a href="/post/save/{{this._id}}" id="save/{{this._id}}" class="save">Save Post</a> --}}
+                                <a id="unsave/{{this._id}}" class="unsave" style="display: none">Unsave Post</a>
+                                <a id="save/{{this._id}}" class="save">Save Post</a>
                             {{/checkSaved}}
                                 <a href="/post/delete/{{this._id}}">Delete Post</a>
                         {{else}}
                             {{#checkSaved this._id saved}}
-                            <a href="/post/unsave/{{this._id}}">Unsave Post</a>
+                            {{!-- <a href="/post/unsave/{{this._id}}" id="unsave/{{this._id}}" class="unsave">Unsave Post</a> --}}
+                            <a id="unsave/{{this._id}}" class="unsave">Unsave Post</a>
+                            <a id="save/{{this._id}}" class="save" style="display: none">Save Post</a>
                             {{else}}
-                            <a href="/post/save/{{this._id}}">Save Post</a>
+                            {{!-- <a href="/post/save/{{this._id}}" id="save/{{this._id}}" class="save">Save Post</a> --}}
+                            <a id="unsave/{{this._id}}" class="unsave" style="display: none">Unsave Post</a>
+                            <a id="save/{{this._id}}" class="save">Save Post</a>
                             {{/checkSaved}}
                         {{/match}}
                     </div>
