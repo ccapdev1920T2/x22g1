@@ -8,7 +8,8 @@
     <link rel="icon" href="/img/logo.png">
     <script src="https://kit.fontawesome.com/080b1bc218.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="/js/indivpost.js" type="text/javascript"></script>
+    {{!-- <script src="/js/indivpost.js" type="text/javascript"></script> --}}
+    <script src="/js/votes.js"></script>
 </head>
 
 <body>
@@ -82,10 +83,22 @@
                                         </div>
                                         <hr>
                                         <div class="userbuttonscontainerr">
-                                            <p class ="upvotecountt" id="upvotecount" title="Upvote Count">{{post.upvote}} upvotes, <span>{{post.downvote}} downvotes</p>
-                                                {{!-- <p id="counter"></p>                 --}}
-                                            <img src="/img/upvote.png" id="upvote" title="Upvote" class="upvote">
-                                            <img src="/img/downvote.png" id="downvote" title="Downvote" class="downvote">
+                                            <p class ="upvotecountt" title="Vote Count"><span id="upvotecount_{{post._id}}">{{post.upvote}}</span> upvotes, <span id="downvotecount_{{post._id}}">{{post.downvote}}</span> downvotes</p>
+                                                
+                                             {{#checkUpvote post._id upvoted}}
+                                                <img src="/img/upvoted.png" id="upvoted_{{post._id}}" title="Upvote" class="upvote">
+                                                <img src="/img/downvote.png" id="downvote_{{post._id}}" title="Downvote" class="downvote">
+                                                {{else}}
+
+                                                    {{#checkDownvote post._id downvoted}}
+                                                        <img src="/img/upvote.png" id="upvote_{{post._id}}" title="Upvote" class="upvote">
+                                                        <img src="/img/downvoted.png" id="downvoted_{{post._id}}" title="Downvote" class="downvote">
+                                                        {{else}} 
+                                                        <img src="/img/upvote.png" id="upvote_{{post._id}}" title="Upvote" class="upvote">
+                                                        <img src="/img/downvote.png" id="downvote_{{post._id}}" title="Downvote" class="downvote">
+                                                    {{/checkDownvote}}
+
+                                            {{/checkUpvote}}
                                             <img src="/img/comment.png" style="height: 43px; width: 47px; margin-left: -3px;" id="comment" class="comment" title="Comment">
                                         </div>
                                         <div id="p_id">

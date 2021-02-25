@@ -55,22 +55,7 @@
             <hr>
             <div class="userbuttonscontainerr">
                 <p class ="upvotecountt" title="Vote Count"><span id="upvotecount_{{_id}}">{{upvote}}</span> upvotes, <span id="downvotecount_{{_id}}">{{downvote}}</span> downvotes</p>
-                    {{!-- <p id="counter"></p>--}}
-                {{!-- {{#checkUpvote this._id upvoted}}
-                    <a href="/post/unupvote/{{_id}}"><img src="/img/upvoted.png" id="upvote_{{_id}}" title="Upvote" class="upvote" onclick="upVote(this,downvote_{{_id}})"></a>
-                    <a href="/post/downvote/{{_id}}"><img src="/img/downvote.png" id="downvote_{{_id}}" title="Downvote" class="downvote" onclick="downVote(upvote_{{_id}},this)"></a>
-                    {{else}}
-
-                        {{#checkDownvote this._id downvoted}}
-                            <a href="/post/upvote/{{_id}}"></a><img src="/img/upvote.png" id="upvote_{{_id}}" title="Upvote" class="upvote" onclick="upVote(this,downvote_{{_id}})"></a>
-                            <a href="/post/undownvote/{{_id}}"><img src="/img/downvoted.png" id="downvote_{{_id}}" title="Downvote" class="downvote" onclick="downVote(upvote_{{_id}},this)"></a>
-                            {{else}} 
-                            <a href="/post/upvote/{{_id}}"><img src="/img/upvote.png" id="upvote_{{_id}}" title="Upvote" class="upvote" onclick="upVote(this,downvote_{{_id}})"></a>
-                            <a href="/post/downvote/{{_id}}"><img src="/img/downvote.png" id="downvote_{{_id}}" title="Downvote" class="downvote" onclick="downVote(upvote_{{_id}},this)"></a>
-                        {{/checkDownvote}}
-
-                {{/checkUpvote}} --}}
-
+                    
                 {{#checkUpvote this._id upvoted}}
                     <img src="/img/upvoted.png" id="upvoted_{{_id}}" title="Upvote" class="upvote">
                     <img src="/img/downvote.png" id="downvote_{{_id}}" title="Downvote" class="downvote">

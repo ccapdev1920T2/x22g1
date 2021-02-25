@@ -113,9 +113,9 @@ app.get('/createComment', indivpostController.createComment);
 // app.get('/DLSU', timelineController.getDLSU);
 // app.get('/UP', timelineController.getUP);
 // app.get('/UST', timelineController.getUST);
-app.get('/getStatus', timelineController.getStatus);
-app.get('/insertStatus', timelineController.insertStatus);
-app.get('/updateStatus', timelineController.updateStatus);
+// app.get('/getStatus', timelineController.getStatus);
+// app.get('/insertStatus', timelineController.insertStatus);
+// app.get('/updateStatus', timelineController.updateStatus);
 
 // profileController
 // app.get('/profile/:DisplayName', profileController.getUserProfile);

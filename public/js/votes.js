@@ -110,7 +110,7 @@ $(document).ready(function () {
                 var dv = $('#downvotecount_'+post_id).text();
                 var downvote = parseInt(dv) - 1;
                 $('#downvotecount_'+post_id).text(downvote);
-            }
+            } 
 
             $.get('/post/upvote/'+post_id, {post_id: post_id})
             var uv = $('#upvotecount_'+post_id).text();
