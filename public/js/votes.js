@@ -17,38 +17,36 @@ button.addEventListener('click', function(e){
 
 });
 
-setInterval(function() {
-    fetch('/clicks', {method: 'GET'})
-      .then(function(response) {
-        if(response.ok) return response.json();
-        throw new Error('Request failed.');
-      })
-      .then(function(data) {
-        document.getElementById('counter').innerHTML = "Button was clicked ${data.length} times";
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  }, 1000);
+$(".save").click(function() {
+    var post_id = $(this).attr('id')
+    // console.log(post_id)
+    var splitted = post_id.split("/")
+    // console.log(splitted[1])
+    var saveStats = document.getElementById("save/"+splitted[1])
+    var unsaveStats = document.getElementById("unsave/"+splitted[1])
+    if ($(this).attr("class") == "save"){
+        $.get('/post/save/'+splitted[1], {post_id: splitted[1]})
+        // $('#save'+splitted[1]).hide()
+        // $('#unsave'+splitted[1]).show()
+        saveStats.style.display = "none";
+        unsaveStats.style.display = "block";
+    } 
+});
 
-function upVote(img,downvote) {
-  src = $(img).attr('src');
-  if(src == "/img/upvoted.png"){
-    img.src='/img/upvote.png'
-  }
-  else if(src == "/img/upvote.png"){
-    img.src='/img/upvoted.png'
-    downvote.src='/img/downvote.png'
-  }
-};
+$(".unsave").click(function() {
+    var post_id = $(this).attr('id')
+    // console.log(post_id)
+    var splitted = post_id.split("/")
+    // console.log(splitted[1])
+    var saveStats = document.getElementById("save/"+splitted[1])
+    var unsaveStats = document.getElementById("unsave/"+splitted[1])
+    if ($(this).attr("class") == "unsave"){
+        $.get('/post/unsave/'+splitted[1], {post_id: splitted[1]})
+        // $('#save/'+splitted[1]).show()
+        // $('#unsave/'+splitted[1]).hide()
+        saveStats.style.display = "block";
+        unsaveStats.style.display = "none";
+    } 
+});
 
-function downVote(upvote,img) {
-  src = $(img).attr('src');
-  if(src == "/img/downvoted.png"){
-    img.src='/img/downvote.png'
-  }
-  else if(src == "/img/downvote.png"){
-    img.src='/img/downvoted.png'
-    upvote.src='/img/upvote.png'
-  }
-};
+})
