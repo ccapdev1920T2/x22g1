@@ -33,6 +33,10 @@ const postSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
+    comments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comment'
+    }],
     delete: {
         type: Boolean,
         default: true
