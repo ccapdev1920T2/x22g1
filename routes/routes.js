@@ -16,8 +16,6 @@ const signUpController = require('../controllers/signUpController.js');
 
 // import timeline controller
 const timelineController = require('../controllers/timelineController.js');
-const indivpostController = require('../controllers/indivpostController.js');
-const createPostController = require('../controllers/createPostController.js');
 
 // import profile controller
 const profileController = require('../controllers/profileController.js');
