@@ -103,8 +103,8 @@ app.get('/userid/:userId', profileController.getIndivProfile);
 // app.post('/uploadphoto', timelineController.uploadImage);
 
 // indivpostController
-app.get('/indivPost', indivpostController.getIndivPost);
-app.get('/createComment', indivpostController.createComment);
+// app.get('/indivPost', indivpostController.getIndivPost);
+// app.get('/createComment', indivpostController.createComment);
 
 // timelineController for Universities
 // app.get('/ADMU', timelineController.getADMU);
@@ -127,6 +127,7 @@ app.get('/post/upvote/:postId', postHelperController.upvotePost);
 app.get('/post/downvote/:postId', postHelperController.downvotePost);
 app.get('/post/unupvote/:postId', postHelperController.unupvotePost);
 app.get('/post/undownvote/:postId', postHelperController.undownvotePost);
+app.get('/createComment', postHelperController.createComment);
 
 //logout
 app.get('/logout', function (req, res) {

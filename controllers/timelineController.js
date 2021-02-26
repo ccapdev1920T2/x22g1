@@ -213,14 +213,18 @@ const timelineController = {
                             // console.log("hello");
                             // console.log(post);
                             db.findOne(Profile, {_id: req.session.user}, '', function(active_user){
-                                res.render('indivpost', {
-                                    active_session: req.session.user && req.cookies.user_sid,
-                                    active_user: req.session.user,
-                                    post: post.toObject(),
-                                    user: active_user,
-                                    saved: active_user.postsSaved,
-                                    upvoted: active_user.postsUpVoted,
-                                    downvoted: active_user.postsDownVoted
+                                var getComments = helper.getComments(postId);
+                                getComments.exec(function(err, comments){
+                                    res.render('indivpost', {
+                                        active_session: req.session.user && req.cookies.user_sid,
+                                        active_user: req.session.user,
+                                        post: post.toObject(),
+                                        user: active_user,
+                                        saved: active_user.postsSaved,
+                                        upvoted: active_user.postsUpVoted,
+                                        downvoted: active_user.postsDownVoted,
+                                        comments: comments
+                                    })
                                 })
                             })
                         })

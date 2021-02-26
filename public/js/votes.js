@@ -198,4 +198,22 @@ $(".unsave").click(function() {
     } 
 });
 
+$("#sendButton").click(function(){
+    var commentBar = $('#commentBar').val();
+    var PostID = $('#postid').text();
+    
+    if(commentBar != ''){
+        $('#commentBar').val('');
+        $.get('/createComment',{
+            commentBar: commentBar,
+            PostID: PostID
+        }, function(data, status){
+            $('#displayComment').append(data);
+        })
+    }else{
+        // $('#error').text('');
+    }
+
+})
+
 })

@@ -2,6 +2,7 @@ const sanitize = require('mongo-sanitize');
 const fs = require('fs');
 const Post = require('../models/PostModel');
 const Profile = require('../models/ProfileModel');
+const Comment = require('../models/CommentModel.js');
 const db = require('../models/db.js');
 
 const helper = {
@@ -113,7 +114,14 @@ const helper = {
             })
             .sort('-created')
             .lean()
-    }
+    }, 
+    
+    getComments: function(postId){
+        return Comment.find({post: postId})
+            .populate('user')
+            .sort('created')
+            .lean()
+    }   
 
 };
 
