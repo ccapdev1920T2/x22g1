@@ -1,5 +1,6 @@
 const db = require('../models/db.js');
 const mongoose = require('mongoose');
+const { ObjectID } = require('mongodb');
 const User = require('../models/ProfileModel.js');
 const Post = require('../models/PostModel.js');
 const Comment = require('../models/CommentModel.js');
@@ -165,7 +166,7 @@ const postHelperController = {
         if (!req.file) {
             db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, photo: photo}, function(result){
                 if(result){
-                    res.redirect(`/profile/${req.session.user}`);
+                    res.redirect('/post/'+postId);
                 }
             })
         }
@@ -174,11 +175,46 @@ const postHelperController = {
         else {
             db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags}, function(result){
                 if(result){
-                    res.redirect(`/profile/${req.session.user}`);
+                    res.redirect('/post/'+postId);
                 }
             })
         }     
-    }
+    },
+
+    editComment: function(req, res){
+        var commentId = helper.sanitize(req.query.id);
+        var postId = helper.sanitize(req.query.postid)
+        var comment = helper.sanitize(req.body.commentBar);
+
+        console.log(postId)
+        console.log(commentId)
+        console.log(comment)
+                            
+            db.updateOne(Comment, {_id: commentId}, {comment: comment}, function(result){ 
+                if(result){
+                    res.redirect('/post/'+postId); 
+                }
+            })
+    },
+
+    deleteComment: function(req, res){
+        var comment_id = helper.sanitize(req.params.commentId);
+        var post_id = helper.sanitize(req.params.id)
+        console.log('commentId', comment_id)
+        console.log('postid', post_id)
+        var comment_details = {
+            _id: ObjectID(comment_id)
+        }
+
+        db.deleteOne(Comment, comment_details, function(f){
+            if(f){
+                console.log('deleted: ', comment_id)
+                res.redirect('/post/'+post_id);
+            }
+            
+        });
+        
+    },
 }
 
 module.exports = postHelperController;

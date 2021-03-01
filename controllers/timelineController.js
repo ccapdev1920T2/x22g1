@@ -97,7 +97,7 @@ const timelineController = {
         db.deleteOne(Post, post_details, function(f){
             if(f){
                 console.log('deleted: ', post_id)
-                res.redirect('/timeline');
+                res.redirect(`/profile/${req.session.user}`);
             }
             
         });

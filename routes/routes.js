@@ -129,6 +129,8 @@ app.get('/post/unupvote/:postId', postHelperController.unupvotePost);
 app.get('/post/undownvote/:postId', postHelperController.undownvotePost);
 app.get('/createComment', postHelperController.createComment);
 app.post('/editPost', postHelperController.editPost);
+app.post('/editComment', postHelperController.editComment);
+app.get('/comment/delete/:commentId/:id', postHelperController.deleteComment);
 
 //logout
 app.get('/logout', function (req, res) {
