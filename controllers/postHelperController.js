@@ -148,6 +148,36 @@ const postHelperController = {
             }
         })
      
+    },
+
+    editPost: function(req, res){
+        var postId = helper.sanitize(req.query.id);
+        var title = helper.sanitize(req.body.title);
+        var body = helper.sanitize(req.body.body);
+        var tags = helper.sanitize(req.body.tags);
+        var photo = helper.sanitize(req.body.upload);
+
+        console.log(postId)
+        console.log(title)
+        console.log(body)
+        console.log(tags)
+
+        if (!req.file) {
+            db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, photo: photo}, function(result){
+                if(result){
+                    res.redirect(`/profile/${req.session.user}`);
+                }
+            })
+        }
+
+        // no photo uploaded
+        else {
+            db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags}, function(result){
+                if(result){
+                    res.redirect(`/profile/${req.session.user}`);
+                }
+            })
+        }     
     }
 }
 
