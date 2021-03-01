@@ -31,7 +31,7 @@
                                 <a id="unsave/{{this._id}}" class="unsave" style="display: none">Unsave Post</a>
                                 <a id="save/{{this._id}}" class="save">Save Post</a>
                             {{/checkSaved}}
-                                <a href="" data-toggle="modal" data-target="#modalEdit">Edit Post</a>
+                                <a href="" data-toggle="modal" data-target="#modalEditPost">Edit Post</a>
                                 {{!-- <a href="/post/delete/{{this._id}}">Delete Post</a> --}}
                                 <a href="" data-toggle="modal" data-target="#modalDeletePost">Delete Post</a>
                         {{else}}
@@ -101,7 +101,7 @@
 </ul>
 
 <!-- Modal -->
-<div class="modal fade border" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade border" id="modalEditPost" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document" style="width: 600px">
     <div class="modal-content">
       <div class="modal-header">
