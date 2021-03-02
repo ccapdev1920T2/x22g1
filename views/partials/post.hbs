@@ -31,9 +31,9 @@
                                 <a id="unsave/{{this._id}}" class="unsave" style="display: none">Unsave Post</a>
                                 <a id="save/{{this._id}}" class="save">Save Post</a>
                             {{/checkSaved}}
-                                <a href="" data-toggle="modal" data-target="#modalEditPost">Edit Post</a>
+                                <a href="" data-toggle="modal" data-target="#modalEditPost{{_id}}">Edit Post</a>
                                 {{!-- <a href="/post/delete/{{this._id}}">Delete Post</a> --}}
-                                <a href="" data-toggle="modal" data-target="#modalDeletePost">Delete Post</a>
+                                <a href="" data-toggle="modal" data-target="#modalDeletePost{{_id}}">Delete Post</a>
                         {{else}}
                             {{#checkSaved this._id saved}}
                             {{!-- <a href="/post/unsave/{{this._id}}" id="unsave/{{this._id}}" class="unsave">Unsave Post</a> --}}
@@ -101,7 +101,7 @@
 </ul>
 
 <!-- Modal -->
-<div class="modal fade border" id="modalEditPost" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade border" id="modalEditPost{{_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document" style="width: 600px">
     <div class="modal-content">
       <div class="modal-header">
@@ -110,7 +110,7 @@
       </div>
       <div class="modal-body pb-0 mb-0">
         <!-- use method="post" to send your form to server -->
-        <form class="form-horizontal" id="editPost" method="post" action="/editPost?id={{_id}}">
+        <form class="form-horizontal" id="editPost" method="post" action="/editPost?id={{this._id}}">
             
              <div class="form-group" style="margin-left: 15px;">
                 <div class="col-xs-11">  
@@ -159,7 +159,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade border" id="modalDeletePost" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade border" id="modalDeletePost{{_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document" style="width: 600px">
     <div class="modal-content">
       <div class="modal-header">

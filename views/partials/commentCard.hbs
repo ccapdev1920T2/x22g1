@@ -12,9 +12,9 @@
         <div class ="dropdown">
         <img src="/img/option.png" style="height: 20px; width: 23px; padding-right: 5px;" id="option1" title="Option">
             <div class="dropdown-content">
-                <a href="" data-toggle="modal" data-target="#modalEditComment">Edit Comment</a>
+                <a href="" data-toggle="modal" data-target="#modalEditComment{{_id}}">Edit Comment</a>
                 {{!-- <a href="/comment/delete/{{_id}}?id={{post}}">Delete Comment</a> --}}
-                <a href="" data-toggle="modal" data-target="#modalDeleteComment">Delete Comment</a>
+                <a href="" data-toggle="modal" data-target="#modalDeleteComment{{_id}}">Delete Comment</a>
             </div>
         </div>
         {{/match}}
@@ -22,7 +22,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade border" id="modalEditComment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade border" id="modalEditComment{{_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document" style="width: 600px">
     <div class="modal-content">
       <div class="modal-header">
@@ -57,7 +57,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade border" id="modalDeleteComment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade border" id="modalDeleteComment{{_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document" style="width: 600px">
     <div class="modal-content">
       <div class="modal-header">
