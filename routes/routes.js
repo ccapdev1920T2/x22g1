@@ -96,6 +96,7 @@ app.get('/post/delete/:postId', timelineController.deletePost);
 app.get('/profile/:userId', profileController.getProfile);
 app.post('/editProfile',
     avatarUpload,
+    validation.signupValidation(),
     profileController.editProfile);
 app.get('/checkUsername', profileController.checkUsername);
 app.get('/userid/:userId', profileController.getIndivProfile);
