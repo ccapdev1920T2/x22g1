@@ -206,15 +206,18 @@ const postHelperController = {
             _id: ObjectID(comment_id)
         }
 
-        db.deleteOne(Comment, comment_details, function(f){
-            if(f){
-                console.log('deleted: ', comment_id)
-                res.redirect('/post/'+post_id);
+        db.updateOne(Post,{_id: post_id}, {$pull: {comments: comment_id}}, function(post){
+            if(post){
+                db.deleteOne(Comment, comment_details, function(f){
+                    if(f){
+                        console.log('deleted: ', comment_id)
+                        res.redirect('/post/'+post_id);
+                    }
+                    
+                });
             }
-            
-        });
-        
-    },
+        })
+    }
 }
 
 module.exports = postHelperController;
