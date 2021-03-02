@@ -87,6 +87,34 @@ const timelineController = {
         }   
     },
 
+    getPostsSearch: function (req, res) {
+        if(!req.session.user) res.redirect('/');
+        else {
+            var search = req.query.msg;
+            console.log("search", search)
+            Post
+                .find({ tags: { $in: ["#"+search] } })
+                .populate('user')
+                .sort('-created')
+                .lean()
+                .exec(function (err, postsArray) {
+                    console.log("array", postsArray)
+                    if (err) return next(err)
+                        db.findOne(Profile, {_id: req.session.user}, '', function(user) {
+                            res.render('timeline', {
+                                active_session: req.session.user && req.cookies.user_sid,
+                                active_user: req.session.user,
+                                user: user,
+                                posts: postsArray,
+                                saved: user.postsSaved,
+                                upvoted: user.postsUpVoted,
+                                downvoted: user.postsDownVoted
+                            });
+                        })
+                })
+        }
+    },
+
     deletePost: function (req, res) {
         var post_id = helper.sanitize(req.params.postId);
         console.log('postid', post_id)

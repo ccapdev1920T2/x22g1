@@ -88,6 +88,7 @@ app.get('/timeline/dlsu', timelineController.getDLSU);
 app.get('/timeline/admu', timelineController.getADMU);
 app.get('/timeline/up', timelineController.getUP);
 app.get('/timeline/ust', timelineController.getUST);
+app.get('/timeline/search', timelineController.getPostsSearch);
 app.get('/post/:postId', timelineController.getIndivPost);
 app.get('/post/delete/:postId', timelineController.deletePost);
 
