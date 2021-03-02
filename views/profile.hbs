@@ -67,14 +67,14 @@
                 <div id="RecentPost" class="tabcontent">
                     <div id="post">
                             {{#each posts}}
-                                    {{>post university = this.university activeid = ../active_user saved = ../saved upvoted = ../upvoted downvoted = ../downvoted}}
+                                    {{>post university = this.university activeid = ../active_user saved = ../saved upvoted = ../upvoted downvoted = ../downvoted comment = this.comments.length}}
                             {{/each}}
                         </div>
                 </div>
                  <div id="SavedPost" class="tabcontent">
                      <div id="post">
                             {{#each display_save}}
-                                    {{>post university = this.university activeid = ../active_user saved = ../saved upvoted = ../upvoted downvoted = ../downvoted}}
+                                    {{>post university = this.university activeid = ../active_user saved = ../saved upvoted = ../upvoted downvoted = ../downvoted comment = this.comments.length}}
                             {{/each}}
                         </div>
                  </div>
