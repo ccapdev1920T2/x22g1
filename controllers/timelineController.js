@@ -93,7 +93,7 @@ const timelineController = {
             var search = req.query.msg;
             console.log("search", search)
             Post
-                .find({ tags: { $in: ["#"+search] } })
+                .find({ tags: { $in: [search] } })
                 .populate('user')
                 .sort('-created')
                 .lean()

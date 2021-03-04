@@ -82,6 +82,12 @@ hbs.registerHelper('checkDownvote', function(s, a, options) {
     
 });
 
+hbs.registerHelper('search', function(search, options) {
+    var search = encodeURIComponent(search)
+    console.log("hello", search)
+    return search
+});
+
 // import routes module
 const routes = require('./routes/routes.js');
 

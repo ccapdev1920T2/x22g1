@@ -59,7 +59,12 @@
             </div>
             <div class="userTagss" title="Tags">
                 <span>
-                    <a class="a-link">Tags: {{tags}}</a>
+                    Tags: 
+                        {{!-- {{tags}} --}}
+                        {{#each tags}}
+                            <a href='/timeline/search?msg={{#search this}} {{/search}}' class="a-link">{{this}}</a>,
+                        {{/each}}
+                    
                 </span>
             </div>
             <hr>
