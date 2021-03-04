@@ -26,7 +26,13 @@
                 </div>
                 <div class="center-post">
                     <div class="col-sm-8 text-left">
-                        {{>createPost 
+                        
+                        {{#if result}}
+                        <h3>Search Results for: <span style="font-weight: 300; text-decoration:underline">{{msg}}</span></h3>
+                        <hr>
+
+                        {{else}}
+                            {{>createPost 
                         userid = user._id 
                         image = user.avatar 
                         input_title = input.title
@@ -36,8 +42,8 @@
                         input_tags = input.tags
                         details_tagsError = details.tagsError
                         }}
-                        
-                        <hr>
+                         <hr>
+                        {{/if}}
                         <div id="post">
                             {{#each posts}}
                                 {{>post university = this.university activeid = ../active_user saved = ../saved upvoted = ../upvoted downvoted = ../downvoted comment = this.comments.length}}

@@ -108,7 +108,9 @@ const timelineController = {
                                 posts: postsArray,
                                 saved: user.postsSaved,
                                 upvoted: user.postsUpVoted,
-                                downvoted: user.postsDownVoted
+                                downvoted: user.postsDownVoted,
+                                result: true,
+                                msg: search
                             });
                         })
                 })

@@ -84,7 +84,7 @@ hbs.registerHelper('checkDownvote', function(s, a, options) {
 
 hbs.registerHelper('search', function(search, options) {
     var search = encodeURIComponent(search)
-    console.log("hello", search)
+  
     return search
 });
 
