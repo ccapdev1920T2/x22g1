@@ -253,7 +253,7 @@ const postHelperController = {
                 db.updateOne(User, {_id: req.session.user}, {$inc: {creditScore: score}}, function(user){
                     if(user){
                         if (!req.file) {
-                            db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, photo: photo}, function(result){
+                            db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, photo: photo, upvote: 0, downvote: 0}, function(result){
                                 if(result){
                                     res.redirect('/post/'+postId);
                                 }
@@ -262,7 +262,7 @@ const postHelperController = {
                 
                         // no photo uploaded
                         else {
-                            db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags}, function(result){
+                            db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, upvote: 0, downvote: 0}, function(result){
                                 if(result){
                                     res.redirect('/post/'+postId);
                                 }
