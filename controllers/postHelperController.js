@@ -138,9 +138,7 @@ const postHelperController = {
                                 user: user,
                                 comment: comment
                             }
-                            console.log("wee")
                             res.render('partials/commentCard', c, function(err,html){
-                                console.log("im here")
                                 res.send(html);
                             })
                         })

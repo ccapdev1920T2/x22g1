@@ -17,6 +17,7 @@ const timelineController = {
                 var getPost = helper.getAllPosts();
                 getPost.exec(function(err, post){
                     if (err) throw err;
+                    console.log(post)
                     // console.log(post);
                     res.render('timeline', {
                         active_session: req.session.user && req.cookies.user_sid,
