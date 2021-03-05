@@ -25,6 +25,13 @@
                     {{>sideProfile fName = user.fName lName = user.lName CreditScore = user.creditScore DisplayName = user.username DisplayPicture = user.avatar userid = user._id}}
                 </div>
                 <div class="center-post">
+                    {{#if warn}}
+                        <div class="alert alert-danger alert-dismissible" role="alert" style="text-align: left;">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <strong>Warning:</strong> Your credit score has dropped to -50 or less. If your credit score continues to drop and reached -100, your account will be permanently blocked. 
+                        </div>
+                    {{/if}}
+                    
                     <div class="col-sm-8 text-left">
                         
                         {{#if result}}

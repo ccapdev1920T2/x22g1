@@ -13,10 +13,13 @@ const timelineController = {
         if(!req.session.user) res.redirect('/');
         else{
             db.findOne(Profile, {_id: req.session.user}, '', function(user){
-
                 var getPost = helper.getAllPosts();
                 getPost.exec(function(err, post){
                     if (err) throw err;
+                    var warn = false;
+                    if(user.creditScore <= -50){
+                        warn=true
+                    }
                     res.render('timeline', {
                         active_session: req.session.user && req.cookies.user_sid,
                         active_user: req.session.user,
@@ -24,7 +27,8 @@ const timelineController = {
                         posts: post,
                         saved: user.postsSaved,
                         upvoted: user.postsUpVoted,
-                        downvoted: user.postsDownVoted
+                        downvoted: user.postsDownVoted,
+                        warn: warn
                     });
                 })
             })
