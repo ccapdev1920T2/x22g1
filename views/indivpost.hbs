@@ -123,14 +123,15 @@
                                         </div>
     
                                         <div id="p_id">
-                                            <p id="pid" style="visibility: hidden; margin-top: -30px">{{post._id}}</p>
+                                            <p id="pid" style="visibility: hidden; margin-top: -10px">{{post._id}}</p>
+                                            <p id="puid" style="visibility: hidden; margin-top: -55px;">{{post.user._id}}</p>
                                             {{!-- <p id="uid" style="visibility: hidden; margin-top: -30px">{{post.user._id}}</p> --}}
                                          </div>
                                     </div>
                                 </li>
                                 <li class="timeline-inverted">
                                     <div class="timeline-panel">
-                                        {{>commentBar avatar = user.avatar post_id = post._id}}
+                                        {{>commentBar avatar = user.avatar post_id = post._id post_user=post.user._id}}
                                         
                                         <div id="displayComment">
                                             

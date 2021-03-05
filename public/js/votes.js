@@ -94,6 +94,7 @@ $(document).ready(function () {
 
   $(".upvote").click(function() {
     var post_id = $(this).parent().next().find('p:nth-child(1)').text();
+    var puid = $(this).parent().next().find('p:nth-child(2)').text();
 
     if ($(this).attr("class") == "upvote"){
         if((this.src == "http://localhost:9090/img/upvote.png") || (this.src == "/img/upvote.png")){
@@ -112,7 +113,7 @@ $(document).ready(function () {
                 $('#downvotecount_'+post_id).text(downvote);
             } 
 
-            $.get('/post/upvote/'+post_id, {post_id: post_id})
+            $.get('/post/upvote/'+post_id, {post_id: post_id, puid: puid})
             var uv = $('#upvotecount_'+post_id).text();
             var upvote = parseInt(uv) + 1;
             $('#upvotecount_'+post_id).text(upvote);
@@ -120,7 +121,7 @@ $(document).ready(function () {
         }
         else{
             this.src = "/img/upvote.png";
-            $.get('/post/unupvote/'+post_id, {post_id: post_id})
+            $.get('/post/unupvote/'+post_id, {post_id: post_id, puid: puid})
             var uv = $('#upvotecount_'+post_id).text();
             var upvote = parseInt(uv) - 1;
             $('#upvotecount_'+post_id).text(upvote);
@@ -131,6 +132,7 @@ $(document).ready(function () {
 
 $(".downvote").click(function() {
     var post_id = $(this).parent().next().find('p:nth-child(1)').text();
+    var puid = $(this).parent().next().find('p:nth-child(2)').text();
 
     if ($(this).attr("class") == "downvote"){
       if((this.src == "http://localhost:9090/img/downvote.png") || (this.src == "/img/downvote.png")){
@@ -149,7 +151,7 @@ $(".downvote").click(function() {
                 $('#upvotecount_'+post_id).text(upvote);
             }
 
-            $.get('/post/downvote/'+post_id, {post_id: post_id})
+            $.get('/post/downvote/'+post_id, {post_id: post_id, puid: puid})
             var dv = $('#downvotecount_'+post_id).text();
             var downvote = parseInt(dv) + 1;
             $('#downvotecount_'+post_id).text(downvote);
@@ -157,7 +159,7 @@ $(".downvote").click(function() {
         }
         else{
             this.src = "/img/downvote.png";
-            $.get('/post/undownvote/'+post_id, {post_id: post_id})
+            $.get('/post/undownvote/'+post_id, {post_id: post_id, puid: puid})
             var dv = $('#downvotecount_'+post_id).text();
             var downvote = parseInt(dv) - 1;
             $('#downvotecount_'+post_id).text(downvote);
@@ -201,13 +203,15 @@ $(".unsave").click(function() {
 $("#sendButton").click(function(){
     var commentBar = $('#commentBar').val();
     var PostID = $('#postid').text();
+    var PostUserID = $('#postuser').text();
     
     if(commentBar != ''){
         $('#commentBar').val('');
         
         $.get('/createComment',{
             commentBar: commentBar,
-            PostID: PostID
+            PostID: PostID,
+            PostUserID: PostUserID
         }, function(data, status){
             $('#displayComment').append(data);
             var cc = $('#commentcount').text();
