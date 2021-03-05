@@ -17,8 +17,6 @@ const timelineController = {
                 var getPost = helper.getAllPosts();
                 getPost.exec(function(err, post){
                     if (err) throw err;
-                    console.log(post)
-                    // console.log(post);
                     res.render('timeline', {
                         active_session: req.session.user && req.cookies.user_sid,
                         active_user: req.session.user,
@@ -79,9 +77,13 @@ const timelineController = {
                     university: univ
                 }
 
-                db.insertOne(Post, post, function(flag){
-                    if(flag){
-                        res.redirect('/timeline');
+                db.updateOne(Profile,{_id: req.session.user}, {$inc: {creditScore: 5}}, function(user){
+                    if(user){
+                        db.insertOne(Post, post, function(flag){
+                            if(flag){
+                                res.redirect('/timeline');
+                            }
+                        })
                     }
                 })
             }
