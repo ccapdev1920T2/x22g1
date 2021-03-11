@@ -245,35 +245,23 @@ const postHelperController = {
         console.log(body)
         console.log(tags)
 
-        var score;
+        if (!req.file) {
+            db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, photo: photo, upvote: 0, downvote: 0}, function(result){
+                if(result){
+                    res.redirect('/post/'+postId);
+                }
+            })
+        }
 
-        db.findOne(Post, {_id: postId}, '', function(post){
-            if(post){
-                score = post.upvote - post.downvote;
-                db.updateOne(User, {_id: req.session.user}, {$inc: {creditScore: score}}, function(user){
-                    if(user){
-                        if (!req.file) {
-                            db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, photo: photo, upvote: 0, downvote: 0}, function(result){
-                                if(result){
-                                    res.redirect('/post/'+postId);
-                                }
-                            })
-                        }
+        // no photo uploaded
+        else {
+            db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, upvote: 0, downvote: 0}, function(result){
+                if(result){
+                    res.redirect('/post/'+postId);
+                }
+            })
+        }     
                 
-                        // no photo uploaded
-                        else {
-                            db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, upvote: 0, downvote: 0}, function(result){
-                                if(result){
-                                    res.redirect('/post/'+postId);
-                                }
-                            })
-                        }     
-                    }
-                
-                })
-            }
-        })
-
     },
 
     editComment: function(req, res){

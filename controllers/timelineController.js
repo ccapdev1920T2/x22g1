@@ -130,23 +130,14 @@ const timelineController = {
             _id: ObjectID(post_id)
         }
 
-        db.findOne(Post, {_id: post_id}, '', function(post){
-            if(post){
-                score = post.upvote - post.downvote;
-                db.updateOne(Profile, {_id: req.session.user}, {$inc: {creditScore: score}}, function(user){
-                    if(user){
-                        db.deleteOne(Post, post_details, function(f){
-                            if(f){
-                                console.log('deleted: ', post_id)
-                                res.redirect(`/profile/${req.session.user}`);
-                            }
-                            
-                        });
-                    }
-                
-                })
+        db.deleteOne(Post, post_details, function(f){
+            if(f){
+                console.log('deleted: ', post_id)
+                res.redirect(`/profile/${req.session.user}`);
             }
-        })
+            
+        });
+                   
     },
 
     // retrieve all DLSU posts in Post collection
