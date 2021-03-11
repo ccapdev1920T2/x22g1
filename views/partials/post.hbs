@@ -16,8 +16,12 @@
             <div class="timeline-heading">
                 {{!-- <div class="postNum">{{postNumber}}</div> --}}
                 <h4 class="timeline-title">
-                    <a href="/post/{{_id}}" style="color: rgb(78, 73, 73);">{{title}}</a>
+                    <a href="/post/{{_id}}" style="color: rgb(78, 73, 73);">{{title}}</a> 
+                    {{#if edited}}
+                    <span style="text-align: left; font-style:italic; font-size:x-small; margin-left: 3px">( <i class="fa fa-pencil" aria-hidden="true"></i> Edited)</span>
+                    {{/if}}
                 </h4>
+               
                 <div class ="dropdown">
                     <img src="/img/option.png" style="height: 20px; width: 23px; padding-right: 5px;" id="option1" title="Option">
                     <div class="dropdown-content">

@@ -41,6 +41,10 @@ const postSchema = mongoose.Schema({
         type: Boolean,
         default: true
     },
+    edited: {
+        type: Boolean,
+        default: false
+    },
     created: {
         type: Date,
         default: Date.now,

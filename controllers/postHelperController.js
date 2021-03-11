@@ -248,9 +248,38 @@ const postHelperController = {
         if (!req.file) {
             db.updateMany(User,{}, {$pull: {postsUpVoted: postId, postsDownVoted:postId}}, function(vote){
                 if(vote){
-                    db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, photo: photo, upvote: 0, downvote: 0}, function(result){
+                    db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, photo: photo, upvote: 0, downvote: 0, edited: true}, function(result){
                         if(result){
-                            res.redirect('/post/'+postId);
+                            if(!req.session.user) res.redirect('/');
+                            else{
+                                db.findOne(Post, {_id: postId}, '', function(result){
+                                    if(result){
+                                        result
+                                            .populate('user')
+                                            .execPopulate(function(err, post){
+                                                // console.log("hello");
+                                                // console.log(post);
+                                                db.findOne(User, {_id: req.session.user}, '', function(active_user){
+                                                    var getComments = helper.getComments(postId);
+                                                    getComments.exec(function(err, comments){
+                                                        res.render('indivpost', {
+                                                            active_session: req.session.user && req.cookies.user_sid,
+                                                            active_user: req.session.user,
+                                                            post: post.toObject(),
+                                                            user: active_user,
+                                                            saved: active_user.postsSaved,
+                                                            upvoted: active_user.postsUpVoted,
+                                                            downvoted: active_user.postsDownVoted,
+                                                            comments: comments,
+                                                            edit: true
+                                                        })
+                                                    })
+                                                })
+                                            })
+                                    }
+                                })
+
+                            }
                         }
                     })
                 }
@@ -261,9 +290,38 @@ const postHelperController = {
         else {
             db.updateMany(User,{}, {$pull: {postsDownVoted: postId, postsUpVoted: postId}}, function(vote){
                 if(vote){
-                    db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, upvote: 0, downvote: 0}, function(result){
+                    db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, upvote: 0, downvote: 0, edited: true}, function(result){
                         if(result){
-                            res.redirect('/post/'+postId);
+                            if(!req.session.user) res.redirect('/');
+                            else{
+                                db.findOne(Post, {_id: postId}, '', function(result){
+                                    if(result){
+                                        result
+                                            .populate('user')
+                                            .execPopulate(function(err, post){
+                                                // console.log("hello");
+                                                // console.log(post);
+                                                db.findOne(User, {_id: req.session.user}, '', function(active_user){
+                                                    var getComments = helper.getComments(postId);
+                                                    getComments.exec(function(err, comments){
+                                                        res.render('indivpost', {
+                                                            active_session: req.session.user && req.cookies.user_sid,
+                                                            active_user: req.session.user,
+                                                            post: post.toObject(),
+                                                            user: active_user,
+                                                            saved: active_user.postsSaved,
+                                                            upvoted: active_user.postsUpVoted,
+                                                            downvoted: active_user.postsDownVoted,
+                                                            comments: comments,
+                                                            edit: true
+                                                        })
+                                                    })
+                                                })
+                                            })
+                                    }
+                                })
+
+                            }
                         }
                     })
                 }

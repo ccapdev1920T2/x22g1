@@ -26,6 +26,12 @@
                 </div>
             <div class="center-post">
                 <div class="col-sm-8 text-left">
+                {{#if edit}}
+                <div class="alert alert-success alert-dismissible" role="alert" style="text-align: left;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    You have <span style="font-weight: bold; text-decoration:underline">successfully edited</span> your post.
+                </div>
+                {{/if}}
                     {{!-- {{#each posts}} --}}
                             {{!-- {{#if postNumber}} --}}
                             <ul class="timeline">
@@ -46,7 +52,10 @@
                                         <div class="timeline-heading">
                                             {{!-- <div class="postNum">{{postNumber}}</div> --}}
                                             <h4 class="timeline-title">
-                                                <p style="color: rgb(78, 73, 73); margin-bottom: -20px;">{{post.title}}</p>
+                                                <a href="/post/{{_id}}" style="color: rgb(78, 73, 73);">{{post.title}}</a> 
+                                                 {{#if post.edited}}
+                                                    <span style="text-align: left; font-style:italic; font-size:x-small;">( <i class="fa fa-pencil" aria-hidden="true"></i>Edited)</span>
+                                                {{/if}}
                                             </h4>
                                             <div class ="dropdown">
                                                 <img src="/img/option.png" style="height: 20px; width: 23px; padding-right: 5px;" id="option1" title="Option">
