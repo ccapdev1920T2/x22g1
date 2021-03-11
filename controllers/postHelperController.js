@@ -246,18 +246,26 @@ const postHelperController = {
         console.log(tags)
 
         if (!req.file) {
-            db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, photo: photo, upvote: 0, downvote: 0}, function(result){
-                if(result){
-                    res.redirect('/post/'+postId);
+            db.updateMany(User,{}, {$pull: {postsUpVoted: postId, postsDownVoted:postId}}, function(vote){
+                if(vote){
+                    db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, photo: photo, upvote: 0, downvote: 0}, function(result){
+                        if(result){
+                            res.redirect('/post/'+postId);
+                        }
+                    })
                 }
             })
         }
 
         // no photo uploaded
         else {
-            db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, upvote: 0, downvote: 0}, function(result){
-                if(result){
-                    res.redirect('/post/'+postId);
+            db.updateMany(User,{}, {$pull: {postsDownVoted: postId, postsUpVoted: postId}}, function(vote){
+                if(vote){
+                    db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, upvote: 0, downvote: 0}, function(result){
+                        if(result){
+                            res.redirect('/post/'+postId);
+                        }
+                    })
                 }
             })
         }     
