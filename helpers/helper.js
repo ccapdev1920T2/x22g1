@@ -10,6 +10,16 @@ const helper = {
         return sanitize(query);
     },
 
+    renamePost: function (req, newName) {
+        console.log("pasok")
+        var origName = req.file.originalname;
+        var extension = origName.substring(origName.lastIndexOf('.'));
+        const newURL = req.file.destination + '/' + newName + extension;
+
+        fs.renameSync(req.file.path, newURL);
+        return newName + extension;
+    },
+
     renameAvatar: function (req, newName) {
         var origName = req.file.originalname;
         var extension = origName.substring(origName.lastIndexOf('.'));

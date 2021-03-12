@@ -6,7 +6,7 @@
     </div>
 </div>
 
-<form name="createPost" method="POST" action="/createpost">
+<form name="createPost" enctype="multipart/form-data" method="POST" action="/createpost">
     <div class="post-text">
         <div class="whole-post">
             <div class="post-pic">
@@ -53,13 +53,13 @@
                                     <span class="media-span">
                                         <div class="media-pic"style="border: 1px solid gray">
                                         <div class="media-text">
-                                            <form action="/uploadPhoto" enctype="multipart/form-data" method="POST"> 
+                                            {{!-- <form action="/uploadPhoto" enctype="multipart/form-data" method="POST">  --}}
                                                 <label for="upload" style="cursor:pointer">
                                                     <i class="far fa-images"></i> 
                                                     Photo
-                                                    <input id="upload" type="file" accept="image/*" style="display: none;">
+                                                    <input id="upload" name="upload" type="file" accept="image/*" style="display: none;">
                                                 </label>
-                                            </form>
+                                            {{!-- </form> --}}
                                         </div>
                                         </div>
                                     </span>

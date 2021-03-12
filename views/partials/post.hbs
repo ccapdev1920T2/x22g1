@@ -61,6 +61,12 @@
             <div class="timeline-body">
                 <p>{{body}}</p>
             </div>
+            <div class="timeline-photo">
+                {{#match photo null}}
+                {{else}}
+                <img src="/posts/{{photo}}">
+                {{/match}}
+            </div>
             <div class="userTagss" title="Tags">
                 <span>
                     Tags: 

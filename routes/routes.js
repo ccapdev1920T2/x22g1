@@ -39,6 +39,20 @@ var avatarStorage = multer.diskStorage({
 
 var avatarUpload = multer({ storage: avatarStorage }).single('avatar');
 
+// initialize multer for file upload use in posts
+var postStorage = multer.diskStorage({
+    destination: function (req, file, cd) {
+        if (file.fieldname === 'upload') {
+            cd(null, './public/posts');
+        }
+    },
+    filename: function (req, file, cd) {
+        cd(null, file.originalname);
+    },
+});
+
+var postUpload = multer({ storage: postStorage }).single('upload');
+
 
 // Init Cookie and Body Parser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -82,6 +96,7 @@ app.post('/signup',
 // timelineController
 app.get('/timeline', timelineController.getTimeline);
 app.post('/createPost', 
+    postUpload,
     validation.createPostValidation(),
     timelineController.createPost);
 app.get('/timeline/dlsu', timelineController.getDLSU);

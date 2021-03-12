@@ -69,11 +69,13 @@ const timelineController = {
                     })
                 })
             } 
-            else {
+            // if user didn't uploaded a photo
+            else if(!req.file) {
                 var title = helper.sanitize(req.body.title);
                 var body = helper.sanitize(req.body.body);
                 var tags = helper.sanitize(req.body.tags);
                 var univ = helper.sanitize(req.body.university);
+
 
                 const post = {
                     _id: new mongoose.Types.ObjectId(),
@@ -83,6 +85,40 @@ const timelineController = {
                     tags: tags,
                     university: univ
                 }
+
+                db.updateOne(Profile,{_id: req.session.user}, {$inc: {creditScore: 5}}, function(user){
+                    if(user){
+                        db.insertOne(Post, post, function(flag){
+                            if(flag){
+                                res.redirect('/timeline');
+                            }
+                        })
+                    }
+                })
+            }
+            // if user uploaded a photo
+            else {
+                console.log("may file")
+                var title = helper.sanitize(req.body.title);
+                var body = helper.sanitize(req.body.body);
+                var tags = helper.sanitize(req.body.tags);
+                var univ = helper.sanitize(req.body.university);
+
+
+                const post = {
+                    _id: new mongoose.Types.ObjectId(),
+                    user: req.session.user,
+                    title: title,
+                    body: body,
+                    tags: tags,
+                    university: univ
+                }
+
+                var newPostName = post._id;
+                var postFileName = helper.renamePost(req, newPostName);
+                post.photo = postFileName;
+
+                console.log(post);
 
                 db.updateOne(Profile,{_id: req.session.user}, {$inc: {creditScore: 5}}, function(user){
                     if(user){
