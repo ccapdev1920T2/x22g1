@@ -14,6 +14,10 @@ const commentSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    c_edited: {
+        type: Boolean,
+        default: false
+    },
     created: {
         type: Date,
         default: Date.now,
