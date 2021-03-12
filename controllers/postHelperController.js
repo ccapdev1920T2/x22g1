@@ -245,10 +245,11 @@ const postHelperController = {
         console.log(body)
         console.log(tags)
 
+        // no uploaded photo
         if (!req.file) {
             db.updateMany(User,{}, {$pull: {postsUpVoted: postId, postsDownVoted:postId}}, function(vote){
                 if(vote){
-                    db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, photo: photo, upvote: 0, downvote: 0, edited: true}, function(result){
+                    db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, upvote: 0, downvote: 0, edited: true}, function(result){
                         if(result){
                             if(!req.session.user) res.redirect('/');
                             else{
@@ -286,8 +287,14 @@ const postHelperController = {
             })
         }
 
-        // no photo uploaded
+        // photo uploaded
         else {
+            //rename user's uploaded avatar
+            var newPostName = postId;
+            var postFileName = helper.renamePost(req, newPostName);
+
+            helper.updatePost(newPostName, postFileName, res);
+
             db.updateMany(User,{}, {$pull: {postsDownVoted: postId, postsUpVoted: postId}}, function(vote){
                 if(vote){
                     db.updateOne(Post, {_id: postId}, {title: title, body: body, tags: tags, upvote: 0, downvote: 0, edited: true}, function(result){

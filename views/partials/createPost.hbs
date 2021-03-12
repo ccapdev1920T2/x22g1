@@ -46,6 +46,7 @@
                     </div>
                 </div>
                 <div class="buttons-post">
+                    <img id="output" {{#match photo null}}{{else}}src="/posts/{{photo}}"{{/match}}>
                     <div class="buttons-post2">
                         <ul class="buttons-post-icons">
                             <li class="media-button">
@@ -57,7 +58,8 @@
                                                 <label for="upload" style="cursor:pointer">
                                                     <i class="far fa-images"></i> 
                                                     Photo
-                                                    <input id="upload" name="upload" type="file" accept="image/*" style="display: none;">
+                                                    <input id="upload" name="upload" type="file" accept="image/*" style="display: none;" 
+                                                    onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
                                                 </label>
                                             {{!-- </form> --}}
                                         </div>

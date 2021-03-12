@@ -11,13 +11,36 @@ const helper = {
     },
 
     renamePost: function (req, newName) {
-        console.log("pasok")
         var origName = req.file.originalname;
         var extension = origName.substring(origName.lastIndexOf('.'));
         const newURL = req.file.destination + '/' + newName + extension;
 
         fs.renameSync(req.file.path, newURL);
         return newName + extension;
+    },
+
+    updatePost: function(id, photo, res) {
+        console.log("pls");
+        console.log(id);
+        let extension = photo.substring(photo.lastIndexOf("."));
+        let filename = photo.split('.').slice(0, -1).join('.');
+
+        db.updateOne(Post, {_id: id}, {photo, photo}, function(result){
+            switch (extension) {
+                case '.jpg':
+                    fs.unlink('./public/posts/' + filename + '.png', (fds) => {});
+                    fs.unlink('./public/posts/' + filename + '.jpeg', (fds) => {});
+                    break;
+                case '.png': 
+                    fs.unlink('./public/posts/' + filename + '.jpg', (fds) => {});
+                    fs.unlink('./public/posts/' + filename + '.jpeg', (fds) => {});
+                    break;
+                case '.jpeg':
+                    fs.unlink('./public/posts/' + filename + '.png', (fds) => {});
+                    fs.unlink('./public/posts/' + filename + '.jpg', (fds) => {});
+                    break;
+            }
+        })
     },
 
     renameAvatar: function (req, newName) {

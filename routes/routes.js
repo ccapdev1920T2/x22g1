@@ -146,6 +146,7 @@ app.get('/post/unupvote/:postId', postHelperController.unupvotePost);
 app.get('/post/undownvote/:postId', postHelperController.undownvotePost);
 app.get('/createComment', postHelperController.createComment);
 app.post('/editPost',
+    postUpload,
     validation.createPostValidation(),
     postHelperController.editPost);
 app.post('/editComment', postHelperController.editComment);

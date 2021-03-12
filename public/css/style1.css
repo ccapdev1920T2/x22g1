@@ -536,6 +536,11 @@ hr {
     padding: 10px;
 }
 
+.timeline-photo{
+    text-align: justify;
+    padding: 10px;
+}
+
 .comment-container{
     display: flex;
     margin-bottom: 10px;

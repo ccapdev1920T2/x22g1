@@ -135,7 +135,7 @@
       <div class="modal-body pb-0 mb-0">
         <!-- use method="post" to send your form to server -->
         
-        <form class="form-horizontal" id="editPost" method="post" action="/editPost?id={{this._id}}">
+        <form class="form-horizontal" id="editPost" enctype="multipart/form-data" method="post" action="/editPost?id={{this._id}}">
             <p><span style="font-weight: bold; text-decoration:underline">Note:</span> Your post votes will reset to 0 after editing!</p>
             
              <div class="form-group" style="margin-left: 15px;">
@@ -165,8 +165,14 @@
 
             <div class="form-group" style="margin-left: 15px;">
                 <div class="col-xs-11">  
-                    <p><strong>Photo</strong><span style="color: red"> *</span></p>
-                    <input id="upload" type="file" accept="image/*" style="display: none;">
+                    <p><strong>Photo</strong></p>
+                    {{#match photo null}}
+                    <p>No Photo Uploaded</p>
+                    {{else}}
+                    <img id="output" src="/posts/{{photo}}">
+                    {{/match}}
+                    <input id="upload" name="upload" type="file" accept="image/*"  {{#match photo null}}{{else}}value="{{photo}}"{{/match}}
+                    onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
                 </div>
                 <div class="col-sm-7"></div>
             </div>
