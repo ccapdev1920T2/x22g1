@@ -20,6 +20,11 @@ const timelineController = {
                     if(user.creditScore <= -50){
                         warn=true
                     }
+
+                    post.sort(function (a, b) {
+                        return b.user.creditScore-a.user.creditScore;
+                    })
+
                     res.render('timeline', {
                         active_session: req.session.user && req.cookies.user_sid,
                         active_user: req.session.user,
@@ -156,6 +161,14 @@ const timelineController = {
                 var getPost = helper.getDLSUPost();
                 getPost.exec(function(err, post){
                     if (err) throw err;
+                    var warn = false;
+                    if(user.creditScore <= -50){
+                        warn=true
+                    }
+
+                    post.sort(function (a, b) {
+                        return b.user.creditScore-a.user.creditScore;
+                    })
                     res.render('timeline', {
                         active_session: req.session.user && req.cookies.user_sid,
                         active_user: req.session.user,
@@ -164,7 +177,8 @@ const timelineController = {
                         navbar: "navbar-dlsu",
                         saved: user.postsSaved,
                         upvoted: user.postsUpVoted,
-                        downvoted: user.postsDownVoted
+                        downvoted: user.postsDownVoted,
+                        warn: warn
                     });
                 })
             })
@@ -180,6 +194,14 @@ const timelineController = {
                 var getPost = helper.getADMUPost();
                 getPost.exec(function(err, post){
                     if (err) throw err;
+                    var warn = false;
+                    if(user.creditScore <= -50){
+                        warn=true
+                    }
+
+                    post.sort(function (a, b) {
+                        return b.user.creditScore-a.user.creditScore;
+                    })
                     res.render('timeline', {
                         active_session: req.session.user && req.cookies.user_sid,
                         active_user: req.session.user,
@@ -188,7 +210,8 @@ const timelineController = {
                         navbar: "navbar-admu",
                         saved: user.postsSaved,
                         upvoted: user.postsUpVoted,
-                        downvoted: user.postsDownVoted
+                        downvoted: user.postsDownVoted,
+                        warn: warn
                     });
                 })
             })
@@ -204,6 +227,14 @@ const timelineController = {
                 var getPost = helper.getUPPost();
                 getPost.exec(function(err, post){
                     if (err) throw err;
+                    var warn = false;
+                    if(user.creditScore <= -50){
+                        warn=true
+                    }
+
+                    post.sort(function (a, b) {
+                        return b.user.creditScore-a.user.creditScore;
+                    })
                     res.render('timeline', {
                         active_session: req.session.user && req.cookies.user_sid,
                         active_user: req.session.user,
@@ -212,7 +243,8 @@ const timelineController = {
                         navbar: "navbar-up",
                         saved: user.postsSaved,
                         upvoted: user.postsUpVoted,
-                        downvoted: user.postsDownVoted
+                        downvoted: user.postsDownVoted,
+                        warn: warn
                     });
                 })
             })
@@ -228,6 +260,14 @@ const timelineController = {
                 var getPost = helper.getUSTPost();
                 getPost.exec(function(err, post){
                     if (err) throw err;
+                    var warn = false;
+                    if(user.creditScore <= -50){
+                        warn=true
+                    }
+
+                    post.sort(function (a, b) {
+                        return b.user.creditScore-a.user.creditScore;
+                    })
                     res.render('timeline', {
                         active_session: req.session.user && req.cookies.user_sid,
                         active_user: req.session.user,
@@ -236,7 +276,8 @@ const timelineController = {
                         navbar: "navbar-ust",
                         saved: user.postsSaved,
                         upvoted: user.postsUpVoted,
-                        downvoted: user.postsDownVoted
+                        downvoted: user.postsDownVoted,
+                        warn: warn
                     });
                 })
             })
