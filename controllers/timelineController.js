@@ -33,7 +33,37 @@ const timelineController = {
                         saved: user.postsSaved,
                         upvoted: user.postsUpVoted,
                         downvoted: user.postsDownVoted,
-                        warn: warn
+                        warn: warn,
+                        main: true,
+                        popular: true, 
+                    });
+                })
+            })
+        }
+    },
+
+    getTimelineNewest: function (req, res){
+        if(!req.session.user) res.redirect('/');
+        else{
+            db.findOne(Profile, {_id: req.session.user}, '', function(user){
+                var getPost = helper.getAllPosts();
+                getPost.exec(function(err, post){
+                    if (err) throw err;
+                    var warn = false;
+                    if(user.creditScore <= -50){
+                        warn=true
+                    }
+
+                    res.render('timeline', {
+                        active_session: req.session.user && req.cookies.user_sid,
+                        active_user: req.session.user,
+                        user: user,
+                        posts: post,
+                        saved: user.postsSaved,
+                        upvoted: user.postsUpVoted,
+                        downvoted: user.postsDownVoted,
+                        warn: warn,
+                        main: true
                     });
                 })
             })
@@ -61,6 +91,16 @@ const timelineController = {
                     getPost.exec(function(err, post){
                         if (err) throw err;
                         // console.log(post);
+
+                        var warn = false;
+                        if(user.creditScore <= -50){
+                            warn=true
+                        }
+
+                        post.sort(function (a, b) {
+                            return b.user.creditScore-a.user.creditScore;
+                        })
+
                         res.render('timeline', {
                             active_session: req.session.user && req.cookies.user_sid,
                             active_user: req.session.user,
@@ -115,19 +155,31 @@ const timelineController = {
                 .exec(function (err, postsArray) {
                     console.log("array", postsArray)
                     if (err) return next(err)
-                        db.findOne(Profile, {_id: req.session.user}, '', function(user) {
-                            res.render('timeline', {
-                                active_session: req.session.user && req.cookies.user_sid,
-                                active_user: req.session.user,
-                                user: user,
-                                posts: postsArray,
-                                saved: user.postsSaved,
-                                upvoted: user.postsUpVoted,
-                                downvoted: user.postsDownVoted,
-                                result: true,
-                                msg: search
-                            });
-                        })
+
+                    postsArray.sort(function (a, b) {
+                        return b.user.creditScore-a.user.creditScore;
+                    })
+
+                    var pa=false;
+                   
+                    if(postsArray.length == 0){
+                        pa = true
+                    }
+
+                    db.findOne(Profile, {_id: req.session.user}, '', function(user) {
+                        res.render('timeline', {
+                            active_session: req.session.user && req.cookies.user_sid,
+                            active_user: req.session.user,
+                            user: user,
+                            posts: postsArray,
+                            saved: user.postsSaved,
+                            upvoted: user.postsUpVoted,
+                            downvoted: user.postsDownVoted,
+                            result: true,
+                            msg: search,
+                            pa: pa
+                        });
+                    })
                 })
         }
     },
@@ -178,7 +230,39 @@ const timelineController = {
                         saved: user.postsSaved,
                         upvoted: user.postsUpVoted,
                         downvoted: user.postsDownVoted,
-                        warn: warn
+                        warn: warn,
+                        popular: true,
+                        college: '/dlsu'
+                    });
+                })
+            })
+        }
+    },
+
+    getDLSUNewest: function (req, res){
+        if(!req.session.user) res.redirect('/');
+        else{
+            db.findOne(Profile, {_id: req.session.user}, '', function(user){
+
+                var getPost = helper.getDLSUPost();
+                getPost.exec(function(err, post){
+                    if (err) throw err;
+                    var warn = false;
+                    if(user.creditScore <= -50){
+                        warn=true
+                    }
+
+                    res.render('timeline', {
+                        active_session: req.session.user && req.cookies.user_sid,
+                        active_user: req.session.user,
+                        user: user,
+                        posts: post,
+                        navbar: "navbar-dlsu",
+                        saved: user.postsSaved,
+                        upvoted: user.postsUpVoted,
+                        downvoted: user.postsDownVoted,
+                        warn: warn,
+                        college: '/dlsu'
                     });
                 })
             })
@@ -211,7 +295,39 @@ const timelineController = {
                         saved: user.postsSaved,
                         upvoted: user.postsUpVoted,
                         downvoted: user.postsDownVoted,
-                        warn: warn
+                        warn: warn,
+                        college: '/admu',
+                        popular: true
+                    });
+                })
+            })
+        }
+    },
+
+    getADMUNewest: function (req, res){
+        if(!req.session.user) res.redirect('/');
+        else{
+            db.findOne(Profile, {_id: req.session.user}, '', function(user){
+
+                var getPost = helper.getADMUPost();
+                getPost.exec(function(err, post){
+                    if (err) throw err;
+                    var warn = false;
+                    if(user.creditScore <= -50){
+                        warn=true
+                    }
+
+                    res.render('timeline', {
+                        active_session: req.session.user && req.cookies.user_sid,
+                        active_user: req.session.user,
+                        user: user,
+                        posts: post,
+                        navbar: "navbar-admu",
+                        saved: user.postsSaved,
+                        upvoted: user.postsUpVoted,
+                        downvoted: user.postsDownVoted,
+                        warn: warn,
+                        college: '/admu',
                     });
                 })
             })
@@ -244,7 +360,39 @@ const timelineController = {
                         saved: user.postsSaved,
                         upvoted: user.postsUpVoted,
                         downvoted: user.postsDownVoted,
-                        warn: warn
+                        warn: warn,
+                        popular: true,
+                        college: '/up'
+                    });
+                })
+            })
+        }
+    },
+
+    getUPNewest: function (req, res){
+        if(!req.session.user) res.redirect('/');
+        else{
+            db.findOne(Profile, {_id: req.session.user}, '', function(user){
+
+                var getPost = helper.getUPPost();
+                getPost.exec(function(err, post){
+                    if (err) throw err;
+                    var warn = false;
+                    if(user.creditScore <= -50){
+                        warn=true
+                    }
+
+                    res.render('timeline', {
+                        active_session: req.session.user && req.cookies.user_sid,
+                        active_user: req.session.user,
+                        user: user,
+                        posts: post,
+                        navbar: "navbar-up",
+                        saved: user.postsSaved,
+                        upvoted: user.postsUpVoted,
+                        downvoted: user.postsDownVoted,
+                        warn: warn,
+                        college: '/up'
                     });
                 })
             })
@@ -277,7 +425,42 @@ const timelineController = {
                         saved: user.postsSaved,
                         upvoted: user.postsUpVoted,
                         downvoted: user.postsDownVoted,
-                        warn: warn
+                        warn: warn,
+                        popular: true,
+                        college: '/ust'
+                    });
+                })
+            })
+        }
+    },
+
+    getUSTNewest: function (req, res){
+        if(!req.session.user) res.redirect('/');
+        else{
+            db.findOne(Profile, {_id: req.session.user}, '', function(user){
+
+                var getPost = helper.getUSTPost();
+                getPost.exec(function(err, post){
+                    if (err) throw err;
+                    var warn = false;
+                    if(user.creditScore <= -50){
+                        warn=true
+                    }
+
+                    post.sort(function (a, b) {
+                        return b.user.creditScore-a.user.creditScore;
+                    })
+                    res.render('timeline', {
+                        active_session: req.session.user && req.cookies.user_sid,
+                        active_user: req.session.user,
+                        user: user,
+                        posts: post,
+                        navbar: "navbar-ust",
+                        saved: user.postsSaved,
+                        upvoted: user.postsUpVoted,
+                        downvoted: user.postsDownVoted,
+                        warn: warn,
+                        college: '/ust'
                     });
                 })
             })
