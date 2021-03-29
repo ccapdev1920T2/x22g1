@@ -95,14 +95,19 @@ app.post('/signup',
 
 // timelineController
 app.get('/timeline', timelineController.getTimeline);
+app.get('/timeline/newest', timelineController.getTimelineNewest);
 app.post('/createPost', 
     postUpload,
     validation.createPostValidation(),
     timelineController.createPost);
 app.get('/timeline/dlsu', timelineController.getDLSU);
+app.get('/timeline/dlsu/newest', timelineController.getDLSUNewest);
 app.get('/timeline/admu', timelineController.getADMU);
+app.get('/timeline/admu/newest', timelineController.getADMUNewest);
 app.get('/timeline/up', timelineController.getUP);
+app.get('/timeline/up/newest', timelineController.getUPNewest);
 app.get('/timeline/ust', timelineController.getUST);
+app.get('/timeline/ust/newest', timelineController.getUSTNewest);
 app.get('/timeline/search', timelineController.getPostsSearch);
 app.get('/post/:postId', timelineController.getIndivPost);
 app.get('/post/delete/:postId', timelineController.deletePost);

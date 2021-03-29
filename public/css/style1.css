@@ -667,3 +667,7 @@ hr {
 #pbutton:hover {
     background-color: rgba(76, 180, 158, 0.774);
 }
+
+.fa-filter{
+    color: rgb(28, 112, 28)
+}

@@ -51,7 +51,25 @@
                         }}
                          <hr>
                         {{/if}}
+
+                        {{#if result}}
+
+                        {{else}}
+                            {{#if popular}}
+                                <a href='/timeline{{college}}/newest'><button style="z-index:5; position: relative; float:right; overflow:auto; margin-top: 20px; margin-bottom: 20px; color: rgb(59, 59, 59); font=size: 14px;"><i class="fas fa-filter"></i> Filter: (Popular)</button></a>
+                        
+                            {{else}}
+                                <a href='/timeline{{college}}'><button style="z-index:5; position: relative; float:right; overflow:auto; margin-top: 20px; margin-bottom: 20px; color: rgb(59, 59, 59)"><i class="fas fa-filter"></i> Filter: (Newest)</button></a>
+                            {{/if}}
+                        {{/if}}
+
+
                         <div id="post">
+                            {{#if pa}}
+                                <p style="margin-top: 7px">Sorry, we couldn't find any results matching <span style="text-decoration: underline;">{{msg}}</span>.</p>
+                            {{/if}}
+                            
+                            
                             {{#each posts}}
                                 {{>post university = this.university activeid = ../active_user saved = ../saved upvoted = ../upvoted downvoted = ../downvoted comment = this.comments.length}}
                             {{/each}}
