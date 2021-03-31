@@ -15,10 +15,10 @@
                 </a>
             </div>
             <div class="actual-text">
-                <div class="box-text">
+                <div class="box-text mb-4">
                     <div class="box-title">
                         <div class="text-area">
-                            <textarea name="title" id="title" class="post-area-title" placeholder="Title of your post">{{input_title}}</textarea>
+                            <textarea name="title" id="title" class="form-control" placeholder="Title of your post">{{input_title}}</textarea>
                         </div>
                         <p style="color: red; margin-top: -5px; margin-bottom: 2px; font-size: 10px"> 
                             {{details_titleError}}
@@ -28,7 +28,7 @@
                 <div class="box-text">
                     <div class="box">
                         <div class="text-area">                                  
-                            <textarea name="body" id="body" class="post-area" placeholder="Any story to tell?">{{input_body}}</textarea>                                                  
+                            <textarea name="body" id="body" class="form-control" placeholder="Any story to tell?">{{input_body}}</textarea>                                                  
                         </div>
                         <p style="color: red; margin-top: -5px; margin-bottom: 2px; font-size: 10px"> 
                             {{details_bodyError}}
@@ -38,7 +38,7 @@
                 <div class="box-text">
                     <div class="box-tags">
                         <div class="text-area">                                                  
-                            <input type="text" name="tags" id="tags" class="post-area-tags" placeholder="#Tags (Separate your tags with comma)" value="{{input_tags}}" autocomplete="off"></input>                                               
+                            <input type="text" name="tags" id="tags" class="form-control" placeholder="#Tags (Separate your tags with comma)" value="{{input_tags}}" autocomplete="off"></input>                                               
                         </div>
                         <p style="color: red; margin-top: -5px; margin-bottom: 2px; font-size: 10px"> 
                             {{details_tagsError}}

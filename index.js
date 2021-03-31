@@ -1,7 +1,5 @@
 // import modules express and handlebars
 const express = require('express');
-const exphbs = require('express-handlebars');
-const path = require('path');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -15,15 +13,6 @@ app.use(express.static('views'));
 
 // set hbs as view engine
 app.set('view engine', 'hbs');
-app.engine(
-    'hbs',
-    exphbs({
-        extname: 'hbs',
-        defaultView: 'main',
-        layoutsDir: path.join(__dirname, '/views/layouts'),
-        partialsDir: path.join(__dirname, '/views/partials')
-    }),
-)
 
 // parses incoming requests with urlencoded payloads
 app.use(express.urlencoded({ extended: true }));

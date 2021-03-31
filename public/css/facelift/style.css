@@ -11,11 +11,11 @@ body{
 
 .btn-custom {
     transition: 0.5s;
-    background-color: teal;
+    background-color: #D81E5B;
     color: white;
 }
 
 .btn-custom:hover {
     transition: 0.5s;
-    background-color: grey;
+    background-color: #9b1a45;
 }
