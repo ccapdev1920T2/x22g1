@@ -38,8 +38,19 @@ const loginController = {
                         equal,
                     ) {
                         if (equal) {
-                            req.session.user = user._id;
-                            res.redirect('/timeline');
+                            if(user.creditScore <= -100){
+                                db.deleteOne(Profile, {_id: user._id}, function(u){
+                                    if(u){
+                                        console.log("user blocked");
+                                        res.render('login', {
+                                            warn: true
+                                        });
+                                    }
+                                })
+                            } else{
+                                req.session.user = user._id;
+                                res.redirect('/timeline');
+                            }
                         } else {
                             res.render('login', {
                                 input: req.body,

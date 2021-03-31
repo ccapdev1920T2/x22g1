@@ -42,6 +42,52 @@ hbs.registerHelper('checkSaved', function(s, a, options) {
         
 });
 
+hbs.registerHelper('checkUpvote', function(s, a, options) {
+    var string = a.toString();
+    var arr = string.split(",");
+    for (let i=0; i<arr.length; i++){
+        if (arr[i] == (s)) {
+        var valid = true
+        break;
+        } else {
+        var valid = false
+        }
+    }
+    if(valid){
+        return options.fn(this);
+    }
+    else{
+        return options.inverse(this)
+    }
+    
+});
+
+hbs.registerHelper('checkDownvote', function(s, a, options) {
+    var string = a.toString();
+    var arr = string.split(",");
+    for (let i=0; i<arr.length; i++){
+        if (arr[i] == (s)) {
+        var valid = true
+        break;
+        } else {
+        var valid = false
+        }
+    }
+    if(valid){
+        return options.fn(this);
+    }
+    else{
+        return options.inverse(this)
+    }
+    
+});
+
+hbs.registerHelper('search', function(search, options) {
+    var search = encodeURIComponent(search)
+  
+    return search
+});
+
 // import routes module
 const routes = require('./routes/routes.js');
 

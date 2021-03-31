@@ -67,14 +67,14 @@
                 <div id="RecentPost" class="tabcontent">
                     <div id="post">
                             {{#each posts}}
-                                    {{>post university = this.university activeid = ../active_user saved = ../saved}}
+                                    {{>post university = this.university activeid = ../active_user saved = ../saved upvoted = ../upvoted downvoted = ../downvoted comment = this.comments.length}}
                             {{/each}}
                         </div>
                 </div>
                  <div id="SavedPost" class="tabcontent">
                      <div id="post">
                             {{#each display_save}}
-                                    {{>post university = this.university activeid = ../active_user saved = ../saved}}
+                                    {{>post university = this.university activeid = ../active_user saved = ../saved upvoted = ../upvoted downvoted = ../downvoted comment = this.comments.length}}
                             {{/each}}
                         </div>
                  </div>
@@ -139,7 +139,11 @@
             <div class="form-group" style="margin-left: 15px;">
                 <div class="col-xs-11">  
                     <p><strong>Bio</strong><span style="color: red"> *</span></p>
-                    <input type="text" class="form-control" id="bio" name="bio" value="{{user.bio}}" required/>
+                    <input type="text" class="form-control" id="bio" name="bio" maxlength="150" value="{{user.bio}}" required/>
+                    <div id="the-count" style="float: right;padding: 0.1rem 0 0 0;font-size: 0.875rem;">
+                        <span id="current">0</span>
+                        <span id="maximum">/ 150</span>
+                    </div>
                 </div>
                 <div class="col-sm-7"></div>
             </div>
@@ -155,3 +159,21 @@
     </div>
   </div>
 </div>
+
+<script>
+    // Shorthand for $( document ).ready()
+    $(function() {
+        count = $('#bio').val().length,
+        $('#current').text(count);
+    });
+
+    $('#bio').keyup(function() {
+    
+    var characterCount = $(this).val().length,
+        current = $('#current'),
+        maximum = $('#maximum'),
+        theCount = $('#the-count');
+        
+    current.text(characterCount);
+    })
+</script>

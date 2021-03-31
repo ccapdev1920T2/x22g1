@@ -536,6 +536,11 @@ hr {
     padding: 10px;
 }
 
+.timeline-photo{
+    text-align: justify;
+    padding: 10px;
+}
+
 .comment-container{
     display: flex;
     margin-bottom: 10px;
@@ -661,4 +666,8 @@ hr {
 
 #pbutton:hover {
     background-color: rgba(76, 180, 158, 0.774);
+}
+
+.fa-filter{
+    color: rgb(28, 112, 28)
 }

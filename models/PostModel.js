@@ -19,7 +19,8 @@ const postSchema = mongoose.Schema({
         required: true
     },
     photo: {
-        type: String
+        type: String,
+        default: null
     },
     university: {
         type: String,
@@ -33,9 +34,17 @@ const postSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
+    comments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comment'
+    }],
     delete: {
         type: Boolean,
         default: true
+    },
+    edited: {
+        type: Boolean,
+        default: false
     },
     created: {
         type: Date,
