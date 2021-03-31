@@ -48,7 +48,6 @@ const database = {
     findOne: function(model, query, projection, callback) {
         model.findOne(query, projection, function(error, result) {
             if(error) return callback(false);
-            console.log('Found ' + result);
             return callback(result);
         });
     },

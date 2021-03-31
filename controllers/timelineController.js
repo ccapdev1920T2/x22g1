@@ -17,6 +17,7 @@ const timelineController = {
                 var getPost = helper.getAllPosts();
                 getPost.exec(function(err, post){
                     if (err) throw err;
+                    console.log(post)
                     // console.log(post);
                     res.render('timeline', {
                         active_session: req.session.user && req.cookies.user_sid,
@@ -93,7 +94,7 @@ const timelineController = {
             var search = req.query.msg;
             console.log("search", search)
             Post
-                .find({ tags: { $in: ["#"+search] } })
+                .find({ tags: { $in: [search] } })
                 .populate('user')
                 .sort('-created')
                 .lean()
@@ -108,7 +109,9 @@ const timelineController = {
                                 posts: postsArray,
                                 saved: user.postsSaved,
                                 upvoted: user.postsUpVoted,
-                                downvoted: user.postsDownVoted
+                                downvoted: user.postsDownVoted,
+                                result: true,
+                                msg: search
                             });
                         })
                 })

@@ -64,6 +64,14 @@ const helper = {
     getAllPosts: function () {
         return Post.find()
             .populate('user')
+            .populate({
+                path: 'comments',
+                options: { limit: 3, lean: true },
+                populate: {
+                    path: 'user',
+                    options: { lean: true },
+                },
+            })
             .sort('-created')
             .lean()
     },
@@ -71,6 +79,14 @@ const helper = {
     getDLSUPost: function () {
         return Post.find({university: 'DLSU'})
             .populate('user')
+            .populate({
+                path: 'comments',
+                options: { limit: 3, lean: true },
+                populate: {
+                    path: 'user',
+                    options: { lean: true },
+                },
+            })
             .sort('-created')
             .lean()
     },
@@ -78,6 +94,14 @@ const helper = {
     getADMUPost: function () {
         return Post.find({university: 'ADMU'})
             .populate('user')
+            .populate({
+                path: 'comments',
+                options: { limit: 3, lean: true },
+                populate: {
+                    path: 'user',
+                    options: { lean: true },
+                },
+            })
             .sort('-created')
             .lean()
     },
@@ -85,6 +109,14 @@ const helper = {
     getUPPost: function () {
         return Post.find({university: 'UP'})
             .populate('user')
+            .populate({
+                path: 'comments',
+                options: { limit: 3, lean: true },
+                populate: {
+                    path: 'user',
+                    options: { lean: true },
+                },
+            })
             .sort('-created')
             .lean()
     },
@@ -92,6 +124,14 @@ const helper = {
     getUSTPost: function () {
         return Post.find({university: 'UST'})
             .populate('user')
+            .populate({
+                path: 'comments',
+                options: { limit: 3, lean: true },
+                populate: {
+                    path: 'user',
+                    options: { lean: true },
+                },
+            })
             .sort('-created')
             .lean()
     },
@@ -99,6 +139,14 @@ const helper = {
     getUserPost: function (userId) {
         return Post.find({user: userId})
             .populate('user')
+            .populate({
+                path: 'comments',
+                options: { limit: 3, lean: true },
+                populate: {
+                    path: 'user',
+                    options: { lean: true },
+                },
+            })
             .sort('-created')
             .lean()
     },
@@ -107,10 +155,19 @@ const helper = {
          return Profile.find({_id: userId})
             .populate({
                 path: 'postsSaved',
-                populate: {
+                populate: [{
                     path: 'user',
                     model: 'Profile'
-                }
+                },
+                {
+                    path: 'comments',
+                    model: 'Comment',
+                    options: { limit: 3, lean: true },
+                    populate: {
+                        path: 'user',
+                        options: { lean: true },
+                    },
+                }]
             })
             .sort('-created')
             .lean()
@@ -121,7 +178,8 @@ const helper = {
             .populate('user')
             .sort('created')
             .lean()
-    }   
+    },
+
 
 };
 

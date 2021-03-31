@@ -40,7 +40,7 @@
             // Cancel the default action, if needed
             event.preventDefault();
             // Trigger the button element with a click
-            window.location = "/timeline/search?msg=" + search;
+            window.location = "/timeline/search?msg=" + encodeURIComponent(search);
             }
         });
         </script>

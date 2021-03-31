@@ -59,12 +59,17 @@
             </div>
             <div class="userTagss" title="Tags">
                 <span>
-                    <a class="a-link">Tags: {{tags}}</a>
+                    Tags: 
+                        {{!-- {{tags}} --}}
+                        {{#each tags}}
+                            <a href='/timeline/search?msg={{#search this}} {{/search}}' class="a-link">{{this}}</a>,
+                        {{/each}}
+                    
                 </span>
             </div>
             <hr>
             <div class="userbuttonscontainerr">
-                <p class ="upvotecountt" title="Vote Count"><span id="upvotecount_{{_id}}">{{upvote}}</span> upvotes, <span id="downvotecount_{{_id}}">{{downvote}}</span> downvotes <span>{{comment}} comments</span></p>
+                <p class ="upvotecountt" title="Vote Count"><span id="upvotecount_{{_id}}">{{upvote}}</span> upvotes, <span id="downvotecount_{{_id}}">{{downvote}}</span> downvotes, <span>{{comment}} comments</span></p>
                     
                 {{#checkUpvote this._id upvoted}}
                     <img src="/img/upvoted.png" id="upvoted_{{_id}}" title="Upvote" class="upvote">
@@ -89,12 +94,21 @@
                 <a href='/post/{{_id}}'><img src="/img/comment.png" style="height: 43px; width: 47px; margin-left: -3px;" id="comment" class="comment" title="Comment"></a>
             </div>
 
-            <div id="p_id">
+            <div id="p_id" style="margin-bottom: 20px;">
                 <p id="pid" style="visibility: hidden; margin-top: -10px">{{_id}}</p>
-                <p id="uid" style="visibility: hidden; margin-top: -25px">{{User}}</p>
+                <p id="uid" style="visibility: hidden; margin-top: -25px;">{{User}}</p>
+            </div>
+            <hr style="margin-bottom: 20px;">
+            <div class="timeline-panel">
+                <div id="displayComment">
+                    {{#each comments}}
+                        {{>commentCard activeid = ../active_user}}
+                    {{/each}}
+                </div>
             </div>
         </div>
     </li>
+  
     {{!-- {{#each userComments}}
         {{>commentBar DisplayPicture = image}}
     {{/each}} --}}

@@ -204,11 +204,15 @@ $("#sendButton").click(function(){
     
     if(commentBar != ''){
         $('#commentBar').val('');
+        
         $.get('/createComment',{
             commentBar: commentBar,
             PostID: PostID
         }, function(data, status){
             $('#displayComment').append(data);
+            var cc = $('#commentcount').text();
+            var count= parseInt(cc) + 1;
+            $('#commentcount').text(count);
         })
     }else{
         // $('#error').text('');
