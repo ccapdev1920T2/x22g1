@@ -23,7 +23,7 @@
                 </h4>
                
                 <div class ="dropdown">
-                    <img src="/img/option.png" style="height: 20px; width: 23px; padding-right: 5px;" id="option1" title="Option">
+                    <img src="/img/option.png" style="height: 20px; width: 20px;" id="option1" title="Option">
                     <div class="dropdown-content">
                         {{#match user._id activeid}}
                             {{#checkSaved this._id saved}}
@@ -64,7 +64,7 @@
             <div class="timeline-photo">
                 {{#match photo null}}
                 {{else}}
-                <img src="/posts/{{photo}}">
+                <img src="/posts/{{photo}}" style="max-width: 100%; display: block;">
                 {{/match}}
             </div>
             <div class="userTagss" title="Tags">
