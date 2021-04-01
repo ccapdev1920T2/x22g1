@@ -252,7 +252,7 @@ hr {
 .img-circle {
     width: 125px;
     height: 125px;
-    border: 2px solid #51D2B7;
+    border: 2px solid #B9E36C;
     border-radius: 50%;
 }
 
@@ -309,12 +309,12 @@ hr {
 
 .rank-label-container {
     margin-top: -18px;
-    color: white;
+    color: black;
     text-align: center;
 }
 
 .label.label-default.rank-label {
-    background-color: rgb(81, 210, 183);
+    background-color: #B9E36C;
     padding: 5px 10px 5px 10px;
     border-radius: 27px;
 }
