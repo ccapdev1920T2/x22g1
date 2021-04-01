@@ -1,4 +1,4 @@
-<div class="container">
+
   <div class="card mt-3 mb-2 mx-auto shadow-sm">
       <div class="card-body">
         <h1 class="card-title">Create Post</h1>
@@ -6,30 +6,28 @@
           <div class="post-text">
             <div class="whole-post">
               <div class="actual-text">
-                <div class="box-text mb-4">
+                <div class="box-text mb-2">
                   <textarea name="title" id="title" class="form-control" placeholder="Title of your post">{{input_title}}</textarea>
                   <p style="color: red; font-size: 10px">
                     {{details_titleError}}
                   </p>
-                </div>
-                <div class="box-text">
-                  <textarea name="body" id="body" class="form-control" placeholder="Any story to tell?"
+                   <textarea name="body" id="body" class="form-control" placeholder="Any story to tell?"
                     rows="2">{{input_body}}</textarea>
-                  <br>
+                  
                   <p style="color: red; font-size: 10px">
                     {{details_bodyError}}
                   </p>
-                </div>
-                <div class="box-text">
+                
                   <input type="text" name="tags" id="tags" class="form-control"
                     placeholder="#Tags (Separate your tags with comma)" value="{{input_tags}}" autocomplete="off"></input>
                   <p style="color: red; font-size: 10px">
                     {{details_tagsError}}
                   </p>
-                  <br>
                 </div>
-                </hr>
-
+                
+                
+                
+                <label for="univeristy" class="form-label"><i class="fas fa-university"></i>University</label>
                 <select id="universities" name="university" class="form-select" aria-label="Default select example">
                   <option value="ADMU">&#x1f985 ADMU</option>
                   <option value="DLSU">&#127993 DLSU</option>
@@ -45,7 +43,7 @@
                   </label>
                 </button>
 
-                <button type="submit" id="postbutton" class="btn btn-secondary mb-2 mt-4">Post</button>
+                <button type="submit" id="postbutton" class="btn btn-secondary mb-2 mt-4 float-end">Post</button>
                 
               </div>
             </div>
@@ -53,4 +51,3 @@
         </form>
       </div>
   </div>
-</div>

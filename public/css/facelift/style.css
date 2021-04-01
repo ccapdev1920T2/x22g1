@@ -79,3 +79,11 @@ body{
 .navbar-inverse .navbar-nav>li>a {
     color: #ffffff;
 }
+
+.post-comment{
+    max-width: fit-content;
+}
+
+textarea{
+    resize: inherit !important;
+}

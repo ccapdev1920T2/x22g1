@@ -38,10 +38,9 @@
 
     <div class="row mt-3">
         <div class="col-2">
-            {{>sideProfile fName = user.fName lName = user.lName CreditScore = user.creditScore DisplayName = user.username DisplayPicture = user.avatar userid = user._id}}
-               
+            {{>sideProfile fName = user.fName lName = user.lName CreditScore = user.creditScore DisplayName = user.username DisplayPicture = user.avatar userid = user._id}}  
         </div>
-        <div class="col-8">
+        <div class="col-8 ml-5">
             {{#if warn}}
             <div class="alert alert-danger alert-dismissible" role="alert" style="text-align: left;">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
@@ -51,7 +50,7 @@
             </div>
             {{/if}}
 
-            <div class="mw-100">
+            <div class="mw-auto">
 
                 {{#if result}}
                 <h3>Search Results for: <span style="font-weight: 300; text-decoration:underline">{{msg}}</span></h3>
@@ -113,7 +112,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
