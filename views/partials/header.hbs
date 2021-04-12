@@ -24,8 +24,8 @@
                 </li>
             </ul>
             <form class="d-flex" style="margin-right:5px">
-                <input class="form-control me-2" type="text" placeholder="&#xF002 Search"  id="search" name="search" aria-label="Search">
-                <button class="btn btn-outline-success input-group-btn mr-3" type="submit"><i class="fas fa-search"></i></button>
+                <input class="form-control me-2" type="text" placeholder="Search"  id="search" name="search" aria-label="Search">
+                <button class="btn btn-outline-success input-group-btn mr-3" type="button" id="searchbtn"><i class="fas fa-search"></i></button>
             </form>
             
             <div class="dropdown d-flex ">
@@ -45,6 +45,7 @@
 <script>
     // For search
     var input = document.getElementById("search");
+    var inputbtn = document.getElementById("searchbtn")
     // Execute a function when the user releases a key on the keyboard
     input.addEventListener("keyup", function (event) {
         // Number 13 is the "Enter" key on the keyboard
@@ -55,5 +56,14 @@
             // Trigger the button element with a click
             window.location = "/timeline/search?msg=" + encodeURIComponent(search);
         }
+    });
+    inputbtn.addEventListener("click", function (event) {
+        var search = document.getElementById("search").value;
+        // if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            // event.preventDefault();
+            // Trigger the button element with a click
+            window.location = "/timeline/search?msg=" + encodeURIComponent(search);
+        // }
     });
 </script>
