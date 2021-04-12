@@ -44,7 +44,7 @@
                     <div class="post">
                 {{#if edit}}
                 <div class="alert alert-success alert-dismissible" role="alert" style="text-align: left;">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button>
                     You have <span style="font-weight: bold; text-decoration:underline">successfully edited</span> your post.
                 </div>
                 {{/if}}
@@ -90,9 +90,9 @@
                                                             <a id="unsave/{{post._id}}" class="unsave" style="display: none">Unsave Post</a>
                                                             <a id="save/{{post._id}}" class="save">Save Post</a>
                                                         {{/checkSaved}}
-                                                            <a href="" data-toggle="modal" data-target="#modalEditPost">Edit Post</a>
+                                                            <a href="" data-bs-toggle="modal" data-bs-target="#modalEditPost">Edit Post</a>
                                                             {{!-- <a href="/post/delete/{{post._id}}">Delete Post</a> --}}
-                                                            <a href="" data-toggle="modal" data-target="#modalDeletePost">Delete Post</a>
+                                                            <a href="" data-bs-toggle="modal" data-bs-target="#modalDeletePost">Delete Post</a>
                                                     {{else}}
                                                         {{#checkSaved post._id saved}}
                                                         {{!-- <a href="/post/unsave/{{post._id}}" id="unsave/{{post._id}}">Unsave Post</a> --}}
@@ -187,8 +187,8 @@
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document" style="width: 600px">
     <div class="modal-content">
       <div class="modal-header">
-       <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"><strong>Edit Post</strong></h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body pb-0 mb-0">
         <!-- use method="post" to send your form to server -->
@@ -238,7 +238,7 @@
             <input type="text" class="form-control" id="postId" name="postId" value="{{post._id}}" style="visibility: hidden;"/>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" >Discard Changes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Discard Changes</button>
                 <button type="submit" class="btn btn-primary" id="saveBtn">Save</button>
             </div>
         </form>
@@ -253,8 +253,8 @@
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document" style="width: 600px">
     <div class="modal-content">
       <div class="modal-header">
-       <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><strong>Delete Post</strong></h4>
+        <h4 class="modal-title"><strong>Delete Post</strong></h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body pb-0 mb-0">
         <!-- use method="post" to send your form to server -->
@@ -267,7 +267,7 @@
                 <div class="col-sm-7"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cancel</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cancel</button>
                 <button type="submit" class="btn btn-danger" id="saveBtn">Delete</button>
             </div>
         </form>
