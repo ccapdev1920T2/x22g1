@@ -52,7 +52,7 @@
                                         <div class="timeline-heading">
                                             {{!-- <div class="postNum">{{postNumber}}</div> --}}
                                             <h4 class="timeline-title">
-                                                <a href="/post/{{_id}}" style="color: rgb(78, 73, 73);">{{post.title}}</a> 
+                                                <a href="/post/{{post._id}}" style="color: rgb(78, 73, 73);">{{post.title}}</a> 
                                                  {{#if post.edited}}
                                                     <span style="text-align: left; font-style:italic; font-size:x-small;">( <i class="fa fa-pencil" aria-hidden="true"></i>Edited)</span>
                                                 {{/if}}
@@ -93,7 +93,7 @@
                                         </div>
                                         <span class="timeline-author">
                                             <div class="author">  
-                                                <a class="a-link" href="/userid/{{post.user._id}}" target="_blank">By: {{post.user.username}}</a>
+                                                <a class="a-link" href="/userid/{{post.user._id}}">By: {{post.user.username}}</a>
                                             </div>
                                             <div class="userCreditScoree">({{post.user.creditScore}} pts)</div>
                                         </span>
@@ -103,7 +103,7 @@
                                         <div class="timeline-photo">
                                             {{#match post.photo null}}
                                             {{else}}
-                                            <img src="/posts/{{post.photo}}">
+                                            <img src="/posts/{{post.photo}}" width="250" height="250">
                                             {{/match}}
                                         </div>
                                         <div class="userTagss" title="Tags">

@@ -3,6 +3,7 @@ const express = require('express');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const fs = require('fs');
 
 // data base and express
 const app = express();
@@ -96,6 +97,14 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 // define the paths contained in routes module
 app.use('/', routes);
+
+const postDir = './public/posts';
+if (!fs.existsSync(postDir)) {
+    console.log(
+        'posts folder does not exist! creating ' + postDir + '...',
+    );
+    fs.mkdirSync(postDir);
+}
 
 // connects to the database
 const url = 'mongodb+srv://admin:big4user@big4fw.d5d5o.mongodb.net/big4fw?retryWrites=true&w=majority';
