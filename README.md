@@ -24,5 +24,5 @@ connected at mongodb+srv://admin:big4user@big4fw.d5d5o.mongodb.net/big4fw?retryW
 ```
 2. Now open a web browser and go to the [link](http://localhost:9090/) `http://localhost:9090/`. Your web browser should display this:
 <p align="center">
-    login page picture
+    <img src="public/img/landing.png">
 </p>`
