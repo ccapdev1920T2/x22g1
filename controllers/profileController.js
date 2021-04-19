@@ -14,8 +14,7 @@ const profileController = {
                 getPost.exec(function(err, post){
                     var getSavedPost = helper.getSavedPost(userId);
                     getSavedPost.exec(function(err, saves){
-                        console.log(saves[0].postsSaved)
-                        // console.log(post._id)
+            
                         if (err) throw err;
                         res.render('profile', {
                             active_session: req.session.user && req.cookies.user_sid,
@@ -24,7 +23,9 @@ const profileController = {
                             posts: post,
                             display_save: saves[0].postsSaved,
                             saved: user.postsSaved,
-                            profile: true
+                            profile: true,
+                            upvoted: user.postsUpVoted,
+                            downvoted: user.postsDownVoted
                         })
                     })
                 })
@@ -85,13 +86,20 @@ const profileController = {
             db.findOne(Profile, {_id: userId}, '', function(user){
                 var getPost = helper.getUserPost(userId);
                 getPost.exec(function(err, post){
-                    if (err) throw err;
-                    res.render('profile', {
-                        active_session: req.session.user && req.cookies.user_sid,
-                        active_user: req.session.user,
-                        user: user.toObject(),
-                        posts: post,
-                        profile: false
+                    var getSavedPost = helper.getSavedPost(userId);
+                    getSavedPost.exec(function(err, saves){
+                        console.log(saves[0].postsSaved)
+                        if (err) throw err;
+                        res.render('profile', {
+                            active_session: req.session.user && req.cookies.user_sid,
+                            active_user: req.session.user,
+                            user: user.toObject(),
+                            posts: post,
+                            saved: user.postsSaved,
+                            profile: false,
+                            upvoted: user.postsUpVoted,
+                            downvoted: user.postsDownVoted
+                        })
                     })
                 })
             })

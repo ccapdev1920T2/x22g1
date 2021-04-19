@@ -16,8 +16,6 @@ const signUpController = require('../controllers/signUpController.js');
 
 // import timeline controller
 const timelineController = require('../controllers/timelineController.js');
-const indivpostController = require('../controllers/indivpostController.js');
-const createPostController = require('../controllers/createPostController.js');
 
 // import profile controller
 const profileController = require('../controllers/profileController.js');
@@ -40,6 +38,20 @@ var avatarStorage = multer.diskStorage({
 });
 
 var avatarUpload = multer({ storage: avatarStorage }).single('avatar');
+
+// initialize multer for file upload use in posts
+var postStorage = multer.diskStorage({
+    destination: function (req, file, cd) {
+        if (file.fieldname === 'upload') {
+            cd(null, './public/posts');
+        }
+    },
+    filename: function (req, file, cd) {
+        cd(null, file.originalname);
+    },
+});
+
+var postUpload = multer({ storage: postStorage }).single('upload');
 
 
 // Init Cookie and Body Parser
@@ -83,13 +95,20 @@ app.post('/signup',
 
 // timelineController
 app.get('/timeline', timelineController.getTimeline);
+app.get('/timeline/newest', timelineController.getTimelineNewest);
 app.post('/createPost', 
+    postUpload,
     validation.createPostValidation(),
     timelineController.createPost);
 app.get('/timeline/dlsu', timelineController.getDLSU);
+app.get('/timeline/dlsu/newest', timelineController.getDLSUNewest);
 app.get('/timeline/admu', timelineController.getADMU);
+app.get('/timeline/admu/newest', timelineController.getADMUNewest);
 app.get('/timeline/up', timelineController.getUP);
+app.get('/timeline/up/newest', timelineController.getUPNewest);
 app.get('/timeline/ust', timelineController.getUST);
+app.get('/timeline/ust/newest', timelineController.getUSTNewest);
+app.get('/timeline/search', timelineController.getPostsSearch);
 app.get('/post/:postId', timelineController.getIndivPost);
 app.get('/post/delete/:postId', timelineController.deletePost);
 
@@ -97,6 +116,7 @@ app.get('/post/delete/:postId', timelineController.deletePost);
 app.get('/profile/:userId', profileController.getProfile);
 app.post('/editProfile',
     avatarUpload,
+    validation.signupValidation(),
     profileController.editProfile);
 app.get('/checkUsername', profileController.checkUsername);
 app.get('/userid/:userId', profileController.getIndivProfile);
@@ -105,17 +125,17 @@ app.get('/userid/:userId', profileController.getIndivProfile);
 // app.post('/uploadphoto', timelineController.uploadImage);
 
 // indivpostController
-app.get('/indivPost', indivpostController.getIndivPost);
-app.get('/createComment', indivpostController.createComment);
+// app.get('/indivPost', indivpostController.getIndivPost);
+// app.get('/createComment', indivpostController.createComment);
 
 // timelineController for Universities
 // app.get('/ADMU', timelineController.getADMU);
 // app.get('/DLSU', timelineController.getDLSU);
 // app.get('/UP', timelineController.getUP);
 // app.get('/UST', timelineController.getUST);
-app.get('/getStatus', timelineController.getStatus);
-app.get('/insertStatus', timelineController.insertStatus);
-app.get('/updateStatus', timelineController.updateStatus);
+// app.get('/getStatus', timelineController.getStatus);
+// app.get('/insertStatus', timelineController.insertStatus);
+// app.get('/updateStatus', timelineController.updateStatus);
 
 // profileController
 // app.get('/profile/:DisplayName', profileController.getUserProfile);
@@ -125,6 +145,17 @@ app.get('/updateStatus', timelineController.updateStatus);
 // postHelperController
 app.get('/post/save/:postId', postHelperController.savePost);
 app.get('/post/unsave/:postId', postHelperController.unsavePost);
+app.get('/post/upvote/:postId', postHelperController.upvotePost);
+app.get('/post/downvote/:postId', postHelperController.downvotePost);
+app.get('/post/unupvote/:postId', postHelperController.unupvotePost);
+app.get('/post/undownvote/:postId', postHelperController.undownvotePost);
+app.get('/createComment', postHelperController.createComment);
+app.post('/editPost',
+    postUpload,
+    validation.createPostValidation(),
+    postHelperController.editPost);
+app.post('/editComment', postHelperController.editComment);
+app.get('/comment/delete/:commentId/:id', postHelperController.deleteComment);
 
 //logout
 app.get('/logout', function (req, res) {

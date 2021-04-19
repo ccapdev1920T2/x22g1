@@ -100,10 +100,14 @@
                 </div>
                 <div class="row">
                      <label>Bio  <span style="color: red"> *</span></label><br />
-                    <textarea class="w-100" id="shortprofile" name="bio" style="resize: none; height: 8em; width: 30em; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px" placeholder="Tell us something about yourself">{{input.bio}}</textarea>
+                    <textarea class="w-100" id="shortprofile" name="bio" maxlength="150" style="resize: none; height: 8em; width: 30em; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px" placeholder="Tell us something about yourself">{{input.bio}}</textarea>
                     <p style="color: red; margin-top: 1px; margin-bottom: -2px">
                         {{details.bioError}}
                     </p>
+                    <div id="the-count" style="float: right;padding: 0.1rem 0 0 0;font-size: 0.875rem;">
+                        <span id="current">0</span>
+                        <span id="maximum">/ 150</span>
+                    </div>
                 </div>
                 <div class="row row-submit">
                     <div class="col-xs-12">
@@ -122,6 +126,18 @@
             </div>
         </div> 
     </div>
+
+    <script>
+    $('#shortprofile').keyup(function() {
+    
+        var characterCount = $(this).val().length,
+            current = $('#current'),
+            maximum = $('#maximum'),
+            theCount = $('#the-count');
+            
+        current.text(characterCount);
+        })
+    </script>
 </body>     
 
 
