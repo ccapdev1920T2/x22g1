@@ -5,7 +5,7 @@
 
 
 <p align="center">
-    lagay dito yung logo
+    <img src="public/img/logo.png">
 </p>`
 
 ## Installation
@@ -13,7 +13,7 @@
 1. Clone the repository either by downloading the contents of the repository [here](https://github.com/ccapdev1920T2/x22g1.git)
 2. Open Command Prompt
 3. Navigate to the project folder (downloaded repository folder) 
-4. Run this command `npm install` to to make sure you have Node.JS installed.
+4. Run this command `npm install` to make sure you have Node.JS installed.
 
 ## Running the Application
 
