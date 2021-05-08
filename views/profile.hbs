@@ -90,25 +90,28 @@
         </div>
     </div>
         
-
-        <div class="center-post" style="margin-left: 200px;">
-            <div class="col-sm-8" style="margin-left: 70px;">
-                <div id="RecentPost" class="tabcontent">
-                    <div id="post">
-                            {{#each posts}}
-                                    {{>post university = this.university activeid = ../active_user saved = ../saved upvoted = ../upvoted downvoted = ../downvoted comment = this.comments.length}}
-                            {{/each}}
-                        </div>
+    <div class="row mt-3">
+        <div class="col-1">
+            
+        </div>
+        <div class="col-10 ml-5">
+            <div id="RecentPost" class="tabcontent">
+                <div id="post">
+                    {{#each posts}}
+                        {{>post university = this.university activeid = ../active_user saved = ../saved upvoted = ../upvoted downvoted = ../downvoted comment = this.comments.length}}
+                    {{/each}}
                 </div>
-                 <div id="SavedPost" class="tabcontent">
-                     <div id="post">
-                            {{#each display_save}}
-                                    {{>post university = this.university activeid = ../active_user saved = ../saved upvoted = ../upvoted downvoted = ../downvoted comment = this.comments.length}}
-                            {{/each}}
-                        </div>
-                 </div>
+            </div>
+            <div id="SavedPost" class="tabcontent">
+                <div id="post">
+                    {{#each display_save}}
+                        {{>post university = this.university activeid = ../active_user saved = ../saved upvoted = ../upvoted downvoted = ../downvoted comment = this.comments.length}}
+                    {{/each}}
+                </div>
             </div>
         </div>
+    </div>
+    
     </body>
 </html>
 
