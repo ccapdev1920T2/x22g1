@@ -34,62 +34,86 @@
         {{!-- {{>userProfile fName = fn lName = ln Bio = bio DisplayPicture = image CreditScore = cs DisplayName = DisplayName}} --}}
         
         <div class="container">
-        <div class="card w-30 mt-5 mx-auto shadow-sm">
+        <div class="card w-25 mt-5 mx-auto shadow-sm">
             <div class="card-body">
-                <h1 class="text-center">User Profile</h1>
-                
+                <h1>User Profile</h1>
+                <hr>
+                {{!-- <form name="signUp" method="POST" class="form-login" enctype="multipart/form-data"> --}}
+                    
                     <div class="row">
-                        <div class="container" style="justify-content: center; align-items: center; text-align: center;">
-                        
-                            <img class="img-circle" id="output" src="/avatars/{{user.avatar}}" style="margin-left: 2px;" />
-
+                        <div class="container form-upload"
+                            style="justify-content: center; align-items: center; text-align: center;">
+                            {{!-- <img class="img-circle" id="output" src="/avatars/default.png" style="margin-left: 2px;" /> --}}
+                            <img class="img-circle" src="/avatars/{{user.avatar}}" style="margin-left: 2px;" />
                             <div class="rank-label-container">
                                 <span class="label label-default rank-label" title="Credit Score">{{user.creditScore}} pts</span>
                             </div>
-
                             <div>
-                                <div class="col">
-                                    {{!-- <p class="mx-auto w-100">
+                                <div class="col" style="padding-left: 90px;">
+                                    <p class="mx-auto w-100">
                                         <div class="user-info-block">
-                                            <div class="user-heading"> --}}
-                                                <h3 class="text-center">{{user.fName}} {{user.lName}} {{#if profile}}<a href="" data-toggle="modal" data-target="#modalEdit"><i class="fas fa-user-edit fa-xs" title="Edit Profile" style="color: gray; margin-top: 10px; font-size: 20px"></i></a>{{/if}}</h3>
-                                              
-                                                <p class="p-name text-center" style="font-size: 13px; margin-top: -20px; font-family:Arial, Helvetica, sans-serif; font-style: italic; text-align: center" id="DisplayName">@{{user.username}}</p>
-                                            {{!-- </div> --}}
-                                            <div class="textbio text-center" title="User's Bio">{{user.bio}}</div>
-                                        {{!-- </div>
-                                    </p> --}}
+                                            <div class="user-heading">
+                                                <h3>{{user.fName}} {{user.lName}} {{#if profile}}<a href="" data-toggle="modal" data-target="#modalEdit"><i class="fas fa-user-edit fa-xs" title="Edit Profile" style="color: gray; margin-top: 10px; font-size: 20px"></i></a>{{/if}}</h3>
+                                                <p class="p-name" style="font-size: 13px; margin-top: -20px; font-family:Arial, Helvetica, sans-serif; font-style: italic; text-align: center" id="DisplayName">@{{user.username}}</p>
+                                            </div>
+                                            <div class="textbio" title="User's Bio">{{user.bio}}</div>
+                                        </div>
+                                    </p>
                                 </div>
                             </div>
-
                         </div>
                     </div>
+
                     
-                    {{!-- <div id="buttoncontainer"> --}}
-                        
-                        {{#if profile}}
 
-                        <div class="row">
-                            <div class="col button1">
-                                <button id="Recent_Post" title="Recent Posts" class="btn w-100 btn-custom mb-1 tablinks">Recent Posts</button>
-                            </div>
-                            <div class="col button2">
-                                <button id="Saved_Post" title="Saved Posts" class="btn w-100 btn-custom mb-1 tablinks">Saved Posts</button>
-                            </div>
-                        </div>
+                    <button type="submit" id="loginbutton" class="btn w-100 btn-custom mb-1">Sign Up</button>
 
-                        {{else}}
-
-                        <div class="col button1">
-                                <button id="Recent_Post" title="Recent Posts" class="btn w-100 btn-custom mb-1 tablinks">Recent Posts</button>
-                        </div>
-                        
-                        {{/if}}
-                    {{!-- </div>     --}}
+                    <div id="error" style="margin-left: 165px; color: red; font-size:16px; font-weight:600;"></div>
             </div>
         </div>
     </div>
         
+        
+        {{!-- <div id="container1">
+            {{!-- <div id="putborder"> --}}
+                <div id="profilecontainer"> 
+                    <div class="headertext">
+                        <p>User Profile</p>
+                    </div>
+                    <div class="profile-header-container">   
+                        <div class="profile-header-img">
+                            <img class="img-circle" src="/avatars/{{user.avatar}}" />
+                            <div class="rank-label-container">
+                                <span class="label label-default rank-label" title="Credit Score">{{user.creditScore}} pts</span>
+                            </div>
+                        </div>
+                        <div class="user-info-block">
+                            <div class="user-heading">
+                                <h3>{{user.fName}} {{user.lName}} {{#if profile}}<a href="" data-toggle="modal" data-target="#modalEdit"><i class="fas fa-user-edit fa-xs" title="Edit Profile" style="color: gray; margin-top: 10px; font-size: 20px"></i></a>{{/if}}</h3>
+                                 <p class="p-name" style="font-size: 13px; margin-top: -20px; font-family:Arial, Helvetica, sans-serif; font-style: italic; text-align: center" id="DisplayName">@{{user.username}}</p>
+                            </div>
+                            <div class="textbio" title="User's Bio">{{user.bio}}</div>
+                        </div>
+                    </div> 
+                </div>
+            {{!-- </div>  --}}
+        </div>
+        <div id="buttoncontainer">
+
+            {{#if profile}}
+                <div class="button1">
+                    <button class="tablinks" id="Recent_Post" title="Recent Posts" >Recent Posts</button>
+                </div>
+                <div class="button2">
+                    <button class="tablinks" id="Saved_Post" title="Saved Posts">Saved Posts</button>
+                </div>
+
+                {{else}}
+                 <div class="button1">
+                    <button class="tablinks" id="Recent_Post" title="Recent Posts" >Recent Posts</button>
+                </div>
+            {{/if}}
+        </div> --}}
 
         <div class="center-post" style="margin-left: 200px;">
             <div class="col-sm-8" style="margin-left: 70px;">
@@ -212,4 +236,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous">
-</script>
+    </script>
