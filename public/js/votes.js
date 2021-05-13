@@ -135,7 +135,7 @@ $(".downvote").click(function() {
     var puid = $(this).parent().next().find('p:nth-child(2)').text();
 
     if ($(this).attr("class") == "downvote"){
-      if((this.src == "http://localhost:9090/img/downvote.png") || (this.src == "/img/downvote.png")){
+      if((this.src == "http://localhost:9090/img/downvote.png") || (this.src == "/img/downvote.png") || (this.src == "https://big-four-fw.herokuapp.com/img/downvote.png")){
             this.src = "/img/downvoted.png";
  
             if($(this).prev().attr("src") == 'http://localhost:9090/img/upvoted.png'){
