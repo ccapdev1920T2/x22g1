@@ -35,13 +35,15 @@
                   <option value="UST">&#128047 UST</option>
                 </select>
                   
-                <button class="btn btn-secondary mb-2 mt-4">
-                  <label for="upload" style="cursor:pointer">
-                    <input id="upload" name="upload" type="file" accept="image/*" style="display: none;"
+                {{!-- <button class="btn btn-secondary mb-2 mt-4"> --}}
+                  <br>
+                  <label for="upload" class="form-label">
+                    Photo<br>
+                    <input id="upload" name="upload" type="file" accept="image/*" 
                             onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
-                    Photo
+                    {{!-- Photo --}}
                   </label>
-                </button>
+                {{!-- </button> --}}
 
                 <button type="submit" id="postbutton" class="btn btn-secondary mb-2 mt-4 float-end">Post</button>
                 
