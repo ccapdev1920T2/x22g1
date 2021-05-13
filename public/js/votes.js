@@ -97,7 +97,7 @@ $(document).ready(function () {
     var puid = $(this).parent().next().find('p:nth-child(2)').text();
 
     if ($(this).attr("class") == "upvote"){
-        if((this.src == "http://localhost:9090/img/upvote.png") || (this.src == "/img/upvote.png")){
+        if((this.src == "http://localhost:9090/img/upvote.png") || (this.src == "/img/upvote.png") || (this.src == "https://big-four-fw.herokuapp.com/img/upvote.png")){
             this.src = "/img/upvoted.png";
     
             if($(this).next().attr("src") == 'http://localhost:9090/img/downvoted.png'){
