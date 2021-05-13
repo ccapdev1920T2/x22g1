@@ -1,31 +1,23 @@
-{{!-- <div class="comment-container">
-    <div class="comment-user" style="margin-top: 30px;">
-            <img class="comment-img" src="/img/{{DisplayPicture}}">
+
+
+
+<div class="d-flex flex-row bd-highlight mb-3 comment-container">
+  
+    <div class="comment-user p-2 bd-highlight">
+        <img class="comment-img" src="/avatars/{{user.avatar}}">
     </div>   
-    <div class="box-text">
-        <div class="box">
-            <div class="text-area">
-                <div class="author">{{name}}</div>
-                <textarea name="commentBar" id="commentBar" class="post-comment" placeholder="Comments"></textarea>
-                <img src="/img/send.png" id="sendButton" title="Send" class="send" style = "cursor: pointer">
-            </div>
-        </div>
-    </div>
-</div> --}}
 
-<div class="comment-container" style="margin-top: -15px">
-        <div class="comment-user">
-            <img class="comment-img" style="margin-top: 33px;" src="/img/{{DisplayPicture}}">
-        </div>   
-        <div class="barbody">
-            <textarea name="commentBar" id="commentBar" class="post-comment" placeholder="Write a comment..."></textarea>
-            <img src="/img/pls.png" id="sendButton" title="Post Comment" class="send" style = "cursor: pointer; height: 48px;  width: 55px; margin-top: -40px">
-        </div>
+  <div class="p-2 bd-highlight">
+      <textarea type="text" class="form-control" name="commentBar" id="commentBar" placeholder="Write a comment..."></textarea>
+  </div>
+  
+  <div class="p-2 bd-highlight">
+    <img src="/img/pls.png" id="sendButton" title="Post Comment" class="send float-right" style = "cursor: pointer; height: 45px;  width: 51px; ">
+  </div>
+
 </div>
 
-<div style="margin-top: -60px; visibility: hidden">
-    <div class="author" style="margin-left: 8px;"><p id="author">{{name}}</p>
-    <span class="userCreditScoree" id="postid" >{{id}}</span>
-    </div>
-</div>
-
+<div style="visibility: hidden">
+    <span class="userCreditScoree" id="postid" >{{post_id}}</span>
+    <span class="userCreditScoree" id="postuser" >{{post_user}}</span>
+</div> 

@@ -98,7 +98,7 @@ body{
 
 .user-info-block {
     color: rgba(0, 0, 0, 0.795);
-    margin-top: -20px;
+    margin-top: -45px;
     text-align: center;
     border-radius: 30px;
     height: 100px;
@@ -117,10 +117,12 @@ body{
 
 .textbio{
     text-align: center;
-    font-style: italic;
-    font-family: 'Courier New', Courier, monospace;
+    
     letter-spacing: -1px;
     padding: 0px 5px 0px 5px;
+    width: 400px;
+    height: 50px;
+    margin-left: 35px;
 }
 
 
@@ -330,4 +332,9 @@ body{
 /* Show the dropdown menu on hover */
 .dropdownn:hover .dropdownn-content {
     display: block;
+}
+
+.has-error {
+    color: red;
+    margin-left: 15px;
 }

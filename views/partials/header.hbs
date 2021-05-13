@@ -1,30 +1,64 @@
-<nav class="navbar navbar-inverse navbar-fixed-top {{navbar}}">
+<nav class="navbar sticky-top shadow-sm navbar-expand-lg navbar-light bg-light navbar-inverse {{navbar}}">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/HOME?DisplayName={{DisplayName}}">BIG FOUR: Freedom Wall</a>
-        </div>
-        <form class="navbar-form navbar-left" action="/action_page.php">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search" name="search">
-                <div class="input-group-btn">
-                <button class="btn btn-default" type="submit">
-                <i class="fas fa-search"></i>
+        <a class="navbar-brand" href="/timeline"><b>BIG FOUR: Freedom Wall</b></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/timeline"><i class="fas fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/timeline/admu">&#x1f985 ADMU</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/timeline/dlsu">&#127993 DLSU</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/timeline/up">&#9994 UP</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/timeline/ust">&#128047 UST</a>
+                </li>
+            </ul>
+            <form class="d-flex" style="margin-right:5px">
+                <input class="form-control me-2" type="text" placeholder="Search"  id="search" name="search" aria-label="Search">
+                <button class="btn btn-outline-success input-group-btn mr-3" type="button" id="searchbtn"><i class="fas fa-search"></i></button>
+            </form>
+            
+            <div class="dropdown d-flex ">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Profile
                 </button>
-                </div>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="/profile/{{userid}}">Profile</a></li>
+                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                </ul>
             </div>
-        </form>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="/HOME?DisplayName={{DisplayName}}"><i class="fas fa-home"></i> HOME</a></li>
-            <li><a href="/ADMU?DisplayName={{DisplayName}}">&#x1f985 ADMU</a></li>
-            <li><a href="/DLSU?DisplayName={{DisplayName}}">&#127993 DLSU</a></li>
-            <li><a href="/UP?DisplayName={{DisplayName}}">&#9994 UP</a></li>
-            <li><a href="/UST?DisplayName={{DisplayName}}">&#128047 UST</a></li>
-                <div class="dropdown prof">
-                    <li><a href="/profile/{{DisplayName}}" class="dropbtn" style="color:white; font-size:14px; border: 1px solid white; margin-right: 10px;" title="Go to Profile"><i class="far fa-user"></i> PROFILE</a></li>
-                    <div class="dropdown-content">
-                        <a href="/">Log out</a>
-                    </div>
-                </div>
-        </ul>
+        </div>
     </div>
 </nav>
+
+<script>
+    // For search
+    var input = document.getElementById("search");
+    var inputbtn = document.getElementById("searchbtn")
+    // Execute a function when the user releases a key on the keyboard
+    input.addEventListener("keyup", function (event) {
+        // Number 13 is the "Enter" key on the keyboard
+        var search = document.getElementById("search").value;
+        if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            window.location = "/timeline/search?msg=" + encodeURIComponent(search);
+        }
+    });
+    inputbtn.addEventListener("click", function (event) {
+        var search = document.getElementById("search").value;
+            window.location = "/timeline/search?msg=" + encodeURIComponent(search);
+    });
+</script>

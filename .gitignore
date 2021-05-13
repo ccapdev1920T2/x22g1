@@ -1,3 +1,6 @@
+#custom
+!public/avatars/default.png
+
 # Logs
 logs
 *.log
