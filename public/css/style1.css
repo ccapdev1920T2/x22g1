@@ -288,6 +288,7 @@ hr {
 .comment-container{
     display: flex;
     margin-bottom: 10px;
+    width: 100%
 }
 
 .comment-user{
@@ -295,6 +296,10 @@ hr {
     width: auto;    
     padding-top: 10px;
     padding-right: 5px;
+}
+
+.commentBar{
+    width: 100%;
 }
 
 .comment-img{
