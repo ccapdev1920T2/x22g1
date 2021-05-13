@@ -8,6 +8,11 @@
     <img src="public/img/logo.png">
 </p>`
 
+
+## Opening the Application through Heroku
+
+1. Open a web browser and go to the [link](https://big-four-fw.herokuapp.com/) 'https://big-four-fw.herokuapp.com/'.
+
 ## Installation
 
 1. Clone the repository either by downloading the contents of the repository [here](https://github.com/ccapdev1920T2/x22g1/tree/Phase-2)
