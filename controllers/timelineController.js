@@ -186,6 +186,14 @@ const timelineController = {
             Post
                 .find({ tags: { $in: [search] } })
                 .populate('user')
+                .populate({
+                    path: 'comments',
+                    options: { limit: 3, lean: true },
+                    populate: {
+                        path: 'user',
+                        options: { lean: true },
+                    },
+                })
                 .sort('-created')
                 .lean()
                 .exec(function (err, postsArray) {
