@@ -13,16 +13,18 @@ const profileController = {
                 var getPost = helper.getUserPost(userId);
                 getPost.exec(function(err, post){
                     var getSavedPost = helper.getSavedPost(userId);
-                    getSavedPost.exec(function(err, saves){
-                        if (err) return next(err)
+                    getSavedPost
+                    .exec(function(err, saves){
+                        console.log("saved", user.postsSaved.length);
+
 
                         var sa=false;
-                    
-                        if(saves.length == 0){
+                   
+                        if(user.postsSaved.length == 0){
                             sa = true
                         }
 
-                        // if (err) throw err;
+                        if (err) throw err;
                         res.render('profile', {
                             active_session: req.session.user && req.cookies.user_sid,
                             active_user: req.session.user,
@@ -33,7 +35,7 @@ const profileController = {
                             profile: true,
                             upvoted: user.postsUpVoted,
                             downvoted: user.postsDownVoted,
-                            sa:sa
+                            sa: sa
                         })
                     })
                 })
