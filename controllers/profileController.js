@@ -17,11 +17,15 @@ const profileController = {
                     .exec(function(err, saves){
                         console.log("saved", user.postsSaved.length);
 
-
                         var sa=false;
+                        var pa=false;
                    
                         if(user.postsSaved.length == 0){
                             sa = true
+                        }
+
+                        if(post.length == 0){
+                            pa = true
                         }
 
                         if (err) throw err;
@@ -35,7 +39,8 @@ const profileController = {
                             profile: true,
                             upvoted: user.postsUpVoted,
                             downvoted: user.postsDownVoted,
-                            sa: sa
+                            sa: sa,
+                            pa: pa
                         })
                     })
                 })
