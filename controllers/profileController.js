@@ -16,10 +16,10 @@ const profileController = {
                     getSavedPost.exec(function(err, saves){
                         if (err) return next(err)
 
-                        var pa=false;
+                        var sa=false;
                     
                         if(saves.length == 0){
-                            pa = true
+                            sa = true
                         }
 
                         // if (err) throw err;
@@ -33,7 +33,7 @@ const profileController = {
                             profile: true,
                             upvoted: user.postsUpVoted,
                             downvoted: user.postsDownVoted,
-                            pa:pa
+                            sa:sa
                         })
                     })
                 })
