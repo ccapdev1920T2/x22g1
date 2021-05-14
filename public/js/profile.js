@@ -1,7 +1,7 @@
  $(document).ready(function(){
-    document.getElementById("RecentPost").style.display = "block";
-    tablinks = document.getElementsByClassName("tablinks");
-    tablinks[0].className += " active";
+    // document.getElementById("RecentPost").style.display = "block";
+    // tablinks = document.getElementsByClassName("tablinks");
+    // tablinks[0].className += " active";
 
     $("#Recent_Post").click(function(evt) {
         var i, tabcontent, tablinks;
