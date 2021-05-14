@@ -6,12 +6,15 @@
 
 <p align="center">
     <img src="public/img/logo.png">
-</p>`
-
+</p>
 
 ## Opening the Application through Heroku
 
 1. Open a web browser and go to the [link](https://big-four-fw.herokuapp.com/) `https://big-four-fw.herokuapp.com/'`
+
+## Prerequisites
+- Node.js
+- npm
 
 ## Installation
 
@@ -29,5 +32,18 @@ connected at mongodb+srv://admin:big4user@big4fw.d5d5o.mongodb.net/big4fw?retryW
 ```
 2. Now open a web browser and go to the [link](http://localhost:9090/) `http://localhost:9090/`. Your web browser should display this:
 <p align="center">
-    <img src="public/img/landing2.png">
-</p>`
+    <img src="public/img/landing2.png" style="width:100px">
+</p>
+
+## Dummy Accounts
+
+| Email | Password | Username |
+| ----------- | ----------- | ----------- |
+| sample12@gmail.com | sample12 | seungcheol |
+
+# Authors
+
+- Cuasi, Beaverly
+- Tulabot, Victor
+- Villanueva, Ira
+
