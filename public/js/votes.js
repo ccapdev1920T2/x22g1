@@ -111,7 +111,12 @@ $(document).ready(function () {
                 var dv = $('#downvotecount_'+post_id).text();
                 var downvote = parseInt(dv) - 1;
                 $('#downvotecount_'+post_id).text(downvote);
-            } 
+            }else if($(this).next().attr("src") == 'https://big-four-fw.herokuapp.com/img/downvoted.png'){
+                $(this).next().attr("src","/img/downvote.png")
+                var dv = $('#downvotecount_'+post_id).text();
+                var downvote = parseInt(dv) - 1;
+                $('#downvotecount_'+post_id).text(downvote);
+            }
 
             $.get('/post/upvote/'+post_id, {post_id: post_id, puid: puid})
             var uv = $('#upvotecount_'+post_id).text();
@@ -149,6 +154,12 @@ $(".downvote").click(function() {
                 var uv = $('#upvotecount_'+post_id).text();
                 var upvote = parseInt(uv) - 1;
                 $('#upvotecount_'+post_id).text(upvote);
+            }else if($(this).prev().attr("src") == 'https://big-four-fw.herokuapp.com/img/upvoted.png'){
+                $(this).prev().attr("src","/img/upvote.png")
+                var uv = $('#upvotecount_'+post_id).text();
+                var upvote = parseInt(uv) - 1;
+                $('#upvotecount_'+post_id).text(upvote);
+
             }
 
             $.get('/post/downvote/'+post_id, {post_id: post_id, puid: puid})
