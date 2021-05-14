@@ -210,6 +210,9 @@
     $(function() {
         count = $('#bio').val().length,
         $('#current').text(count);
+        $("#RecentPost").style.display = "block";
+        tablinks = $("tablinks");
+        tablinks[0].className += " active";
     });
 
     $('#bio').keyup(function() {
@@ -221,7 +224,6 @@
         
     current.text(characterCount);
     })
-
     
 </script>
 
