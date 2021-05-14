@@ -110,6 +110,11 @@
             </div>
             <div id="SavedPost" class="tabcontent">
                 <div id="post">
+                    {{#if pa}}
+                        <p style="margin-top: 7px">Sorry, we couldn't find any results matching <span
+                            style="text-decoration: underline;">{{msg}}</span>.</p>
+                    {{/if}}
+                    
                     {{#each display_save}}
                         {{>post university = this.university activeid = ../active_user saved = ../saved upvoted = ../upvoted downvoted = ../downvoted comment = this.comments.length}}
                     {{/each}}
