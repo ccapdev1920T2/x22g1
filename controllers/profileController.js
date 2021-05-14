@@ -12,6 +12,14 @@ const profileController = {
             db.findOne(Profile, {_id: userId}, '', function(user){
                 var getPost = helper.getUserPost(userId);
                 getPost.exec(function(err, post){
+                    console.log("saved", post.length);
+
+                        var psa=false;
+                   
+                        if(post.length == 0){
+                            psa = true
+                        }
+
                     var getSavedPost = helper.getSavedPost(userId);
                     getSavedPost
                     .exec(function(err, saves){

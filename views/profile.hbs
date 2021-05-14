@@ -103,8 +103,8 @@
         <div class="col-10 ml-5">
             <div id="RecentPost" class="tabcontent">
                 <div id="post">
-                    {{#if pa}}
-                    <p style="margin-top: 7px; text-align: center">You have no Posts.</p>
+                    {{#if psa}}
+                        <p style="margin-top: 7px; text-align: center">No Posts.</p>
                     {{/if}}
                     {{#each posts}}
                         {{>post university = this.university activeid = ../active_user saved = ../saved upvoted = ../upvoted downvoted = ../downvoted comment = this.comments.length}}
@@ -114,7 +114,7 @@
             <div id="SavedPost" class="tabcontent">
                 <div id="post">
                     {{#if sa}}
-                    <p style="margin-top: 7px; text-align: center">No Saved Posts.</p>
+                        <p style="margin-top: 7px; text-align: center">No Saved Posts.</p>
                     {{/if}}
                     {{#each display_save}}
                         {{>post university = this.university activeid = ../active_user saved = ../saved upvoted = ../upvoted downvoted = ../downvoted comment = this.comments.length}}
